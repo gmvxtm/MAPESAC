@@ -1,0 +1,111 @@
+<div class="row container">    
+    <div *ngIf="configOption?.lengthChange" class="col-6 search">
+        <div class="row">
+            <label class="col-md-3">{{labelGeneral.lblShowRows}}</label>            
+            <div class="col-md-3">  
+                <select class="form-control" (change)="lengthChangeMenu($event.target.value)">
+                    <option [value]="item" *ngFor="let item of configOption?.lengthMenu">{{item}}</option>
+                </select>           
+            </div>     
+        </div>
+    </div>
+    <div *ngIf="configOption?.searching" class="col-9 col-md-6 search">
+        <div class="row">
+            <label class="col-md-2">{{labelGeneral.lblSearch}}</label>            
+            <div class="col-md-9">  
+                <em class="fa fa-search iconoInput"></em>
+                <input type="text" class="form-control inputPadding" [(ngModel)]="searchText" (keyup)="filterArray()">
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="table-responsive">
+    <table id="myTable" class="table table-striped table-bordered table-hover" [ngClass]="{'filter': configOption?.filterColumn}">
+        <caption style="display: none;">Checklist 2021 Table</caption>
+        <thead [ngClass]="{'filter': configOption?.filterColumn}">
+
+            <tr class="headerTable">
+                <ng-container *ngIf="configOption?.ordering">
+                    <th scope="col" *ngFor="let map of columnMaps" style="white-space: nowrap;"
+                        (click)="sortData($event.target)" [attr.data-name]="map.primaryKey" data-order="desc">
+                        <ng-container>
+                            {{ map.title }}
+                        </ng-container>
+                        
+                    </th>
+                </ng-container>
+                <ng-container *ngIf="!configOption?.ordering">
+                    <th scope="col" *ngFor="let map of columnMaps" style="white-space: nowrap;">
+                        <ng-container>
+                            {{ map.title }}
+                        </ng-container>
+                    </th>
+                </ng-container>
+            </tr>
+            <tr *ngIf="configOption?.filterColumn">
+                <ng-container *ngFor="let map of columnMaps">
+                    <th scope="col" style="white-space: nowrap;">
+                        <input #box type="text" autocomplete='off' [placeholder]="map.title" class="form-control filter"
+                            name="{{map.primaryKey}}" [attr.data-id]="map.title"
+                            (keyup)="searchHeader(box.value, map.primaryKey)">
+                    </th>
+                </ng-container>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let record of returnedArray; let i = index" [attr.data-index]="i"
+                (click)="selectDataClick(record)">
+                <td class="text-center" *ngFor="let map of columnMaps">
+
+                    <ng-container *ngIf="headers">
+
+                        <div class="btn-group" *ngIf="map.property == 'button'">
+                            <ng-container *ngFor="let button of map.buttons">
+
+                                <button style="border: none;" *ngIf="button.type == 'edit'" type="button"
+                                    (click)="editClick(record)" tooltip="{{ button.tooltip }}" placement="auto"
+                                    container="body" class="btn btn-default btn-sm">
+                                    <em class="fas {{button.icon}}"></em>
+                                </button>
+
+                                <button style="border: none;"
+                                    *ngIf="button.type == 'toggleOn' && record?.RecordStatus == recordStatus.Activate"
+                                    type="button" (click)="deactivateClick(record)" tooltip="{{ button.tooltip }}"
+                                    placement="auto" container="body" class="btn btn-default btn-sm">
+                                    <em class="fas {{button.icon}}"></em>
+                                </button>
+
+                                <button style="border: none;"
+                                    *ngIf="button.type == 'toggleOff' && record?.RecordStatus == recordStatus.Desactivate"
+                                    type="button" (click)="deactivateClick(record)" tooltip="{{ button.tooltip }}"
+                                    placement="auto" container="body" class="btn btn-default btn-sm">
+                                    <em class="fas {{button.icon}}"></em>
+                                </button>
+
+                            </ng-container>
+                        </div>
+
+                        <div *ngIf="!map.property">
+                            {{ record[map.primaryKey] }}
+                        </div>
+                    </ng-container>
+                    <!-- Tabla por Default -->
+                    <ng-container *ngIf="!headers">
+                        {{ record[map.primaryKey] }}
+                    </ng-container>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<div class="row container" *ngIf="totalItems > 0">
+    <div class="col-9" *ngIf="configOption?.paging">
+        <pagination [boundaryLinks]="true" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+            lastText="&raquo;" [rotate]="rotate" [maxSize]="maxSize" [totalItems]="totalItems" [itemsPerPage]="maxSize"
+            [(ngModel)]="currentPage"
+            (pageChanged)="pageChanged($event)"></pagination>
+    </div>
+</div>

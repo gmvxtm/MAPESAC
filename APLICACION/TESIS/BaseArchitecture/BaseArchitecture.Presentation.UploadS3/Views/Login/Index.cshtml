@@ -1,0 +1,16 @@
+﻿@using System.Configuration
+@{
+    Layout = null;
+    ViewBag.Title = "Inicio";
+    var urlLogin = string.Format("https://{0}/oauth2/authorize?identity_provider={1}&redirect_uri={2}&response_type=token&client_id={3}&scope=aws.cognito.signin.user.admin openid profile",
+        ConfigurationManager.AppSettings["COGNITO_DOMAIN"],
+        ConfigurationManager.AppSettings["IDENTITY_PROVIDER_AZURE_AD"],
+        ConfigurationManager.AppSettings["CLIENT_URL"],
+        ConfigurationManager.AppSettings["CLIENT_ID_AZURE_AD"]);
+}
+
+<h2>Login</h2>
+<form>
+    <a href="@urlLogin" style="background-color: #047d87; border-width: 0; height: 35px; border-radius: 69px; padding:10px;color#fff;">Iniciar Sesión</a>
+</form>
+

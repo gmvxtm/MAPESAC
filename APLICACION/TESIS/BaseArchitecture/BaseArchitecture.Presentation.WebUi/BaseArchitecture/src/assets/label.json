@@ -1,0 +1,30 @@
+{
+  "general": {
+    "lblTitle": "SISCOSE",
+    "lblClosedSession": "Cerrar Sesión",
+    "lblLoading": "Cargando ...",
+    "lblFilter": "Filtros:",
+    "lblFilterBy": "Filtrar por:",
+    "lblShowRows": "Mostrar filas:",
+    "lblStartDate": "Fecha desde:",
+    "lblEndDate": "Fecha hasta:",
+    "lblClear": "Limpiar",
+    "lblFooter": "2021© - MINEM",
+    "lblUserProfile": "Perfil de Usuario",
+    "lblSearch": "Buscar:",
+    "lblWelcome": "Bienvenido",
+    "lblFileUpload": "Adjuntar Archivo"
+  },
+  "message": {
+    "error": "Ocurrió un error",
+    "success": "Éxito"
+  },
+  "sessionLogin": {
+    "lblTitle": "Ministerio de Energía y Minas",
+    "lblEmail": "SSEE",
+    "lblNetworkUserEmail": " Usuario de Red",
+    "lblNetworkUser": " usuario@antamina.com",
+    "lblAccess": "Ingresar Aquí",
+    "lblNetworkUserStrategicPartner": "Usar mi DNI"
+  }
+}

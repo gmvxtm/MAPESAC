@@ -1,0 +1,28 @@
+<div class="kt-grid kt-grid--ver kt-grid--root">
+  <div id="kt_login" class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v4 kt-login--signin">
+    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor login-cover"
+    style="background-image: url('assets/media/cover-s.jpg');">
+      <div class="kt-grid__item kt-grid__item--fluid kt-login__wrapper">
+        <div class="kt-login__container">
+          <div class="kt-login__logo">
+            <a href="#">
+              <!-- <img src="assets/media/logo-light.png" alt="logo"> -->
+            </a>
+          </div>
+          <div class="kt-login__signin">
+            <div class="kt-login__head">
+              <h3 class="kt-login__title">{{labelJson.general.lblTitle}}</h3>
+            </div>
+            <form class="kt-form">
+              <div class="kt-login__actions">
+                <a (click)="beginSession(logoutType.azure, urlLogin)" class="btn btn-light btn-elevate">
+                  {{labelJson.login.lblAccess}}
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

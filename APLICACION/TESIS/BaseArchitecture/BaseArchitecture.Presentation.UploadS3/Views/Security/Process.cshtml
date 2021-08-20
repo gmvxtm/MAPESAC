@@ -1,0 +1,17 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Process";
+}
+<script>
+    var urlHash = window.location.href.replace("Process#", "ProcessClaims?");
+    if (urlHash.indexOf("id_token") !== -1)
+        urlHash = urlHash + "&type=1";
+    else
+        urlHash = urlHash + "&type=2";
+
+    if (localStorage.getItem("mail_token")) {
+        urlHash = urlHash + "&mail_token=" + localStorage.getItem("mail_token");
+    }
+    localStorage.clear();
+    window.location.replace(urlHash);
+</script>
