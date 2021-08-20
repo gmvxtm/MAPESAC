@@ -50,6 +50,10 @@
       <Project>{FEE3CB11-1F2C-405C-B98D-BDCA6577D70C}</Project>
       <Name>BaseArchitecture.Application.TransferObject</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BaseArchitecture.Repository.Entity\BaseArchitecture.Repository.Entity.csproj">
+      <Project>{c720bfeb-9430-47b6-bb13-5fd2831d22bd}</Project>
+      <Name>BaseArchitecture.Repository.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
