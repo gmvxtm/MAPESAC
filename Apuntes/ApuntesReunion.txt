@@ -31,3 +31,5 @@ El encargado de ventas aprueba,recibe la notificación y prioriza las atenciones
 	5to.- Despacho.
 	
 El cliente debe tener la trazabilidad de la producción de su pedido.
+
+ng serve --port 64238

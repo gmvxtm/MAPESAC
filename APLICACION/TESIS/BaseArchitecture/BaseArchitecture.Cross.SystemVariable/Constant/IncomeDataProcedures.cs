@@ -21,8 +21,7 @@
         public static class Procedure
         {
             public const string GetPersonById = "USP_GET_PersonById";
-
-            public const string ListMasterTable = "USP_LIST_MasterTable";
+            
             public const string ListPersonAll = "USP_LIST_PersonAll";
 
             public const string RegPerson = "USP_REG_Person";
@@ -31,6 +30,7 @@
 
             public const string ListProyectos = "USP_LIST_Proyectos";
             public const string GetProyectoById = "USP_GET_ProyectoById";
+            public const string ListMasterTable = "USP_MasterTable_List";
         }
     }
 }

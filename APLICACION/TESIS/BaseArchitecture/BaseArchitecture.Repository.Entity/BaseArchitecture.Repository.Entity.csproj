@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AuditControl\AuditControlEntity.cs" />
     <Compile Include="Demo\PersonEntity.cs" />
+    <Compile Include="Tables\MasterTableEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
