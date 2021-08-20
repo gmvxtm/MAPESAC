@@ -23,7 +23,27 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
                 var parameters = new DynamicParameters();
 
                 var resultResponse = connection.QueryAsync<MasterTableEntity>(
-                    $"{IncomeDataProcedures.Schema.Core}.{IncomeDataProcedures.Procedure.ListMasterTable}",
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.ListMasterTable}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure).Result;
+
+                response = resultResponse;
+            }
+
+            return response;
+        }
+        public IEnumerable<UserEntity> Login(UserEntity userRequest)
+        {
+            IEnumerable<UserEntity> response;
+
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+                    parameters.Add("@ParamIUsername", userRequest.Username);
+                    parameters.Add("@ParamIPassword", userRequest.Password);
+
+                var resultResponse = connection.QueryAsync<UserEntity>(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.Login}",
                     parameters,
                     commandType: CommandType.StoredProcedure).Result;
 

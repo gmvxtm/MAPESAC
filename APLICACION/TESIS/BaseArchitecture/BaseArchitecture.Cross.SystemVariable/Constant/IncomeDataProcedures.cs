@@ -9,6 +9,7 @@
         {
             public const string Demo = "Demo";
             public const string Core = "Core";
+            public const string Dbo = "dbo";
         }
 
         /// <summary>
@@ -31,6 +32,7 @@
             public const string ListProyectos = "USP_LIST_Proyectos";
             public const string GetProyectoById = "USP_GET_ProyectoById";
             public const string ListMasterTable = "USP_MasterTable_List";
+            public const string Login = "Usp_Login";
         }
     }
 }
