@@ -1,5 +1,6 @@
 ﻿using BaseArchitecture.Cross.SystemVariable.Constant;
 using BaseArchitecture.Repository.Entity;
+using BaseArchitecture.Repository.IData.NonTransactional;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace BaseArchitecture.Repository.Data.NonTransactional
 {
-    public class TableQuery
+    public class TableQuery : ITableQuery
     {
         public IEnumerable<MasterTableEntity> ListMasterTable()
         {
