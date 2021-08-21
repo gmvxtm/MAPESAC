@@ -4,6 +4,7 @@ using BaseArchitecture.Application.TransferObject.Request.Demo;
 using BaseArchitecture.Cross.LoggerTrace.Filters;
 using BaseArchitecture.Cross.Security.Controllers;
 using BaseArchitecture.Cross.SystemVariable.Constant;
+using BaseArchitecture.Repository.Entity;
 using System.Web.Http;
 
 namespace BaseArchitecture.Distributed.WebApi.Controllers
@@ -13,6 +14,7 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
     public class TableContoller : BaseWebController
     {
         public IDemoService DemoService { get; set; }
+        public ITableService TableService { get; set; }
 
         [HttpPost]
         [Route(IncomeWebApi.MethodApi.Demo.ListMasterTableByValue)]
@@ -101,6 +103,16 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
         public IHttpActionResult GetProyectoById(ProyectoRequest proyectoRequest)
         {
             var result = DemoService.GetProyectoById(proyectoRequest);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Authentication.Login)]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        public IHttpActionResult Login(UserEntity userRequest)
+        {
+            var result = TableService.Login(userRequest);
             return Ok(result);
         }
     }

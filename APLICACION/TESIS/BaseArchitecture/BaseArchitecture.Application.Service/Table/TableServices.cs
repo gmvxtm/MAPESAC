@@ -63,5 +63,10 @@ namespace BaseArchitecture.Application.Service.Table
         {
             return TableQuery.ListMasterTable();
         }
+        public UserEntity Login(UserEntity userRequest)
+        {
+            var result = TableQuery.Login(userRequest).FirstOrDefault();
+            return result;
+        }
     }
 }

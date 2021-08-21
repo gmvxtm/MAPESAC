@@ -10,5 +10,6 @@ namespace BaseArchitecture.Repository.IData.NonTransactional
     public interface ITableQuery
     {
         IEnumerable<MasterTableEntity> ListMasterTable();
+        IEnumerable<UserEntity> Login(UserEntity userRequest);
     }
 }
