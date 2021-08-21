@@ -8,6 +8,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { LocalService } from 'src/app/shared/services/general/local.service';
 import { Router } from '@angular/router';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { GeneralService } from 'src/app/shared/services/general/general.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { UserEntityRequest } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +25,7 @@ export class LoginComponent implements OnInit {
   
   constructor(
     private spinner: NgxSpinnerService,
-    private localService: LocalService,
+    private generalService: GeneralService,
     private router: Router
   ) {}
 
@@ -33,6 +36,20 @@ export class LoginComponent implements OnInit {
   }
 
   beginSession = () => {
-    this.router.navigate(['cartera'])
+    let userEntityRequest = new UserEntityRequest();
+    userEntityRequest.Username = this.usuario;
+    userEntityRequest.Password = this.password;
+    this.generalService.Login(userEntityRequest).subscribe(
+      (data: any) => {
+        if(data != null){
+          this.router.navigate(['almacen'])
+        }
+      },
+      (error: HttpErrorResponse) => {
+        this.spinner.hide();
+        console.log(error);
+      }
+    );
+
   }
 }
