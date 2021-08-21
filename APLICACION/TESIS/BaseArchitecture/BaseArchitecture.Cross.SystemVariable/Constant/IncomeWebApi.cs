@@ -5,7 +5,7 @@
         public static class PrefixApi
         {
             public const string Authentication = "api/Authentication";
-            public const string Siscose = "api/Siscose"; 
+            public const string Mapesac = "api/Mapesac"; 
             public const string Demo = "api/Demo";
             public const string Security = "api/Security";
         }
@@ -33,7 +33,7 @@
                 public const string ListMasterTableByValue = "ListMasterTableByValue";
             }
 
-            public static class Siscose
+            public static class Mapesac
             {
                 public const string ListProyectos = "ListProyectos";
                 public const string GetProyectoById = "GetProyectoById";
@@ -48,7 +48,7 @@
                 $"/{PrefixApi.Authentication}/{MethodApi.Authentication.Login}";
 
             public static readonly string ListProyectosAllowAnonymous =
-                $"/{PrefixApi.Siscose}/{MethodApi.Siscose.ListProyectos}";
+                $"/{PrefixApi.Mapesac}/{MethodApi.Mapesac.ListProyectos}";
         }
     }
 }

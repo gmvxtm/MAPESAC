@@ -188,6 +188,10 @@
       <Project>{64bcbaaa-fd2e-4947-b92b-642abe0b3912}</Project>
       <Name>BaseArchitecture.Cross.SystemVariable</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BaseArchitecture.Repository.Entity\BaseArchitecture.Repository.Entity.csproj">
+      <Project>{c720bfeb-9430-47b6-bb13-5fd2831d22bd}</Project>
+      <Name>BaseArchitecture.Repository.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -9,7 +9,7 @@ using System.Web.Http;
 namespace BaseArchitecture.Distributed.WebApi.Controllers
 {
     [AllowAnonymous]
-    [RoutePrefix(IncomeWebApi.PrefixApi.Siscose)]
+    [RoutePrefix(IncomeWebApi.PrefixApi.Mapesac)]
     public class DemoController : BaseWebController
     {
         public IDemoService DemoService { get; set; }
@@ -85,7 +85,7 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
         }
 
         [HttpPost]
-        [Route(IncomeWebApi.MethodApi.Siscose.ListProyectos)]
+        [Route(IncomeWebApi.MethodApi.Mapesac.ListProyectos)]
         [RequestLoggerFilterAttribute]
         [UnControlledExceptionFilterAttribute]
         public IHttpActionResult ListProyectos()
@@ -95,7 +95,7 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
         }
 
         [HttpPost]
-        [Route(IncomeWebApi.MethodApi.Siscose.GetProyectoById)]
+        [Route(IncomeWebApi.MethodApi.Mapesac.GetProyectoById)]
         [RequestLoggerFilterAttribute]
         [UnControlledExceptionFilterAttribute]
         public IHttpActionResult GetProyectoById(ProyectoRequest proyectoRequest)
