@@ -108,9 +108,6 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
             return Ok(result);
         }
 
-
-
-        //SISCOSE
         [HttpGet]
         [RequestLoggerFilterAttribute]
         [UnControlledExceptionFilterAttribute]
