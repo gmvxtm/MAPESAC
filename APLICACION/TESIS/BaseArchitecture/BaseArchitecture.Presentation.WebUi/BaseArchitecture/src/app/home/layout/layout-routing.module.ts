@@ -15,33 +15,13 @@ const routes: Routes = [
         // canActivate: [AuthGuard],
       },
       {
-        path: 'register',
+        path: 'almacen',
         loadChildren: () =>
-          import('src/app/home/register/register.module').then(
-            (m) => m.RegisterModule
+          import('src/app/home/almacen/almacen.module').then(
+            (m) => m.AlmacenModule
           ),
       },
-      {
-        path: 'programar',
-        loadChildren: () =>
-          import('src/app/home/programar/programar.module').then(
-            (m) => m.ProgramarModule
-          ),
-      },
-      {
-        path: 'cartera',
-        loadChildren: () =>
-          import('src/app/home/cartera/cartera.module').then(
-            (m) => m.CarteraModule
-          ),
-      },
-      {
-        path: 'cartera/detail',
-        loadChildren: () =>
-          import('src/app/home/cartera/proyecto/proyecto.module').then(
-            (m) => m.ProyectoModule
-          ),
-      }
+
     ],
   },
 ];

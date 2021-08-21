@@ -8,11 +8,11 @@ import { GeneralService } from 'src/app/shared/services/general/general.service'
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-cartera',
-  templateUrl: './cartera.component.html',
-  styleUrls: ['./cartera.component.css']
+  selector: 'app-almacen',
+  templateUrl: './almacen.component.html',
+  styleUrls: ['./almacen.component.css']
 })
-export class CarteraComponent implements OnInit {
+export class AlmacenComponent implements OnInit {
 
     public labelJson: ResponseLabel = new ResponseLabel();
     deviceType: string;
@@ -34,20 +34,6 @@ export class CarteraComponent implements OnInit {
     ngOnInit(): void {
       this.createHeadersTable();
       this.loadStart();
-      this.deviceType = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) ? 'M':'D';
-      this.ListProyectos();
-    }
-
-    ListProyectos = () => {
-      this.serviceProyecto.ListProyectos().subscribe(
-        (data: any) => {
-          this.listRisk = data.Value;
-          this.totalItems = this.listRisk.length;
-        },
-        (error: HttpErrorResponse) => {
-          this.spinner.hide();
-        }
-      );
     }
   
     loadStart = () => {
@@ -107,12 +93,5 @@ export class CarteraComponent implements OnInit {
       ];
     };
 
-    viewDetail = (item) => {
-      debugger
-        this.localStorage.setJsonValue('RequestProyecto', item);
-        if (item != null && item != '') {
-          this.router.navigate(['cartera/detail']);
-        } else return;
-    }
-  
+ 
 }

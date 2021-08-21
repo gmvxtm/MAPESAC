@@ -3,19 +3,19 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { ComponentsModule } from "src/app/component/component.module";
 import { SharedModule } from "src/app/shared/shared.module";
-import { RegisterRoutingModule } from './register-routing.module';
-import { RegisterComponent } from './register.component';
+import { CarteraRoutingModule } from './almacen-routing.module';
+import { AlmacenComponent } from './almacen.component';
 
 @NgModule({
     declarations: [
-        RegisterComponent
+        AlmacenComponent
     ],
     imports: [
       CommonModule,
-      RegisterRoutingModule,
+      CarteraRoutingModule,
       FormsModule,
       ComponentsModule,
       SharedModule,
     ]
   })
-  export class RegisterModule { }
+  export class AlmacenModule { }

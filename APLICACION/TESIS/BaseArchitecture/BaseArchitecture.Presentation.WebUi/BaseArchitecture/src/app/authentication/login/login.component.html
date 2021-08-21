@@ -1,7 +1,7 @@
 <div class="kt-grid kt-grid--ver kt-grid--root">
   <div id="kt_login" class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v4 kt-login--signin">
     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor login-cover"
-    style="background-image: url('assets/media/cover-s.jpg');">
+    style="background-image: url('assets/media/mapesac.jpg');">
       <div class="kt-grid__item kt-grid__item--fluid kt-login__wrapper">
         <div class="kt-login__container">
           <div class="kt-login__logo">
@@ -14,10 +14,17 @@
               <h3 class="kt-login__title">{{labelJson.general.lblTitle}}</h3>
             </div>
             <form class="kt-form">
-              <div class="kt-login__actions">
-                <a (click)="beginSession(logoutType.azure, urlLogin)" class="btn btn-light btn-elevate">
-                  {{labelJson.login.lblAccess}}
-                </a>
+              <div class="">
+                <div>
+                  <input [(ngModel)]="usuario" placeholder="Ingrese usuario" style="border: 1px solid;" class="form-control" type="text">
+                  <br>
+                  <input [(ngModel)]="password" placeholder="Ingrese contraseña" style="border: 1px solid;" class="form-control" type="password">
+                </div>
+                <div class="kt-login__actions">
+                  <a (click)="beginSession()" class="btn btn-light btn-elevate">
+                    {{labelJson.login.lblAccess}}
+                  </a>
+                </div>
               </div>
             </form>
           </div>
