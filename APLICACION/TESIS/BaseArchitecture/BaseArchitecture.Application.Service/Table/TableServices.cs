@@ -1,20 +1,8 @@
-﻿using Newtonsoft.Json;
-using BaseArchitecture.Application.IService.Demo;
-using BaseArchitecture.Application.TransferObject.Request.Base;
-using BaseArchitecture.Application.TransferObject.Request.Demo;
+﻿using BaseArchitecture.Application.IService.Demo;
 using BaseArchitecture.Application.TransferObject.Response.Common;
-using BaseArchitecture.Application.TransferObject.Response.Demo;
-using BaseArchitecture.Cross.LoggerTrace;
-using BaseArchitecture.Repository.Entity.Demo;
 using BaseArchitecture.Repository.IData.NonTransactional;
-using BaseArchitecture.Repository.IData.Transactional;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Transactions;
-using System.Web.Http;
-using map = AutoMapper;
-using Util = BaseArchitecture.Cross.SystemVariable.Util;
 using BaseArchitecture.Repository.Entity;
 
 namespace BaseArchitecture.Application.Service.Table
