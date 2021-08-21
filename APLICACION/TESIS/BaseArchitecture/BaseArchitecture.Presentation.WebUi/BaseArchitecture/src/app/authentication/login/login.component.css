@@ -62,7 +62,7 @@
   padding-right: 1.5rem;
   border-radius: 46px;
   margin-top: 1.5rem;
-  background: rgba(255, 255, 255, 0.015);
+  /* background: rgba(255, 255, 255, 0.015); */
   color: #74788d;
 }
 .kt-login.kt-login--v4

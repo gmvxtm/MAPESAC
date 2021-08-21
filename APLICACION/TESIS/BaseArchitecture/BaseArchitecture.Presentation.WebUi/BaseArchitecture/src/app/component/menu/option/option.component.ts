@@ -42,38 +42,36 @@ export class MenuOptionComponent implements OnInit {
     this.labelJson.general = general;
     this.listMenuOptions = [
       { 
-        title: "Cartera de Proyectos",
+        title: "Área de almacén",
         icon: "fa fa-folder-open",
-        OptionUrl: "cartera"
+        OptionUrl: "/almacen"
       },
       { 
-        title: "Programar Visita",
-        icon: "far fa-address-book",
-        OptionUrl: "programar"
+        title: "Área de corte",
+        icon: "fa fa-folder-open",
+        OptionUrl: "/"
       },
       { 
-        title: "Registrar Informe",
-        icon: "fa fa-edit",
-        OptionUrl: "register"
+        title: "Área de Costura",
+        icon: "fa fa-folder-open",
+        OptionUrl: "/"
       },
       { 
-        title: "Mis Proyectos",
-        icon: "fas fa-tasks"
+        title: "Área de Lavandería",
+        icon: "fa fa-folder-open",
+        OptionUrl: "/"
       },
-      // { 
-      //   title: "Consultas",
-      //   icon: "fa fa-search"
-      // },
       { 
-        title: "Reportes",
-        icon: "fas fa-copy"
+        title: "Área de Acabado",
+        icon: "fa fa-folder-open",
+        OptionUrl: "/"
       },
-      // { 
-      //   title: "Sincronizar Datos",
-      //   icon: "fas fa-sync"
-      // },
+      { 
+        title: "Área de Despacho",
+        icon: "fa fa-folder-open",
+        OptionUrl: "/"
+      },
     ]
-    // this.nameUser = this.localStorage.getJsonValue('userBaseArchitecture').User;
   }
 
   subMenuClick = () => {

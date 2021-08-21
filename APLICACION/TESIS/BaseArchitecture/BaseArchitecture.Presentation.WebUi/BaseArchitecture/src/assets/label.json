@@ -1,6 +1,6 @@
 {
   "general": {
-    "lblTitle": "SISCOSE",
+    "lblTitle": "MAPESAC",
     "lblClosedSession": "Cerrar Sesión",
     "lblLoading": "Cargando ...",
     "lblFilter": "Filtros:",
@@ -20,11 +20,11 @@
     "success": "Éxito"
   },
   "sessionLogin": {
-    "lblTitle": "Ministerio de Energía y Minas",
+    "lblTitle": "Almacen",
     "lblEmail": "SSEE",
     "lblNetworkUserEmail": " Usuario de Red",
     "lblNetworkUser": " usuario@antamina.com",
-    "lblAccess": "Ingresar Aquí",
+    "lblAccess": "Ingresar",
     "lblNetworkUserStrategicPartner": "Usar mi DNI"
   }
 }
