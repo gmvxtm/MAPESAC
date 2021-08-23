@@ -15,3 +15,12 @@ export class LoginRequest {
     AwsIdentityPool: string;
     RefreshToken:string;
   }
+
+  export class UserEntityRequest
+  {
+    IdUser: string;
+    Username: string;
+    Password: string;
+    RecordStatus: string;
+    IdProfile: string;
+  }

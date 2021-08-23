@@ -2,7 +2,7 @@ export const Path = {
   Authentication: 'Authentication/',
   Demo: 'Demo/',
   Security: 'Security/',
-  Siscose: 'Siscose/',
+  Mapesac: 'Mapesac/',
 };
 
 export const Authentication = {
@@ -13,9 +13,8 @@ export const Security = {
   Access: 'Access',
 };
 
-export const Siscose = {
-  ListProyectos: 'ListProyectos',
-  GetProyectoById: 'GetProyectoById'
+export const Mapesac = {
+  Login: 'Login',
 };
 
 export const Demo = {

@@ -81,3 +81,11 @@ export class LoginResponse extends GeneralResponse {
 export class AccessResponse extends GeneralResponse {
   Value: string;
 }
+
+export class UserEntityResponse
+{
+  IdUser: string;
+  Username: string;
+  RecordStatus: string;
+  IdProfile: string;
+}

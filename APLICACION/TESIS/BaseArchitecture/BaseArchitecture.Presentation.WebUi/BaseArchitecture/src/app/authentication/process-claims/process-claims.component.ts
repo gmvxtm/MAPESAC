@@ -40,56 +40,56 @@ export class ProcessClaimsComponent implements OnInit {
     }
     // this.loginModel.Device = this.localStorage.getJsonValue('deviceBaseArchitecture');
 
-    this.login();
+    // this.login();
   }
 
-  login = async () => {
-    this.spinner.show();
-    this.generalService.Login(this.loginModel).subscribe(
-      (data: any) => {
-        if (data.State === 409) {
-          this.spinner.hide();
-          showError('Obtención de claves secretas de aws');
-          setTimeout(() => {
-            window.location.replace(environment.urlLogin);
-          }, 4000);
-        } else {
-          const userModel: Login = new Login();
-          userModel.User = data.Value.User;
-          userModel.UserEdit = data.Value.UserEdit;
-          userModel.AwsSessionToken = data.Value.AwsSessionToken;
-          userModel.AwsAccessKey = data.Value.AwsAccessKey;
-          userModel.AwsSecretKey = data.Value.AwsSecretKey;
-          userModel.ProfileId = data.Value.ProfileId;
+  // login = async () => {
+  //   this.spinner.show();
+  //   this.generalService.Login(this.loginModel).subscribe(
+  //     (data: any) => {
+  //       if (data.State === 409) {
+  //         this.spinner.hide();
+  //         showError('Obtención de claves secretas de aws');
+  //         setTimeout(() => {
+  //           window.location.replace(environment.urlLogin);
+  //         }, 4000);
+  //       } else {
+  //         const userModel: Login = new Login();
+  //         userModel.User = data.Value.User;
+  //         userModel.UserEdit = data.Value.UserEdit;
+  //         userModel.AwsSessionToken = data.Value.AwsSessionToken;
+  //         userModel.AwsAccessKey = data.Value.AwsAccessKey;
+  //         userModel.AwsSecretKey = data.Value.AwsSecretKey;
+  //         userModel.ProfileId = data.Value.ProfileId;
 
-          this.localStorage.setJsonValue('tokenBaseArchitecture', data.Value.Token);
-          this.localStorage.setJsonValue('userBaseArchitecture', userModel);
+  //         this.localStorage.setJsonValue('tokenBaseArchitecture', data.Value.Token);
+  //         this.localStorage.setJsonValue('userBaseArchitecture', userModel);
 
-          // this.Access();
-          this.root.navigate(['/welcome']);
-        }
-      },
-      (error: HttpErrorResponse) => {
-        this.spinner.hide();
+  //         // this.Access();
+  //         this.root.navigate(['/welcome']);
+  //       }
+  //     },
+  //     (error: HttpErrorResponse) => {
+  //       this.spinner.hide();
 
-        if (error.status === 409) {
-          showError(
-            'Obtención de claves secretas de aws ' +
-              error.error.UniqueIdentifier
-          );
-          setTimeout(() => {
-            window.location.replace(environment.urlLogin);
-          }, 4000);
-        } else {
-          this.toastr.error('error' + ' ' + error.error.UniqueIdentifier || '');
-          console.log(error);
-          setTimeout(() => {
-            window.location.replace(environment.urlLogin);
-          }, 4000);
-        }
-      }
-    );
-  };
+  //       if (error.status === 409) {
+  //         showError(
+  //           'Obtención de claves secretas de aws ' +
+  //             error.error.UniqueIdentifier
+  //         );
+  //         setTimeout(() => {
+  //           window.location.replace(environment.urlLogin);
+  //         }, 4000);
+  //       } else {
+  //         this.toastr.error('error' + ' ' + error.error.UniqueIdentifier || '');
+  //         console.log(error);
+  //         setTimeout(() => {
+  //           window.location.replace(environment.urlLogin);
+  //         }, 4000);
+  //       }
+  //     }
+  //   );
+  // };
 
   Access = () => {
     this.generalService.Access().subscribe(

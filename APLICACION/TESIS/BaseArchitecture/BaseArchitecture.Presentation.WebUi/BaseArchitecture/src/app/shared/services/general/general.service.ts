@@ -2,13 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { retry, catchError } from 'rxjs/operators';
-import { Authentication, Path, Security,Siscose } from '../../constant';
+import { Mapesac, Path, Security } from '../../constant';
 import { Observable } from 'rxjs';
 import { AutorizacionService } from './autorizacion.service';
-import { LoginRequest } from '../../models/request/authentication/authentication-request.interface';
-import { LoginResponse } from '../../models/response/authentication/authentication-response.interface';
 import { AccessResponse } from '../../models/response/authentication/authentication-response.interface';
-import { Proyecto } from '../../models/response/core/proyecto.interface';
+import { UserEntityRequest } from '../../models/request/authentication/authentication-request.interface';
 
 @Injectable({ providedIn: 'root' })
 export class GeneralService {
@@ -21,13 +19,13 @@ export class GeneralService {
     this.urlWebApi = environment.serverUriApi;
   }
 
-  Login(loginModel: LoginRequest): Observable<LoginResponse> {
+  Login(userRequest: UserEntityRequest): Observable<any> {
     return this.http
-      .get<LoginResponse>(
-        this.urlWebApi + Path.Authentication + Authentication.Login,
+      .get<any>(
+        this.urlWebApi + Path.Mapesac + Mapesac.Login,
         {
           observe: 'body',
-          params: { loginRequest: JSON.stringify(loginModel) },
+          params: { userRequest: JSON.stringify(userRequest) },
         }
       )
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
@@ -36,26 +34,6 @@ export class GeneralService {
   Access(): Observable<AccessResponse> {
     return this.http
       .get<AccessResponse>(this.urlWebApi + Path.Security + Security.Access)
-      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
-  }
-
-  ListProyectos(): Observable<any> {
-    return this.http
-      .get<any>(
-        this.urlWebApi + Path.Siscose + Siscose.ListProyectos
-      )
-      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
-  }
-
-  GetProyectoById(proyecto): Observable<Proyecto> {
-    return this.http
-      .get<Proyecto>(
-        this.urlWebApi + Path.Siscose + Siscose.GetProyectoById,
-        {
-          observe: 'body',
-          params: { proyectoRequest: JSON.stringify(proyecto) },
-        }
-      )
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
   }
 }
