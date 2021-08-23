@@ -52,5 +52,23 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
 
             return response;
         }
+        public IEnumerable<ProductEntity> ListProduct()
+        {
+            IEnumerable<ProductEntity> response;
+
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+
+                var resultResponse = connection.QueryAsync<ProductEntity>(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.ListProduct}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure).Result;
+
+                response = resultResponse;
+            }
+
+            return response;
+        }
     }
 }

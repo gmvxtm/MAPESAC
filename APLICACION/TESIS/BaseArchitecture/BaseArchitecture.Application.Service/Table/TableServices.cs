@@ -51,10 +51,15 @@ namespace BaseArchitecture.Application.Service.Table
         {
             return TableQuery.ListMasterTable();
         }
-        public UserEntity Login(UserEntity userRequest)
+        public Response<UserEntity> Login(UserEntity userRequest)
         {
             var result = TableQuery.Login(userRequest).FirstOrDefault();
-            return result;
+            return new Response<UserEntity> { Value = result };
+        }
+        public Response<IEnumerable<ProductEntity>> ListProduct()
+        {
+            var result = TableQuery.ListProduct();
+            return new Response<IEnumerable<ProductEntity>> { Value = result };
         }
     }
 }
