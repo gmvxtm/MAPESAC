@@ -65,9 +65,9 @@ GO
 --=================================================
 --Description:	SP para listar todos los proveedores por el Id del insumo que proveen.
 --Change:		-
---Example:		[dbo].[Usp_Get_SuppliersBySupplie]
+--Example:		[dbo].[Usp_List_SuppliersBySupplie]
 --================================================= 
-CREATE PROC [dbo].[Usp_Get_SuppliersBySupplie]
+ALTER PROC [dbo].[Usp_List_SuppliersBySupplie]
 	@ParamIIdSupplie	VARCHAR(100)
 AS
 BEGIN
