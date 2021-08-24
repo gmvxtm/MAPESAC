@@ -149,5 +149,18 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
               InvokeWebApi.InvokePostAnonymousEntity<Response<UserEntity>>(urlApi, postData);
             return Ok(result);
         }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.ListProduct)]
+        public IHttpActionResult ListProduct()
+        {
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Mapesac}/{IncomeWebApi.MethodApi.Mapesac.ListProduct}";
+            var result =
+                InvokeWebApi.InvokePostAnonymousEntity<Response<List<ProductEntity>>>(urlApi, string.Empty);
+            return Ok(result);
+        }
     }
 }

@@ -115,5 +115,15 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
             var result = TableService.Login(userRequest);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route(IncomeWebApi.MethodApi.Mapesac.ListProduct)]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        public IHttpActionResult ListProduct()
+        {
+            var result = TableService.ListProduct();
+            return Ok(result);
+        }
     }
 }

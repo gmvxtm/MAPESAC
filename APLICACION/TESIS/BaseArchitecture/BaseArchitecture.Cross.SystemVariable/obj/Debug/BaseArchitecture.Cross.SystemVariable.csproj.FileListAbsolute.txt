@@ -41,3 +41,4 @@ E:\Percy\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cros
 E:\Percy\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\obj\Debug\BaseArchitecture.Cross.SystemVariable.csproj.CopyComplete
 E:\Percy\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\obj\Debug\BaseArchitecture.Cross.SystemVariable.dll
 E:\Percy\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\obj\Debug\BaseArchitecture.Cross.SystemVariable.pdb
+E:\Percy\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\obj\Debug\BaseArchitecture.Cross.SystemVariable.csproj.AssemblyReference.cache

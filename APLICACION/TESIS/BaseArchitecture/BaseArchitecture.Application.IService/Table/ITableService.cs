@@ -10,7 +10,7 @@ namespace BaseArchitecture.Application.IService.Demo
         MasterTableEntity GetMasterById(MasterTableEntity masterTableRequest);
         Response<IEnumerable<MasterTableEntity>> ListMasterTable(MasterTableEntity masterTableRequest);
         Response<IEnumerable<MasterTableEntity>> ListMasterTableByValue(MasterTableEntity masterTableRequest);
-        UserEntity Login(UserEntity userRequest);
-
+        Response<UserEntity> Login(UserEntity userRequest);
+        Response<IEnumerable<ProductEntity>> ListProduct();
     }
 }
