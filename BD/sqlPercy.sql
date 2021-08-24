@@ -51,3 +51,37 @@ BEGIN
 	FROM	Product
 	WHERE	RecordStatus	=	@CActiveStatus
 END
+
+---------------------------------------------------------------------------------------------------------
+
+--24/08/2021
+
+USE [MAPESAC]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+--=================================================
+--Description:	SP para listar todos los proveedores por el Id del insumo que proveen.
+--Change:		-
+--Example:		[dbo].[Usp_Get_SuppliersBySupplie]
+--================================================= 
+CREATE PROC [dbo].[Usp_Get_SuppliersBySupplie]
+	@ParamIIdSupplie	VARCHAR(100)
+AS
+BEGIN
+
+	DECLARE	@CActiveStatus	CHAR(1)	=	'A';
+
+	SELECT	S.IdSupplier
+			,S.[Name]
+			,S.Email
+			,S.Phone
+			,S.RecordStatus
+	FROM	Supplier	S
+	INNER JOIN	SuppliersBySupplie	SBS
+		ON	S.IdSupplier	=	SBS.IdSupplier
+	WHERE	SBS.IdSupplie	= @ParamIIdSupplie	
+		AND	RecordStatus	=	@CActiveStatus
+END
