@@ -32,4 +32,5 @@ El encargado de ventas aprueba,recibe la notificación y prioriza las atenciones
 	
 El cliente debe tener la trazabilidad de la producción de su pedido.
 
+**Costura y Lavenderia son tercerizados
 ng serve --port 64238
