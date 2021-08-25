@@ -42,6 +42,11 @@ export class MenuOptionComponent implements OnInit {
     this.labelJson.general = general;
     this.listMenuOptions = [
       { 
+        title: "Realizar Pedido",
+        icon: "fa fa-folder-open",
+        OptionUrl: "/pedido"
+      },
+      { 
         title: "Área de almacén",
         icon: "fa fa-folder-open",
         OptionUrl: "/almacen"

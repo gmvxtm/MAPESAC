@@ -6,14 +6,13 @@ import { LocalService } from 'src/app/shared/services/general/local.service';
 import { HeadersInterface } from 'src/app/shared/models/request/common/headers-request.interface';
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
-  selector: 'app-almacen',
-  templateUrl: './almacen.component.html',
-  styleUrls: ['./almacen.component.css']
+  selector: 'app-pedido',
+  templateUrl: './pedido.component.html',
+  styleUrls: ['./pedido.component.css']
 })
-export class AlmacenComponent implements OnInit {
+export class PedidoComponent implements OnInit {
 
     public labelJson: ResponseLabel = new ResponseLabel();
     deviceType: string;
@@ -24,8 +23,7 @@ export class AlmacenComponent implements OnInit {
     configTable: {};
     listRisk: any[] = [];
     headers: HeadersInterface[] = new Array<HeadersInterface>();
-    
-  
+    catalogInitList: any[] = [];
     constructor(
       private spinner: NgxSpinnerService,
       private router: Router,
@@ -36,7 +34,7 @@ export class AlmacenComponent implements OnInit {
     ngOnInit(): void {
       this.createHeadersTable();
       this.loadStart();
-      
+      this.createCatalog();
     }
   
     loadStart = () => {
@@ -51,8 +49,24 @@ export class AlmacenComponent implements OnInit {
       };
     }
   
-
-
+    createCatalog = () => {
+      this.catalogInitList = [
+        {
+          Name :"Modelo A",
+          PathFile :"ruta",
+          PriceUnit :"50",
+          RecordStatus :"A",
+          Cantidad: 0,
+        },
+        {
+          Name :"Modelo B",
+          PathFile :"ruta",
+          PriceUnit :"40",
+          RecordStatus :"A",
+          Cantidad: 0,
+        },        
+      ];
+    }
 
     createHeadersTable = () => {
       this.headers = [

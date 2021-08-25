@@ -15,6 +15,13 @@ const routes: Routes = [
         // canActivate: [AuthGuard],
       },
       {
+        path: 'pedido',
+        loadChildren: () =>
+          import('src/app/home/pedido/pedido.module').then(
+            (m) => m.PedidoModule
+          ),
+      },
+      {
         path: 'almacen',
         loadChildren: () =>
           import('src/app/home/almacen/almacen.module').then(
