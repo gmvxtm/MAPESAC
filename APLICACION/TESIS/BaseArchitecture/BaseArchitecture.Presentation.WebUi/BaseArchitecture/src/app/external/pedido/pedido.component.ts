@@ -64,7 +64,56 @@ export class PedidoComponent implements OnInit {
           PriceUnit :"40",
           RecordStatus :"A",
           Cantidad: 0,
-        },        
+        },   
+        {
+          Name :"Modelo B",
+          PathFile :"ruta",
+          PriceUnit :"40",
+          RecordStatus :"A",
+          Cantidad: 0,
+        },  
+        {
+          Name :"Modelo B",
+          PathFile :"ruta",
+          PriceUnit :"40",
+          RecordStatus :"A",
+          Cantidad: 0,
+        },  
+        {
+          Name :"Modelo B",
+          PathFile :"ruta",
+          PriceUnit :"40",
+          RecordStatus :"A",
+          Cantidad: 0,
+        },       
+        {
+          Name :"Modelo B",
+          PathFile :"ruta",
+          PriceUnit :"40",
+          RecordStatus :"A",
+          Cantidad: 0,
+        },  
+        {
+          Name :"Modelo B",
+          PathFile :"ruta",
+          PriceUnit :"40",
+          RecordStatus :"A",
+          Cantidad: 0,
+        },  
+        {
+          Name :"Modelo B",
+          PathFile :"ruta",
+          PriceUnit :"40",
+          RecordStatus :"A",
+          Cantidad: 0,
+        },  
+        {
+          Name :"Modelo B",
+          PathFile :"ruta",
+          PriceUnit :"40",
+          RecordStatus :"A",
+          Cantidad: 0,
+        },  
       ];
     }
 

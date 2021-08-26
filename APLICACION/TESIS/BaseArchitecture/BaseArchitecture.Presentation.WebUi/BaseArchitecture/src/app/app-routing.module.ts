@@ -20,7 +20,7 @@ const routes: Routes = [
     , canActivate: [AuthGuardSesion]
   },
   {
-    path: 'pedido',
+    path: 'catalogo',
     loadChildren: () =>
       import('src/app/external/pedido/pedido.module').then(
         (m) => m.PedidoModule
