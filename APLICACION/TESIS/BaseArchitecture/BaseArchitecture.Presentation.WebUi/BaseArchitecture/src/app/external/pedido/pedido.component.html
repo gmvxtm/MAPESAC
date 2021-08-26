@@ -11,43 +11,28 @@
 
 
 <div class="container">
-    <ul style="padding: 0; list-style: none;">
-        <div class="col-12 row">
-            <li *ngFor="let item of catalogInitList">
-                <div class=" mt-1 mb-1 col-9">                    
-                        <div class="row">
-                            <img  alt="image" src="./jean.jpg"
-                            >
-                            <!-- <em class="fas fa-file-image" ></em> -->
-                        </div>                        
-
-                        <div class="row">                                                                                  
-                                Modelo: {{item.Name}}                                                            
-                        </div>
-                        <div class="row">
-                            Precio Unitario: {{item.PriceUnit}}
-                        </div>
-
-                        <!-- <div class="col-3">                                                        
-                        </div> -->
-                        <!-- <div class="col-3"> -->
-                            <!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                <div *ngIf="typeView" class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button (click)="downloadFile(item)" type="button"
-                                        class="btn btn-default">
-                                        <em class="fas fa-download"></em>
-                                    </button>
+    <div class="col-12">
+        <div class="kt-login__container" style="width: 100% !important;">
+            <div class="col-12 row form-group">
+                <div class="col-4">
+                    <ng-container *ngIf="catalogInitList.length > 0">
+                        <div *ngFor="let item of catalogInitList">
+                            <div style="padding-top:20px;">
+                                <div class="card text-center" title="{{item.Name}}">
+                                    <img class="card-img-top" style="background-size: contain; height: 127px; width: 127px;"
+                                    src="../../../assets/media/jean.png" alt="Sin imagen" />
+                                    
+                                    
+                                    <div class="card-footer" style="padding: 5px;">
+                                        <em class="fa fa-search text-info" style="cursor: pointer;"></em>
+                                        <br>
+                                    </div>
                                 </div>
-                                <div class="btn-group" role="group" aria-label="Second group">
-                                    <button *ngIf="typeDelete" (click)="deleteFile(item)" type="button"
-                                        class="btn btn-default">
-                                        <em class="fas fa-trash-alt"></em>
-                                    </button>
-                                </div>
-                            </div> -->
-                        <!-- </div> -->                                                    
+                            </div>
+                        </div>
+                    </ng-container>
                 </div>
-            </li>
+            </div>
         </div>
-    </ul>
+    </div>
 </div>
