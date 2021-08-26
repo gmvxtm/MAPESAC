@@ -42,3 +42,14 @@ E:\Percy\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cros
 E:\Percy\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\obj\Debug\BaseArchitecture.Cross.SystemVariable.dll
 E:\Percy\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\obj\Debug\BaseArchitecture.Cross.SystemVariable.pdb
 E:\Percy\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\obj\Debug\BaseArchitecture.Cross.SystemVariable.csproj.AssemblyReference.cache
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\bin\Debug\BaseArchitecture.Cross.SystemVariable.dll
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\bin\Debug\BaseArchitecture.Cross.SystemVariable.pdb
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\bin\Debug\EPPlus.dll
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\bin\Debug\Newtonsoft.Json.dll
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\bin\Debug\EPPlus.xml
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\bin\Debug\Newtonsoft.Json.xml
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\obj\Debug\BaseArchitecture.Cross.SystemVariable.csproj.AssemblyReference.cache
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\obj\Debug\BaseArchitecture.Cross.SystemVariable.csproj.CoreCompileInputs.cache
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\obj\Debug\BaseArchitecture.Cross.SystemVariable.csproj.CopyComplete
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\obj\Debug\BaseArchitecture.Cross.SystemVariable.dll
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Cross.SystemVariable\obj\Debug\BaseArchitecture.Cross.SystemVariable.pdb

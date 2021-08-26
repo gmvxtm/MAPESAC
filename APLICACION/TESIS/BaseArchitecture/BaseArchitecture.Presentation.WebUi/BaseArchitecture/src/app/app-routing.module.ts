@@ -19,6 +19,13 @@ const routes: Routes = [
     loadChildren: () => import('./authentication/login/login.module').then(m => m.LoginModule)
     , canActivate: [AuthGuardSesion]
   },
+  {
+    path: 'pedido',
+    loadChildren: () =>
+      import('src/app/external/pedido/pedido.module').then(
+        (m) => m.PedidoModule
+      ),
+  },
 ];
 
 @NgModule({

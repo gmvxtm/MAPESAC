@@ -50,3 +50,16 @@ E:\Percy\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repo
 E:\Percy\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\obj\Debug\BaseArchitecture.Repository.Entity.csproj.CopyComplete
 E:\Percy\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\obj\Debug\BaseArchitecture.Repository.Entity.dll
 E:\Percy\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\obj\Debug\BaseArchitecture.Repository.Entity.pdb
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\bin\Debug\BaseArchitecture.Repository.Entity.dll
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\bin\Debug\BaseArchitecture.Repository.Entity.pdb
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\bin\Debug\BaseArchitecture.Cross.SystemVariable.dll
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\bin\Debug\EPPlus.dll
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\bin\Debug\Newtonsoft.Json.dll
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\bin\Debug\BaseArchitecture.Cross.SystemVariable.pdb
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\bin\Debug\EPPlus.xml
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\bin\Debug\Newtonsoft.Json.xml
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\obj\Debug\BaseArchitecture.Repository.Entity.csproj.AssemblyReference.cache
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\obj\Debug\BaseArchitecture.Repository.Entity.csproj.CoreCompileInputs.cache
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\obj\Debug\BaseArchitecture.Repository.Entity.csproj.CopyComplete
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\obj\Debug\BaseArchitecture.Repository.Entity.dll
+D:\MAPESAC\MAPESAC\APLICACION\TESIS\BaseArchitecture\BaseArchitecture.Repository.Entity\obj\Debug\BaseArchitecture.Repository.Entity.pdb

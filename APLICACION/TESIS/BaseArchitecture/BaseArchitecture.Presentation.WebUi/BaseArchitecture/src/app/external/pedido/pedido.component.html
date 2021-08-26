@@ -1,0 +1,38 @@
+<div class="container row" style="margin-top: 10px;">
+    <div  class="col-10">
+        <p style="text-align: left; font-size: 16px; font-weight: bold;margin-bottom: 0;">
+            Realizar pedido
+        </p>
+    </div>
+</div>
+        
+<br>
+
+
+
+<div class="container">
+    <div class="col-12">
+        <div class="kt-login__container" style="width: 100% !important;">
+            <div class="col-12 row form-group">
+                <div class="col-4">
+                    <ng-container *ngIf="catalogInitList.length > 0">
+                        <div *ngFor="let item of catalogInitList">
+                            <div style="padding-top:20px;">
+                                <div class="card text-center" title="{{item.Name}}">
+                                    <img class="card-img-top" style="background-size: contain; height: 127px; width: 127px;"
+                                    src="../../../assets/media/jean.png" alt="Sin imagen" />
+                                    
+                                    
+                                    <div class="card-footer" style="padding: 5px;">
+                                        <em class="fa fa-search text-info" style="cursor: pointer;"></em>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
