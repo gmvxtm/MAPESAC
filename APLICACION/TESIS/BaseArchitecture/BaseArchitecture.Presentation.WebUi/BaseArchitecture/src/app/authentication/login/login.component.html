@@ -16,9 +16,9 @@
             <form class="kt-form">
               <div class="">
                 <div>
-                  <input [(ngModel)]="usuario" placeholder="Ingrese usuario" style="border: 1px solid;" class="form-control" type="text">
+                  <input id="user"  name="user" [(ngModel)]="usuario" placeholder="Ingrese usuario" style="border: 1px solid;" class="form-control" type="text">
                   <br>
-                  <input [(ngModel)]="password" placeholder="Ingrese contraseña" style="border: 1px solid;" class="form-control" type="password">
+                  <input id="pass"  name="pass"  [(ngModel)]="password" placeholder="Ingrese contraseña" style="border: 1px solid;" class="form-control" type="password">
                 </div>
                 <div class="kt-login__actions">
                   <a (click)="beginSession()" class="btn btn-light btn-elevate">

@@ -36,21 +36,22 @@ export class LoginComponent implements OnInit {
   }
 
   beginSession = () => {
+    debugger
     let userEntityRequest = new UserEntityRequest();
     userEntityRequest.Username = this.usuario;
     userEntityRequest.Password = this.password;
-    this.router.navigate(['almacen'])
-    // this.generalService.Login(userEntityRequest).subscribe(
-    //   (data: any) => {
-    //     if(data != null){
-    //       this.router.navigate(['almacen'])
-    //     }
-    //   },
-    //   (error: HttpErrorResponse) => {
-    //     this.spinner.hide();
-    //     console.log(error);
-    //   }
-    // );
+    // this.router.navigate(['almacen'])
+    this.generalService.Login(userEntityRequest).subscribe(
+      (data: any) => {
+        if(data != null){
+          this.router.navigate(['almacen'])
+        }
+      },
+      (error: HttpErrorResponse) => {
+        this.spinner.hide();
+        console.log(error);
+      }
+    );
 
   }
 }

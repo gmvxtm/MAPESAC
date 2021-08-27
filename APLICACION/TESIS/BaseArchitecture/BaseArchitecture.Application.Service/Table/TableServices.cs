@@ -1,4 +1,4 @@
-﻿using BaseArchitecture.Application.IService.Demo;
+﻿using BaseArchitecture.Application.IService.Table  ;
 using BaseArchitecture.Application.TransferObject.Response.Common;
 using BaseArchitecture.Repository.IData.NonTransactional;
 using System.Collections.Generic;
@@ -51,11 +51,13 @@ namespace BaseArchitecture.Application.Service.Table
         {
             return TableQuery.ListMasterTable();
         }
+
         public Response<UserEntity> Login(UserEntity userRequest)
         {
             var result = TableQuery.Login(userRequest).FirstOrDefault();
             return new Response<UserEntity> { Value = result };
         }
+
         public Response<IEnumerable<ProductEntity>> ListProduct()
         {
             var result = TableQuery.ListProduct();

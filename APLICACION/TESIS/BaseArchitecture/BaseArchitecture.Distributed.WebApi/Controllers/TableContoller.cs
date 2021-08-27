@@ -1,4 +1,5 @@
 ﻿using BaseArchitecture.Application.IService.Demo;
+using BaseArchitecture.Application.IService.Table;
 using BaseArchitecture.Application.TransferObject.Request.Base;
 using BaseArchitecture.Application.TransferObject.Request.Demo;
 using BaseArchitecture.Cross.LoggerTrace.Filters;

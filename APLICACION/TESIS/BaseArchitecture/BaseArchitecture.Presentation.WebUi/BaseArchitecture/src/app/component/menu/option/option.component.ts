@@ -40,12 +40,7 @@ export class MenuOptionComponent implements OnInit {
 
   ngOnInit() {
     this.labelJson.general = general;
-    this.listMenuOptions = [
-      { 
-        title: "Realizar Pedido",
-        icon: "fa fa-folder-open",
-        OptionUrl: "/pedido"
-      },
+    this.listMenuOptions = [ 
       { 
         title: "Área de almacén",
         icon: "fa fa-folder-open",

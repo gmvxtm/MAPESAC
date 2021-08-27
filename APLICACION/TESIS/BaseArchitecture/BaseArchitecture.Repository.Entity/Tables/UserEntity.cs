@@ -8,6 +8,6 @@ namespace BaseArchitecture.Repository.Entity
         public string Username { get; set; }
         public string Password { get; set; }
         public string RecordStatus { get; set; }
-        public Guid IdProfile { get; set; }
+        public string IdProfile { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 using BaseArchitecture.Repository.Entity;
 using System.Collections.Generic;
 
-namespace BaseArchitecture.Application.IService.Demo
+namespace BaseArchitecture.Application.IService.Table
 {
     public interface ITableService
     {
