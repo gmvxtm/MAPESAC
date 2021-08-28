@@ -1,5 +1,6 @@
 ﻿using BaseArchitecture.Application.TransferObject.Response.Common;
 using BaseArchitecture.Repository.Entity;
+using BaseArchitecture.Repository.Entity.Tables;
 using System.Collections.Generic;
 
 namespace BaseArchitecture.Application.IService.Table
@@ -10,7 +11,7 @@ namespace BaseArchitecture.Application.IService.Table
         MasterTableEntity GetMasterById(MasterTableEntity masterTableRequest);
         Response<IEnumerable<MasterTableEntity>> ListMasterTable(MasterTableEntity masterTableRequest);
         Response<IEnumerable<MasterTableEntity>> ListMasterTableByValue(MasterTableEntity masterTableRequest);
-        Response<UserEntity> Login(UserEntity userRequest);
+        Response<MenuLogin> Login(UserEntity userRequest);        
         Response<IEnumerable<ProductEntity>> ListProduct();
     }
 }

@@ -5,6 +5,6 @@ export class ProductEntity
   PathFile: string;
   PriceUnit:string;
   RecordStatus: string;
-  Quantity: string;
+  Quantity?: string;
 }
 

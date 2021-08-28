@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BaseArchitecture.Repository.Entity;
 using BaseArchitecture.Cross.SystemVariable.Util;
+using BaseArchitecture.Repository.Entity.Tables;
 
 namespace BaseArchitecture.Application.Service.Table
 {
@@ -53,11 +54,11 @@ namespace BaseArchitecture.Application.Service.Table
             return TableQuery.ListMasterTable();
         }
 
-        public Response<UserEntity> Login(UserEntity userRequest)
+        public Response<MenuLogin> Login(UserEntity userRequest)
         {
             userRequest.Password = AesCryptography.CryptAES(userRequest.Password);
-            var result = TableQuery.Login(userRequest).FirstOrDefault();
-            return new Response<UserEntity> { Value = result };
+            var result = TableQuery.Login(userRequest);
+            return result;
         }
 
         public Response<IEnumerable<ProductEntity>> ListProduct()
