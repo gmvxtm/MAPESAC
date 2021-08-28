@@ -34,6 +34,9 @@
             public const string ListMasterTable = "USP_MasterTable_List";
             public const string Login = "Usp_Login";
             public const string ListProduct = "Usp_List_Product";
+
+            public const string MrgOrder = "Usp_Mrg_Order";
+            public const string MrgOrderDetail = "Usp_Mrg_OrderDetail";
         }
     }
 }
