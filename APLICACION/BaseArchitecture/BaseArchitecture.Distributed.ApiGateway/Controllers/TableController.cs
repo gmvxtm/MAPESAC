@@ -157,7 +157,7 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
         public IHttpActionResult ListProduct()
         {
             var urlApi =
-                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Table}/{IncomeWebApi.MethodApi.Mapesac.ListProduct}";
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.ListProduct}";
             var result =
                 InvokeWebApi.InvokePostAnonymousEntity<Response<List<ProductEntity>>>(urlApi, "");
             return Ok(result);
