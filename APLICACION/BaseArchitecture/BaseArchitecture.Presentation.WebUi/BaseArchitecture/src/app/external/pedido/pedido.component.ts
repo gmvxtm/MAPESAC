@@ -56,7 +56,7 @@ export class PedidoComponent implements OnInit {
       this.generalService.ListProduct().subscribe(
         (data: any) => {
           if(data != null){
-            this.catalogInitProductEntity = data;
+            this.catalogInitProductEntity = data.Value;
           }
         },
         (error: HttpErrorResponse) => {
