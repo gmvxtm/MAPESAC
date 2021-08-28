@@ -13,5 +13,6 @@ namespace BaseArchitecture.Application.IService.Table
         Response<IEnumerable<MasterTableEntity>> ListMasterTableByValue(MasterTableEntity masterTableRequest);
         Response<MenuLogin> Login(UserEntity userRequest);        
         Response<IEnumerable<ProductEntity>> ListProduct();
+        Response<int> MergeOrder(OrderEntity orderRequest);
     }
 }

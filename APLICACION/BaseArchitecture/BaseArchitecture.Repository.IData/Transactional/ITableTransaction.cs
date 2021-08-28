@@ -3,9 +3,9 @@ using BaseArchitecture.Repository.Entity;
 
 namespace BaseArchitecture.Repository.IData.Transactional
 {
-    public interface ITableTransactional
+    public interface ITableTransaction
     {
-        Response<int> MrgOrder(OrderEntity orderEntity);
-        Response<int> MrgOrderDetail(OrderDetailEntity orderDetailEntity);
+        Response<int> MergeOrder(OrderEntity orderEntity);
+        Response<int> MergeOrderDetail(OrderDetailEntity orderDetailEntity);
     }
 }

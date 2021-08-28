@@ -1,11 +1,14 @@
 ﻿using BaseArchitecture.Application.IService.Table  ;
 using BaseArchitecture.Application.TransferObject.Response.Common;
 using BaseArchitecture.Repository.IData.NonTransactional;
+using BaseArchitecture.Repository.IData.Transactional;
 using System.Collections.Generic;
 using System.Linq;
 using BaseArchitecture.Repository.Entity;
 using BaseArchitecture.Cross.SystemVariable.Util;
 using BaseArchitecture.Repository.Entity.Tables;
+using System.Transactions;
+using System;
 
 namespace BaseArchitecture.Application.Service.Table
 {
@@ -14,7 +17,7 @@ namespace BaseArchitecture.Application.Service.Table
         //public IDemoQuery DemoQuery { get; set; }
         //public IDemoTransaction DemoTransaction { get; set; }
         public ITableQuery TableQuery { get; set; }
-
+        public ITableTransaction TableTransaction { get; set; }
 
 
         /// <summary>
@@ -65,6 +68,28 @@ namespace BaseArchitecture.Application.Service.Table
         {
             var result = TableQuery.ListProduct();
             return new Response<IEnumerable<ProductEntity>> { Value = result };
+        }
+
+        public Response<int> MergeOrder(OrderEntity orderRequest)
+        {
+            var result = new Response<int>(1);
+            using (var transaction = new TransactionScope())
+            {
+                try
+                {
+                    TableTransaction.MergeOrder(orderRequest);
+                    foreach(var itemOrderDetail in orderRequest.orderDetail)
+                    {
+                        TableTransaction.MergeOrderDetail(itemOrderDetail);
+                    }
+                    transaction.Complete();
+                }
+                catch (Exception e)
+                {
+                    result = new Response<int>(0);
+                }
+            }
+            return result;
         }
     }
 }
