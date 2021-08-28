@@ -44,6 +44,7 @@
     <Compile Include="AuditControl\AuditControlEntity.cs" />
     <Compile Include="Demo\PersonEntity.cs" />
     <Compile Include="Tables\ProductEntity.cs" />
+    <Compile Include="Tables\MenuProfileEntity.cs" />
     <Compile Include="Tables\UserEntity.cs" />
     <Compile Include="Tables\MasterTableEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
