@@ -44,22 +44,20 @@ export class LoginRequest {
   
   export class OrderEntity
   {
-    IdMenuProfile: string;
-    IdMenu: string;
-    IdProfile: string;
-    MenuName: string;
-    UrlName: string;
-    RecordStatus: string;  
-    orderDetail?:OrderDetailEntity[];
+    IdOrder: string;
+    DateOrder: string;
+    Total: string;
+    IdCustomer: string;    
+    Status: string;  
+    ListOrderDetail?:OrderDetailEntity[];
   }
 
-  
   export class OrderDetailEntity
   {
-    IdMenuProfile: string;
-    IdMenu: string;
-    IdProfile: string;
-    MenuName: string;
-    UrlName: string;
+    IdOrderDetail: string;
+    IdOrder: string;
+    IdProduct: string;
+    Description: string;
+    Quantity: string;
     RecordStatus: string;  
   }

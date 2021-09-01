@@ -78,7 +78,7 @@ namespace BaseArchitecture.Application.Service.Table
                 try
                 {
                     TableTransaction.MergeOrder(orderRequest);
-                    foreach(var itemOrderDetail in orderRequest.orderDetail)
+                    foreach(var itemOrderDetail in orderRequest.ListOrderDetail)
                     {
                         TableTransaction.MergeOrderDetail(itemOrderDetail);
                     }

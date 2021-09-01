@@ -10,6 +10,6 @@ namespace BaseArchitecture.Repository.Entity
         public double Total { get; set; }
         public string Status { get; set; }
         public Guid IdCustomer { get; set; }
-        public List<OrderDetailEntity> orderDetail { get; set; }
+        public List<OrderDetailEntity> ListOrderDetail { get; set; }
     }
 }
