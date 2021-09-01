@@ -42,3 +42,24 @@ export class LoginRequest {
   }
 
   
+  export class OrderEntity
+  {
+    IdMenuProfile: string;
+    IdMenu: string;
+    IdProfile: string;
+    MenuName: string;
+    UrlName: string;
+    RecordStatus: string;  
+    orderDetail?:OrderDetailEntity[];
+  }
+
+  
+  export class OrderDetailEntity
+  {
+    IdMenuProfile: string;
+    IdMenu: string;
+    IdProfile: string;
+    MenuName: string;
+    UrlName: string;
+    RecordStatus: string;  
+  }
