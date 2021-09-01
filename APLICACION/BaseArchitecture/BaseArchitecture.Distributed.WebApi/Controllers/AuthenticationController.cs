@@ -21,10 +21,10 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
 
         [HttpPost]
         [Route(IncomeWebApi.MethodApi.Authentication.Login)]
-        public IHttpActionResult Login(UserEntity userEntity)
+        public IHttpActionResult Login(UserEntity userRequest)
         {
             //AwsHelper.SetLogger(loginRequest.IdToken, IncomeTraceConfigureAws.AwsIdentityPool);
-            var loginResponse = TableService.Login(userEntity);
+            var loginResponse = TableService.Login(userRequest);
             if (loginResponse == null) return Unauthorized();
             return Ok(loginResponse);
         }
@@ -35,6 +35,15 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
         public IHttpActionResult ListProduct()
         {
             var result = TableService.ListProduct();
+            return Ok(result);
+        }
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.MergeOrder)]
+        //[RequestLoggerFilterAttribute]
+        //[UnControlledExceptionFilterAttribute]
+        public IHttpActionResult MergeOrder(OrderEntity orderRequest)
+        {
+            var result = TableService.MergeOrder(orderRequest);
             return Ok(result);
         }
     }

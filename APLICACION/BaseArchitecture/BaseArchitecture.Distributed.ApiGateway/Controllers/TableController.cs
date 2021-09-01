@@ -163,5 +163,19 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
                 InvokeWebApi.InvokePostAnonymousEntity<Response<List<ProductEntity>>>(urlApi, "");
             return Ok(result);
         }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.MergeOrder)]
+        public IHttpActionResult MergeOrder()
+        {
+            var postData = HttpContext.Current.Request.Params["orderRequest"];
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.MergeOrder}";
+            var result =
+              InvokeWebApi.InvokePostAnonymousEntity<Response<int>>(urlApi, postData);
+            return Ok(result);
+        }
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="Transactional\DemoTransaction.cs" />
     <Compile Include="NonTransactional\DemoQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transactional\TableTransactional.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseArchitecture.Application.TransferObject\BaseArchitecture.Application.TransferObject.csproj">
