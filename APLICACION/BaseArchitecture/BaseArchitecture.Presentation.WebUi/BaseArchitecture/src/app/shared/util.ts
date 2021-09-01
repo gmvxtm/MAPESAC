@@ -21,43 +21,46 @@ export function FormatString(str: string, ...val: string[]) {
 }
 
 export function SignOff(): void {
-  if (localStorage.getItem('errorBaseArchitecture')) {
-    if (Number(localStorage.getItem('errorBaseArchitecture')) > 0) {
-      return;
-    }
-  }
+      localStorage.removeItem('profileBase');
+      window.location.replace(environment.urlLogin);
+   
+  // if (localStorage.getItem('errorBaseArchitecture')) {
+  //   if (Number(localStorage.getItem('errorBaseArchitecture')) > 0) {
+  //     return;
+  //   }
+  // }
 
-  let typeSession = Number(localStorage.getItem('typeSessionSig'));
+  // let typeSession = Number(localStorage.getItem('typeSessionSig'));
 
-  let urlSession = urlLogout;
-  if (typeSession === LogoutType.azure) urlSession = urlLogoutAzure;
+  // let urlSession = urlLogout;
+  // if (typeSession === LogoutType.azure) urlSession = urlLogoutAzure;
 
-  var win = window.open(
-    urlSession,
-    '_blank',
-    'toolbar=no,status=no,menubar=no,scrollbars=no,resizable=no,left=10000, top=10000, width=10, height=10, visible=none'
-  );
-  Sleep(win);
+  // var win = window.open(
+  //   urlSession,
+  //   '_blank',
+  //   'toolbar=no,status=no,menubar=no,scrollbars=no,resizable=no,left=10000, top=10000, width=10, height=10, visible=none'
+  // );
+  // Sleep(win);
 }
 
-export function Sleep(win: any): void {
-  var sleep = new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      resolve();
-    }, 8000);
-  });
-  sleep.then(function () {
-    win.close();
-    localStorage.removeItem('tokenBaseArchitecture');
-    localStorage.removeItem('userBaseArchitecture');
-    localStorage.removeItem('loginBaseArchitecture');
-    localStorage.removeItem('menuBaseArchitecture');
-    localStorage.removeItem('deviceBaseArchitecture');
-    localStorage.removeItem('typSessionSig');
-    localStorage.removeItem('errorBaseArchitecture');
-    window.location.replace(environment.urlLogin);
-  });
-}
+// export function Sleep(win: any): void {
+//   var sleep = new Promise(function (resolve, reject) {
+//     setTimeout(function () {
+//       resolve();
+//     }, 8000);
+//   });
+//   sleep.then(function () {
+//     win.close();
+//     localStorage.removeItem('profileBase');
+//     localStorage.removeItem('userBaseArchitecture');
+//     localStorage.removeItem('loginBaseArchitecture');
+//     localStorage.removeItem('menuBaseArchitecture');
+//     localStorage.removeItem('deviceBaseArchitecture');
+//     localStorage.removeItem('typSessionSig');
+//     localStorage.removeItem('errorBaseArchitecture');
+//     window.location.replace(environment.urlLogin);
+//   });
+// }
 
 export function showError(ParamMsg) {
   iziToast.error({
