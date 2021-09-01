@@ -7,7 +7,7 @@ import { AuthGuardSesion } from './core/core.guard';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./home/layout/layout.module').then(m => m.LayoutModule)
+    loadChildren: () => import('./authentication/login/login.module').then(m => m.LoginModule)
   },
   {
     path: 'Security',
@@ -17,7 +17,7 @@ const routes: Routes = [
     path: 'login',
     component: AuthCallbackComponent,
     loadChildren: () => import('./authentication/login/login.module').then(m => m.LoginModule)
-    , canActivate: [AuthGuardSesion]
+    //, canActivate: [AuthGuardSesion]
   },
   {
     path: 'catalogo',

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { UserEntityRequest } from 'src/app/shared/models/request/authentication/authentication-request.interface';
+import { MenuLogin, UserEntityRequest } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private spinner: NgxSpinnerService,
     private generalService: GeneralService,
+    private localService: LocalService,
     private router: Router
   ) {}
 
@@ -42,8 +43,19 @@ export class LoginComponent implements OnInit {
     userEntityRequest.Password = this.password;
     // this.router.navigate(['almacen'])
     this.generalService.Login(userEntityRequest).subscribe(
+
+
       (data: any) => {
         if(data != null){
+          debugger
+           let menulogin =  new MenuLogin();
+           menulogin = data.Value;
+          this.localService.setJsonValue(
+            'profileBase',
+            menulogin
+          );
+
+          
           this.router.navigate(['almacen'])
         }
       },

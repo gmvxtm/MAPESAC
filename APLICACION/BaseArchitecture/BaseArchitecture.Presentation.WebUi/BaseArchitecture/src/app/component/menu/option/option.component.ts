@@ -42,6 +42,11 @@ export class MenuOptionComponent implements OnInit {
     this.labelJson.general = general;
     this.listMenuOptions = [ 
       { 
+        title: "Área de ventas",
+        icon: "fa fa-folder-open",
+        OptionUrl: "/ventas"
+      },
+      { 
         title: "Área de almacén",
         icon: "fa fa-folder-open",
         OptionUrl: "/almacen"
@@ -49,27 +54,27 @@ export class MenuOptionComponent implements OnInit {
       { 
         title: "Área de corte",
         icon: "fa fa-folder-open",
-        OptionUrl: "/"
+        OptionUrl: "/corte"
       },
       { 
         title: "Área de Costura",
         icon: "fa fa-folder-open",
-        OptionUrl: "/"
+        OptionUrl: "/costura"
       },
       { 
         title: "Área de Lavandería",
         icon: "fa fa-folder-open",
-        OptionUrl: "/"
+        OptionUrl: "/lavanderia"
       },
       { 
         title: "Área de Acabado",
         icon: "fa fa-folder-open",
-        OptionUrl: "/"
+        OptionUrl: "/acabado"
       },
       { 
         title: "Área de Despacho",
         icon: "fa fa-folder-open",
-        OptionUrl: "/"
+        OptionUrl: "/despacho"
       },
     ]
   }

@@ -18,13 +18,13 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let existeRol: boolean = false;
-    let token = this.localStorage.getJsonValue('tokenBaseArchitecture');
-    let pathMenu = this.localStorage.getJsonValue('menuBaseArchitecture');
+    debugger
+    let pathMenu = this.localStorage.getJsonValue('profileBase');
     
-    if (token && pathMenu) {
-      for (let index = 0; index < pathMenu.length; index++) {
-        const element = pathMenu[index];
-        let pathValidate = element.OptionUrl.split('/');
+    if (pathMenu) {
+      for (let index = 0; index < pathMenu.ListMenuProfile.length; index++) {
+        const element = pathMenu.ListMenuProfile[index];
+        let pathValidate = element.UrlName.split('/');
 
         let pathTemp: string =
           pathValidate.length > 1 ? pathValidate[1] : pathValidate[0];
@@ -39,9 +39,8 @@ export class AuthGuard implements CanActivate {
       this.router.navigate(['/']);
       return false;
     } else {
-      this.localStorage.clearKey('tokenBaseArchitecture');
-      this.localStorage.clearKey('userBaseArchitecture');
-      this.localStorage.clearKey('errorBaseArchitecture');
+      this.localStorage.clearKey('profileBase');
+  
 
       window.location.replace(environment.urlLogin);
       return false;

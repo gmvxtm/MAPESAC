@@ -6,6 +6,7 @@ using BaseArchitecture.Cross.Security.Controllers;
 using BaseArchitecture.Cross.Security.InvokePetition;
 using BaseArchitecture.Cross.SystemVariable.Constant;
 using BaseArchitecture.Repository.Entity;
+using BaseArchitecture.Repository.Entity.Tables;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Http;
@@ -146,7 +147,7 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
             var urlApi =
                 $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Authentication.Login}";
             var result =
-              InvokeWebApi.InvokePostAnonymousEntity<Response<UserEntity>>(urlApi, postData);
+              InvokeWebApi.InvokePostAnonymousEntity<Response<MenuLogin>>(urlApi, postData);
             return Ok(result);
         }
 

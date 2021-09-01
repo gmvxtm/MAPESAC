@@ -20,11 +20,12 @@
     "success": "Éxito"
   },
   "sessionLogin": {
-    "lblTitle": "Almacen",
+    "lblTitle": "MAPESAC",
     "lblEmail": "SSEE",
     "lblNetworkUserEmail": " Usuario de Red",
     "lblNetworkUser": " usuario@antamina.com",
     "lblAccess": "Ingresar",
     "lblNetworkUserStrategicPartner": "Usar mi DNI"
+
   }
 }

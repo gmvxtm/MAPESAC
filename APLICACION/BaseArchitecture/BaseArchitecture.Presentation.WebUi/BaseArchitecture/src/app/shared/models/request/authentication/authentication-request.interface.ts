@@ -24,3 +24,21 @@ export class LoginRequest {
     RecordStatus: string;
     IdProfile: string;
   }
+
+  export class MenuLogin
+  {
+    userEntity  : UserEntityRequest;
+    ListMenuProfile? : MenuProfile[];
+  }
+
+  export class MenuProfile
+  {
+    IdMenuProfile: string;
+    IdMenu: string;
+    IdProfile: string;
+    MenuName: string;
+    UrlName: string;
+    RecordStatus: string;  
+  }
+
+  

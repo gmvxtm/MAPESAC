@@ -20,7 +20,7 @@ export class GeneralService {
     this.urlWebApi = environment.serverUriApi;
   }
 
-  Login(userRequest: UserEntityRequest): Observable<any> {
+  Login(userRequest: any): Observable<any> {
     debugger
     return this.http
       .get<any>(

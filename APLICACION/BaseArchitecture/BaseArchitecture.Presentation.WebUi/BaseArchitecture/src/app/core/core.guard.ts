@@ -15,7 +15,7 @@ export class AuthGuardSesion implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    let token = this.localStorage.getJsonValue('tokenBaseArchitecture');
+    let token = this.localStorage.getJsonValue('profileBase');
     if (!token) {
       return true;
     }

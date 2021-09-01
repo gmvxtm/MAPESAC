@@ -33,7 +33,7 @@ import { environment } from '../environments/environment';
   ],
   providers: [
     AuthGuard,
-    [{ provide: APP_BASE_HREF, useValue: '/ProyectoBase/' }],
+    [{ provide: APP_BASE_HREF, useValue: '/ProyectoBase' }],
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
