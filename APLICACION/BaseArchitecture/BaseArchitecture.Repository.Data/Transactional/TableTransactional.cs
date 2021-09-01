@@ -18,7 +18,6 @@ namespace BaseArchitecture.Repository.Data.Transactional
                 var parameters = new DynamicParameters();
                 parameters.Add("@ParamIIdOrder", orderEntity.IdOrder);
                 parameters.Add("@ParamIDateOrder", orderEntity.DateOrder);
-                parameters.Add("@ParamICodeOrder", orderEntity.CodeOrder);
                 parameters.Add("@ParamITotal", orderEntity.Total);
                 parameters.Add("@ParamIStatus", orderEntity.Status);
                 parameters.Add("@ParamIIdCustomer", orderEntity.IdCustomer);
