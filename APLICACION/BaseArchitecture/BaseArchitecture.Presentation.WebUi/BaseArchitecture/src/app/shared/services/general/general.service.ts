@@ -44,4 +44,17 @@ export class GeneralService {
       .get<ProductEntity>(this.urlWebApi + Path.Mapesac + NameServiceApi.ListProduct)
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
   }
+
+  MergeOrder(orderRequest: any): Observable<any> {
+    debugger
+    return this.http
+      .get<any>(
+        this.urlWebApi + Path.Mapesac + NameServiceApi.MergeOrder,
+        {
+          observe: 'body',
+          params: { userRequest: JSON.stringify(orderRequest) },
+        }
+      )
+      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
+  }
 }

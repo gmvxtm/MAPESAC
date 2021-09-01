@@ -19,7 +19,8 @@ export const Mapesac = {
 };
 
 export const NameServiceApi ={
-  ListProduct:'ListProduct'
+  ListProduct:'ListProduct',
+  MergeOrder:'MergeOrder'
 }
 
 export const Demo = {
