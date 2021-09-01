@@ -49,6 +49,7 @@ export class LoginRequest {
     Total: string;
     IdCustomer: string;    
     Status: string;  
+    RecordStatus: string;  
     ListOrderDetail?:OrderDetailEntity[];
   }
 

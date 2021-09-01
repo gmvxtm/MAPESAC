@@ -21,7 +21,7 @@ namespace BaseArchitecture.Repository.Data.Transactional
                 parameters.Add("@ParamITotal", orderEntity.Total);
                 parameters.Add("@ParamIStatus", orderEntity.Status);
                 parameters.Add("@ParamIIdCustomer", orderEntity.IdCustomer);
-
+                parameters.Add("@ParamIRecordStatus", orderEntity.RecordStatus);
                 var result = connection.Execute(
                     $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.MrgOrder}",
                     parameters,
