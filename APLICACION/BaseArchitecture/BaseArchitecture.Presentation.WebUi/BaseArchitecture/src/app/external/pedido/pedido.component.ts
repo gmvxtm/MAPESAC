@@ -55,7 +55,7 @@ export class PedidoComponent implements OnInit {
     }
   
     createCatalog = () => {
-      
+
       // this.generalService.ListProduct().subscribe(
       //   (data: any) => {
       //     if(data != null){
@@ -101,6 +101,10 @@ export class PedidoComponent implements OnInit {
       this.catalogListSelectedModal = this.catalogListSelected.filter(x => x);
 
 
+    }
+
+    redirectCompra = () => {
+      this.router.navigate(['compra']);
     }
 
     createHeadersTable = () => {
