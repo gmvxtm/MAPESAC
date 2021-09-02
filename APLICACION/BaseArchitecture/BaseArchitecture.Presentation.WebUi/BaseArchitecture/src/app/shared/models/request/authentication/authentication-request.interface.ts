@@ -42,3 +42,23 @@ export class LoginRequest {
   }
 
   
+  export class OrderEntity
+  {
+    IdOrder: string;
+    DateOrder: string;
+    Total: string;
+    IdCustomer: string;    
+    Status: string;  
+    RecordStatus: string;  
+    ListOrderDetail?:OrderDetailEntity[];
+  }
+
+  export class OrderDetailEntity
+  {
+    IdOrderDetail: string;
+    IdOrder: string;
+    IdProduct: string;
+    Description: string;
+    Quantity: string;
+    RecordStatus: string;  
+  }
