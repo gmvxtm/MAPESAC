@@ -91,12 +91,24 @@ export class PedidoComponent implements OnInit {
 
     addProduct = (item) => {
       debugger
-      this.catalogListSelected.push(item)
+      if(this.catalogListSelected.filter(x=> x.IdProduct === item.IdProduct).length ===1)
+      {
+        var listaCatalogo = this.catalogListSelected.filter(x=>x.IdProduct === item.IdProduct);
+        listaCatalogo[0].Quantity =Number(listaCatalogo[0].Quantity)+1;// item.Quantity;
+        var listaSinCatalogo = this.catalogListSelected.filter(x=>x.IdProduct != item.IdProduct);
+        listaSinCatalogo.push(listaCatalogo[0]);
+        this.catalogListSelected=listaSinCatalogo;
+      }
+      else
+      {
+        this.catalogListSelected.push(item)
+      }
+      
       this.countCart = this.catalogListSelected.length;
 
-      this.catalogListSelected.forEach( x => {
+      // this.catalogListSelected.forEach( x => {
 
-      })
+      // })
 
       this.catalogListSelectedModal = this.catalogListSelected.filter(x => x);
 
