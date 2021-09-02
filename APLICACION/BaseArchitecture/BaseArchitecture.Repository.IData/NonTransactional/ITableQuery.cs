@@ -14,5 +14,6 @@ namespace BaseArchitecture.Repository.IData.NonTransactional
         IEnumerable<MasterTableEntity> ListMasterTable();
         Response<MenuLogin> Login(UserEntity userRequest);        
         IEnumerable<ProductEntity> ListProduct();
+        Response<UbiEntity> ListUbi();
     }
 }

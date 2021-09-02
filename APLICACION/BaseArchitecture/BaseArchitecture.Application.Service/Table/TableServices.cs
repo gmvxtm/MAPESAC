@@ -91,5 +91,11 @@ namespace BaseArchitecture.Application.Service.Table
             }
             return result;
         }
+
+        public Response<UbiEntity> ListUbi()
+        {
+            var result = TableQuery.ListUbi();
+            return result;
+        }
     }
 }

@@ -62,3 +62,28 @@ export class LoginRequest {
     Quantity: string;
     RecordStatus: string;  
   }
+
+  export class UbiEntity
+  {
+    ListDepartmentEntity? : DepartmentEntity[];
+    ListProvinceEntity? : ProvinceEntity[];
+    ListDistrictEntity? : DistrictEntity[];
+  }
+
+  export class DepartmentEntity
+  {
+    IdDepartment:string;
+    Department:string;
+  }
+  export class ProvinceEntity
+  {
+    IdProvince:string;
+    Province:string;
+    IdDepartment:string;    
+  }
+  export class DistrictEntity
+  {
+    IdDistrict:string;
+    District:string;
+    IdProvince:string;
+  }

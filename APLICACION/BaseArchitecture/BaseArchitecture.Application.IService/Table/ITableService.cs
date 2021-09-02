@@ -14,5 +14,6 @@ namespace BaseArchitecture.Application.IService.Table
         Response<MenuLogin> Login(UserEntity userRequest);        
         Response<IEnumerable<ProductEntity>> ListProduct();
         Response<int> MergeOrder(OrderEntity orderRequest);
+        Response<UbiEntity> ListUbi();
     }
 }
