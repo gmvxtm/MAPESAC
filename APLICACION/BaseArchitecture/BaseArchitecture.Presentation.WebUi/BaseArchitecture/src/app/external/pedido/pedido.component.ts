@@ -55,6 +55,7 @@ export class PedidoComponent implements OnInit {
     }
   
     createCatalog = () => {
+      
       // this.generalService.ListProduct().subscribe(
       //   (data: any) => {
       //     if(data != null){
@@ -94,7 +95,7 @@ export class PedidoComponent implements OnInit {
       this.countCart = this.catalogListSelected.length;
 
       this.catalogListSelected.forEach( x => {
-        
+
       })
 
       this.catalogListSelectedModal = this.catalogListSelected.filter(x => x);
