@@ -25,7 +25,10 @@ export class PedidoComponent implements OnInit {
     listRisk: any[] = [];
     headers: HeadersInterface[] = new Array<HeadersInterface>();
     catalogInitList: any[] = [];
-    catalogInitProductEntity : ProductEntity[] =new Array<ProductEntity>();
+    catalogInitProductEntity : any[] = [];
+    countCart = 0;
+    catalogListSelected: any[] = [];
+    catalogListSelectedModal: any[] = [];
     constructor(
       private spinner: NgxSpinnerService,
       private router: Router,
@@ -52,85 +55,51 @@ export class PedidoComponent implements OnInit {
     }
   
     createCatalog = () => {
+      // this.generalService.ListProduct().subscribe(
+      //   (data: any) => {
+      //     if(data != null){
+      //       this.catalogInitProductEntity = data.Value;
+      //     }
+      //   },
+      //   (error: HttpErrorResponse) => {
+      //     this.spinner.hide();
+      //     console.log(error);
+      //   }
+      // );
+
+      this.catalogInitProductEntity = [
+        {
+          IdProduct:"4fecb6ff-0508-45c2-a2c2-84c2f51514f6",
+          Name:"Modelo A",
+          PathFile:"../../../assets/media/jean.png",
+          PriceUnit:3,
+          RecordStatus:"A",
+          Quantity:0
+          },
+          {
+          IdProduct:"abd7c103-7799-405a-bd90-9b0cffd6a82a",
+          Name:"Modelo B",
+          PathFile:"../../../assets/media/jean.png",
+          PriceUnit:1,
+          RecordStatus:"A",
+          Quantity:0
+          },
+      ]
+    }
+
+
+    addProduct = (item) => {
       debugger
-      this.generalService.ListProduct().subscribe(
-        (data: any) => {
-          if(data != null){
-            this.catalogInitProductEntity = data.Value;
-          }
-        },
-        (error: HttpErrorResponse) => {
-          this.spinner.hide();
-          console.log(error);
-        }
-      );
+      this.catalogListSelected.push(item)
+      this.countCart = this.catalogListSelected.length;
+
+      this.catalogListSelected.forEach( x => {
+        
+      })
+
+      this.catalogListSelectedModal = this.catalogListSelected.filter(x => x);
 
 
-      this.catalogInitList = [
-        {
-          Name :"Modelo A",
-          PathFile :"ruta",
-          PriceUnit :"50",
-          RecordStatus :"A",
-          Quantity: 0,
-        },
-        {
-          Name :"Modelo B",
-          PathFile :"ruta",
-          PriceUnit :"40",
-          RecordStatus :"A",
-          Quantity: 0,
-        },   
-        {
-          Name :"Modelo B",
-          PathFile :"ruta",
-          PriceUnit :"40",
-          RecordStatus :"A",
-          Quantity: 0,
-        },  
-        {
-          Name :"Modelo B",
-          PathFile :"ruta",
-          PriceUnit :"40",
-          RecordStatus :"A",
-          Quantity: 0,
-        },  
-        {
-          Name :"Modelo B",
-          PathFile :"ruta",
-          PriceUnit :"40",
-          RecordStatus :"A",
-          Quantity: 0,
-        },       
-        {
-          Name :"Modelo B",
-          PathFile :"ruta",
-          PriceUnit :"40",
-          RecordStatus :"A",
-          Quantity: 0,
-        },  
-        {
-          Name :"Modelo B",
-          PathFile :"ruta",
-          PriceUnit :"40",
-          RecordStatus :"A",
-          Quantity: 0,
-        },  
-        {
-          Name :"Modelo B",
-          PathFile :"ruta",
-          PriceUnit :"40",
-          RecordStatus :"A",
-          Quantity: 0,
-        },  
-        {
-          Name :"Modelo B",
-          PathFile :"ruta",
-          PriceUnit :"40",
-          RecordStatus :"A",
-          Quantity: 0,
-        },  
-      ];
     }
 
     createHeadersTable = () => {

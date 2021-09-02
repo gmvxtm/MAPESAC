@@ -11,8 +11,69 @@
           </li>
         </ul>
       </div>
+      <div data-toggle="modal" data-target="#exampleModal" style="cursor: pointer;">
+        <i class="fas fa-shopping-cart" style="height: 20px; width: 20px;"></i>
+        <div class="selected" style="text-align: center;">
+          <label class="cart">{{ countCart }}</label>
+        </div>
+      </div>
     </div>
   </nav>
+
+
+  <!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Carrito de Compra</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12 row" style="margin-bottom: 10px;" >
+            <div class="col-md-4">
+              Producto
+            </div>
+            <div class="col-md-3">
+              Precio
+            </div>
+            <div class="col-md-3">
+              Cantidad
+            </div>
+            <div class="col-md-2">
+              Total
+            </div>
+        </div>
+        <div class="col-md-12 row"  style="margin-bottom: 10px;" *ngFor="let item of catalogListSelectedModal">
+            <div class="col-md-2">
+              <img class="card-img-top" style="background-size: contain; height: 100px; width: 100px;"
+              src={{item.PathFile}}  alt="Sin imagen" />
+            </div>
+            <div class="col-md-2">
+                {{item.Name}}
+            </div>
+            <div class="col-md-3">
+              S/. {{item.PriceUnit}}
+            </div>
+            <div class="col-md-3">
+                <input type="number" class="form-control" style="width: 80px;">
+            </div>
+            <div class="col-md-2">
+              TOTAL
+            </div>
+        </div>
+        <br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Finalizar Pedido</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="container">
     <div class="col-12 row">
@@ -28,11 +89,11 @@
                         <div>
                             Precio Unitario: S/.&nbsp;{{item.PriceUnit}}
                         </div>
-                        <div class="col-12 row" style="margin-left: 50px;">
+                        <!-- <div class="col-12 row" style="margin-left: 50px;">
                             Cantidad:  &nbsp;<input type="number" class="form-control" style="width: 80px;">
-                        </div>
+                        </div> -->
                         <br>    
-                        <button class="form-control btn btn-success" style="width: 50%;margin-bottom: 10px;">Añadir &nbsp;&nbsp;<em class="fa fa-plus"></em></button>
+                        <button class="form-control btn btn-success" (click)="addProduct(item)" style="width: 50%;margin-bottom: 10px;">Añadir &nbsp;&nbsp;<em class="fa fa-plus"></em></button>
                     </div>
                 </div>
             </div>
