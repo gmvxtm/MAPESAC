@@ -16,25 +16,26 @@ namespace BaseArchitecture.Application.Service.Mail
         public IDemoTransaction DemoTransaction { get; set; }
         public Trace TraceLogger =>
             (Trace)GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(Trace));
-        public Response<int> SendEmail()
+        public Response<int> SendEmail(string emailTo, string codeOrder)
         {
             Response<int> response;
             try
             {
                 MailMessage message = new MailMessage();
                 message.From = new MailAddress("no-reply@mapesac.com");
-                message.To.Add(new MailAddress("ppardoz09@gmail.com"));
+                message.To.Add(new MailAddress(emailTo));
+                //message.To.Add(new MailAddress("ppardoz09@gmail.com"));
                 message.Subject = "Send Mail Test";
                 message.IsBodyHtml = true; //to make message body as html  
-                message.Body = GetHtml();
+                message.Body = GetHtml(codeOrder);
 
                 using (var smtp = new SmtpClient())
                 {
                     smtp.Port = 587;//465; //25; 587;
                     smtp.Host = "smtp.gmail.com"; //for gmail host  
                     smtp.EnableSsl = true;
-                    smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = new NetworkCredential("gmvxtm@gmail.com", "fabito12");
+                    smtp.UseDefaultCredentials = false;  
+                    smtp.Credentials = new NetworkCredential("no.reply.MAPESAC@gmail.com", "mp123456*");
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     //smtp. = ServicePointManager.SecurityProtocol SecurityProtocolType.Tls;
                     smtp.Send(message);
@@ -49,11 +50,12 @@ namespace BaseArchitecture.Application.Service.Mail
             }
             return response;
         }
-        public string GetHtml()
+        public string GetHtml(string codeOrder)
         {
             try
             {
-                string messageBody = "<font>The following are the records: </font><br><br>";
+                //string messageBody = "<font>The following are the records: </font><br><br>";
+                string messageBody = "";
                 string htmlTableStart = "<table style=\"border-collapse:collapse; text-align:center;\" >";
                 string htmlTableEnd = "</table>";
                 string htmlHeaderRowStart = "<tr style=\"background-color:#6FA1D2; color:#ffffff;\">";
@@ -65,9 +67,10 @@ namespace BaseArchitecture.Application.Service.Mail
                 string htmlTdEnd = "</td>";
                 messageBody += htmlTableStart;
                 messageBody += htmlHeaderRowStart;
-                messageBody += htmlTdStart + "Estimado Encargado de Ventas " + htmlBrEnd;
-                messageBody += "Se ha generado una nueva orden. " + htmlBrEnd;
-                messageBody += "Revisar las órdenes pendientes de atención. " + htmlBrEnd;
+                messageBody += htmlTdStart + "Estimado Encargado de Ventas " + htmlBrEnd + "<br>";
+
+                messageBody += "Se ha generado una nueva orden "+ codeOrder+". " + htmlBrEnd+ "<br>";
+                messageBody += "Revisar las órdenes pendientes de atención. " + htmlBrEnd + "<br>";
                 messageBody += "Atte.: MAPESAC" + htmlTdEnd;
                 messageBody += htmlHeaderRowEnd;
                 messageBody = messageBody + htmlTableEnd;

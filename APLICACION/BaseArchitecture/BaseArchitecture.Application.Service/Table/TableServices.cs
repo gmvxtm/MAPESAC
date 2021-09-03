@@ -9,6 +9,7 @@ using BaseArchitecture.Cross.SystemVariable.Util;
 using BaseArchitecture.Repository.Entity.Tables;
 using System.Transactions;
 using System;
+using BaseArchitecture.Application.IService.Mail;
 
 namespace BaseArchitecture.Application.Service.Table
 {
@@ -18,7 +19,7 @@ namespace BaseArchitecture.Application.Service.Table
         //public IDemoTransaction DemoTransaction { get; set; }
         public ITableQuery TableQuery { get; set; }
         public ITableTransaction TableTransaction { get; set; }
-
+        public IMailService MailService { get; set; }
 
         /// <summary>
         ///     Method that get MasterTableResponse by IdMasterTable
@@ -91,6 +92,9 @@ namespace BaseArchitecture.Application.Service.Table
                     var resultQuery = TableQuery.ListOrder();
                     var codeOrder = resultQuery.Value.ListOrderEntity.ToList().Find(x => x.IdOrder == orderRequest.IdOrder).CodeOrder;
                     result = new Response<string>(codeOrder);
+
+                    //correo
+                    var rpsta = MailService.SendEmail("gmvxtm@gmail.com", codeOrder);
                     transaction.Complete();
                 }
                 catch (Exception e)

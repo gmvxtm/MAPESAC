@@ -53,7 +53,7 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
         [Route(IncomeWebApi.MethodApi.Mapesac.SendEmail)]
         public IHttpActionResult SendEmail()
         {
-            var result = MailService.SendEmail();
+            var result = MailService.SendEmail("","");
             return Ok(result);
         }
 
