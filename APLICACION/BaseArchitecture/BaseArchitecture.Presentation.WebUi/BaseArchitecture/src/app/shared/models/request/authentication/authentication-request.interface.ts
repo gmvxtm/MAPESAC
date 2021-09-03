@@ -50,6 +50,8 @@ export class LoginRequest {
     IdCustomer: string;    
     Status: string;  
     RecordStatus: string;  
+    BusinessName: string;  
+    BusinessNumber: string;  
     ListOrderDetail?:OrderDetailEntity[];
   }
 
@@ -87,3 +89,4 @@ export class LoginRequest {
     District:string;
     IdProvince:string;
   }
+
