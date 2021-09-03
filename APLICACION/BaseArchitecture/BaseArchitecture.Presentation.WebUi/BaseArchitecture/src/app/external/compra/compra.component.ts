@@ -103,6 +103,7 @@ export class CompraComponent implements OnInit {
         debugger
         this.generalService.MergeOrder(orderRequest).subscribe(
             (data: any) => {
+                var codeOrder =data.Value;
                 debugger
             },
             (error: HttpErrorResponse) => {

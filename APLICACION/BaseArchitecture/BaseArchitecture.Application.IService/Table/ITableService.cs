@@ -12,8 +12,8 @@ namespace BaseArchitecture.Application.IService.Table
         Response<IEnumerable<MasterTableEntity>> ListMasterTable(MasterTableEntity masterTableRequest);
         Response<IEnumerable<MasterTableEntity>> ListMasterTableByValue(MasterTableEntity masterTableRequest);
         Response<MenuLogin> Login(UserEntity userRequest);        
-        Response<IEnumerable<ProductEntity>> ListProduct();
-        Response<int> MergeOrder(OrderEntity orderRequest);
+        Response<IEnumerable<ProductEntity>> ListProduct();        
+        Response<string> MergeOrder(OrderEntity orderRequest);
         Response<UbiEntity> ListUbi();
         Response<OrderListEntity> ListOrder();        
     }

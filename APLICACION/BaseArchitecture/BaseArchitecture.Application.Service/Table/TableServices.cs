@@ -70,9 +70,9 @@ namespace BaseArchitecture.Application.Service.Table
             return new Response<IEnumerable<ProductEntity>> { Value = result };
         }
 
-        public Response<int> MergeOrder(OrderEntity orderRequest)
+        public Response<string> MergeOrder(OrderEntity orderRequest)
         {
-            var result = new Response<int>(1);
+            var result = new Response<string>();
             using (var transaction = new TransactionScope())
             {
                 try
@@ -88,11 +88,14 @@ namespace BaseArchitecture.Application.Service.Table
                         itemOrderDetail.Description = itemOrderDetail.Description == null ? "" : itemOrderDetail.Description;
                         TableTransaction.MergeOrderDetail(itemOrderDetail);
                     }
+                    var resultQuery = TableQuery.ListOrder();
+                    var codeOrder = resultQuery.Value.ListOrderEntity.ToList().Find(x => x.IdOrder == orderRequest.IdOrder).CodeOrder;
+                    result = new Response<string>(codeOrder);
                     transaction.Complete();
                 }
                 catch (Exception e)
                 {
-                    result = new Response<int>(0);
+                    result = new Response<string>("Error");
                 }
             }
             return result;
