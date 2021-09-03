@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseArchitecture.Repository.Entity.Tables;
+using System;
 using System.Collections.Generic;
 
 namespace BaseArchitecture.Repository.Entity
@@ -13,6 +14,7 @@ namespace BaseArchitecture.Repository.Entity
         public string BusinessName { get; set; }
         public string BusinessNumber { get; set; }
         public string RecordStatus { get; set; }
+        public CustomerEntity CustomerEntity { set; get;}
         public List<OrderDetailEntity> ListOrderDetail { get; set; }
     }
 }
