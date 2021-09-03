@@ -81,6 +81,7 @@
     <Compile Include="Demo\DemoServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\SecurityService.cs" />
+    <Compile Include="SendMail\MailServices.cs" />
     <Compile Include="Table\TableServices.cs" />
   </ItemGroup>
   <ItemGroup>
