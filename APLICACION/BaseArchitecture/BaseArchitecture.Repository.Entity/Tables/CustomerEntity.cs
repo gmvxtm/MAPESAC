@@ -14,6 +14,7 @@ namespace BaseArchitecture.Repository.Entity.Tables
         public string DocumentNumber { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
+        public string IdDistrict { get; set; }
         public string RecordStatus { get; set; }
     }
 }

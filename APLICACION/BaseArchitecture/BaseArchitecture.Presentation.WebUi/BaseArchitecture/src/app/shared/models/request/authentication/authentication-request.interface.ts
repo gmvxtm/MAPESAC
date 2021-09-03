@@ -74,6 +74,7 @@ export class LoginRequest {
     DocumentNumber: string;
     PhoneNumber: string;
     Email:string;
+    IdDistrict:string;
     RecordStatus: string;  
   }
 
