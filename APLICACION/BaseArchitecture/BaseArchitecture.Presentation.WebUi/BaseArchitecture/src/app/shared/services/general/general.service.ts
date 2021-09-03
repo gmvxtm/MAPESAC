@@ -6,7 +6,7 @@ import { Mapesac, NameServiceApi, Path, Security } from '../../constant';
 import { Observable } from 'rxjs';
 import { AutorizacionService } from './autorizacion.service';
 import { AccessResponse } from '../../models/response/authentication/authentication-response.interface';
-import { UserEntityRequest } from '../../models/request/authentication/authentication-request.interface';
+import { UbiEntity, UserEntityRequest } from '../../models/request/authentication/authentication-request.interface';
 import { ProductEntity } from '../../models/general/table.interface';
 
 @Injectable({ providedIn: 'root' })
@@ -57,4 +57,13 @@ export class GeneralService {
       )
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
   }
+
+  ListUbi(): Observable<any>{
+    return this.http
+      .get<UbiEntity>(this.urlWebApi + Path.Mapesac + NameServiceApi.ListUbi)
+      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
+  }
+
+  
+
 }

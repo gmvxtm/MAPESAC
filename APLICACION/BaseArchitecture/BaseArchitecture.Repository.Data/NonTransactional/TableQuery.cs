@@ -80,5 +80,33 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
 
             return response;
         }
+        public Response<UbiEntity> ListUbi()
+        {
+            Response<UbiEntity> response;
+
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+                
+                var basicResponse = new UbiEntity();
+                using (var list = connection.QueryMultipleAsync(
+                                    sql: $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.ListUbi}",
+                                    param: parameters,
+                                    commandType: CommandType.StoredProcedure).Result)
+                {                    
+                    basicResponse.ListDepartmentEntity = list.Read<DepartmentEntity>().ToList();
+                    basicResponse.ListProvinceEntity = list.Read<ProvinceEntity>().ToList();
+                    basicResponse.ListDistrictEntity= list.Read<DistrictEntity>().ToList();
+
+                }
+                response = new Response<UbiEntity>
+                {
+                    Value = basicResponse
+                };
+
+            }
+
+            return response;
+        }
     }
 }

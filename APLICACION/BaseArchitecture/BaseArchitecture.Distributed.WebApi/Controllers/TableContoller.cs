@@ -85,5 +85,13 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
             var result = TableService.ListProduct();
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.ListUbi)]
+        public IHttpActionResult ListUbi()
+        {
+            var result = TableService.ListUbi();
+            return Ok(result);
+        }
     }
 }
