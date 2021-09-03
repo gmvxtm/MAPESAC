@@ -4,6 +4,6 @@ namespace BaseArchitecture.Application.IService.Mail
 {
     public interface IMailService
     {
-        Response<int> SendEmail();
+        Response<int> SendEmail(string emailTo,string codeOrder);
     }
 }
