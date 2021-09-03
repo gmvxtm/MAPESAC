@@ -77,10 +77,15 @@ namespace BaseArchitecture.Application.Service.Table
             {
                 try
                 {
-                    TableTransaction.MergeOrder(orderRequest);
                     TableTransaction.MergeCustomer(orderRequest.CustomerEntity);
+                    orderRequest.IdCustomer = orderRequest.CustomerEntity.IdCustomer;
+                    TableTransaction.MergeOrder(orderRequest);
+                                        
                     foreach (var itemOrderDetail in orderRequest.ListOrderDetail)
                     {
+                        itemOrderDetail.IdOrder = orderRequest.IdOrder;
+                        itemOrderDetail.IdOrderDetail = Guid.NewGuid();
+                        itemOrderDetail.Description = itemOrderDetail.Description == null ? "" : itemOrderDetail.Description;
                         TableTransaction.MergeOrderDetail(itemOrderDetail);
                     }
                     transaction.Complete();
