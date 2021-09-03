@@ -18,23 +18,23 @@
     <div class="col-md-12 row">
         <div class="col-md-6" style="margin-top: 30px;">
             <div class="col-md-11 row">
-                Nombres: <input class="form-control">
+                Nombres: <input [(ngModel)]="customerEntity.FirstName" class="form-control">
             </div>
             <br>
             <div class="col-md-11 row ">
-                Apellidos: <input class="form-control">
+                Apellidos: <input [(ngModel)]="customerEntity.LastName" class="form-control">
             </div>
             <br>
             <div class="col-md-11 row">
-                Correo: <input class="form-control">
+                Correo: <input [(ngModel)]="customerEntity.Email" class="form-control">
             </div>
             <br>
             <div class="row">
                 <div class="col-md-5">
-                    Telefono: <input class="form-control">
+                    Telefono: <input [(ngModel)]="customerEntity.PhoneNumber" class="form-control">
                 </div>
                 <div class="col-md-5">
-                    DNI: <input class="form-control">
+                    DNI: <input [(ngModel)]="customerEntity.DocumentNumber" class="form-control">
                 </div>
             </div>
             <br>

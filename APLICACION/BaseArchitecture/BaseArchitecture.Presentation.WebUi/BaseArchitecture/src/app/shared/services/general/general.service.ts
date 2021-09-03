@@ -51,7 +51,7 @@ export class GeneralService {
         this.urlWebApi + Path.Mapesac + NameServiceApi.MergeOrder,
         {
           observe: 'body',
-          params: { userRequest: JSON.stringify(orderRequest) },
+          params: { orderRequest: JSON.stringify(orderRequest) },
         }
       )
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));

@@ -7,7 +7,7 @@ import { HeadersInterface } from 'src/app/shared/models/request/common/headers-r
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductEntity } from 'src/app/shared/models/general/table.interface';
-import { OrderDetailEntity, OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
+import { CustomerEntity, OrderDetailEntity, OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 import { createGuidRandom } from 'src/app/shared/util';
 
 @Component({
@@ -25,6 +25,7 @@ export class CompraComponent implements OnInit {
     ListProvinceEntityOriginal: any[] = [];
     ListDistrictEntityOriginal: any[] = [];
     orderDetailEntity:  OrderDetailEntity [] = [];
+    customerEntity = new CustomerEntity();
     Departamento: string;
     Provincia: string;
     Distrito: string;
@@ -92,8 +93,11 @@ export class CompraComponent implements OnInit {
         orderRequest.RecordStatus = "A";  
         orderRequest.BusinessName = this.razonSocial;  
         orderRequest.BusinessNumber = this.ruc;  
+        orderRequest.CustomerEntity = this.customerEntity;
+        orderRequest.CustomerEntity.IdDistrict = this.Distrito;
         orderRequest.ListOrderDetail = this.catalogListSelectedModal;
 
+        debugger
         this.generalService.MergeOrder(orderRequest).subscribe(
             (data: any) => {
                 debugger
