@@ -22,7 +22,7 @@ namespace BaseArchitecture.Application.Service.Mail
             try
             {
                 MailMessage message = new MailMessage();
-                message.From = new MailAddress("gmvxtm@gmail.com");
+                message.From = new MailAddress("no-reply@mapesac.com");
                 message.To.Add(new MailAddress("ppardoz09@gmail.com"));
                 message.Subject = "Send Mail Test";
                 message.IsBodyHtml = true; //to make message body as html  
@@ -30,7 +30,7 @@ namespace BaseArchitecture.Application.Service.Mail
 
                 using (var smtp = new SmtpClient())
                 {
-                    smtp.Port = 465; //25; 587;
+                    smtp.Port = 587;//465; //25; 587;
                     smtp.Host = "smtp.gmail.com"; //for gmail host  
                     smtp.EnableSsl = true;
                     smtp.UseDefaultCredentials = false;
@@ -60,14 +60,15 @@ namespace BaseArchitecture.Application.Service.Mail
                 string htmlHeaderRowEnd = "</tr>";
                 string htmlTrStart = "<tr style=\"color:#555555;\">";
                 string htmlTrEnd = "</tr>";
+                string htmlBrEnd = "</br>";
                 string htmlTdStart = "<td style=\" border-color:#5c87b2; border-style:solid; border-width:thin; padding: 5px;\">";
                 string htmlTdEnd = "</td>";
                 messageBody += htmlTableStart;
                 messageBody += htmlHeaderRowStart;
-                messageBody += htmlTdStart + "Estimado Encargado de Ventas" + htmlTdEnd;
-                messageBody += htmlTdStart + "Se ha generado una nueva orden." + htmlTdEnd;
-                messageBody += htmlTdStart + "Revisar las órdenes pendientes de atención." + htmlTdEnd;
-                messageBody += htmlTdStart + "Atte.: MAPESAC" + htmlTdEnd;
+                messageBody += htmlTdStart + "Estimado Encargado de Ventas " + htmlBrEnd;
+                messageBody += "Se ha generado una nueva orden. " + htmlBrEnd;
+                messageBody += "Revisar las órdenes pendientes de atención. " + htmlBrEnd;
+                messageBody += "Atte.: MAPESAC" + htmlTdEnd;
                 messageBody += htmlHeaderRowEnd;
                 messageBody = messageBody + htmlTableEnd;
                 return messageBody; // return HTML Table as string from this function  
