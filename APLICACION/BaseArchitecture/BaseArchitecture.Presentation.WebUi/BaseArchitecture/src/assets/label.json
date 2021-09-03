@@ -13,7 +13,9 @@
     "lblUserProfile": "Perfil de Usuario",
     "lblSearch": "Buscar:",
     "lblWelcome": "Bienvenido",
-    "lblFileUpload": "Adjuntar Archivo"
+    "lblFileUpload": "Adjuntar Archivo",
+    "lblMensajeOrderSolicitud": "Solicitud enviada con exito",
+    "lblMensajeNumeroOrderSolicitud": "Nummero de pedido generado"
   },
   "message": {
     "error": "Ocurrió un error",
