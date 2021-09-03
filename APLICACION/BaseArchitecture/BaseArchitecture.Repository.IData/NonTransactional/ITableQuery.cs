@@ -15,5 +15,6 @@ namespace BaseArchitecture.Repository.IData.NonTransactional
         Response<MenuLogin> Login(UserEntity userRequest);        
         IEnumerable<ProductEntity> ListProduct();
         Response<UbiEntity> ListUbi();
+        Response<OrderListEntity> ListOrder();
     }
 }

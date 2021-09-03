@@ -43,6 +43,7 @@
                 public const string MergeOrder = "MergeOrder";
                 public const string ListUbi = "ListUbi";
                 public const string SendEmail = "SendEmail";
+                public const string ListOrder = "ListOrder";
             }
         }
 

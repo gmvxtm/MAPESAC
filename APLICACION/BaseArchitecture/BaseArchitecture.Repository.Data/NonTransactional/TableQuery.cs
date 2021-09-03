@@ -83,7 +83,6 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
         public Response<UbiEntity> ListUbi()
         {
             Response<UbiEntity> response;
-
             using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
             {
                 var parameters = new DynamicParameters();
@@ -100,6 +99,30 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
 
                 }
                 response = new Response<UbiEntity>
+                {
+                    Value = basicResponse
+                };
+            }
+            return response;
+        }
+
+        public Response<OrderListEntity> ListOrder()
+        {
+            Response<OrderListEntity> response;
+
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();                
+                var basicResponse = new OrderListEntity();
+                using (var list = connection.QueryMultipleAsync(
+                                    sql: $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.ListOrder}",
+                                    param: parameters,
+                                    commandType: CommandType.StoredProcedure).Result)
+                {                    
+                    basicResponse.ListOrderEntity = list.Read<OrderEntity>().ToList();
+
+                }
+                response = new Response<OrderListEntity>
                 {
                     Value = basicResponse
                 };

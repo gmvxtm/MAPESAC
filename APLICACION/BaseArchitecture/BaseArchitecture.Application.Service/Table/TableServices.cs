@@ -97,5 +97,11 @@ namespace BaseArchitecture.Application.Service.Table
             var result = TableQuery.ListUbi();
             return result;
         }
+
+        public Response<OrderListEntity> ListOrder()
+        {            
+            var result = TableQuery.ListOrder();
+            return result;
+        }
     }
 }

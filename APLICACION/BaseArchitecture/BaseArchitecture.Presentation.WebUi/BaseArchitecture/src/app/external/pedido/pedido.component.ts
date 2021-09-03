@@ -7,6 +7,9 @@ import { HeadersInterface } from 'src/app/shared/models/request/common/headers-r
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductEntity } from 'src/app/shared/models/general/table.interface';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Subject } from 'rxjs';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-pedido',
@@ -16,6 +19,8 @@ import { ProductEntity } from 'src/app/shared/models/general/table.interface';
 export class PedidoComponent implements OnInit {
 
     public labelJson: ResponseLabel = new ResponseLabel();
+    bsModalRefP: BsModalRef;
+    dtTrigger: Subject<any> = new Subject();
     deviceType: string;
     selectedEmployee: string;
     listEmployee: any [] = [];
@@ -32,6 +37,7 @@ export class PedidoComponent implements OnInit {
     constructor(
       private spinner: NgxSpinnerService,
       private router: Router,
+      private modalService: BsModalService,
       private localStorage: LocalService,
       private generalService: GeneralService
     ) { }
@@ -55,7 +61,7 @@ export class PedidoComponent implements OnInit {
     }
   
     createCatalog = () => {
-      
+
       // this.generalService.ListProduct().subscribe(
       //   (data: any) => {
       //     if(data != null){
@@ -90,7 +96,6 @@ export class PedidoComponent implements OnInit {
 
 
     addProduct = (item) => {
-      debugger
       if(this.catalogListSelected.filter(x=> x.IdProduct === item.IdProduct).length ===1)
       {
         var listaCatalogo = this.catalogListSelected.filter(x=>x.IdProduct === item.IdProduct);
@@ -101,18 +106,38 @@ export class PedidoComponent implements OnInit {
       }
       else
       {
+        item.Quantity = 1;
         this.catalogListSelected.push(item)
       }
-      
       this.countCart = this.catalogListSelected.length;
-
-      // this.catalogListSelected.forEach( x => {
-
-      // })
-
       this.catalogListSelectedModal = this.catalogListSelected.filter(x => x);
+    }
 
 
+    openModal = () =>{
+      this.bsModalRefP = this.modalService.show(ModalComponent, {
+        initialState: {
+          item: <any>{   
+            lista: this.catalogListSelectedModal
+          },
+        },
+        backdrop: 'static',
+        keyboard: false,
+      });
+  
+      (<ModalComponent>this.bsModalRefP.content).onClose.subscribe(
+        (result: any) => {
+          if (result) {
+  
+          }
+          this.bsModalRefP.hide();
+        }
+      );
+      this.bsModalRefP.content.closeBtnName = 'Close';
+    }
+
+    redirectCompra = () => {
+      this.router.navigate(['compra']);
     }
 
     createHeadersTable = () => {

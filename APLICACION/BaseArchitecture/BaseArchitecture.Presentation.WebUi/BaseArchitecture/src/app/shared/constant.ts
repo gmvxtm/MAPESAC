@@ -21,7 +21,8 @@ export const Mapesac = {
 export const NameServiceApi ={
   ListProduct:'ListProduct',
   MergeOrder:'MergeOrder',
-  ListUbi:'ListUbi'
+  ListUbi:'ListUbi',
+  ListOrder:'ListOrder'
 }
 
 export const Demo = {

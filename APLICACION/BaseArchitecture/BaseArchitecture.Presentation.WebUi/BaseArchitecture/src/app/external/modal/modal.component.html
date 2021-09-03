@@ -1,0 +1,100 @@
+<!-- 
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Carrito de Compra</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-md-12 row" style="margin-bottom: 10px;" >
+              <div class="col-md-4">
+                Producto
+              </div>
+              <div class="col-md-3">
+                Precio
+              </div>
+              <div class="col-md-3">
+                Cantidad
+              </div>
+              <div class="col-md-2">
+                Total
+              </div>
+          </div>
+          <div class="col-md-12 row"  style="margin-bottom: 10px;" *ngFor="let item of catalogListSelectedModal">
+              <div class="col-md-2">
+                <img class="card-img-top" style="background-size: contain; height: 100px; width: 100px;"
+                src={{item.PathFile}}  alt="Sin imagen" />
+              </div>
+              <div class="col-md-2">
+                  {{item.Name}}
+              </div>
+              <div class="col-md-3">
+                S/. {{item.PriceUnit}}
+              </div>
+              <div class="col-md-3">
+                  <input [(ngModel)]="item.Quantity" type="number" class="form-control" style="width: 80px;">
+              </div>
+              <div class="col-md-2">
+                TOTAL
+              </div>
+          </div>
+          <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="redirectCompra()" class="btn btn-primary">Finalizar Pedido</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
+
+  
+
+<div class="modal-header">
+    <div class="container">
+        <p class="mainTitle">Carrito de Compra</p>
+    </div>
+</div>
+
+<div class="modal-body">
+    <div class="col-md-12 row" style="margin-bottom: 10px;" >
+        <div class="col-md-4">
+          Producto
+        </div>
+        <div class="col-md-3">
+          Precio
+        </div>
+        <div class="col-md-3">
+          Cantidad
+        </div>
+        <div class="col-md-2">
+          Total
+        </div>
+    </div>
+    <div class="col-md-12 row"  style="margin-bottom: 10px;" *ngFor="let item of catalogListSelectedModal">
+        <div class="col-md-2">
+          <img class="card-img-top" style="background-size: contain; height: 100px; width: 100px;"
+          src={{item.PathFile}}  alt="Sin imagen" />
+        </div>
+        <div class="col-md-2">
+            {{item.Name}}
+        </div>
+        <div class="col-md-3">
+          S/. {{item.PriceUnit}}
+        </div>
+        <div class="col-md-3">
+            <!-- <input [(ngModel)]="item.Quantity" type="number" class="form-control" style="width: 80px;"> -->
+        </div>
+        <div class="col-md-2">
+          TOTAL
+        </div>
+    </div>
+    <br>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="redirect()"> Entiendo </button>
+</div>

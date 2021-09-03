@@ -26,6 +26,13 @@ const routes: Routes = [
         (m) => m.PedidoModule
       ),
   },
+  {
+    path: 'compra',
+    loadChildren: () =>
+      import('src/app/external/compra/compra.module').then(
+        (m) => m.CompraModule
+      ),
+  },
 ];
 
 @NgModule({

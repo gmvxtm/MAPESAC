@@ -35,7 +35,8 @@
             public const string Login = "Usp_Login";
             public const string ListProduct = "Usp_List_Product";
             public const string ListUbi = "Usp_List_Ubi";
-            
+            public const string ListOrder = "Usp_List_Order";
+
 
             public const string MrgOrder = "Usp_Mrg_Order";
             public const string MrgOrderDetail = "Usp_Mrg_OrderDetail";

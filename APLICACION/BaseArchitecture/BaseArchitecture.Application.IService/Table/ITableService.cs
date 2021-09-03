@@ -15,5 +15,6 @@ namespace BaseArchitecture.Application.IService.Table
         Response<IEnumerable<ProductEntity>> ListProduct();
         Response<int> MergeOrder(OrderEntity orderRequest);
         Response<UbiEntity> ListUbi();
+        Response<OrderListEntity> ListOrder();        
     }
 }
