@@ -10,5 +10,6 @@ namespace BaseArchitecture.Repository.Entity
         public double PriceUnit { get; set; }
         public string RecordStatus { get; set; }
         public double Quantity { get; set; }
+        public double Total { get; set; }
     }
 }
