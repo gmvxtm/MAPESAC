@@ -46,7 +46,6 @@ export class GeneralService {
   }
 
   MergeOrder(orderRequest: any): Observable<any> {
-    debugger
     return this.http
       .get<any>(
         this.urlWebApi + Path.Mapesac + NameServiceApi.MergeOrder,
