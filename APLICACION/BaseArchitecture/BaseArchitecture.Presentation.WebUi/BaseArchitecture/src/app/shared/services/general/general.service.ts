@@ -64,6 +64,11 @@ export class GeneralService {
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
   }
 
-  
+  ListOrder(): Observable<any>{
+    return this.http
+      .get<UbiEntity>(this.urlWebApi + Path.Mapesac + NameServiceApi.ListOrder)
+      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
+  }
+
 
 }

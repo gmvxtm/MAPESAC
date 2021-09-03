@@ -93,5 +93,13 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
             var result = TableService.ListUbi();
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.ListOrder)]
+        public IHttpActionResult ListOrder()
+        {
+            var result = TableService.ListOrder();
+            return Ok(result);
+        }
     }
 }

@@ -42,7 +42,7 @@
                 public const string ListProduct = "ListProduct";
                 public const string MergeOrder = "MergeOrder";
                 public const string ListUbi = "ListUbi";
-                
+                public const string ListOrder = "ListOrder";
             }
         }
 
