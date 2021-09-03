@@ -8,7 +8,7 @@ import { GeneralService } from 'src/app/shared/services/general/general.service'
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductEntity } from 'src/app/shared/models/general/table.interface';
 import { CustomerEntity, OrderDetailEntity, OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
-import { createGuidRandom } from 'src/app/shared/util';
+import { createGuidRandom, showSuccess } from 'src/app/shared/util';
 
 @Component({
   selector: 'app-compra',
@@ -104,7 +104,11 @@ export class CompraComponent implements OnInit {
         this.generalService.MergeOrder(orderRequest).subscribe(
             (data: any) => {
                 var codeOrder =data.Value;
-                debugger
+                showSuccess("Se registro la orden: " + codeOrder);
+                setTimeout(() => {
+                    this.localStorage.clearKey('catalogListSelectedModal');
+                    this.router.navigate(['catalogo']);
+                }, 2);
             },
             (error: HttpErrorResponse) => {
             this.spinner.hide();
