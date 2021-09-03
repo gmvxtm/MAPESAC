@@ -97,10 +97,8 @@ export class CompraComponent implements OnInit {
         orderRequest.CustomerEntity.IdDistrict = this.Distrito;
         orderRequest.CustomerEntity.IdCustomer=  orderRequest.IdCustomer;
         orderRequest.CustomerEntity.RecordStatus = "A"; 
-        
         orderRequest.ListOrderDetail = this.catalogListSelectedModal;
 
-        debugger
         this.generalService.MergeOrder(orderRequest).subscribe(
             (data: any) => {
                 var codeOrder =data.Value;
