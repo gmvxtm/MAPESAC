@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using BaseArchitecture.Application.IService.Mail;
 using BaseArchitecture.Application.IService.Security;
 using BaseArchitecture.Application.IService.Table;
 using BaseArchitecture.Application.TransferObject.Request.Access;
@@ -16,7 +17,8 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
     {
         public ISecurityService SecurityService { get; set; }
         public ITableService TableService { get; set; }
-        
+        public IMailService MailService { get; set; }
+
         //public AwsHelper AwsHelper { get; set; }
 
         [HttpPost]
@@ -44,6 +46,14 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
         public IHttpActionResult MergeOrder(OrderEntity orderRequest)
         {
             var result = TableService.MergeOrder(orderRequest);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.SendEmail)]
+        public IHttpActionResult SendEmail()
+        {
+            var result = MailService.SendEmail();
             return Ok(result);
         }
     }
