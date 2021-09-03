@@ -15,12 +15,91 @@
 </nav>
 
 <div class="container">
-    <div class="col-md-12">
-        <div class="col-md-6">
-
+    <div class="col-md-12 row">
+        <div class="col-md-6" style="margin-top: 30px;">
+            <div class="col-md-11 row">
+                Nombres: <input [(ngModel)]="customerEntity.FirstName" class="form-control">
+            </div>
+            <br>
+            <div class="col-md-11 row ">
+                Apellidos: <input [(ngModel)]="customerEntity.LastName" class="form-control">
+            </div>
+            <br>
+            <div class="col-md-11 row">
+                Correo: <input [(ngModel)]="customerEntity.Email" class="form-control">
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-5">
+                    Telefono: <input [(ngModel)]="customerEntity.PhoneNumber" class="form-control">
+                </div>
+                <div class="col-md-5">
+                    DNI: <input [(ngModel)]="customerEntity.DocumentNumber" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-4">
+                Departamento:
+                  <select [(ngModel)]="Departamento" name="departamento" class="form-control" (change)="loadProvince($event.target.value)">
+                      <option value="">-- Seleccione --</option>
+                      <option value="{{item.IdDepartment}}" *ngFor="let item of ListDepartmentEntity">{{ item.Department }}</option>
+                  </select>
+              </div>
+                <div class="col-md-4">
+                Provincia:
+                  <select [(ngModel)]="Provincia" name="provincia" class="form-control" (change)="loadDistrict($event.target.value)">
+                      <option value="">-- Seleccione --</option>
+                      <option value="{{item.IdProvince}}" *ngFor="let item of ListProvinceEntity">{{ item.Province }}</option>
+                  </select>
+              </div>
+              <div class="col-md-4">
+                Distrito:
+                  <select [(ngModel)]="Distrito" name="distrito" class="form-control">
+                      <option value="">-- Seleccione --</option>
+                      <option value="{{item.IdDistrict}}" *ngFor="let item of ListDistrictEntity">{{ item.District }}</option>
+                  </select>
+              </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4">
+              Solicitar Factura:
+                <input type="checkbox" (change)="changeStatus($event)">
+            </div>
+          </div>
+          <br>
+          <div *ngIf="visibleFactura" class="row">
+            <div class="col-md-4">
+                RUC: <input [(ngModel)]="ruc" class="form-control" [maxLength]=11>
+            </div>
+            <div class="col-md-7">
+                Razón Social: <input [(ngModel)]="razonSocial" class="form-control">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-3"> 
+              <button (click)="sendOrder()" class="form-control btn-success">Enviar</button>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6">
-    
+        <div class="col-md-6" style="margin-top: 30px;">
+            <div class="col-md-12 row"  style="margin-bottom: 10px;" *ngFor="let item of catalogListSelectedModal">
+                <div class="col-md-3">
+                  <img class="card-img-top" style="background-size: contain; height: 100px; width: 100px;"
+                  src={{item.PathFile}}  alt="Sin imagen" />
+                  <div class="selected" style="text-align: center;">
+                    <label class="cart"> {{ item.Quantity }} </label>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                    {{item.Name}}
+                </div>
+                <div class="col-md-4">
+                  TOTAL
+                </div>
+            </div>
         </div>
     </div>
 

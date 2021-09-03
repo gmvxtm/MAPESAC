@@ -1,6 +1,7 @@
 ﻿using BaseArchitecture.Application.TransferObject.Response.Common;
 using BaseArchitecture.Cross.SystemVariable.Constant;
 using BaseArchitecture.Repository.Entity;
+using BaseArchitecture.Repository.Entity.Tables;
 using BaseArchitecture.Repository.IData.Transactional;
 using Dapper;
 using System.Data;
@@ -52,6 +53,29 @@ namespace BaseArchitecture.Repository.Data.Transactional
                 response = new Response<int>(result);
             }
 
+            return response;
+        }
+
+        public Response<int> MergeCustomer(CustomerEntity customerEntity)
+        {
+            Response<int> response;
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@ParamIIdCustomer", customerEntity.IdCustomer);
+                parameters.Add("@ParamIFirstName", customerEntity.FirstName);
+                parameters.Add("@ParamILastName", customerEntity.LastName);
+                parameters.Add("@ParamIDocumentNumber", customerEntity.DocumentNumber);
+                parameters.Add("@ParamIPhoneNumber", customerEntity.PhoneNumber);
+                parameters.Add("@ParamIEmail", customerEntity.Email);                
+                parameters.Add("@ParamIRecordStatus", customerEntity.RecordStatus);
+                var result = connection.Execute(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.MrgCustomer}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure);
+
+                response = new Response<int>(result);
+            }
             return response;
         }
     }

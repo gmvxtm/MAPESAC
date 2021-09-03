@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AuditControl\AuditControlEntity.cs" />
     <Compile Include="Demo\PersonEntity.cs" />
+    <Compile Include="Tables\CustomerEntity.cs" />
     <Compile Include="Tables\DepartmentEntity.cs" />
     <Compile Include="Tables\DistrictEntity.cs" />
     <Compile Include="Tables\MenuLogin.cs" />

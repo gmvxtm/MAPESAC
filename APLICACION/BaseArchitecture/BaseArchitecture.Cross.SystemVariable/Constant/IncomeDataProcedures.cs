@@ -40,6 +40,7 @@
 
             public const string MrgOrder = "Usp_Mrg_Order";
             public const string MrgOrderDetail = "Usp_Mrg_OrderDetail";
+            public const string MrgCustomer = "Usp_Mrg_Customer";
         }
     }
 }

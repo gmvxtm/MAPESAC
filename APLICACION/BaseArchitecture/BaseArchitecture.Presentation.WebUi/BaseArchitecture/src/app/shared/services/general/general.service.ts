@@ -46,13 +46,12 @@ export class GeneralService {
   }
 
   MergeOrder(orderRequest: any): Observable<any> {
-    debugger
     return this.http
       .get<any>(
         this.urlWebApi + Path.Mapesac + NameServiceApi.MergeOrder,
         {
           observe: 'body',
-          params: { userRequest: JSON.stringify(orderRequest) },
+          params: { orderRequest: JSON.stringify(orderRequest) },
         }
       )
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));

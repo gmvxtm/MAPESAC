@@ -7,9 +7,10 @@ import { HeadersInterface } from 'src/app/shared/models/request/common/headers-r
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductEntity } from 'src/app/shared/models/general/table.interface';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
-import { ModalComponent } from '../modal/modal.component';
+
+var $: any;
 
 @Component({
   selector: 'app-pedido',
@@ -37,27 +38,12 @@ export class PedidoComponent implements OnInit {
     constructor(
       private spinner: NgxSpinnerService,
       private router: Router,
-      private modalService: BsModalService,
       private localStorage: LocalService,
       private generalService: GeneralService
     ) { }
   
     ngOnInit(): void {
-      this.createHeadersTable();
-      this.loadStart();
       this.createCatalog();
-    }
-  
-    loadStart = () => {
-      this.configTable = {
-        paging: true,
-        searching: false,
-        ordering: true,
-        lengthChange: true,
-        lengthMenu: [5, 10, 15, 20, 25],
-        serverSide: false,
-        filterColumn: true
-      };
     }
   
     createCatalog = () => {
@@ -113,77 +99,9 @@ export class PedidoComponent implements OnInit {
       this.catalogListSelectedModal = this.catalogListSelected.filter(x => x);
     }
 
-
-    openModal = () =>{
-      this.bsModalRefP = this.modalService.show(ModalComponent, {
-        initialState: {
-          item: <any>{   
-            lista: this.catalogListSelectedModal
-          },
-        },
-        backdrop: 'static',
-        keyboard: false,
-      });
-  
-      (<ModalComponent>this.bsModalRefP.content).onClose.subscribe(
-        (result: any) => {
-          if (result) {
-  
-          }
-          this.bsModalRefP.hide();
-        }
-      );
-      this.bsModalRefP.content.closeBtnName = 'Close';
-    }
-
     redirectCompra = () => {
+      this.localStorage.setJsonValue('catalogListSelectedModal',  this.catalogListSelectedModal);
       this.router.navigate(['compra']);
     }
 
-    createHeadersTable = () => {
-      this.headers = [
-        {
-          primaryKey: 'Codigo',
-          title: 'Código',
-        },
-        {
-          primaryKey: 'InversionDescripcion',
-          title: 'Tipo de Inversión',
-        },
-        {
-          primaryKey: 'CicloDescripcion',
-          title: 'Ciclo de Inversión',
-        },
-        {
-          primaryKey: 'NaturalezaDescripcion',
-          title: 'Naturaleza',
-        },
-        {
-          primaryKey: 'Nombre',
-          title: 'Nombre',
-        },
-        {
-          primaryKey: 'Departamento',
-          title: 'Departamento',
-        },
-        {
-          primaryKey: 'Costo',
-          title: 'Costo',
-        },
-        {
-          primaryKey: '',
-          title: 'Acciones',
-          property: 'button',
-          buttons: [
-          {
-            type: 'edit',
-            icon: 'fas fa-search',
-            tooltip: 'Consultar'
-        }
-          ]
-        }
-      ];
-    };
-
- 
 }
