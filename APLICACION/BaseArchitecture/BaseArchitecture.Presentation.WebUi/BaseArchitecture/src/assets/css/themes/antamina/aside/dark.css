@@ -1,9 +1,9 @@
 .aside {
-    background-image: url(../../../../media/bg_slide@2x.jpg);
+    /* background-image: url(../../../../media/bg_slide@2x.jpg); */
     background-position: left 0 bottom 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-color: #046cbc;
+    background-color: silver;
     background-size: 275px 400px
 }
 
