@@ -33,6 +33,13 @@ const routes: Routes = [
         (m) => m.CompraModule
       ),
   },
+  {
+    path: 'mispedidos',
+    loadChildren: () =>
+      import('src/app/external/mis-pedidos/mis-pedidos.module').then(
+        (m) => m.MisPedidosModule
+      ),
+  },
 ];
 
 @NgModule({
