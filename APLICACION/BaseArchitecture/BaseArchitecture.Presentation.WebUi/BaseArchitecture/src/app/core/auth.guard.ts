@@ -17,6 +17,7 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    
     let existeRol: boolean = false;
     debugger
     let pathMenu = this.localStorage.getJsonValue('profileBase');
