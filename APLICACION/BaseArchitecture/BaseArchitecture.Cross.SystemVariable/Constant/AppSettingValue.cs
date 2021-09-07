@@ -20,6 +20,7 @@ namespace BaseArchitecture.Cross.SystemVariable.Constant
         public static readonly string AllowedOriginsUrl = ConfigurationManager.AppSettings.Get("ALLOWED_ORIGINS_URL");
         public static readonly string LogFilePath = ConfigurationManager.AppSettings.Get("LOG_FILE_PATH");
         public static readonly string FileTemp = ConfigurationManager.AppSettings.Get("FILE_TEMP");
+        public static readonly string EmailSalesResponsible = ConfigurationManager.AppSettings.Get("EMAIL_SALES_RESPONSIBLE");
 
         public static readonly string ConnectionDataBase =
             ConfigurationManager.ConnectionStrings["CONNECTION_DATA_BASE"] != null

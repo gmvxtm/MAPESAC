@@ -112,13 +112,13 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
 
             using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
             {
-                var parameters = new DynamicParameters();                
+                var parameters = new DynamicParameters();
                 var basicResponse = new OrderListEntity();
                 using (var list = connection.QueryMultipleAsync(
                                     sql: $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.ListOrder}",
                                     param: parameters,
                                     commandType: CommandType.StoredProcedure).Result)
-                {                    
+                {
                     basicResponse.ListOrderEntity = list.Read<OrderEntity>().ToList();
 
                 }
@@ -129,6 +129,26 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
 
             }
 
+            return response;
+        }
+        public Response<OrderEntity> GetOrderByCodeOrder(OrderEntity orderRequest)
+        {
+            Response<OrderEntity> response;
+
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@ParamICodeOrder", orderRequest.CodeOrder);
+                var resultResponse = connection.QueryAsync<OrderEntity>(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.GetOrderByCodeOrder}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure).Result;
+
+                response = new Response<OrderEntity>
+                {
+                    Value = resultResponse.FirstOrDefault()
+                };
+            }
             return response;
         }
     }

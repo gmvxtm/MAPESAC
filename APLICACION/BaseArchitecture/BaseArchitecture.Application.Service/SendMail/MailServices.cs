@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Net.Mail;
 using System.Net;
 using BaseArchitecture.Application.IService.Mail;
+using BaseArchitecture.Cross.SystemVariable.Constant;
 
 namespace BaseArchitecture.Application.Service.Mail
 {
@@ -19,25 +20,26 @@ namespace BaseArchitecture.Application.Service.Mail
         public Response<int> SendEmail(string emailTo, string codeOrder)
         {
             Response<int> response;
+            
             try
             {
+                if (!string.IsNullOrEmpty(emailTo))
+                    emailTo += "; " + AppSettingValue.EmailSalesResponsible;
                 MailMessage message = new MailMessage();
                 message.From = new MailAddress("no-reply@mapesac.com");
                 message.To.Add(new MailAddress(emailTo));
-                //message.To.Add(new MailAddress("ppardoz09@gmail.com"));
                 message.Subject = "Send Mail Test";
-                message.IsBodyHtml = true; //to make message body as html  
+                message.IsBodyHtml = true;
                 message.Body = GetHtml(codeOrder);
 
                 using (var smtp = new SmtpClient())
                 {
-                    smtp.Port = 587;//465; //25; 587;
-                    smtp.Host = "smtp.gmail.com"; //for gmail host  
+                    smtp.Port = 587;
+                    smtp.Host = "smtp.gmail.com";
                     smtp.EnableSsl = true;
                     smtp.UseDefaultCredentials = false;  
                     smtp.Credentials = new NetworkCredential("no.reply.MAPESAC@gmail.com", "mp123456*");
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    //smtp. = ServicePointManager.SecurityProtocol SecurityProtocolType.Tls;
                     smtp.Send(message);
                 }
                 
@@ -54,7 +56,6 @@ namespace BaseArchitecture.Application.Service.Mail
         {
             try
             {
-                //string messageBody = "<font>The following are the records: </font><br><br>";
                 string messageBody = "";
                 string htmlTableStart = "<table style=\"border-collapse:collapse; text-align:center;\" >";
                 string htmlTableEnd = "</table>";
@@ -74,7 +75,7 @@ namespace BaseArchitecture.Application.Service.Mail
                 messageBody += "Atte.: MAPESAC" + htmlTdEnd;
                 messageBody += htmlHeaderRowEnd;
                 messageBody = messageBody + htmlTableEnd;
-                return messageBody; // return HTML Table as string from this function  
+                return messageBody;
             }
             catch (Exception ex)
             {
