@@ -58,10 +58,10 @@
               S/. {{item.PriceUnit}}
             </div>
             <div class="col-md-3">
-                <input [(ngModel)]="item.Quantity" type="number" class="form-control" style="width: 80px;">
+                <input [(ngModel)]="item.Quantity" type="number" class="form-control" style="width: 80px;" (change)="quantitychange()">
             </div>
             <div class="col-md-2">
-              TOTAL
+              {{item.Total}}
             </div>
         </div>
         <br>

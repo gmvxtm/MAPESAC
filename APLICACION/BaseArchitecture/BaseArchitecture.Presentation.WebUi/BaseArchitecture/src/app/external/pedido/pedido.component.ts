@@ -97,11 +97,20 @@ export class PedidoComponent implements OnInit {
       }
       this.countCart = this.catalogListSelected.length;
       this.catalogListSelectedModal = this.catalogListSelected.filter(x => x);
+      this.catalogListSelectedModal.forEach(element => {
+        element.Total =element.Quantity*element.PriceUnit;
+    });
     }
 
     redirectCompra = () => {
       this.localStorage.setJsonValue('catalogListSelectedModal',  this.catalogListSelectedModal);
       this.router.navigate(['compra']);
+    }
+
+    quantitychange =() => {
+      this.catalogListSelectedModal.forEach(element => {
+        element.Total =element.Quantity*element.PriceUnit;
+    });
     }
 
 }
