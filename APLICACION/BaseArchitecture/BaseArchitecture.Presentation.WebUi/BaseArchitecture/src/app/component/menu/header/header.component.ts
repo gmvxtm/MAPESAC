@@ -13,12 +13,14 @@ export class MenuHeaderComponent implements OnInit {
     name: string = "";
     generalLabel: GeneralLabel = new GeneralLabel();
     sessionLabel: LoginLabel = new LoginLabel();
-
+    nameUser:string = '';
     constructor(private localService: LocalService) { }
 
     ngOnInit() { 
         this.generalLabel = general;
         this.sessionLabel = sessionLogin;
+        let pathMenu =  this.localService.getJsonValue('profileBase');
+        this.nameUser= pathMenu.UserEntity.Username;
         // this.name = this.localService.getJsonValue('userBaseArchitecture').User;
     }
 
