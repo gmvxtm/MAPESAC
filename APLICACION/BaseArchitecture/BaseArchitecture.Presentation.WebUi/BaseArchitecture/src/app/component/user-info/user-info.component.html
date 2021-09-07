@@ -13,13 +13,16 @@
             </div>
             <div class="d-flex flex-column">
                 <span class="font-weight-bold font-size-h5 text-dark-75">
-                    Nahomy
+                    {{name}}
                 </span>
-                <!-- <div class="text-muted mt-1">
-                    <select id="IdLevel" [(ngModel)]="profileActual" (change)="refreshProfile()" class="form-control">
+                <!-- <div class="text-muted mt-1"> -->
+                    <!-- <span class="form-control">
+                        {{profileName}}
+                    </span> -->
+                    <!-- <select id="IdLevel" [(ngModel)]="profileActual" (change)="refreshProfile()" class="form-control">
                         <option *ngFor="let item of listProfile" [value]="item.ProfileId">{{item.ProfileName}}</option>
-                    </select>
-                </div> -->
+                    </select> -->
+                <!-- </div> -->
 
 
                 
@@ -40,13 +43,20 @@
                                     </svg>
                                 </span>
                         </span>
-                        <span class="navi-text text-muted">{{email}}</span>
+                        <span class="navi-text text-muted">{{profileName}}</span>
                         </span>
+                        <a style="cursor: pointer;color:black" (click)="signOff()" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">
+                            
+                            {{labelGeneral.lblClosedSession}}
+
+                        </a>
+                        
                     </span>
-                    <a style="cursor: pointer;" (click)="signOff()" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">
-                        {{labelGeneral.lblClosedSession}}
-                    </a>
-                </div>
+
+                    <!-- <a style="cursor: pointer;color:black" (click)="signOff()" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">
+                        {{labelGeneral.lblClosedSession}} Prueba
+                    </a> -->
+                </div>    
             </div>
         </div>
     </div>

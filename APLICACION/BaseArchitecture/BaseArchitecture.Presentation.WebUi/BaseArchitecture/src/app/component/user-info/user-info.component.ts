@@ -16,6 +16,7 @@ export class UserInfoComponent implements OnInit {
   @Output() topBar: EventEmitter<boolean> = new EventEmitter<boolean>();
   name: string = '';
   email: string = '';
+  profileName: string ='';
   labelGeneral: GeneralLabel = new GeneralLabel();
   listProfile: Profile[] = Array<Profile>();
   profileActual: string = '';
@@ -27,12 +28,17 @@ export class UserInfoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    debugger
     this.labelGeneral = general;
-    this.name = this.localService.getJsonValue('userBaseArchitecture').User;
-    this.email = this.localService.getJsonValue('userBaseArchitecture').Email;
+    // this.name = this.localService.getJsonValue('userBaseArchitecture').User;
+    // this.email = this.localService.getJsonValue('userBaseArchitecture').Email;
 
-    this.listProfile = this.localService.getJsonValue('roleBaseArchitecture');
-    this.profileActual = this.localService.getJsonValue('profileBaseArchitecture');
+    let pathMenu =  this.localService.getJsonValue('profileBase');
+    this.name= pathMenu.UserEntity.Username;
+    this.profileName= pathMenu.UserEntity.ProfileName;
+    
+    //this.listProfile = this.localService.getJsonValue('profileBase');
+    //this.profileActual = this.localService.getJsonValue('profileBaseArchitecture');
   }
 
   closeTopBar = () => {

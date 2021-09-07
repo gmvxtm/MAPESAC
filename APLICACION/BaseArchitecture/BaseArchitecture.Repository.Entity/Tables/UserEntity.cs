@@ -9,5 +9,6 @@ namespace BaseArchitecture.Repository.Entity
         public string Password { get; set; }
         public string RecordStatus { get; set; }
         public string IdProfile { get; set; }
+        public string ProfileName { get; set; }
     }
 }

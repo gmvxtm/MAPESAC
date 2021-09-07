@@ -18,8 +18,7 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     
-    let existeRol: boolean = false;
-    debugger
+    let existeRol: boolean = false;    
     let pathMenu = this.localStorage.getJsonValue('profileBase');
     
     if (pathMenu) {
@@ -36,8 +35,13 @@ export class AuthGuard implements CanActivate {
       }
 
       if (existeRol) return true;
+
+      if(route.routeConfig['path']=="" && pathMenu != null)
+      {
+        return true;
+      }
       this.toastr.error('No cuenta con accesos, para esa página');
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
       return false;
     } else {
       this.localStorage.clearKey('profileBase');

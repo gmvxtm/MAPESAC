@@ -39,6 +39,7 @@ export class LoginRequest {
     MenuName: string;
     UrlName: string;
     RecordStatus: string;  
+    ProfileName: string;
   }
 
   
