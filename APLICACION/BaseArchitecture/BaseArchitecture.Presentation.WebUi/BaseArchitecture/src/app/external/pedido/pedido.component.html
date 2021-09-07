@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">MAPESAC</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -58,10 +58,10 @@
               S/. {{item.PriceUnit}}
             </div>
             <div class="col-md-3">
-                <input [(ngModel)]="item.Quantity" type="number" class="form-control" style="width: 80px;">
+                <input [(ngModel)]="item.Quantity" type="number" class="form-control" style="width: 80px;" (change)="quantitychange()">
             </div>
             <div class="col-md-2">
-              TOTAL
+              {{item.Total}}
             </div>
         </div>
         <br>
@@ -89,9 +89,9 @@
                         <div>
                             Precio Unitario: S/.&nbsp;{{item.PriceUnit}}
                         </div>
-                        <!-- <div class="col-12 row" style="margin-left: 50px;">
-                            Cantidad:  &nbsp;<input type="number" class="form-control" style="width: 80px;">
-                        </div> -->
+                        <div class="col-12 row" style="margin-left: 50px;">
+                            Cantidad:  &nbsp;<input type="number" class="form-control" style="width: 80px;" [(ngModel)] ="item.Quantity" >
+                        </div>
                         <br>    
                         <button class="form-control btn btn-success" (click)="addProduct(item)" style="width: 50%;margin-bottom: 10px;">Añadir &nbsp;&nbsp;<em class="fa fa-plus"></em></button>
                     </div>
