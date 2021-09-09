@@ -73,5 +73,13 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
             var result = TableService.ListOrder();
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.GetOrderByCodeOrder)]
+        public IHttpActionResult GetOrderByCodeOrder(OrderEntity orderRequest)
+        {
+            var result = TableService.GetOrderByCodeOrder(orderRequest);
+            return Ok(result);
+        }
     }
 }

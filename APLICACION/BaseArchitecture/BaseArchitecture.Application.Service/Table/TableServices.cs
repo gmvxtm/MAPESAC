@@ -116,5 +116,11 @@ namespace BaseArchitecture.Application.Service.Table
             var result = TableQuery.ListOrder();
             return result;
         }
+
+        public Response<OrderEntity> GetOrderByCodeOrder(OrderEntity orderRequest)
+        {
+            var result = TableQuery.GetOrderByCodeOrder(orderRequest);
+            return result;
+        }
     }
 }

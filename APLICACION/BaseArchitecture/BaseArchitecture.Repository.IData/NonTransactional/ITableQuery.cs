@@ -16,5 +16,6 @@ namespace BaseArchitecture.Repository.IData.NonTransactional
         IEnumerable<ProductEntity> ListProduct();
         Response<UbiEntity> ListUbi();
         Response<OrderListEntity> ListOrder();
+        Response<OrderEntity> GetOrderByCodeOrder(OrderEntity orderRequest);
     }
 }
