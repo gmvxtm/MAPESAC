@@ -11,7 +11,7 @@ using System.Web.Http;
 
 namespace BaseArchitecture.Distributed.ApiGateway.Controllers
 {
-    [RoutePrefix(IncomeWebApi.PrefixApi.Mapesac)]
+    [RoutePrefix(IncomeWebApi.PrefixApi.Demo)]
     public class DemoController : BaseWebController
     {
         [HttpGet]

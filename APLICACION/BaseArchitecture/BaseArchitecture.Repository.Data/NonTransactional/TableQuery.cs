@@ -23,7 +23,7 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
             using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
             {
                 var parameters = new DynamicParameters();
-
+                parameters.Add("@ParamIRecordStatus", "A");
                 var resultResponse = connection.QueryAsync<MasterTableEntity>(
                     $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.ListMasterTable}",
                     parameters,

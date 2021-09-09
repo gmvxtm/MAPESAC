@@ -128,33 +128,33 @@ namespace BaseArchitecture.Application.Service.Demo
         ///     The method GetMasterById get list MasterTable and filter by IdMasterTable
         /// </remarks>
         /// <returns>Return entity MasterTableResponse</returns>
-        public MasterTableResponse GetMasterById(MasterTableRequest masterTableRequest)
-        {
-            var result = GetAllMaster(masterTableRequest);
-            return result.FirstOrDefault(x => x.IdMasterTable == masterTableRequest.IdMasterTable);
-        }
+        //public MasterTableResponse GetMasterById(MasterTableRequest masterTableRequest)
+        //{
+        //    var result = GetAllMaster(masterTableRequest);
+        //    return result.FirstOrDefault(x => x.IdMasterTable == masterTableRequest.IdMasterTable);
+        //}
 
-        public Response<IEnumerable<MasterTableResponse>> ListMasterTable(MasterTableRequest masterTableRequest)
-        {
-            var result = GetAllMaster(masterTableRequest);
-            var masterTableResponses =
-                result.Where(x => x.IdMasterTableParent == masterTableRequest.IdMasterTableParent).ToList();
+        //public Response<IEnumerable<MasterTableResponse>> ListMasterTable(MasterTableRequest masterTableRequest)
+        //{
+        //    var result = GetAllMaster(masterTableRequest);
+        //    var masterTableResponses =
+        //        result.Where(x => x.IdMasterTableParent == masterTableRequest.IdMasterTableParent).ToList();
 
-            return new Response<IEnumerable<MasterTableResponse>> { Value = masterTableResponses };
-        }
+        //    return new Response<IEnumerable<MasterTableResponse>> { Value = masterTableResponses };
+        //}
 
-        public Response<IEnumerable<MasterTableResponse>> ListMasterTableByValue(MasterTableRequest masterTableRequest)
-        {
-            var result = GetAllMaster(masterTableRequest);
-            var masterTableResponses = result.Where(x => x.IdMasterTableParent == masterTableRequest.IdMasterTableParent
-                                                         && x.Value == masterTableRequest.Value).ToList();
+        //public Response<IEnumerable<MasterTableResponse>> ListMasterTableByValue(MasterTableRequest masterTableRequest)
+        //{
+        //    var result = GetAllMaster(masterTableRequest);
+        //    var masterTableResponses = result.Where(x => x.IdMasterTableParent == masterTableRequest.IdMasterTableParent
+        //                                                 && x.Value == masterTableRequest.Value).ToList();
 
-            return new Response<IEnumerable<MasterTableResponse>> { Value = masterTableResponses };
-        }
+        //    return new Response<IEnumerable<MasterTableResponse>> { Value = masterTableResponses };
+        //}
 
-        private IEnumerable<MasterTableResponse> GetAllMaster(MasterTableRequest masterTableRequest)
-        {
-            return DemoQuery.ListMasterTable(masterTableRequest);
-        }
+        //private IEnumerable<MasterTableResponse> GetAllMaster(MasterTableRequest masterTableRequest)
+        //{
+        //    return DemoQuery.ListMasterTable(masterTableRequest);
+        //}
     }
 }
