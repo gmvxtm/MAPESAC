@@ -22,17 +22,17 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
 
         [HttpPost]
         [Route(IncomeWebApi.MethodApi.Demo.ListMasterTableByValue)]        
-        public IHttpActionResult ListMasterTableByValue(MasterTableRequest masterTableRequest)
+        public IHttpActionResult ListMasterTableByValue(MasterTableEntity masterTableRequest)
         {
-            var result = DemoService.ListMasterTableByValue(masterTableRequest);
+            var result = TableService.ListMasterTableByValue(masterTableRequest);
             return Ok(result);
         }
 
         [HttpPost]
         [Route(IncomeWebApi.MethodApi.Demo.ListMasterTable)]
-        public IHttpActionResult ListMasterTable(MasterTableRequest masterTableRequest)
+        public IHttpActionResult ListMasterTable(MasterTableEntity masterTableRequest)
         {
-            var result = DemoService.ListMasterTable(masterTableRequest);
+            var result = TableService.ListMasterTable(masterTableRequest);
             return Ok(result);
         }
 

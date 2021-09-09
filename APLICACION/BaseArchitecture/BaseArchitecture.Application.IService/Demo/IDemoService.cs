@@ -8,9 +8,9 @@ namespace BaseArchitecture.Application.IService.Demo
 {
     public interface IDemoService
     {
-        MasterTableResponse GetMasterById(MasterTableRequest masterTableRequest);
-        Response<IEnumerable<MasterTableResponse>> ListMasterTableByValue(MasterTableRequest masterTableRequest);
-        Response<IEnumerable<MasterTableResponse>> ListMasterTable(MasterTableRequest masterTableRequest);
+        //MasterTableResponse GetMasterById(MasterTableRequest masterTableRequest);
+        //Response<IEnumerable<MasterTableResponse>> ListMasterTableByValue(MasterTableRequest masterTableRequest);
+        //Response<IEnumerable<MasterTableResponse>> ListMasterTable(MasterTableRequest masterTableRequest);
         Response<CollectionDataResponse<PersonResponse>> ListPersonAll(PersonFilterRequest personFilterRequest);
         Response<List<ProyectoResponse>> ListProyectos();
         Response<ProyectoResponse> GetProyectoById(ProyectoRequest proyectoRequest);

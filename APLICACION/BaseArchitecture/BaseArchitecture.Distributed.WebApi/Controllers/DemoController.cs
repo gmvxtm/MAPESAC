@@ -14,25 +14,25 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
     {
         public IDemoService DemoService { get; set; }
 
-        [HttpPost]
-        [Route(IncomeWebApi.MethodApi.Demo.ListMasterTableByValue)]
-        [RequestLoggerFilter]
-        [UnControlledExceptionFilterAttribute]
-        public IHttpActionResult ListMasterTableByValue(MasterTableRequest masterTableRequest)
-        {
-            var result = DemoService.ListMasterTableByValue(masterTableRequest);
-            return Ok(result);
-        }
+        //[HttpPost]
+        //[Route(IncomeWebApi.MethodApi.Demo.ListMasterTableByValue)]
+        //[RequestLoggerFilter]
+        //[UnControlledExceptionFilterAttribute]
+        //public IHttpActionResult ListMasterTableByValue(MasterTableRequest masterTableRequest)
+        //{
+        //    var result = DemoService.ListMasterTableByValue(masterTableRequest);
+        //    return Ok(result);
+        //}
 
-        [HttpPost]
-        [Route(IncomeWebApi.MethodApi.Demo.ListMasterTable)]
-        [RequestLoggerFilterAttribute]
-        [UnControlledExceptionFilterAttribute]
-        public IHttpActionResult ListMasterTable(MasterTableRequest masterTableRequest)
-        {
-            var result = DemoService.ListMasterTable(masterTableRequest);
-            return Ok(result);
-        }
+        //[HttpPost]
+        //[Route(IncomeWebApi.MethodApi.Demo.ListMasterTable)]
+        //[RequestLoggerFilterAttribute]
+        //[UnControlledExceptionFilterAttribute]
+        //public IHttpActionResult ListMasterTable(MasterTableRequest masterTableRequest)
+        //{
+        //    var result = DemoService.ListMasterTable(masterTableRequest);
+        //    return Ok(result);
+        //}
 
         [HttpPost]
         [Route(IncomeWebApi.MethodApi.Demo.GetPersonById)]

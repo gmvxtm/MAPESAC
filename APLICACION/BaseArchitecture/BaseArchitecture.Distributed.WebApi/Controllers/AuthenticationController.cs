@@ -1,8 +1,10 @@
 ﻿using System.Web.Http;
+using BaseArchitecture.Application.IService.Demo;
 using BaseArchitecture.Application.IService.Mail;
 using BaseArchitecture.Application.IService.Security;
 using BaseArchitecture.Application.IService.Table;
 using BaseArchitecture.Application.TransferObject.Request.Access;
+using BaseArchitecture.Application.TransferObject.Request.Demo;
 using BaseArchitecture.Cross.LoggerTrace.Filters;
 using BaseArchitecture.Cross.Security.Aws;
 using BaseArchitecture.Cross.SystemVariable.Constant;
@@ -18,6 +20,24 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
         public ISecurityService SecurityService { get; set; }
         public ITableService TableService { get; set; }
         public IMailService MailService { get; set; }
+        //public IDemoService DemoService { get; set; }
+
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Demo.ListMasterTableByValue)]
+        public IHttpActionResult ListMasterTableByValue(MasterTableEntity masterTableRequest)
+        {
+            var result = TableService.ListMasterTableByValue(masterTableRequest);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Demo.ListMasterTable)]
+        public IHttpActionResult ListMasterTable(MasterTableEntity masterTableRequest)
+        {
+            var result = TableService.ListMasterTable(masterTableRequest);
+            return Ok(result);
+        }
 
         //public AwsHelper AwsHelper { get; set; }
 

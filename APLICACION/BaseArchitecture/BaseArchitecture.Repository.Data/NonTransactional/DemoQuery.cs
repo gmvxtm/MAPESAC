@@ -23,7 +23,7 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
                 parameters.Add("@ParamIRecordStatus", masterTableRequest.RecordStatus);
 
                 var resultResponse = connection.QueryAsync<MasterTableResponse>(
-                    $"{IncomeDataProcedures.Schema.Demo}.{IncomeDataProcedures.Procedure.ListMasterTable}",
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.ListMasterTable}",
                     parameters,
                     commandType: CommandType.StoredProcedure).Result;
 

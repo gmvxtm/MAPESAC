@@ -24,7 +24,7 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
         {
             var postData = HttpContext.Current.Request.Params["masterTableRequest"];
             var urlApi =
-                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Demo}/{IncomeWebApi.MethodApi.Demo.ListMasterTable}";
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Demo.ListMasterTable}";
             var result =
                 InvokeWebApi.InvokePostHeaderEntity<Response<IEnumerable<MasterTableResponse>>>(urlApi,
                     GetHeaderRequest(),
@@ -40,7 +40,7 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
         {
             var postData = HttpContext.Current.Request.Params["masterTableRequest"];
             var urlApi =
-                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Demo}/{IncomeWebApi.MethodApi.Demo.ListMasterTableByValue}";
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Demo.ListMasterTableByValue}";
             var result =
                 InvokeWebApi.InvokePostHeaderEntity<Response<IEnumerable<MasterTableResponse>>>(urlApi,
                     GetHeaderRequest(),
