@@ -17,5 +17,6 @@ namespace BaseArchitecture.Repository.Entity
         public string RecordStatus { get; set; }
         public CustomerEntity CustomerEntity { set; get;}
         public List<OrderDetailEntity> ListOrderDetail { get; set; }
+        public List<OrderStatusEntity> ListOrderStatus { get; set; }
     }
 }
