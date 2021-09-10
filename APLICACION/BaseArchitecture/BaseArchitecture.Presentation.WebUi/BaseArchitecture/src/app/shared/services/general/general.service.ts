@@ -80,5 +80,15 @@ export class GeneralService {
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
   }
 
+  ListOrderByLocation(orderEntity: OrderEntity): Observable<any>{
+    return this.http
+      .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.ListOrderByLocation,
+        {
+          observe: 'body',
+          params: { orderRequest: JSON.stringify(orderEntity) },
+        }
+      )
+      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
+  }
 
 }
