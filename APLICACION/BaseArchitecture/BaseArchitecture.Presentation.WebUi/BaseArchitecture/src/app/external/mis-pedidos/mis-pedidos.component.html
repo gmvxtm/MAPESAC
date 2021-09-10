@@ -33,10 +33,10 @@
         Escribe el codigo de tu pedido aqui:
     </div>
     <div class="md-4  mr-3">
-      <input class="form-control">
+      <input class="form-control" [(ngModel)]="codeOrder">
     </div>
     <div class="md-2">
-      <button [(ngModel)]="codeOrder" (click)="buscarPedido()" type="button" class="btn btn-secondary" data-dismiss="modal">Buscar</button>
+      <button  (click)="buscarPedido()" type="button" class="btn btn-secondary" data-dismiss="modal">Buscar</button>
     </div>
   </div>
   <div>

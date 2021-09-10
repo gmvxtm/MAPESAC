@@ -50,6 +50,7 @@ export class MisPedidosComponent implements OnInit {
     }
 
     buscarPedido = () => {
+      debugger
       let orderEntity = new OrderEntity();
       orderEntity.CodeOrder = this.codeOrder;
       this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
