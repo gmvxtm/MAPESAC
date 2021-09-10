@@ -9,6 +9,7 @@ using BaseArchitecture.Cross.LoggerTrace.Filters;
 using BaseArchitecture.Cross.Security.Aws;
 using BaseArchitecture.Cross.SystemVariable.Constant;
 using BaseArchitecture.Repository.Entity;
+using BaseArchitecture.Repository.Entity.Tables;
 
 namespace BaseArchitecture.Distributed.WebApi.Controllers
 {
@@ -103,10 +104,10 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
         }
 
         [HttpPost]
-        [Route(IncomeWebApi.MethodApi.Mapesac.ListOrderByLocation)]
-        public IHttpActionResult ListOrderByLocation(OrderEntity orderRequest)
+        [Route(IncomeWebApi.MethodApi.Mapesac.UpdOrderFlow)]
+        public IHttpActionResult UpdOrderFlow(OrderFlowEntity orderFlowRequest)
         {
-            var result = TableService.ListOrderByLocation(orderRequest);
+            var result = TableService.UpdOrderFlow(orderFlowRequest);
             return Ok(result);
         }
     }

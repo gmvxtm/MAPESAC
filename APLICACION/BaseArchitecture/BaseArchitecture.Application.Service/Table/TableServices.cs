@@ -129,5 +129,11 @@ namespace BaseArchitecture.Application.Service.Table
             var result = TableQuery.GetOrderByCodeOrder(orderRequest);
             return result;
         }
+
+        public Response<int> UpdOrderFlow(OrderFlowEntity orderFlowRequest)
+        {
+            var result = TableTransaction.UpdOrderFlow(orderFlowRequest);
+            return result;
+        }
     }
 }

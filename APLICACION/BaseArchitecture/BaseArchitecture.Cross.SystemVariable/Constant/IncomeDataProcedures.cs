@@ -43,6 +43,7 @@
             public const string GenerateOrderFlow = "Usp_Generate_OrderFlow";
             public const string MrgOrderDetail = "Usp_Mrg_OrderDetail";
             public const string MrgCustomer = "Usp_Mrg_Customer";
+            public const string UpdOrderFlow = "Usp_Upd_OrderFlow";
         }
     }
 }

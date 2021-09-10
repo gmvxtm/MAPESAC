@@ -46,7 +46,7 @@
                 public const string ListOrder = "ListOrder";
                 public const string GetOrderByCodeOrder = "GetOrderByCodeOrder";
                 public const string ListOrderByLocation = "ListOrderByLocation";
-                
+                public const string UpdOrderFlow = "UpdOrderFlow";
             }
         }
 
