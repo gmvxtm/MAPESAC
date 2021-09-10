@@ -10,7 +10,7 @@ namespace BaseArchitecture.Repository.Entity
         public Guid IdOrder{ get; set; }
         public string Location { get; set; }
         public DateTime DateOrderStatus { get; set; }
-        public string Status { get; set; }
+        public string StatusOrder { get; set; }
         public string DescriptionStatus { get; set; }
         public Boolean FlagStatus { get; set; }
         public int OrderStatus { get; set; }

@@ -93,7 +93,7 @@ export class CompraComponent implements OnInit {
         orderRequest.DateOrder = Date();
         orderRequest.Total = "5000";
         orderRequest.IdCustomer = createGuidRandom();    
-        orderRequest.Status = "00101";        
+        orderRequest.StatusOrder = "00101";        
         orderRequest.RecordStatus = "A";  
         orderRequest.BusinessName = this.razonSocial=== null ? "":this.razonSocial;  
         orderRequest.BusinessNumber = this.ruc=== null ? "":this.ruc;  

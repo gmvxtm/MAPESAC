@@ -49,8 +49,9 @@ export class LoginRequest {
     DateOrder: string;
     CodeOrder: string;
     Total: string;
-    IdCustomer: string;    
-    Status: string;  
+    StatusOrder:string;
+    LocationOrder:string;
+    IdCustomer: string;  
     RecordStatus: string;  
     BusinessName: string;  
     BusinessNumber: string;  
