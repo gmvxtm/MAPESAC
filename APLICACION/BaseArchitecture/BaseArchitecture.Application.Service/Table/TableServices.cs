@@ -80,8 +80,9 @@ namespace BaseArchitecture.Application.Service.Table
                 {
                     TableTransaction.MergeCustomer(orderRequest.CustomerEntity);
                     orderRequest.IdCustomer = orderRequest.CustomerEntity.IdCustomer;
+                    orderRequest.LocationOrder = "00201"; //Encargado de Ventas
                     TableTransaction.MergeOrder(orderRequest);
-                                        
+                    TableTransaction.GenerateOrderFlow(orderRequest);
                     foreach (var itemOrderDetail in orderRequest.ListOrderDetail)
                     {
                         itemOrderDetail.IdOrder = orderRequest.IdOrder;

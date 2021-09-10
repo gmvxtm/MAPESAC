@@ -9,5 +9,6 @@ namespace BaseArchitecture.Repository.IData.Transactional
         Response<int> MergeOrder(OrderEntity orderEntity);
         Response<int> MergeOrderDetail(OrderDetailEntity orderDetailEntity);
         Response<int> MergeCustomer(CustomerEntity customerEntity);
+        Response<int> GenerateOrderFlow(OrderEntity orderEntity);
     }
 }

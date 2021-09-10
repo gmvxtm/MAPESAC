@@ -16,7 +16,8 @@ namespace BaseArchitecture.Repository.Entity
         public DateTime DateOrder { get; set; }
         public string CodeOrder { get; set; }
         public double Total { get; set; }
-        public string Status { get; set; }
+        public string StatusOrder { get; set; }
+        public string LocationOrder { get; set; }
         public Guid IdCustomer { get; set; }
         public string BusinessName { get; set; }
         public string BusinessNumber { get; set; }

@@ -48,6 +48,7 @@
     <Compile Include="Tables\DistrictEntity.cs" />
     <Compile Include="Tables\MenuLogin.cs" />
     <Compile Include="Tables\OrderDetailEntity.cs" />
+    <Compile Include="Tables\OrderFlowEntity.cs" />
     <Compile Include="Tables\OrderListEntity.cs" />
     <Compile Include="Tables\OrderStatusEntity.cs" />
     <Compile Include="Tables\ProductEntity.cs" />

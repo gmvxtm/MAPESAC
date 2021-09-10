@@ -22,7 +22,8 @@ namespace BaseArchitecture.Repository.Data.Transactional
                 parameters.Add("@ParamIIdOrder", orderEntity.IdOrder);
                 parameters.Add("@ParamIDateOrder", orderEntity.DateOrder);
                 parameters.Add("@ParamITotal", orderEntity.Total);
-                parameters.Add("@ParamIStatus", orderEntity.Status);
+                parameters.Add("@ParamIStatusOrder", orderEntity.StatusOrder);
+                parameters.Add("@ParamILocationOrder", orderEntity.LocationOrder);
                 parameters.Add("@ParamIIdCustomer", orderEntity.IdCustomer);
                 parameters.Add("@ParamIBusinessNumber", orderEntity.BusinessNumber);
                 parameters.Add("@ParamIBusinessName", orderEntity.BusinessName);
@@ -36,6 +37,24 @@ namespace BaseArchitecture.Repository.Data.Transactional
             }
             return response;
         }
+        public Response<int> GenerateOrderFlow(OrderEntity orderEntity)
+        {
+            Response<int> response;
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                orderEntity.DateOrder = DateTime.Now;
+                var parameters = new DynamicParameters();
+                parameters.Add("@ParamIIdOrder", orderEntity.IdOrder);
+                var result = connection.Execute(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.GenerateOrderFlow}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure);
+
+                response = new Response<int>(result);
+            }
+            return response;
+        }
+
         public Response<int> MergeOrderDetail(OrderDetailEntity orderDetailEntity)
         {
             Response<int> response;
