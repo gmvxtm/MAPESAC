@@ -51,6 +51,9 @@ export class LoginRequest {
     Total: string;
     StatusOrder:string;
     LocationOrder:string;
+    StatusOrderName?:string;
+    LocationOrderName?:string;
+    Email?:string;
     IdCustomer: string;  
     RecordStatus: string;  
     BusinessName: string;  
@@ -78,6 +81,11 @@ export class LoginRequest {
     PhoneNumber: string;
     Email:string;
     IdDistrict:string;
+    District:string;
+    IdProvince:string;
+    Province:string;
+    IdDepartment:string;
+    Department:string;
     RecordStatus: string;  
   }
 

@@ -45,6 +45,8 @@
                 public const string SendEmail = "SendEmail";
                 public const string ListOrder = "ListOrder";
                 public const string GetOrderByCodeOrder = "GetOrderByCodeOrder";
+                public const string ListOrderByLocation = "ListOrderByLocation";
+                
             }
         }
 

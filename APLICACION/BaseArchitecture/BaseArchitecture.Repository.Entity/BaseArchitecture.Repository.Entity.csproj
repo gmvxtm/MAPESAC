@@ -49,12 +49,14 @@
     <Compile Include="Tables\MenuLogin.cs" />
     <Compile Include="Tables\OrderDetailEntity.cs" />
     <Compile Include="Tables\OrderFlowEntity.cs" />
+    <Compile Include="Tables\OrderListByLocationEntity.cs" />
     <Compile Include="Tables\OrderListEntity.cs" />
     <Compile Include="Tables\OrderStatusEntity.cs" />
     <Compile Include="Tables\ProductEntity.cs" />
     <Compile Include="Tables\MenuProfileEntity.cs" />
     <Compile Include="Tables\OrderEntity.cs" />
     <Compile Include="Tables\ProvinceEntity.cs" />
+    <Compile Include="Tables\TotalOrderEntity.cs" />
     <Compile Include="Tables\UbiEntity.cs" />
     <Compile Include="Tables\UserEntity.cs" />
     <Compile Include="Tables\MasterTableEntity.cs" />

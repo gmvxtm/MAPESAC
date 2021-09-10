@@ -16,13 +16,17 @@ namespace BaseArchitecture.Repository.Entity
         public DateTime DateOrder { get; set; }
         public string CodeOrder { get; set; }
         public double Total { get; set; }
+        public string Email { get; set; }
         public string StatusOrder { get; set; }
+        public string StatusOrderName { get; set; }
         public string LocationOrder { get; set; }
+        public string LocationOrderName { get; set; }
         public Guid IdCustomer { get; set; }
         public string BusinessName { get; set; }
         public string BusinessNumber { get; set; }
         public string RecordStatus { get; set; }
         public CustomerEntity CustomerEntity { set; get;}
         public List<OrderDetailEntity> ListOrderDetail { get; set; }
+        
     }
 }

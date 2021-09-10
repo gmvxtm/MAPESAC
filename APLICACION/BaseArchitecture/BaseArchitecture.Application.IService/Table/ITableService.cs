@@ -17,5 +17,6 @@ namespace BaseArchitecture.Application.IService.Table
         Response<UbiEntity> ListUbi();
         Response<OrderListEntity> ListOrder();
         Response<OrderEntity> GetOrderByCodeOrder(OrderEntity orderRequest);
+        Response<OrderListByLocationEntity> ListOrderByLocation(OrderEntity orderRequest);
     }
 }

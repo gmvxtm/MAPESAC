@@ -15,6 +15,13 @@ namespace BaseArchitecture.Repository.Entity.Tables
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string IdDistrict { get; set; }
+        public string District { get; set; }
+        public string IdProvince { get; set; }
+        public string Province { get; set; }
+        public string IdDepartment { get; set; }
+        public string Department { get; set; }
         public string RecordStatus { get; set; }
     }
 }
+
+

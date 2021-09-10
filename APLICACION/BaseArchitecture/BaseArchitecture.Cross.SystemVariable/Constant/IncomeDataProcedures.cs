@@ -36,6 +36,8 @@
             public const string ListProduct = "Usp_List_Product";
             public const string ListUbi = "Usp_List_Ubi";
             public const string ListOrder = "Usp_List_Order";
+            public const string ListOrderByLocation = "Usp_List_OrderByLocation";
+            
             public const string GetOrderByCodeOrder = "Usp_Get_OrderByCodeOrder";
 
             public const string MrgOrder = "Usp_Mrg_Order";
