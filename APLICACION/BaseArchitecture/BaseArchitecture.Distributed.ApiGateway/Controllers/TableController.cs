@@ -223,14 +223,14 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
         [HttpGet]
         [RequestLoggerFilterAttribute]
         [UnControlledExceptionFilterAttribute]
-        [Route(IncomeWebApi.MethodApi.Mapesac.ListOrderByLocation)]
-        public IHttpActionResult ListOrderByLocation()
+        [Route(IncomeWebApi.MethodApi.Mapesac.UpdOrderFlow)]
+        public IHttpActionResult UpdOrderFlow()
         {
-            var postData = HttpContext.Current.Request.Params["orderRequest"];
+            var postData = HttpContext.Current.Request.Params["orderFlowRequest"];
             var urlApi =
-                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.ListOrderByLocation}";
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.UpdOrderFlow}";
             var result =
-              InvokeWebApi.InvokePostAnonymousEntity<Response<OrderListByLocationEntity>>(urlApi, postData);
+              InvokeWebApi.InvokePostAnonymousEntity<Response<int>>(urlApi, postData);
             return Ok(result);
         }
     }

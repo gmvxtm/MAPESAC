@@ -102,5 +102,26 @@ namespace BaseArchitecture.Repository.Data.Transactional
             }
             return response;
         }
+
+        public Response<int> UpdOrderFlow(OrderFlowEntity orderFlowRequest)
+        {
+            Response<int> response;
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@ParamIIdOrder", orderFlowRequest.IdOrder);
+                parameters.Add("@ParamILocationOrder", orderFlowRequest.LocationOrder);
+                parameters.Add("@ParamIAnswer", orderFlowRequest.Answer);
+
+                var result = connection.Execute(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.UpdOrderFlow}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure);
+
+                response = new Response<int>(result);
+            }
+
+            return response;
+        }
     }
 }

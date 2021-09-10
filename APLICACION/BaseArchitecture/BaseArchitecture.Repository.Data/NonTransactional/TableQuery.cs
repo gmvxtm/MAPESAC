@@ -148,7 +148,6 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
                 {
                     basicResponse.ListOrderEntity = list.Read<OrderEntity>().ToList();
                     basicResponse.ListTotalOrderEntity = list.Read<TotalOrderEntity>().ToList();
-
                 }
                 response = new Response<OrderListByLocationEntity>
                 {
