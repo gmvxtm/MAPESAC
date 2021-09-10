@@ -41,22 +41,13 @@
   </div>
   <div>
 
-  <!-- EXAMPLE 4 -->
+
     <div class="ml-status-bar"> 
       <div class="ml-status-bar-elements"> 
-      <span class="ml-status-circle proccessed fa"><h6 class="current">Enviado</h6></span>
-      <span class="ml-status-connector proccessed"></span><span class="ml-status-connector proccessed"></span>
-      <span class="ml-status-circle proccessed fa"><h6 class="current">Recibido</h6></span>
-      <span class="ml-status-connector proccessed"></span><span class="ml-status-connector proccessed"></span>
-      <span class="ml-status-circle proccessed fa"><h6 class="current">Corte</h6></span>
-      <span class="ml-status-connector proccessed"></span><span class="ml-status-connector proccessed"></span>
-      <span class="ml-status-circle proccessed fa"><h6 class="current">Costura</h6></span>
-      <span class="ml-status-connector proccessed"></span><span class="ml-status-connector proccessed"></span>
-      <span class="ml-status-circle proccessed fa"><h6 class="current">Lavanderia</h6></span>
-      <span class="ml-status-connector proccessed"></span><span class="ml-status-connector proccessed"></span>
-      <span class="ml-status-circle proccessed fa"><h6 class="current">Acabados</h6></span>
-      <span class="ml-status-connector proccessed"></span><span class="ml-status-connector proccessed"></span>
-      <span class="ml-status-circle proccessed fa"><h6 class="current">Entregar</h6></span>
+      <span class="row" *ngFor="let item of listOrderStatus">
+        <span [ngClass]="{'proccessed':item.FlagStatus}"  class="ml-status-circle fa"><h6 class="current" [ngStyle]="{'margin-top':item.FlagStatus ? '' : '22px' }"> {{ item.DescriptionStatus }}</h6></span>
+        <span *ngIf="item.OrderStatus != '7'" [ngClass]="{'proccessed':item.FlagStatus}" class="ml-status-connector"></span><span *ngIf="item.OrderStatus != '7'"  [ngClass]="{'proccessed':item.FlagStatus}" class="ml-status-connector"></span>
+      </span>
       </div>
     </div>
 

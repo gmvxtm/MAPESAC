@@ -37,6 +37,7 @@ export class MisPedidosComponent implements OnInit {
     catalogListSelected: any[] = [];
     catalogListSelectedModal: any[] = [];
     codeOrder: string;
+    listOrderStatus: any[] = [];
 
     constructor(
       private spinner: NgxSpinnerService,
@@ -55,8 +56,8 @@ export class MisPedidosComponent implements OnInit {
       orderEntity.CodeOrder = this.codeOrder;
       this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
         (data: any) => {
-          debugger
-          console.log(data)
+          this.listOrderStatus = data.Value.ListOrderStatus;
+          console.log(this.listOrderStatus)
         },
         (error: HttpErrorResponse) => {
         this.spinner.hide();
