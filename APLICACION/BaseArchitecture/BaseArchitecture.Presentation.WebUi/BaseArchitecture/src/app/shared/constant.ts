@@ -22,7 +22,8 @@ export const NameServiceApi ={
   ListProduct:'ListProduct',
   MergeOrder:'MergeOrder',
   ListUbi:'ListUbi',
-  ListOrder:'ListOrder'
+  ListOrder:'ListOrder',
+  GetOrderByCodeOrder: 'GetOrderByCodeOrder'
 }
 
 export const Demo = {

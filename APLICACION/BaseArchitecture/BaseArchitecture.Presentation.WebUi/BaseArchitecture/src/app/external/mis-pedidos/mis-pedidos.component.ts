@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ProductEntity } from 'src/app/shared/models/general/table.interface';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
+import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 
 var $: any;
 
@@ -35,6 +36,8 @@ export class MisPedidosComponent implements OnInit {
     countCart = 0;
     catalogListSelected: any[] = [];
     catalogListSelectedModal: any[] = [];
+    codeOrder: string;
+
     constructor(
       private spinner: NgxSpinnerService,
       private router: Router,
@@ -44,6 +47,21 @@ export class MisPedidosComponent implements OnInit {
   
     ngOnInit(): void {
       
+    }
+
+    buscarPedido = () => {
+      let orderEntity = new OrderEntity();
+      orderEntity.CodeOrder = this.codeOrder;
+      this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
+        (data: any) => {
+          debugger
+          console.log(data)
+        },
+        (error: HttpErrorResponse) => {
+        this.spinner.hide();
+        console.log(error);
+        }
+    );
     }
 
 

@@ -15,3 +15,104 @@
     font-size: 10px;
 }
 
+
+.ml-status-bar {
+      
+    width:100%;
+    padding: 20px 0px 20px 0px;
+    
+}
+.ml-status-bar-elements {
+  
+  width:100%; 
+  height:50px;
+  display: flex;
+  align-items:flex-end;
+  justify-content:center;
+}
+
+.ml-status-connector{
+  z-index:99;
+  width:83px;
+  height:10px;
+  background-color:#d9d9d6;
+  margin:8px -1px;
+}
+
+
+/* ======== Step Style ====== */
+
+.ml-status-circle {
+  position:relative;
+  z-index:100;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  padding: 2px;
+  background: #d9d9d6;
+  font-size:22px;
+  text-align: center;
+  display: inline-block;
+}
+.none{
+  line-height: 1;
+  
+}
+.proccessing {
+  /*border:4px solid #007ABC;*/
+  background: #007ABC;
+  color: #ffffff;
+}
+.proccessed {
+  /*border:4px solid #A4CE4E;*/
+  background: #A4CE4E;
+  color: #ffffff;
+}
+.ml-status-circle.proccessed{
+  
+  /*border:4px solid #A4CE4E;
+  background: #618023;*/
+  background:radial-gradient(#333333 5%, #333333 49%, #A4CE4E 50%);
+}
+.error {
+  /*border:4px solid #DB1818;*/
+  background: #DB1818;
+  color: #ffffff;
+}
+
+.none::before{
+  content:"\00A0";
+}
+
+.proccessing.fa::before{
+  content:"\f138";
+}
+.proccessed.fa::before{
+  content:"\f058";
+  
+}
+.error.fa::before{
+  content:"\f06a";
+}
+
+
+.ml-status-circle > h6{
+  position:relative;
+  /*top:-40px;
+  left:-80%;*/
+  
+  top:-40px;
+  left:-80%;
+  text-align:center;
+  font-family: 'Noto Sans', sans-serif;
+  color:#333333;
+  font-size:13px;
+  font-weight:normal;
+  
+}
+
+.ml-status-circle > h6.current{
+  font-weight:bold;
+  }
+
+

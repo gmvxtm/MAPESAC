@@ -6,7 +6,7 @@ import { Mapesac, NameServiceApi, Path, Security } from '../../constant';
 import { Observable } from 'rxjs';
 import { AutorizacionService } from './autorizacion.service';
 import { AccessResponse } from '../../models/response/authentication/authentication-response.interface';
-import { UbiEntity, UserEntityRequest } from '../../models/request/authentication/authentication-request.interface';
+import { OrderEntity, UbiEntity, UserEntityRequest } from '../../models/request/authentication/authentication-request.interface';
 import { ProductEntity } from '../../models/general/table.interface';
 
 @Injectable({ providedIn: 'root' })
@@ -66,6 +66,17 @@ export class GeneralService {
   ListOrder(): Observable<any>{
     return this.http
       .get<UbiEntity>(this.urlWebApi + Path.Mapesac + NameServiceApi.ListOrder)
+      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
+  }
+
+  GetOrderByCodeOrder(orderEntity: OrderEntity): Observable<any>{
+    return this.http
+      .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.GetOrderByCodeOrder,
+        {
+          observe: 'body',
+          params: { orderRequest: JSON.stringify(orderEntity) },
+        }
+      )
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
   }
 

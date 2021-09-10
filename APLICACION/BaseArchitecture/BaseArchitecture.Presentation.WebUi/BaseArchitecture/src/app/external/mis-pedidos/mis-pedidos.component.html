@@ -36,8 +36,30 @@
       <input class="form-control">
     </div>
     <div class="md-2">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Buscar</button>
+      <button [(ngModel)]="codeOrder" (click)="buscarPedido()" type="button" class="btn btn-secondary" data-dismiss="modal">Buscar</button>
     </div>
+  </div>
+  <div>
+
+  <!-- EXAMPLE 4 -->
+    <div class="ml-status-bar"> 
+      <div class="ml-status-bar-elements"> 
+      <span class="ml-status-circle proccessed fa"><h6 class="current">Enviado</h6></span>
+      <span class="ml-status-connector proccessed"></span><span class="ml-status-connector proccessed"></span>
+      <span class="ml-status-circle proccessed fa"><h6 class="current">Recibido</h6></span>
+      <span class="ml-status-connector proccessed"></span><span class="ml-status-connector proccessed"></span>
+      <span class="ml-status-circle proccessed fa"><h6 class="current">Corte</h6></span>
+      <span class="ml-status-connector proccessed"></span><span class="ml-status-connector proccessed"></span>
+      <span class="ml-status-circle proccessed fa"><h6 class="current">Costura</h6></span>
+      <span class="ml-status-connector proccessed"></span><span class="ml-status-connector proccessed"></span>
+      <span class="ml-status-circle proccessed fa"><h6 class="current">Lavanderia</h6></span>
+      <span class="ml-status-connector proccessed"></span><span class="ml-status-connector proccessed"></span>
+      <span class="ml-status-circle proccessed fa"><h6 class="current">Acabados</h6></span>
+      <span class="ml-status-connector proccessed"></span><span class="ml-status-connector proccessed"></span>
+      <span class="ml-status-circle proccessed fa"><h6 class="current">Entregar</h6></span>
+      </div>
+    </div>
+
   </div>
 </div>
 </div>
