@@ -134,19 +134,23 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
         public Response<OrderEntity> GetOrderByCodeOrder(OrderEntity orderRequest)
         {
             Response<OrderEntity> response;
-
             using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@ParamICodeOrder", orderRequest.CodeOrder);
-                var resultResponse = connection.QueryAsync<OrderEntity>(
-                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.GetOrderByCodeOrder}",
-                    parameters,
-                    commandType: CommandType.StoredProcedure).Result;
+                var basicResponse = new OrderEntity();
+                using (var list = connection.QueryMultipleAsync(
+                                    sql: $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.GetOrderByCodeOrder}",
+                                    param: parameters,
+                                    commandType: CommandType.StoredProcedure).Result)
+                {
+                    basicResponse.ListOrderStatus = list.Read<OrderStatusEntity>().ToList();
+                    basicResponse = list.Read<OrderEntity>().ToList().FirstOrDefault();
 
+                }
                 response = new Response<OrderEntity>
                 {
-                    Value = resultResponse.FirstOrDefault()
+                    Value = basicResponse
                 };
             }
             return response;

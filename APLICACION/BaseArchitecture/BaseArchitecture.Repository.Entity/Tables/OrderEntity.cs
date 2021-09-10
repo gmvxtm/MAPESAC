@@ -6,6 +6,12 @@ namespace BaseArchitecture.Repository.Entity
 {
     public class OrderEntity
     {
+        public OrderEntity()
+        {
+            ListOrderStatus = new List<OrderStatusEntity>();
+        }
+
+        public IEnumerable<OrderStatusEntity> ListOrderStatus { get; set; }
         public Guid IdOrder { get; set; }
         public DateTime DateOrder { get; set; }
         public string CodeOrder { get; set; }
@@ -17,6 +23,5 @@ namespace BaseArchitecture.Repository.Entity
         public string RecordStatus { get; set; }
         public CustomerEntity CustomerEntity { set; get;}
         public List<OrderDetailEntity> ListOrderDetail { get; set; }
-        public List<OrderStatusEntity> ListOrderStatus { get; set; }
     }
 }

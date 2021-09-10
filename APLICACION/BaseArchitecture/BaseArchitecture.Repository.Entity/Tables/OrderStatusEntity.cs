@@ -11,5 +11,8 @@ namespace BaseArchitecture.Repository.Entity
         public string Location { get; set; }
         public DateTime DateOrderStatus { get; set; }
         public string Status { get; set; }
+        public string DescriptionStatus { get; set; }
+        public Boolean FlagStatus { get; set; }
+        public int OrderStatus { get; set; }
     }
 }
