@@ -44,7 +44,7 @@
                 public const string ListUbi = "ListUbi";
                 public const string SendEmail = "SendEmail";
                 public const string ListOrder = "ListOrder";
-                public const string GetOrderByCodeOrder = "GetCodeByCodeOrder";
+                public const string GetOrderByCodeOrder = "GetOrderByCodeOrder";
             }
         }
 

@@ -143,9 +143,9 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
                                     sql: $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.GetOrderByCodeOrder}",
                                     param: parameters,
                                     commandType: CommandType.StoredProcedure).Result)
-                {
-                    basicResponse.ListOrderStatus = list.Read<OrderStatusEntity>().ToList();
+                {                    
                     basicResponse = list.Read<OrderEntity>().ToList().FirstOrDefault();
+                    basicResponse.ListOrderStatus = list.Read<OrderStatusEntity>().ToList();
 
                 }
                 response = new Response<OrderEntity>
