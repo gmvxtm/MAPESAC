@@ -54,6 +54,10 @@ export class LoginRequest {
     StatusOrderName?:string;
     LocationOrderName?:string;
     Email?:string;
+    FirstName?:string;
+    LastName?:string;
+    DocumentNumber?:string;
+    PhoneNumber?:string;
     IdCustomer: string;  
     RecordStatus: string;  
     BusinessName: string;  
