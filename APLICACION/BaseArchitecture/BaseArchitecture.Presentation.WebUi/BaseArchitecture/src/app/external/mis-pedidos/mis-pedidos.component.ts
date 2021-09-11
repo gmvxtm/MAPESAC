@@ -53,7 +53,7 @@ export class MisPedidosComponent implements OnInit {
     buscarPedido = () => {
       debugger
       let orderEntity = new OrderEntity();
-      orderEntity.CodeOrder = this.codeOrder;
+      orderEntity.CodeOrder = '202109-000007';
       this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
         (data: any) => {
           this.listOrderStatus = data.Value.ListOrderStatus;

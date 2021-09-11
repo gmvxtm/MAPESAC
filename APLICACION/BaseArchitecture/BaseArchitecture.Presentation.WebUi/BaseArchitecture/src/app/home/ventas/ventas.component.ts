@@ -7,6 +7,7 @@ import { HeadersInterface } from 'src/app/shared/models/request/common/headers-r
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 
 @Component({
   selector: 'app-ventas',
@@ -24,7 +25,7 @@ export class VentasComponent implements OnInit {
     configTable: {};
     listRisk: any[] = [];
     headers: HeadersInterface[] = new Array<HeadersInterface>();
-    
+    listTotalOrderEntity: any[] = [];
   
     constructor(
       private spinner: NgxSpinnerService,
@@ -36,7 +37,7 @@ export class VentasComponent implements OnInit {
     ngOnInit(): void {
       this.createHeadersTable();
       this.loadStart();
-      
+      this.loadVentas();
     }
   
     loadStart = () => {
@@ -49,6 +50,21 @@ export class VentasComponent implements OnInit {
         serverSide: false,
         filterColumn: true
       };
+    }
+
+    loadVentas = () => {
+      let orderEntity = new OrderEntity();
+      orderEntity.LocationOrder = "00201";
+      this.serviceProyecto.ListOrderByLocation(orderEntity).subscribe(
+        (data: any) => {
+          this.listTotalOrderEntity = data.Value.ListTotalOrderEntity
+          console.log(data)
+        },
+        (error: HttpErrorResponse) => {
+        this.spinner.hide();
+        console.log(error);
+        }
+    );
     }
   
 
