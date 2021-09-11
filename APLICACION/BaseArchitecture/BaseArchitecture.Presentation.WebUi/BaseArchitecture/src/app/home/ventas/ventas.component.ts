@@ -74,8 +74,11 @@ export class VentasComponent implements OnInit {
     }
 
     buscarFechas = () => {
-      let startDate = new Date(this.SinceDate);
+      debugger
+      let startDate = new Date(this.SinceDate);      
       let endDate = new Date(this.UntilDate);
+      startDate.setHours(0,0,0,0);
+      endDate.setHours(0,0,0,0);
       this.listOrderEntity = this.listTotalOrderEntityOriginal.filter( x => new Date(x.DateOrder) >= startDate && new Date(x.DateOrder) <= endDate)
     }
 
