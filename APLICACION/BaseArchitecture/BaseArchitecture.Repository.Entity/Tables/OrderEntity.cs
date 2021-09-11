@@ -29,6 +29,7 @@ namespace BaseArchitecture.Repository.Entity
         public string PhoneNumber { get; set; }
         public string LastName { get; set; }
         public string RecordStatus { get; set; }
+        public string DateOrderString { get; set; }
         public CustomerEntity CustomerEntity { set; get;}
         public List<OrderDetailEntity> ListOrderDetail { get; set; }
         
