@@ -25,7 +25,11 @@ export class VentasComponent implements OnInit {
     configTable: {};
     listRisk: any[] = [];
     headers: HeadersInterface[] = new Array<HeadersInterface>();
+    listTotalOrderEntityOriginal: any[] = [];
     listTotalOrderEntity: any[] = [];
+    listOrderEntity: any[] = [];
+    SinceDate: string;
+    UntilDate: string;
   
     constructor(
       private spinner: NgxSpinnerService,
@@ -45,10 +49,10 @@ export class VentasComponent implements OnInit {
         paging: true,
         searching: false,
         ordering: true,
-        lengthChange: true,
+        lengthChange: false,
         lengthMenu: [5, 10, 15, 20, 25],
         serverSide: false,
-        filterColumn: true
+        filterColumn: false
       };
     }
 
@@ -57,8 +61,10 @@ export class VentasComponent implements OnInit {
       orderEntity.LocationOrder = "00201";
       this.serviceProyecto.ListOrderByLocation(orderEntity).subscribe(
         (data: any) => {
-          this.listTotalOrderEntity = data.Value.ListTotalOrderEntity
-          console.log(data)
+          this.listTotalOrderEntity = data.Value.ListTotalOrderEntity;
+          this.listTotalOrderEntityOriginal = data.Value.ListOrderEntity;
+          this.listOrderEntity = data.Value.ListOrderEntity;
+          this.totalItems = this.listOrderEntity.length;
         },
         (error: HttpErrorResponse) => {
         this.spinner.hide();
@@ -66,50 +72,58 @@ export class VentasComponent implements OnInit {
         }
     );
     }
-  
 
+    buscarFechas = () => {
+      let startDate = new Date(this.SinceDate);
+      let endDate = new Date(this.UntilDate);
+      this.listOrderEntity = this.listTotalOrderEntityOriginal.filter( x => new Date(x.DateOrder) >= startDate && new Date(x.DateOrder) <= endDate)
+    }
 
+    limpiar = () => {
+      this.SinceDate = "";
+      this.UntilDate = "";
+      this.listOrderEntity = this.listTotalOrderEntityOriginal;
+    }
 
     createHeadersTable = () => {
       this.headers = [
         {
-          primaryKey: 'Codigo',
-          title: 'Código',
+          primaryKey: 'CodeOrder',
+          title: 'N° Pedido',
         },
         {
-          primaryKey: 'InversionDescripcion',
-          title: 'Tipo de Inversión',
+          primaryKey: 'FirstName',
+          title: 'Nombres',
         },
         {
-          primaryKey: 'CicloDescripcion',
-          title: 'Ciclo de Inversión',
+          primaryKey: 'LastName',
+          title: 'Apellidos',
         },
         {
-          primaryKey: 'NaturalezaDescripcion',
-          title: 'Naturaleza',
+          primaryKey: 'Email',
+          title: 'Correo',
         },
         {
-          primaryKey: 'Nombre',
-          title: 'Nombre',
+          primaryKey: 'PhoneNumber',
+          title: 'Telefono',
         },
         {
-          primaryKey: 'Departamento',
-          title: 'Departamento',
+          primaryKey: 'DateOrderString',
+          title: 'Fecha',
         },
         {
-          primaryKey: 'Costo',
-          title: 'Costo',
+          primaryKey: 'LocationOrderName',
+          title: 'Estado',
         },
         {
           primaryKey: '',
-          title: 'Acciones',
+          title: 'Ver',
           property: 'button',
           buttons: [
           {
             type: 'edit',
             icon: 'fas fa-search',
-            tooltip: 'Consultar'
-        }
+          }
           ]
         }
       ];
