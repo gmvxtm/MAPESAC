@@ -110,5 +110,13 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
             var result = TableService.UpdOrderFlow(orderFlowRequest);
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.ListOrderByLocation)]
+        public IHttpActionResult ListOrderByLocation(OrderEntity orderRequest)
+        {
+            var result = TableService.ListOrderByLocation(orderRequest);
+            return Ok(result);
+        }
     }
 }

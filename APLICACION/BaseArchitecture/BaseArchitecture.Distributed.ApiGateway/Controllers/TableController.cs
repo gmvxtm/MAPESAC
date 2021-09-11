@@ -233,5 +233,19 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
               InvokeWebApi.InvokePostAnonymousEntity<Response<int>>(urlApi, postData);
             return Ok(result);
         }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.ListOrderByLocation)]
+        public IHttpActionResult ListOrderByLocation()
+        {
+            var postData = HttpContext.Current.Request.Params["orderRequest"];
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.ListOrderByLocation}";
+            var result =
+              InvokeWebApi.InvokePostAnonymousEntity<Response<OrderListByLocationEntity>>(urlApi, postData);
+            return Ok(result);
+        }
     }
 }
