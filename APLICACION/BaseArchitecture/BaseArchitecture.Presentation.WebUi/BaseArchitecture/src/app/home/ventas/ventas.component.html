@@ -74,6 +74,7 @@
         <app-table [data]="listOrderEntity" 
             [configTable]="configTable"
             [totalItems]="totalItems"
+            (edit) = "verDetalle($event)"
             [headers]="headers">
         </app-table>
     </div>

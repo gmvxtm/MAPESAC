@@ -53,11 +53,10 @@ export class MisPedidosComponent implements OnInit {
     buscarPedido = () => {
       debugger
       let orderEntity = new OrderEntity();
-      orderEntity.CodeOrder = '202109-000007';
+      orderEntity.CodeOrder = this.codeOrder;
       this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
         (data: any) => {
           this.listOrderStatus = data.Value.ListOrderStatus;
-          console.log(this.listOrderStatus)
         },
         (error: HttpErrorResponse) => {
         this.spinner.hide();

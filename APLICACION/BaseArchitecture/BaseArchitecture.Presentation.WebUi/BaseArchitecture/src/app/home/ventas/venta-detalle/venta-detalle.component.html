@@ -1,0 +1,52 @@
+<div class="container row" style="margin-top: 10px;">
+    <div  class="col-10">
+        <p style="text-align: left; font-size: 16px; font-weight: bold;margin-bottom: 0;">
+           Detalle
+        </p>
+    </div>
+</div>
+<div class="container">
+    <label>Pedido: {{codeOrder}}</label>
+</div>
+<br>
+<br>
+<div class="container">
+    <div class="row col-md-12">
+        <div class="col-md-3">
+            Nombres: {{ customerEntity.FirstName }}
+        </div>
+        <div class="col-md-3">
+            Apellidos: {{ customerEntity.LastName }}
+        </div>
+        <div class="col-md-3">
+            DNI: {{ customerEntity.DocumentNumber }}
+        </div>
+        <div class="col-md-3">
+            Correo: {{ customerEntity.Email }}
+        </div>
+    </div>
+    <br>
+    <div class="row col-md-12">
+        <div class="col-md-3">
+            Telefono: {{ customerEntity.PhoneNumber }}
+        </div>
+        <div class="col-md-3">
+            Departamento: {{ customerEntity.Department }}
+        </div>
+        <div class="col-md-3">
+            Provincia: {{ customerEntity.Province }}
+        </div>
+        <div class="col-md-3">
+            Distrito: {{ customerEntity.District }}
+        </div>
+    </div>
+    <br>
+    <div class="row col-md-12">
+        <div class="col-md-2">
+            <button class="form-control btn-success"><em class="fas fa-save"></em>&nbsp;&nbsp; Aprobar</button>
+        </div>
+        <div class="col-md-2">
+            <button class="form-control btn-danger"><em class="fa fa-times"></em>&nbsp;&nbsp; Rechazar</button>
+        </div>
+    </div>
+</div>
