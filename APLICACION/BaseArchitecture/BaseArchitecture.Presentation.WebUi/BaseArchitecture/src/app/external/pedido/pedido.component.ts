@@ -110,7 +110,8 @@ export class PedidoComponent implements OnInit {
     quantitychange =() => {
       this.catalogListSelectedModal.forEach(element => {
         element.Total =element.Quantity*element.PriceUnit;
-    });
+      });
+    
     }
 
 }

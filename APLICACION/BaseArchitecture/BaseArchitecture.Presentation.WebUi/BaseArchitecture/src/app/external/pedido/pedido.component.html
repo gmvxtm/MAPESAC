@@ -59,7 +59,7 @@
               S/. {{item.PriceUnit}}
             </div>
             <div class="col-md-3">
-                <input [(ngModel)]="item.Quantity" type="number" class="form-control" style="width: 80px;" (change)="quantitychange()">
+                <input [(ngModel)]="item.Quantity"   min="1" max="10000"  type="number" class="form-control" style="width: 80px;" (change)="quantitychange()">
             </div>
             <div class="col-md-2">
               {{item.Total}}
@@ -91,7 +91,7 @@
                             Precio Unitario: S/.&nbsp;{{item.PriceUnit}}
                         </div>
                         <div class="col-12 row" style="margin-left: 50px;">
-                            Cantidad:  &nbsp;<input type="number" class="form-control" style="width: 80px;" [(ngModel)] ="item.Quantity" >
+                            Cantidad:  &nbsp;<input type="number"  min="1" max="10000"  class="form-control" style="width: 80px;" [(ngModel)] ="item.Quantity" >
                         </div>
                         <br>    
                         <button class="form-control btn btn-success" (click)="addProduct(item)" style="width: 50%;margin-bottom: 10px;">Añadir &nbsp;&nbsp;<em class="fa fa-plus"></em></button>
