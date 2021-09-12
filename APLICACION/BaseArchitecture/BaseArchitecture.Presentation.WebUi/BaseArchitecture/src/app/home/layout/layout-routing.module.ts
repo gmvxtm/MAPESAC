@@ -24,6 +24,14 @@ const routes: Routes = [
           canActivate: [AuthGuard],
       },
       {
+        path: 'ventas/detalle',
+        loadChildren: () =>
+          import('src/app/home/ventas/venta-detalle/venta-detalle.module').then(
+            (m) => m.VentaDetalleModule
+          ),
+          // canActivate: [AuthGuard],
+      },
+      {
         path: 'almacen',
         loadChildren: () =>
           import('src/app/home/almacen/almacen.module').then(

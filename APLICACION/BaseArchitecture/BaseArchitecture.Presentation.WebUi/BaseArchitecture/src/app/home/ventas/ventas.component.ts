@@ -8,6 +8,7 @@ import { GeneralService } from 'src/app/shared/services/general/general.service'
 import { HttpErrorResponse } from '@angular/common/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-ventas',
@@ -35,7 +36,8 @@ export class VentasComponent implements OnInit {
       private spinner: NgxSpinnerService,
       private router: Router,
       private localStorage: LocalService,
-      private serviceProyecto: GeneralService
+      private serviceProyecto: GeneralService,
+      private generalService: GeneralService,
     ) { }
   
     ngOnInit(): void {
@@ -86,6 +88,13 @@ export class VentasComponent implements OnInit {
       this.SinceDate = "";
       this.UntilDate = "";
       this.listOrderEntity = this.listTotalOrderEntityOriginal;
+    }
+
+    verDetalle = (item) => {
+      debugger
+      let codeOrder = item.CodeOrder;
+      this.localStorage.setJsonValue("codeOrderSend", codeOrder)
+      this.router.navigate(['ventas/detalle']);
     }
 
     createHeadersTable = () => {

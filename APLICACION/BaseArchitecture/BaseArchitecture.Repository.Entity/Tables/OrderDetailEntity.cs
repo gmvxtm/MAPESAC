@@ -9,6 +9,9 @@ namespace BaseArchitecture.Repository.Entity
         public Guid IdProduct { get; set; }
         public string Description { get; set; }
         public double Quantity { get; set; }
+        public double UnitPrice { get; set; }
+        public double SubTotal { get; set; }
+        public string PathImageProduct { get; set; }
         public string RecordStatus { get; set; }
     }
 }
