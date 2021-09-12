@@ -23,6 +23,7 @@ export class VentaDetalleComponent implements OnInit {
   public labelJson: ResponseLabel = new ResponseLabel();
   codeOrder: string;
   customerEntity: any;
+  listOrderDetail: any [] = [];
 
   constructor(
     private generalService: GeneralService,
@@ -52,13 +53,15 @@ export class VentaDetalleComponent implements OnInit {
 
     // ListOrderDetail: Array(3)
     // 0:
-    // Description: ""
-    // IdOrder: "d77d2729-f9ff-4bc8-8302-2aa2de4c5054"
-    // IdOrderDetail: "6ce25492-3a46-41f6-a191-a501d8db8e85"
-    // IdProduct: "76d5f7f6-2bd4-4718-9bef-2f21a381cb9f"
-    // Quantity: 4
+    // Description: "Modelo A"
+    // IdOrder: "42faf6ea-88e6-4472-b6ec-5a3a70367f6f"
+    // IdOrderDetail: "031dbe70-09fc-4786-88fc-38476d1e14e9"
+    // IdProduct: "4fecb6ff-0508-45c2-a2c2-84c2f51514f6"
+    // Quantity: 1
     // RecordStatus: "A"
-    // [[Prototype]]: Object
+    // UnitPrice
+    // SubTotal: 3
+    
     // 1: {IdOrderDetail: 'e048bb1a-bfbb-4355-83c5-a8432ea46d86', IdOrder: 'd77d2729-f9ff-4bc8-8302-2aa2de4c5054', IdProduct: 'abd7c103-7799-405a-bd90-9b0cffd6a82a', Description: '', Quantity: 3, …}
     // 2: {IdOrderDetail: '141faa5f-21bf-4d0b-b6fc-ab84d60eadfa', IdOrder: 'd77d2729-f9ff-4bc8-8302-2aa2de4c5054', IdProduct: '4fecb6ff-0508-45c2-a2c2-84c2f51514f6', Description: '', Quantity: 2, …}
 
@@ -69,7 +72,7 @@ export class VentaDetalleComponent implements OnInit {
         (data: any) => {
           console.log(data)
           this.customerEntity = data.Value.CustomerEntity;
-          let obj = data.Value.ListOrderStatus;
+          this.listOrderDetail = data.Value.ListOrderDetail;
         },
         (error: HttpErrorResponse) => {
         this.spinner.hide();

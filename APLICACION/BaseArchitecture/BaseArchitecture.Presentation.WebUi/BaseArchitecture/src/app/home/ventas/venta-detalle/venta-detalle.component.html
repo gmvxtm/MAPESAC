@@ -9,6 +9,47 @@
     <label>Pedido: {{codeOrder}}</label>
 </div>
 <br>
+<div class="container">
+    <div class="row col-md-12">
+        <div class="col-md-3">
+            Modelo
+        </div>
+        <div class="col-md-3">
+            Descripción
+        </div>
+        <div class="col-md-2" style="text-align: center;">
+            Precio Unitario S/.
+        </div>
+        <div class="col-md-2" style="text-align: center;">
+            Cantidad
+        </div> 
+        <div class="col-md-2" style="text-align: center;">
+            Total S/.
+        </div>
+    </div>
+    <div *ngFor="let item of listOrderDetail">
+        <div class="row col-md-12" >
+            <div class="col-md-3">
+                <img class="card-img-top" style="background-size: contain; height: 70px; width: 70px;"
+                src={{item.PathImageProduct}}  alt="Sin imagen" />
+            </div>
+            <div class="col-md-3">
+            {{item.Description}}
+            </div>
+            <div class="col-md-2" style="text-align: center;">
+            {{item.UnitPrice}}
+            </div>
+            <div class="col-md-2" style="text-align: center;">
+            {{item.Quantity}}
+            </div>
+            <div class="col-md-2" style="text-align: center;">
+            {{ item.UnitPrice*item.Quantity }}
+            </div>
+           
+        </div>
+        <br>
+    </div>
+</div>
 <br>
 <div class="container">
     <div class="row col-md-12">
