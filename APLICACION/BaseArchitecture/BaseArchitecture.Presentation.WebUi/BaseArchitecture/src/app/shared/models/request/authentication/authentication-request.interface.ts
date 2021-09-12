@@ -64,6 +64,7 @@ export class LoginRequest {
     BusinessNumber: string;  
     CustomerEntity:CustomerEntity;
     ListOrderDetail?:OrderDetailEntity[];
+    Answer?:string;
   }
 
   export class OrderDetailEntity

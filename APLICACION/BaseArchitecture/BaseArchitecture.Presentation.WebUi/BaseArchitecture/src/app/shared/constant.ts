@@ -24,7 +24,8 @@ export const NameServiceApi ={
   ListUbi:'ListUbi',
   ListOrder:'ListOrder',
   GetOrderByCodeOrder: 'GetOrderByCodeOrder',
-  ListOrderByLocation: 'ListOrderByLocation'
+  ListOrderByLocation: 'ListOrderByLocation',
+  UpdOrderFlow:'UpdOrderFlow'
 }
 
 export const Demo = {
@@ -38,8 +39,41 @@ export const Demo = {
 };
 
 export const TableMaster = {
-  TypeDocument: '00100',
+  EstadoPedido: '00100',
+  Ubicacion: '00100',
+  Perfil: '00100',
+  Prioridades: '00100',
+  UnidadMedida: '00100',
+  Respuesta: '00100'
 };
+
+export const MTEstadoPedido = {
+  DNI: '00101',
+};
+export const MTUbicacion = {
+  EncargadoVentas: '00201',
+  AreaCorte: '00202',
+  AreaCostura: '00203',
+  AreaLavanderia: '00204',
+  AreaAcabados: '00205',
+  AreaDespacho: '00206',
+  EntregadoCliente: '00207'
+};
+export const MTPerfil = {
+  DNI: '00101',
+};
+export const MTPrioridades = {
+  DNI: '00101',
+};
+export const MTUnidadMedida = {
+  DNI: '00101',
+};
+export const MTRespuesta = {
+  Pendiente: '00601',
+  Aprobado: '00602',
+  Rechazado: '00603',
+};
+
 
 export const TypeDocument = {
   DNI: '00101',

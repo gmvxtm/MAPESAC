@@ -91,4 +91,16 @@ export class GeneralService {
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
   }
 
+  UpdOrderFlow(orderRequest: any): Observable<any>{
+    return this.http
+      .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.UpdOrderFlow,
+        {
+          observe: 'body',
+          params: { orderFlowRequest: JSON.stringify(orderRequest) },
+        }
+      )
+      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
+  }
+  
+
 }

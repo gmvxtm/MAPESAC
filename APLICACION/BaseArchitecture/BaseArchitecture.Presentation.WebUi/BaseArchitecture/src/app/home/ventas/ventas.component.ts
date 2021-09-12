@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 import { Subject } from 'rxjs';
+import { MTUbicacion } from 'src/app/shared/constant';
 
 @Component({
   selector: 'app-ventas',
@@ -60,7 +61,7 @@ export class VentasComponent implements OnInit {
 
     loadVentas = () => {
       let orderEntity = new OrderEntity();
-      orderEntity.LocationOrder = "00201";
+      orderEntity.LocationOrder = MTUbicacion.EncargadoVentas;
       this.serviceProyecto.ListOrderByLocation(orderEntity).subscribe(
         (data: any) => {
           this.listTotalOrderEntity = data.Value.ListTotalOrderEntity;
@@ -77,11 +78,19 @@ export class VentasComponent implements OnInit {
 
     buscarFechas = () => {
       debugger
-      let startDate = new Date(this.SinceDate);      
-      let endDate = new Date(this.UntilDate);
-      startDate.setHours(0,0,0,0);
-      endDate.setHours(0,0,0,0);
-      this.listOrderEntity = this.listTotalOrderEntityOriginal.filter( x => new Date(x.DateOrder) >= startDate && new Date(x.DateOrder) <= endDate)
+      if(this.SinceDate === undefined && this.UntilDate=== undefined)      
+      {
+        this.listOrderEntity = this.listTotalOrderEntityOriginal
+      }
+      else
+      {
+        let startDate = new Date(this.SinceDate);      
+        let endDate = new Date(this.UntilDate);
+        startDate.setHours(0,0,0,0);
+        endDate.setHours(0,0,0,0);
+        this.listOrderEntity = this.listTotalOrderEntityOriginal.filter( x => new Date(x.DateOrder) >= startDate && new Date(x.DateOrder) <= endDate)
+      }
+
     }
 
     limpiar = () => {
