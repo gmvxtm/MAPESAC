@@ -32,6 +32,7 @@ namespace BaseArchitecture.Repository.Entity
         public string DateOrderString { get; set; }
         public CustomerEntity CustomerEntity { set; get;}
         public List<OrderDetailEntity> ListOrderDetail { get; set; }
-        
+        public string AnswerName { get; set; }
+
     }
 }
