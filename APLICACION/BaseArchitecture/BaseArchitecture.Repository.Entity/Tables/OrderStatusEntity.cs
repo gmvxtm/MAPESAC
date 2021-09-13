@@ -14,5 +14,9 @@ namespace BaseArchitecture.Repository.Entity
         public string DescriptionStatus { get; set; }
         public Boolean FlagStatus { get; set; }
         public int OrderStatus { get; set; }
+        public string IdMasterTable { get; set; }
+        public string Answer { get; set; }
+        
+
     }
 }

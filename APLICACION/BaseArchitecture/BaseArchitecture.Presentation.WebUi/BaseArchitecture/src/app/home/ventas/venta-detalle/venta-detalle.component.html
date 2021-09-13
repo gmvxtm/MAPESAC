@@ -81,10 +81,12 @@
             Distrito: {{ customerEntity.District }}
         </div>
     </div>
+    <br>
     <div class="row col-md-12" *ngIf="orderBD.BusinessNumber != '' ">
         <div class="col-12">
             Datos de la Factura
         </div>
+        <br>
         <div class="col-12">
             <div class="col-md-3">
                 RUC: {{ orderBD.BusinessNumber }}
@@ -97,7 +99,7 @@
     </div>
 
     <br>
-    <div class="row col-md-12" *ngIf="orderBD.LocationOrder == actualLocation ">
+    <div class="row col-md-12" *ngIf="orderBD.LocationOrder == actualLocation && rechazado==false">
         <div class="col-md-2">
             <button class="form-control btn-success" (click)="SendAnswer(1)"><em class="fas fa-save"></em>&nbsp;&nbsp; Aprobar</button>
         </div>

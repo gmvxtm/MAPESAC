@@ -29,6 +29,7 @@ export class VentaDetalleComponent implements OnInit {
   customerEntity: any;
   listOrderDetail: any [] = [];
   actualLocation: any;
+  rechazado:boolean;
   constructor(
     private generalService: GeneralService,
     private spinner: NgxSpinnerService,
@@ -80,6 +81,12 @@ export class VentaDetalleComponent implements OnInit {
           this.orderBD=data.Value;
           this.customerEntity = data.Value.CustomerEntity;
           this.listOrderDetail = data.Value.ListOrderDetail;
+          this.rechazado = false;
+          if(MTRespuesta.Rechazado === this.orderBD.ListOrderStatus.find(x=> x.IdMasterTable === MTUbicacion.EncargadoVentas).Answer)
+          {
+            this.rechazado = true;
+          }
+
         },
         (error: HttpErrorResponse) => {
         this.spinner.hide();
@@ -105,23 +112,32 @@ export class VentaDetalleComponent implements OnInit {
      this.generalService.UpdOrderFlow(orderRequest).subscribe(
          (data: any) => {
             
-            orderRequest = new OrderEntity();
-            orderRequest.IdOrder =this.orderBD.IdOrder ;
-            orderRequest.LocationOrder =MTUbicacion.AreaCorte;
-            orderRequest.Answer = MTRespuesta.Pendiente;
-            
-            this.generalService.UpdOrderFlow(orderRequest).subscribe(
-              (data: any) => {
+            if(respuesta=== MTRespuesta.Rechazado)
+            {
+              this.router.navigate(['ventas']);
+              showSuccess("Se actualizo correctamente la orden");
+            }
+            else
+            {
+              orderRequest = new OrderEntity();
+              orderRequest.IdOrder =this.orderBD.IdOrder ;
+              orderRequest.LocationOrder =MTUbicacion.AreaCorte;
+              orderRequest.Answer = MTRespuesta.Pendiente;
+              
+              this.generalService.UpdOrderFlow(orderRequest).subscribe(
+                (data: any) => {
+  
+                    
+                    this.router.navigate(['ventas']);
+                    showSuccess("Se actualizo correctamente la orden");
+                },
+                (error: HttpErrorResponse) => {
+                  this.spinner.hide();
+                  console.log(error);
+                  }
+              );              
+            }
 
-                  
-                  this.router.navigate(['ventas']);
-                  showSuccess("Se actualizo correctamente la orden");
-              },
-              (error: HttpErrorResponse) => {
-                this.spinner.hide();
-                console.log(error);
-                }
-            );
              //setTimeout(() => {
                  //this.localStorage.clearKey('catalogListSelectedModal');
                 //  this.router.navigate(['catalogo']);
