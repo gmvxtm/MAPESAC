@@ -16,7 +16,8 @@ namespace BaseArchitecture.Repository.Entity
         public int OrderStatus { get; set; }
         public string IdMasterTable { get; set; }
         public string Answer { get; set; }
-        
+        public string DateOrderFlowSTtring { get; set; }
 
     }
 }
+

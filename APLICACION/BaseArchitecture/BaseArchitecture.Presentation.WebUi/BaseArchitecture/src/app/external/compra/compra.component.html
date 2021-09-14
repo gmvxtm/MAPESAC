@@ -80,7 +80,7 @@
           <br>
           <div class="row">
             <div class="col-md-3"> 
-              <button (click)="sendOrder()" class="form-control btn-success">Enviar</button>
+              <button  [disabled] ="disabledSend"  (click)="sendOrder()" class="form-control btn-success">Enviar</button>
             </div>
           </div>
         </div>

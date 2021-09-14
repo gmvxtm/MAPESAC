@@ -33,7 +33,7 @@ export class CompraComponent implements OnInit {
     razonSocial: string;
     ruc: string;
     totalQuantity=0;
-
+    disabledSend = false;
     constructor(
       private spinner: NgxSpinnerService,
       private router: Router,
@@ -94,6 +94,7 @@ export class CompraComponent implements OnInit {
 
 
     sendOrder = () => {
+        this.disabledSend = true;
         this.spinner.show();
         if( this.customerEntity.FirstName === undefined ||  this.customerEntity.FirstName.trim() === "" )
         {   showInfo("Se debe registrar los Nombres"); this.spinner.hide();return; }
