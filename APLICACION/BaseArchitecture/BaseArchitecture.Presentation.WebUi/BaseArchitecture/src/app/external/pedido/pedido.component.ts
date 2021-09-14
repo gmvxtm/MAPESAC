@@ -35,6 +35,7 @@ export class PedidoComponent implements OnInit {
     countCart = 0;
     catalogListSelected: any[] = [];
     catalogListSelectedModal: any[] = [];
+    totalQuantity = 0;
     constructor(
       private spinner: NgxSpinnerService,
       private router: Router,
@@ -97,9 +98,12 @@ export class PedidoComponent implements OnInit {
       }
       this.countCart = this.catalogListSelected.length;
       this.catalogListSelectedModal = this.catalogListSelected.filter(x => x);
-      this.catalogListSelectedModal.forEach(element => {
+
+      this.totalQuantity = 0;
+      this.catalogListSelectedModal.forEach(element => {        
         element.Total =element.Quantity*element.PriceUnit;
-    });
+        this.totalQuantity =this.totalQuantity+ element.Total;
+      });
     }
 
     redirectCompra = () => {
@@ -108,10 +112,12 @@ export class PedidoComponent implements OnInit {
     }
 
     quantitychange =() => {
-      this.catalogListSelectedModal.forEach(element => {
+      this.totalQuantity = 0;
+      this.catalogListSelectedModal.forEach(element => {        
         element.Total =element.Quantity*element.PriceUnit;
+        this.totalQuantity =this.totalQuantity+ element.Total;
       });
-    
+      
     }
 
 }

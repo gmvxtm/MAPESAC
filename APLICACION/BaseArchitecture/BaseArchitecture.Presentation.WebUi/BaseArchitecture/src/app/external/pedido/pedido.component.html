@@ -44,7 +44,7 @@
               Cantidad
             </div>
             <div class="col-md-2">
-              Total
+              Sub Total
             </div>
         </div>
         <div class="col-md-12 row"  style="margin-bottom: 10px;" *ngFor="let item of catalogListSelectedModal">
@@ -65,9 +65,20 @@
               {{item.Total}}
             </div>
         </div>
+        <div class="col-md-12 row"  style="margin-bottom: 10px;">
+          <div class="col-md-10">
+
+          </div>
+          <div class="col-md-1">
+            <span >Total: </span>
+          </div>
+          <div class="col-md-1">
+            <span >{{totalQuantity}} </span>
+          </div>
+        </div>
         <br>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer">        
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" data-dismiss="modal" (click)="redirectCompra()" class="btn btn-primary">Finalizar Pedido</button>
       </div>

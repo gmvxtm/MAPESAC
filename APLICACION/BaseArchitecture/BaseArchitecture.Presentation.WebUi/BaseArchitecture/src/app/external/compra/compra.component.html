@@ -31,10 +31,10 @@
             <br>
             <div class="row">
                 <div class="col-md-5">
-                    Telefono<span style="color:red">(*)</span>: <input [(ngModel)]="customerEntity.PhoneNumber" class="form-control">
+                    Telefono<span style="color:red">(*)</span>: <input maxlength="11" [(ngModel)]="customerEntity.PhoneNumber" class="form-control">
                 </div>
                 <div class="col-md-5">
-                    DNI<span style="color:red">(*)</span>: <input [(ngModel)]="customerEntity.DocumentNumber" class="form-control">
+                    DNI<span style="color:red">(*)</span>: <input maxlength="12" [(ngModel)]="customerEntity.DocumentNumber" class="form-control">
                 </div>
             </div>
             <br>
@@ -85,6 +85,14 @@
           </div>
         </div>
         <div class="col-md-6" style="margin-top: 30px;">
+            <div class="col-md-12 row" style="margin-bottom: 10px;" >
+              <div class="col-md-8">
+                Producto
+              </div>             
+              <div class="col-md-4">
+                Sub Total
+              </div>
+            </div>
             <div class="col-md-12 row"  style="margin-bottom: 10px;" *ngFor="let item of catalogListSelectedModal">
                 <div class="col-md-3">
                   <img class="card-img-top" style="background-size: contain; height: 100px; width: 100px;"
@@ -99,6 +107,17 @@
                 <div class="col-md-4">
                   {{item.Total}}
                 </div>
+            </div>
+            <div class="col-md-12 row"  style="margin-bottom: 10px;">
+              <div class="col-md-6">
+    
+              </div>
+              <div class="col-md-2">
+                <span >Total: </span>
+              </div>
+              <div class="col-md-4">
+                <span >{{totalQuantity}} </span>
+              </div>
             </div>
         </div>
     </div>

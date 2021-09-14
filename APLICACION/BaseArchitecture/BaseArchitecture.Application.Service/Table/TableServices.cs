@@ -101,7 +101,7 @@ namespace BaseArchitecture.Application.Service.Table
                     result = new Response<string>(codeOrder);
 
                     //correo
-                    var rpsta = MailService.SendEmail("gmvxtm@gmail.com", codeOrder);
+                    var rpsta = MailService.SendEmail(orderRequest.CustomerEntity.Email, codeOrder);
                     transaction.Complete();
                 }
                 catch (Exception e)

@@ -32,7 +32,7 @@ export class CompraComponent implements OnInit {
     visibleFactura: boolean;
     razonSocial: string;
     ruc: string;
-    
+    totalQuantity=0;
 
     constructor(
       private spinner: NgxSpinnerService,
@@ -49,9 +49,12 @@ export class CompraComponent implements OnInit {
         this.visibleFactura = false;
         this.catalogListSelectedModal = this.localStorage.getJsonValue('catalogListSelectedModal');
         debugger
+        this.totalQuantity = 0;
         this.catalogListSelectedModal.forEach(element => {
             element.Total =element.Quantity*element.PriceUnit;
+            this.totalQuantity =this.totalQuantity+ element.Total;
         });
+        
         this.loadUbigeo();
     }
 
@@ -91,29 +94,29 @@ export class CompraComponent implements OnInit {
 
 
     sendOrder = () => {
-
+        this.spinner.show();
         if( this.customerEntity.FirstName === undefined ||  this.customerEntity.FirstName.trim() === "" )
-        {   showInfo("Se debe registrar los Nombres"); return; }
+        {   showInfo("Se debe registrar los Nombres"); this.spinner.hide();return; }
         if( this.customerEntity.LastName === undefined || this.customerEntity.LastName.trim() === "" )
-        {   showInfo("Se debe registrar los Apellidos"); return; }
+        {   showInfo("Se debe registrar los Apellidos");this.spinner.hide();return; }
         if(this.customerEntity.Email === undefined ||  this.customerEntity.Email.trim() === "" )
-        {   showInfo("Se debe registrar el correo"); return; }
+        {   showInfo("Se debe registrar el correo"); this.spinner.hide();return; }
         if( this.customerEntity.PhoneNumber === undefined || this.customerEntity.PhoneNumber.trim() === "" )
-        {   showInfo("Se debe registrar el Telefono"); return;}
+        {   showInfo("Se debe registrar el Telefono");this.spinner.hide();return; }
         if(this.customerEntity.DocumentNumber === undefined || this.customerEntity.DocumentNumber.trim() === "" )
-        {   showInfo("Se debe registrar DNI"); return; }
+        {   showInfo("Se debe registrar DNI"); this.spinner.hide();return; }
         if(this.Departamento=== undefined ||  this.Departamento.trim() === "" )
-        {   showInfo("Se debe seleccionar Departamento"); return; }
+        {   showInfo("Se debe seleccionar Departamento"); this.spinner.hide();return; }
         if( this.Provincia === undefined || this.Provincia.trim() === "" )
-        {   showInfo("Se debe seleccionar Provincia"); return; }
+        {   showInfo("Se debe seleccionar Provincia");this.spinner.hide();return; }
         if( this.Distrito === undefined || this.Distrito.trim() === "" )
-        {   showInfo("Se debe seleccionar Distrito"); return; }
+        {   showInfo("Se debe seleccionar Distrito"); this.spinner.hide();return; }
         if(this.visibleFactura === true)
         {
             if( this.ruc === undefined || this.ruc.trim() === "" )
-            {   showInfo("Se debe registrar Ruc"); return; }    
+            {   showInfo("Se debe registrar Ruc"); this.spinner.hide();return; }
             if( this.razonSocial === undefined || this.razonSocial === null )
-            {   showInfo("Se debe selecciregistrar  Razon Social"); return; }
+            {   showInfo("Se debe selecciregistrar  Razon Social");this.spinner.hide();return; }
         }
 
         let orderRequest = new OrderEntity();
