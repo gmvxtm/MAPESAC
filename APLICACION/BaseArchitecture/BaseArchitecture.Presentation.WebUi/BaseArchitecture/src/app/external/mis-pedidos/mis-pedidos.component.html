@@ -47,9 +47,13 @@
     <div *ngIf ="flagRechazado">
       <div class="ml-status-bar">       
         <div class="ml-status-bar-elements"> 
-        <span class="row" *ngFor="let item of listOrderStatus">
-          <span [ngClass]="{'proccessed':item.FlagStatus}"  class="ml-status-circle fa"><h6 class="current" [ngStyle]="{'margin-top':item.FlagStatus ? '' : '22px' }"> {{ item.DescriptionStatus }}</h6></span>
-          <span *ngIf="item.OrderStatus != '7'" [ngClass]="{'proccessed':item.FlagStatus}" class="ml-status-connector"></span><span *ngIf="item.OrderStatus != '7'"  [ngClass]="{'proccessed':item.FlagStatus}" class="ml-status-connector"></span>
+        <span class="row" *ngFor="let item of listOrderStatus">                    
+          <span [ngClass]="{'proccessed':item.FlagStatus}"  class="ml-status-circle fa">            
+            <h6 class="current" [ngStyle]="{'margin-top':item.FlagStatus ? '' : '22px' }"> {{ item.DescriptionStatus }}</h6>              
+          </span>             
+          
+          <span *ngIf="item.OrderStatus != '7'" [ngClass]="{'proccessed':item.FlagStatus}" class="ml-status-connector"></span>
+          <span *ngIf="item.OrderStatus != '7'"  [ngClass]="{'proccessed':item.FlagStatus}" class="ml-status-connector"></span>
         </span>
         </div>
       </div>     
