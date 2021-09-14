@@ -39,17 +39,24 @@
       <button  (click)="buscarPedido()" type="button" class="btn btn-secondary" data-dismiss="modal">Buscar</button>
     </div>
   </div>
-  <div>
+  <div *ngIf ="flagVisible">
 
-
-    <div class="ml-status-bar"> 
-      <div class="ml-status-bar-elements"> 
-      <span class="row" *ngFor="let item of listOrderStatus">
-        <span [ngClass]="{'proccessed':item.FlagStatus}"  class="ml-status-circle fa"><h6 class="current" [ngStyle]="{'margin-top':item.FlagStatus ? '' : '22px' }"> {{ item.DescriptionStatus }}</h6></span>
-        <span *ngIf="item.OrderStatus != '7'" [ngClass]="{'proccessed':item.FlagStatus}" class="ml-status-connector"></span><span *ngIf="item.OrderStatus != '7'"  [ngClass]="{'proccessed':item.FlagStatus}" class="ml-status-connector"></span>
-      </span>
-      </div>
+    <div>
+      <p  style="font-size: 16px;">Hola <span style="font-weight: bold;">{{name}}</span> el estado de tu pedido es: </p>
     </div>
+    <div *ngIf ="flagRechazado">
+      <div class="ml-status-bar">       
+        <div class="ml-status-bar-elements"> 
+        <span class="row" *ngFor="let item of listOrderStatus">
+          <span [ngClass]="{'proccessed':item.FlagStatus}"  class="ml-status-circle fa"><h6 class="current" [ngStyle]="{'margin-top':item.FlagStatus ? '' : '22px' }"> {{ item.DescriptionStatus }}</h6></span>
+          <span *ngIf="item.OrderStatus != '7'" [ngClass]="{'proccessed':item.FlagStatus}" class="ml-status-connector"></span><span *ngIf="item.OrderStatus != '7'"  [ngClass]="{'proccessed':item.FlagStatus}" class="ml-status-connector"></span>
+        </span>
+        </div>
+      </div>     
+    </div>
+    <div *ngIf ="!flagRechazado">
+      <p  style="font-size: 22px;color:red;">RECHAZADO </p>
+    </div>    
 
   </div>
 </div>

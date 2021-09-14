@@ -10,6 +10,7 @@ import { ProductEntity } from 'src/app/shared/models/general/table.interface';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
 import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
+import { MTRespuesta } from 'src/app/shared/constant';
 
 var $: any;
 
@@ -38,7 +39,10 @@ export class MisPedidosComponent implements OnInit {
     catalogListSelectedModal: any[] = [];
     codeOrder: string;
     listOrderStatus: any[] = [];
-
+    orderBD: any;
+    flagVisible : boolean;
+    flagRechazado: boolean;
+    name:string;
     constructor(
       private spinner: NgxSpinnerService,
       private router: Router,
@@ -52,11 +56,20 @@ export class MisPedidosComponent implements OnInit {
 
     buscarPedido = () => {
       debugger
+      this.flagVisible  = false ;
+      this.flagRechazado= false;
       let orderEntity = new OrderEntity();
       orderEntity.CodeOrder = this.codeOrder;
       this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
         (data: any) => {
+          this.flagVisible  = true ;
+
+
+          this.orderBD = data.Value;
+          this.name = this.orderBD.CustomerEntity.FirstName + ' ' +this.orderBD.CustomerEntity.LastName; 
           this.listOrderStatus = data.Value.ListOrderStatus;
+          if(this.orderBD.ListOrderStatus.find(x=> x.Answer === MTRespuesta.Rechazado) === undefined)
+          this.flagRechazado=true;
         },
         (error: HttpErrorResponse) => {
         this.spinner.hide();

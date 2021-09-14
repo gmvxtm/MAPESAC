@@ -20,14 +20,15 @@ namespace BaseArchitecture.Application.Service.Mail
         public Response<int> SendEmail(string emailTo, string codeOrder)
         {
             Response<int> response;
-            
+            string emails = "";
             try
             {
-                if (!string.IsNullOrEmpty(emailTo))
-                    emailTo += "; " + AppSettingValue.EmailSalesResponsible;
+                //if (!string.IsNullOrEmpty(emailTo))
+                //    emails = emailTo + "; " + AppSettingValue.EmailSalesResponsible;
                 MailMessage message = new MailMessage();
                 message.From = new MailAddress("no-reply@mapesac.com");
                 message.To.Add(new MailAddress(emailTo));
+                message.CC.Add(new MailAddress(AppSettingValue.EmailSalesResponsible));
                 message.Subject = "Send Mail Test";
                 message.IsBodyHtml = true;
                 message.Body = GetHtml(codeOrder);
