@@ -33,6 +33,7 @@ namespace BaseArchitecture.Repository.Entity
         public CustomerEntity CustomerEntity { set; get;}
         public List<OrderDetailEntity> ListOrderDetail { get; set; }
         public string AnswerName { get; set; }
+        public string Answer { set; get; }
 
     }
 }

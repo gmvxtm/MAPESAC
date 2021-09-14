@@ -9,7 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 import { Subject } from 'rxjs';
-import { MTUbicacion } from 'src/app/shared/constant';
+import { MTRespuesta, MTUbicacion } from 'src/app/shared/constant';
 
 @Component({
   selector: 'app-ventas',
@@ -57,6 +57,17 @@ export class VentasComponent implements OnInit {
         serverSide: false,
         filterColumn: false
       };
+    }
+
+    filterStatus = (item) => {
+      debugger 
+      let pr = item;
+      if(item.IdMasterTable.trim() ==="0")
+        {this.listOrderEntity = this.listTotalOrderEntityOriginal;}
+      else 
+        {this.listOrderEntity = this.listTotalOrderEntityOriginal.filter(x=> x.Answer === item.IdMasterTable);}
+       
+
     }
 
     loadVentas = () => {
