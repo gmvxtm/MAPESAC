@@ -18,5 +18,6 @@ namespace BaseArchitecture.Repository.IData.NonTransactional
         Response<OrderListEntity> ListOrder();
         Response<OrderEntity> GetOrderByCodeOrder(OrderEntity orderRequest);
         Response<OrderListByLocationEntity> ListOrderByLocation(OrderEntity orderRequest);
+        IEnumerable<SupplyEntity> ListSuppliesByProduct(ProductEntity suppliesByProductRequest);
     }
 }

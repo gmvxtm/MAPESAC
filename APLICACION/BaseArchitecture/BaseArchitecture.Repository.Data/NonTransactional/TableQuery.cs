@@ -184,5 +184,24 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
             }
             return response;
         }
+
+        public IEnumerable<SupplyEntity> ListSuppliesByProduct(ProductEntity suppliesByProductRequest)
+        {
+            IEnumerable<SupplyEntity> response;
+
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@ParamIIdProduct", suppliesByProductRequest.IdProduct);
+                var resultResponse = connection.QueryAsync<SupplyEntity>(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.ListSuppliesByProduct}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure).Result;
+
+                response = resultResponse;
+            }
+
+            return response;
+        }
     }
 }

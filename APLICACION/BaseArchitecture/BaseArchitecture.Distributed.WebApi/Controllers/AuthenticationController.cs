@@ -118,5 +118,13 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
             var result = TableService.ListOrderByLocation(orderRequest);
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.ListSuppliesByProduct)]
+        public IHttpActionResult ListSuppliesByProduct(ProductEntity suppliesByProductRequest)
+        {
+            var result = TableService.ListSuppliesByProduct(suppliesByProductRequest);
+            return Ok(result);
+        }
     }
 }

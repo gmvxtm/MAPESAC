@@ -34,6 +34,7 @@
             public const string ListMasterTable = "USP_MasterTable_List";
             public const string Login = "Usp_Login";
             public const string ListProduct = "Usp_List_Product";
+            public const string ListSuppliesByProduct = "Usp_List_SuppliesByProduct";
             public const string ListUbi = "Usp_List_Ubi";
             public const string ListOrder = "Usp_List_Order";
             public const string GetOrderByCodeOrder = "Usp_Get_OrderByCodeOrder";

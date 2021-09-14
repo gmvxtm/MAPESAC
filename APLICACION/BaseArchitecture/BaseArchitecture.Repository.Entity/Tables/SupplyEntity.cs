@@ -8,6 +8,9 @@ namespace BaseArchitecture.Repository.Entity.Tables
 {
     public class SupplyEntity
     {
-        
+        public string IdSupply { get; set; }
+        public string Name { get; set; }
+        public double Quantity { get; set; }
+        public string MeasureUnit { get; set; }
     }
 }
