@@ -18,43 +18,43 @@
     <div class="col-md-12 row">
         <div class="col-md-6" style="margin-top: 30px;">
             <div class="col-md-11 row">
-                Nombres: <input [(ngModel)]="customerEntity.FirstName" class="form-control">
+                Nombres<span style="color:red">(*)</span>: <input [(ngModel)]="customerEntity.FirstName" class="form-control">
             </div>
             <br>
             <div class="col-md-11 row ">
-                Apellidos: <input [(ngModel)]="customerEntity.LastName" class="form-control">
+                Apellidos<span style="color:red">(*)</span>: <input [(ngModel)]="customerEntity.LastName" class="form-control">
             </div>
             <br>
             <div class="col-md-11 row">
-                Correo: <input [(ngModel)]="customerEntity.Email" class="form-control">
+                Correo<span style="color:red">(*)</span>: <input [(ngModel)]="customerEntity.Email" class="form-control">
             </div>
             <br>
             <div class="row">
                 <div class="col-md-5">
-                    Telefono: <input [(ngModel)]="customerEntity.PhoneNumber" class="form-control">
+                    Telefono<span style="color:red">(*)</span>: <input [(ngModel)]="customerEntity.PhoneNumber" class="form-control">
                 </div>
                 <div class="col-md-5">
-                    DNI: <input [(ngModel)]="customerEntity.DocumentNumber" class="form-control">
+                    DNI<span style="color:red">(*)</span>: <input [(ngModel)]="customerEntity.DocumentNumber" class="form-control">
                 </div>
             </div>
             <br>
             <div class="row">
               <div class="col-md-4">
-                Departamento:
+                Departamento<span style="color:red">(*)</span>:
                   <select [(ngModel)]="Departamento" name="departamento" class="form-control" (change)="loadProvince($event.target.value)">
                       <option value="">-- Seleccione --</option>
                       <option value="{{item.IdDepartment}}" *ngFor="let item of ListDepartmentEntity">{{ item.Department }}</option>
                   </select>
               </div>
                 <div class="col-md-4">
-                Provincia:
+                Provincia<span style="color:red">(*)</span>:
                   <select [(ngModel)]="Provincia" name="provincia" class="form-control" (change)="loadDistrict($event.target.value)">
                       <option value="">-- Seleccione --</option>
                       <option value="{{item.IdProvince}}" *ngFor="let item of ListProvinceEntity">{{ item.Province }}</option>
                   </select>
               </div>
               <div class="col-md-4">
-                Distrito:
+                Distrito<span style="color:red">(*)</span>:
                   <select [(ngModel)]="Distrito" name="distrito" class="form-control">
                       <option value="">-- Seleccione --</option>
                       <option value="{{item.IdDistrict}}" *ngFor="let item of ListDistrictEntity">{{ item.District }}</option>
@@ -71,10 +71,10 @@
           <br>
           <div *ngIf="visibleFactura" class="row">
             <div class="col-md-4">
-                RUC: <input [(ngModel)]="ruc" class="form-control" [maxLength]=11>
+                RUC<span style="color:red">(*)</span>: <input [(ngModel)]="ruc" class="form-control" [maxLength]=11>
             </div>
             <div class="col-md-7">
-                Razón Social: <input [(ngModel)]="razonSocial" class="form-control">
+                Razón Social<span style="color:red">(*)</span>: <input [(ngModel)]="razonSocial" class="form-control">
             </div>
           </div>
           <br>

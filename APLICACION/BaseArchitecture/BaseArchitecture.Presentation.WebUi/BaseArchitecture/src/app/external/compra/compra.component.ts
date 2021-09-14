@@ -8,7 +8,7 @@ import { GeneralService } from 'src/app/shared/services/general/general.service'
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductEntity } from 'src/app/shared/models/general/table.interface';
 import { CustomerEntity, OrderDetailEntity, OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
-import { createGuidRandom, showSuccess } from 'src/app/shared/util';
+import { createGuidRandom, showInfo, showSuccess } from 'src/app/shared/util';
 
 @Component({
   selector: 'app-compra',
@@ -32,6 +32,7 @@ export class CompraComponent implements OnInit {
     visibleFactura: boolean;
     razonSocial: string;
     ruc: string;
+    
 
     constructor(
       private spinner: NgxSpinnerService,
@@ -44,6 +45,7 @@ export class CompraComponent implements OnInit {
         this.Departamento = "";
         this.Provincia = "";
         this.Distrito = "";
+        
         this.visibleFactura = false;
         this.catalogListSelectedModal = this.localStorage.getJsonValue('catalogListSelectedModal');
         debugger
@@ -86,7 +88,33 @@ export class CompraComponent implements OnInit {
         }
     }
 
+
+
     sendOrder = () => {
+
+        if( this.customerEntity.FirstName === undefined ||  this.customerEntity.FirstName.trim() === "" )
+        {   showInfo("Se debe registrar los Nombres"); return; }
+        if( this.customerEntity.LastName === undefined || this.customerEntity.LastName.trim() === "" )
+        {   showInfo("Se debe registrar los Apellidos"); return; }
+        if(this.customerEntity.Email === undefined ||  this.customerEntity.Email.trim() === "" )
+        {   showInfo("Se debe registrar el correo"); return; }
+        if( this.customerEntity.PhoneNumber === undefined || this.customerEntity.PhoneNumber.trim() === "" )
+        {   showInfo("Se debe registrar el Telefono"); return;}
+        if(this.customerEntity.DocumentNumber === undefined || this.customerEntity.DocumentNumber.trim() === "" )
+        {   showInfo("Se debe registrar DNI"); return; }
+        if(this.Departamento=== undefined ||  this.Departamento.trim() === "" )
+        {   showInfo("Se debe seleccionar Departamento"); return; }
+        if( this.Provincia === undefined || this.Provincia.trim() === "" )
+        {   showInfo("Se debe seleccionar Provincia"); return; }
+        if( this.Distrito === undefined || this.Distrito.trim() === "" )
+        {   showInfo("Se debe seleccionar Distrito"); return; }
+        if(this.visibleFactura === true)
+        {
+            if( this.ruc === undefined || this.ruc.trim() === "" )
+            {   showInfo("Se debe registrar Ruc"); return; }    
+            if( this.razonSocial === undefined || this.razonSocial === null )
+            {   showInfo("Se debe selecciregistrar  Razon Social"); return; }
+        }
 
         let orderRequest = new OrderEntity();
         orderRequest.IdOrder = createGuidRandom();
