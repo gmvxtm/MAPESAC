@@ -9,11 +9,13 @@
 <div class="container">
     <div class="row col-md-12">
         <div style="padding-right: 10px;" *ngFor="let item of listTotalOrderEntity">
-            <div  class="card" style="width: 18rem;">
+            <div  class="card" style="width: 18rem;"  (click)="filterStatus(item)">
                 <div class="card-body">
-                    <p>
-                        {{ item.Name }} {{ item.Quantity }}
-                    </p>
+                    
+                        <p>
+                            {{ item.Name }} {{ item.Quantity }}
+                        </p>
+                    
                 </div>
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;
