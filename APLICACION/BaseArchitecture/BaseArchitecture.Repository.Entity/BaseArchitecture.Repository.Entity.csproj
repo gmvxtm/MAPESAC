@@ -50,6 +50,7 @@
     <Compile Include="Tables\OrderDetailEntity.cs" />
     <Compile Include="Tables\OrderFlowEntity.cs" />
     <Compile Include="Tables\OrderListByLocationEntity.cs" />
+    <Compile Include="Tables\SupplyEntity.cs" />
     <Compile Include="Tables\OrderListEntity.cs" />
     <Compile Include="Tables\OrderStatusEntity.cs" />
     <Compile Include="Tables\ProductEntity.cs" />
