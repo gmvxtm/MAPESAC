@@ -116,8 +116,16 @@ export class CompraComponent implements OnInit {
             if( this.ruc === undefined || this.ruc.trim() === "" )
             {   showInfo("Se debe registrar Ruc"); this.spinner.hide();return; }
             if( this.razonSocial === undefined || this.razonSocial === null )
-            {   showInfo("Se debe selecciregistrar  Razon Social");this.spinner.hide();return; }
+            {   showInfo("Se debe registrar  Razon Social");this.spinner.hide();return; }
         }
+
+        
+        var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        if (!pattern.test(this.customerEntity.Email)) {        
+            showInfo("Se debe ingresar un correo en formato correcto ");        
+            return ;
+        }
+        
 
         let orderRequest = new OrderEntity();
         orderRequest.IdOrder = createGuidRandom();
