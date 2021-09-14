@@ -1,6 +1,17 @@
 <div class="container row" style="margin-top: 10px;">
     <div  class="col-10">
         <p style="text-align: left; font-size: 16px; font-weight: bold;margin-bottom: 0;">
+            <a routerLink="/ventas">
+                <i class="fas fa-long-arrow-alt-left fa-2x" style="color:#006169"></i>
+            </a>
+            
+        </p>
+    </div>
+</div>
+
+<div class="container row" style="margin-top: 10px;">
+    <div  class="col-10">
+        <p style="text-align: left; font-size: 16px; font-weight: bold;margin-bottom: 0;">
            Detalle
         </p>
     </div>
@@ -18,13 +29,13 @@
             Descripción
         </div>
         <div class="col-md-2" style="text-align: center;">
-            Precio Unitario S/.
+            Precio Unitario 
         </div>
         <div class="col-md-2" style="text-align: center;">
             Cantidad
         </div> 
         <div class="col-md-2" style="text-align: center;">
-            Total S/.
+            Sub Total 
         </div>
     </div>
     <div *ngFor="let item of listOrderDetail">
@@ -37,17 +48,25 @@
             {{item.Description}}
             </div>
             <div class="col-md-2" style="text-align: center;">
-            {{item.UnitPrice}}
+            S/. {{item.UnitPrice}}
             </div>
             <div class="col-md-2" style="text-align: center;">
             {{item.Quantity}}
             </div>
             <div class="col-md-2" style="text-align: center;">
-            {{ item.UnitPrice*item.Quantity }}
+            S/. {{ item.UnitPrice*item.Quantity }}
             </div>
            
         </div>
         <br>
+    </div>
+    <div class="row col-md-12">
+        <div class="col-md-9">
+            
+        </div>        
+        <div class="col-md-3" >
+            Total S/. {{orderBD.Total}}
+        </div>
     </div>
 </div>
 <br>

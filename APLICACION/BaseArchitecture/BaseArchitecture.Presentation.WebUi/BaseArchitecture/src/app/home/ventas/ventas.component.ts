@@ -137,6 +137,10 @@ export class VentasComponent implements OnInit {
           title: 'Estado',
         },
         {
+          primaryKey: 'AnswerName',
+          title: 'Respuesta',
+        },
+        {
           primaryKey: '',
           title: 'Ver',
           property: 'button',

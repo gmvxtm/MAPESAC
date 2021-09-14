@@ -130,7 +130,7 @@ export class CompraComponent implements OnInit {
         let orderRequest = new OrderEntity();
         orderRequest.IdOrder = createGuidRandom();
         orderRequest.DateOrder = Date();
-        orderRequest.Total = "5000";
+        orderRequest.Total = this.totalQuantity.toString();
         orderRequest.IdCustomer = createGuidRandom();    
         orderRequest.StatusOrder = "00101";        
         orderRequest.RecordStatus = "A";  
