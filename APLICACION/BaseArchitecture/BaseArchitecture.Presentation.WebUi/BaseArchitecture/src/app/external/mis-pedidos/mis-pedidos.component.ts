@@ -62,9 +62,8 @@ export class MisPedidosComponent implements OnInit {
       orderEntity.CodeOrder = this.codeOrder;
       this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
         (data: any) => {
+          debugger
           this.flagVisible  = true ;
-
-
           this.orderBD = data.Value;
           this.name = this.orderBD.CustomerEntity.FirstName + ' ' +this.orderBD.CustomerEntity.LastName; 
           this.listOrderStatus = data.Value.ListOrderStatus;
