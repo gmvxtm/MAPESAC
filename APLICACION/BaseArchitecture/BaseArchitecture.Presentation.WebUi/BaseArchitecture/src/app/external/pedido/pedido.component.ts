@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ProductEntity } from 'src/app/shared/models/general/table.interface';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
+import { showInfo } from 'src/app/shared/util';
 
 var $: any;
 
@@ -66,6 +67,9 @@ export class PedidoComponent implements OnInit {
 
 
     addProduct = (item) => {
+      debugger
+      if(  item.Quantity === 0 )
+      {   showInfo("Se debe registrar una cantidad"); this.spinner.hide();return; }
 
       this.catalogInitProductEntity.forEach( x => {
           if(x.IdProduct == item.IdProduct){
