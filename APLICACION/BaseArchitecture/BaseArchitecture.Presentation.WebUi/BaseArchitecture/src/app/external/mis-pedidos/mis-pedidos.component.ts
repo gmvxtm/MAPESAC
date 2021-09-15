@@ -58,7 +58,7 @@ export class MisPedidosComponent implements OnInit {
       this.flagVisible  = false ;
       this.flagRechazado= false;
       let orderEntity = new OrderEntity();
-      orderEntity.CodeOrder = "202109-000002";
+      orderEntity.CodeOrder = this.codeOrder;
       this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
         (data: any) => {
           this.flagVisible  = true ;
