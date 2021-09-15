@@ -60,7 +60,6 @@ export class VentasComponent implements OnInit {
     }
 
     filterStatus = (item) => {
-      debugger 
       let pr = item;
       if(item.IdMasterTable.trim() ==="0")
         {this.listOrderEntity = this.listTotalOrderEntityOriginal;}
@@ -88,7 +87,6 @@ export class VentasComponent implements OnInit {
     }
 
     buscarFechas = () => {
-      debugger
       if(this.SinceDate === undefined && this.UntilDate=== undefined)      
       {
         this.listOrderEntity = this.listTotalOrderEntityOriginal
@@ -111,7 +109,6 @@ export class VentasComponent implements OnInit {
     }
 
     verDetalle = (item) => {
-      debugger
       let codeOrder = item.CodeOrder;
       this.localStorage.setJsonValue("codeOrderSend", codeOrder)
       this.router.navigate(['ventas/detalle']);

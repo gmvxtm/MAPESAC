@@ -21,7 +21,6 @@ export class GeneralService {
   }
 
   Login(userRequest: any): Observable<any> {
-    debugger
     return this.http
       .get<any>(
         this.urlWebApi + Path.Mapesac + Mapesac.Login,

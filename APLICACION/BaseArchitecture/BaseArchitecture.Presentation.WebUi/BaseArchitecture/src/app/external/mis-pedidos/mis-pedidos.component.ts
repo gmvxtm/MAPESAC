@@ -55,14 +55,12 @@ export class MisPedidosComponent implements OnInit {
     }
 
     buscarPedido = () => {
-      debugger
       this.flagVisible  = false ;
       this.flagRechazado= false;
       let orderEntity = new OrderEntity();
-      orderEntity.CodeOrder = this.codeOrder;
+      orderEntity.CodeOrder = "202109-000002";
       this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
         (data: any) => {
-          debugger
           this.flagVisible  = true ;
           this.orderBD = data.Value;
           this.name = this.orderBD.CustomerEntity.FirstName + ' ' +this.orderBD.CustomerEntity.LastName; 

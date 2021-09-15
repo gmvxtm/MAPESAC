@@ -96,7 +96,6 @@ export class VentaDetalleComponent implements OnInit {
   }
 
   SendAnswer =(answer: any) =>{
-    debugger
     let respuesta="";
     if(answer===1)
       respuesta = MTRespuesta.Aprobado;

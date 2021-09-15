@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
   }
 
   beginSession = () => {
-    debugger
     let userEntityRequest = new UserEntityRequest();
     userEntityRequest.Username = this.usuario;
     userEntityRequest.Password = this.password;
@@ -47,7 +46,6 @@ export class LoginComponent implements OnInit {
 
       (data: any) => {
         if(data != null){
-          debugger
            let menulogin =  new MenuLogin();
            menulogin = data.Value;
           this.localService.setJsonValue(

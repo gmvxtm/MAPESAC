@@ -48,7 +48,6 @@ export class CompraComponent implements OnInit {
         
         this.visibleFactura = false;
         this.catalogListSelectedModal = this.localStorage.getJsonValue('catalogListSelectedModal');
-        debugger
         this.totalQuantity = 0;
         this.catalogListSelectedModal.forEach(element => {
             element.Total =element.Quantity*element.PriceUnit;

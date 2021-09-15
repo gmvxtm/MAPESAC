@@ -32,6 +32,7 @@ export class PedidoComponent implements OnInit {
     headers: HeadersInterface[] = new Array<HeadersInterface>();
     catalogInitList: any[] = [];
     catalogInitProductEntity : any[] = [];
+    catalogInitProductEntityOriginal : any[] = [];
     countCart = 0;
     catalogListSelected: any[] = [];
     catalogListSelectedModal: any[] = [];
@@ -52,7 +53,8 @@ export class PedidoComponent implements OnInit {
       this.generalService.ListProduct().subscribe(
         (data: any) => {
           if(data != null){
-            this.catalogInitProductEntity = data.Value;
+            this.catalogInitProductEntityOriginal = data.Value;
+            this.catalogInitProductEntity = this.catalogInitProductEntityOriginal;
           }
         },
         (error: HttpErrorResponse) => {
@@ -60,29 +62,17 @@ export class PedidoComponent implements OnInit {
           console.log(error);
         }
       );
-
-      // this.catalogInitProductEntity = [
-      //   {
-      //     IdProduct:"4fecb6ff-0508-45c2-a2c2-84c2f51514f6",
-      //     Name:"Modelo A",
-      //     PathFile:"../../../assets/media/jean.png",
-      //     PriceUnit:3,
-      //     RecordStatus:"A",
-      //     Quantity:0
-      //     },
-      //     {
-      //     IdProduct:"abd7c103-7799-405a-bd90-9b0cffd6a82a",
-      //     Name:"Modelo B",
-      //     PathFile:"../../../assets/media/jean.png",
-      //     PriceUnit:1,
-      //     RecordStatus:"A",
-      //     Quantity:0
-      //     },
-      // ]
     }
 
 
     addProduct = (item) => {
+
+      this.catalogInitProductEntity.forEach( x => {
+          if(x.IdProduct == item.IdProduct){
+            x.indicador = 1;
+          }
+      })
+
       if(this.catalogListSelected.filter(x=> x.IdProduct === item.IdProduct).length ===1)
       {
         var listaCatalogo = this.catalogListSelected.filter(x=>x.IdProduct === item.IdProduct);
@@ -93,7 +83,6 @@ export class PedidoComponent implements OnInit {
       }
       else
       {
-        //item.Quantity = 1;
         this.catalogListSelected.push(item)
       }
       this.countCart = this.catalogListSelected.length;

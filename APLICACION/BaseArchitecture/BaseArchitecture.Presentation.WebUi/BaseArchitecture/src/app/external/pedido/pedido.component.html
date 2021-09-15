@@ -105,7 +105,7 @@
                             Cantidad:  &nbsp;<input type="number"  min="1" max="10000"  class="form-control" style="width: 80px;" [(ngModel)] ="item.Quantity" >
                         </div>
                         <br>    
-                        <button class="form-control btn btn-success" (click)="addProduct(item)" style="width: 50%;margin-bottom: 10px;">Añadir &nbsp;&nbsp;<em class="fa fa-plus"></em></button>
+                        <button [ngStyle]="{'background-color':item.indicador == '1' ? '#1BC5BD' : '' }" class="form-control btn btn-danger" (click)="addProduct(item)" style="width: 50%;margin-bottom: 10px;">Añadir &nbsp;&nbsp;<em class="fa fa-plus"></em></button>
                     </div>
                 </div>
             </div>

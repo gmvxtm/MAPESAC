@@ -28,7 +28,6 @@ export class UserInfoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    debugger
     this.labelGeneral = general;
     // this.name = this.localService.getJsonValue('userBaseArchitecture').User;
     // this.email = this.localService.getJsonValue('userBaseArchitecture').Email;
