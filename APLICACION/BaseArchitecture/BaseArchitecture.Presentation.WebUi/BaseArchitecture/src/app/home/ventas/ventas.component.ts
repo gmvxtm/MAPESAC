@@ -32,7 +32,7 @@ export class VentasComponent implements OnInit {
     listOrderEntity: any[] = [];
     SinceDate: string;
     UntilDate: string;
-  
+
     constructor(
       private spinner: NgxSpinnerService,
       private router: Router,
@@ -60,6 +60,7 @@ export class VentasComponent implements OnInit {
     }
 
     filterStatus = (item) => {
+      debugger
       let pr = item;
       if(item.IdMasterTable.trim() ==="0")
         {this.listOrderEntity = this.listTotalOrderEntityOriginal;}

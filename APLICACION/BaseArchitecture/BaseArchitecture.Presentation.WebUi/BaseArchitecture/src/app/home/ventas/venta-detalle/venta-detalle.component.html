@@ -65,7 +65,7 @@
             
         </div>        
         <div class="col-md-3" >
-            Total S/. {{orderBD.Total}}
+            Total S/. {{total}}
         </div>
     </div>
 </div>
@@ -120,7 +120,7 @@
     <br>
     <div class="row col-md-12" *ngIf="orderBD.LocationOrder == actualLocation && rechazado==false">
         <div class="col-md-2">
-            <button class="form-control btn-success" (click)="SendAnswer(1)"><em class="fas fa-save"></em>&nbsp;&nbsp; Aprobar</button>
+            <button class="form-control btn-success" (click)="SendAnswer(1)"><em class="fas fa-check"></em>&nbsp;&nbsp; Aprobar</button>
         </div>
         <div class="col-md-2">
             <button class="form-control btn-danger" (click)="SendAnswer(2)"><em class="fa fa-times"></em>&nbsp;&nbsp; Rechazar</button>

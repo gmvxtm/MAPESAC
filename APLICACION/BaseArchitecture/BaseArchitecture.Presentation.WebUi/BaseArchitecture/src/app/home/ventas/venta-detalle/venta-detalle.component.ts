@@ -30,6 +30,7 @@ export class VentaDetalleComponent implements OnInit {
   listOrderDetail: any [] = [];
   actualLocation: any;
   rechazado:boolean;
+  total: 0;
   constructor(
     private generalService: GeneralService,
     private spinner: NgxSpinnerService,
@@ -86,7 +87,7 @@ export class VentaDetalleComponent implements OnInit {
           {
             this.rechazado = true;
           }
-
+          this.total=this.orderBD.Total;
         },
         (error: HttpErrorResponse) => {
         this.spinner.hide();
