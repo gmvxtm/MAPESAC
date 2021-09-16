@@ -50,7 +50,6 @@ export class PedidoComponent implements OnInit {
     }
   
     createCatalog = () => {
-
       this.generalService.ListProduct().subscribe(
         (data: any) => {
           if(data != null){
@@ -65,9 +64,7 @@ export class PedidoComponent implements OnInit {
       );
     }
 
-
     addProduct = (item) => {
-      debugger
       if(  item.Quantity === 0 )
       {   showInfo("Se debe registrar una cantidad"); this.spinner.hide();return; }
 
@@ -97,7 +94,7 @@ export class PedidoComponent implements OnInit {
 
       this.totalQuantity = 0;
       this.catalogListSelectedModal.forEach(element => {        
-        element.Total =element.Quantity*element.PriceUnit;
+        element.Total = element.Quantity*element.PriceUnit;
         this.totalQuantity =this.totalQuantity+ element.Total;
       });
     }
@@ -105,6 +102,12 @@ export class PedidoComponent implements OnInit {
     redirectCompra = () => {
       this.localStorage.setJsonValue('catalogListSelectedModal',  this.catalogListSelectedModal);
       this.router.navigate(['compra']);
+    }
+
+    deteleItem = (IdProduct) => {
+      this.catalogListSelectedModal = this.catalogListSelectedModal.filter( x => x.IdProduct != IdProduct);
+      this.totalQuantity = 0;
+      this.countCart = this.catalogListSelectedModal.length;
     }
 
     quantitychange =() => {
