@@ -37,7 +37,7 @@
             <div class="col-md-4">
               Producto
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               Precio
             </div>
             <div class="col-md-3">
@@ -55,7 +55,7 @@
             <div class="col-md-2">
                 {{item.Name}}
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               S/. {{item.PriceUnit}}
             </div>
             <div class="col-md-3">
@@ -64,15 +64,18 @@
             <div class="col-md-2">
               S/. {{item.Total}}
             </div>
+             <div class="col-md-1">
+              <em (click)="deteleItem(item.IdProduct)" style="cursor: pointer;" class="fas fa-trash"></em>
+            </div>
         </div>
         <div class="col-md-12 row"  style="margin-bottom: 10px;">
           <div class="col-md-9">
 
           </div>
-          <div class="col-md-1">
+          <div *ngIf="totalQuantity >0" class="col-md-1">
             <span >Total: </span>
           </div>
-          <div class="col-md-2">
+          <div *ngIf="totalQuantity >0" class="col-md-2">
             <span >S/.  {{totalQuantity}} </span>
           </div>
         </div>
@@ -91,10 +94,15 @@
     <div class="col-12 row">
         <div class="col-3" *ngFor="let item of catalogInitProductEntity">
             <div style="padding-top:20px;">
-                <div class="card text-center">
+                <div class="card text-center" >
                     <img class="card-img-top" style="background-size: contain; height: 230px; width: 255px;"
                     src={{item.PathFile}}  alt="Sin imagen" />
-                    <div class="card-footer" style="padding: 5px;">
+                    <div class="card-footer" style="padding: 5px; background: lightblue;">
+                        <i class="fas fa-circle" style="color: white;"></i>
+                        &nbsp;
+                        <i class="fas fa-circle" style="color: blue;"></i>
+                        &nbsp;
+                        <i class="fas fa-circle" style="color: black;"></i>
                         <div>
                             Modelo: &nbsp;{{item.Name}}
                         </div>
