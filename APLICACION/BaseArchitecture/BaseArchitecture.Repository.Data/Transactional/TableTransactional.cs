@@ -55,6 +55,24 @@ namespace BaseArchitecture.Repository.Data.Transactional
             return response;
         }
 
+        public Response<int> GenerateSubOrderFlow(OrderEntity orderEntity)
+        {
+            Response<int> response;
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                orderEntity.DateOrder = DateTime.Now;
+                var parameters = new DynamicParameters();
+                parameters.Add("@ParamIIdOrder", orderEntity.IdOrder);
+                var result = connection.Execute(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.GenerateSubOrderFlow}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure);
+
+                response = new Response<int>(result);
+            }
+            return response;
+        }
+
         public Response<int> MergeOrderDetail(OrderDetailEntity orderDetailEntity)
         {
             Response<int> response;
