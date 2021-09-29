@@ -39,6 +39,7 @@
             public const string ListOrder = "Usp_List_Order";
             public const string GetOrderByCodeOrder = "Usp_Get_OrderByCodeOrder";
             public const string ListOrderByLocation = "Usp_List_OrderByLocation";
+            public const string ListSubOrderByLocation = "Usp_List_SubOrderByLocation";
 
             public const string MrgOrder = "Usp_Mrg_Order";
             public const string GenerateOrderFlow = "Usp_Generate_OrderFlow";
