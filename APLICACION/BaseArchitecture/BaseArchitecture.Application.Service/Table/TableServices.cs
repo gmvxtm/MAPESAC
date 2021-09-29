@@ -143,6 +143,13 @@ namespace BaseArchitecture.Application.Service.Table
             return result;
         }
 
+        public Response<int> UpdSubOrderFlow(OrderFlowEntity orderFlowRequest)
+        {
+            var result = TableTransaction.UpdSubOrderFlow(orderFlowRequest);
+            return result;
+        }
+       
+
         public Response<IEnumerable<SupplyEntity>> ListSuppliesByProduct(ProductEntity suppliesByProductRequest)
         {
             var result = TableQuery.ListSuppliesByProduct(suppliesByProductRequest);

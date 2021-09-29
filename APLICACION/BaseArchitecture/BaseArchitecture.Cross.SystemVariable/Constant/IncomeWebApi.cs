@@ -49,6 +49,7 @@
                 public const string ListOrderByLocation = "ListOrderByLocation";
                 public const string ListSubOrderByLocation = "ListSubOrderByLocation";                
                 public const string UpdOrderFlow = "UpdOrderFlow";
+                public const string UpdSubOrderFlow = "UpdSubOrderFlow";               
             }
         }
 

@@ -16,6 +16,6 @@ namespace BaseArchitecture.Repository.Entity.Tables
         public DateTime DateOrderFlow { get; set; }
         public bool FlagActive { get; set; }
         public bool FlagInProcess { get; set; }
-        
+        public string Status { get; set; }
     }
 }

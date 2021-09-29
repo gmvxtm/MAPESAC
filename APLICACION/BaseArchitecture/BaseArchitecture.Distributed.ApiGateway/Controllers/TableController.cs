@@ -237,6 +237,20 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
         [HttpGet]
         [RequestLoggerFilterAttribute]
         [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.UpdSubOrderFlow)]
+        public IHttpActionResult UpdSubOrderFlow()
+        {
+            var postData = HttpContext.Current.Request.Params["orderFlowRequest"];
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.UpdSubOrderFlow}";
+            var result =
+              InvokeWebApi.InvokePostAnonymousEntity<Response<int>>(urlApi, postData);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
         [Route(IncomeWebApi.MethodApi.Mapesac.ListOrderByLocation)]
         public IHttpActionResult ListOrderByLocation()
         {

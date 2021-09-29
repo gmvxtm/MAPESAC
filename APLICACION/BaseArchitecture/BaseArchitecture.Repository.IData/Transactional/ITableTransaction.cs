@@ -12,5 +12,6 @@ namespace BaseArchitecture.Repository.IData.Transactional
         Response<int> GenerateOrderFlow(OrderEntity orderEntity);
         Response<int> GenerateSubOrderFlow(OrderEntity orderEntity);
         Response<int> UpdOrderFlow(OrderFlowEntity orderFlowRequest);
+        Response<int> UpdSubOrderFlow(OrderFlowEntity orderFlowRequest);
     }
 }
