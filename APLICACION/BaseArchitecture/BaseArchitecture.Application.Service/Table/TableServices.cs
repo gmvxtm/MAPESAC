@@ -89,6 +89,7 @@ namespace BaseArchitecture.Application.Service.Table
                     orderRequest.LocationOrder = "00201"; //Encargado de Ventas
                     TableTransaction.MergeOrder(orderRequest);
                     TableTransaction.GenerateOrderFlow(orderRequest);
+                    TableTransaction.GenerateSubOrderFlow(orderRequest);
                     foreach (var itemOrderDetail in orderRequest.ListOrderDetail)
                     {
                         itemOrderDetail.IdOrder = orderRequest.IdOrder;
