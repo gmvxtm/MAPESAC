@@ -19,6 +19,7 @@ namespace BaseArchitecture.Application.IService.Table
         Response<OrderEntity> GetOrderByCodeOrder(OrderEntity orderRequest);
         Response<int> UpdOrderFlow(OrderFlowEntity orderFlowRequest);
         Response<OrderListByLocationEntity> ListOrderByLocation(OrderEntity orderRequest);
+        Response<SubOrderListByLocationEntity> ListSubOrderByLocation(OrderEntity orderRequest);
         Response<IEnumerable<SupplyEntity>> ListSuppliesByProduct(ProductEntity suppliesByProductRequest);
     }
 }

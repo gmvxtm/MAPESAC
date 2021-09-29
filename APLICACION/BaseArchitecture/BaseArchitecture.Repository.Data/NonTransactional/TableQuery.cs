@@ -159,24 +159,24 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
             return response;
         }
 
-        public Response<OrderListByLocationEntity> ListSubOrderByLocationn(OrderEntity orderRequest)
+        public Response<SubOrderListByLocationEntity> ListSubOrderByLocation(OrderEntity orderRequest)
         {
-            Response<OrderListByLocationEntity> response;
+            Response<SubOrderListByLocationEntity> response;
 
             using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@ParamILocationOrder", orderRequest.LocationOrder);
-                var basicResponse = new OrderListByLocationEntity();
+                parameters.Add("@ParamIIdLocation", orderRequest.LocationOrder);
+                var basicResponse = new SubOrderListByLocationEntity();
                 using (var list = connection.QueryMultipleAsync(
                                     sql: $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.ListSubOrderByLocation}",
                                     param: parameters,
                                     commandType: CommandType.StoredProcedure).Result)
                 {
-                    basicResponse.ListOrderEntity = list.Read<OrderEntity>().ToList();
+                    basicResponse.ListSubOrderEntity = list.Read<SubOrderEntity>().ToList();
                     basicResponse.ListTotalOrderEntity = list.Read<TotalOrderEntity>().ToList();
                 }
-                response = new Response<OrderListByLocationEntity>
+                response = new Response<SubOrderListByLocationEntity>
                 {
                     Value = basicResponse
                 };

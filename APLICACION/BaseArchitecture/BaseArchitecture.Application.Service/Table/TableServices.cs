@@ -77,6 +77,12 @@ namespace BaseArchitecture.Application.Service.Table
             return result;
         }
 
+        public Response<SubOrderListByLocationEntity> ListSubOrderByLocation(OrderEntity orderRequest)
+        {
+            var result = TableQuery.ListSubOrderByLocation(orderRequest);
+            return result;
+        }
+
         public Response<string> MergeOrder(OrderEntity orderRequest)
         {
             var result = new Response<string>();
