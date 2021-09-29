@@ -88,8 +88,7 @@ namespace BaseArchitecture.Application.Service.Table
                     orderRequest.IdCustomer = orderRequest.CustomerEntity.IdCustomer;
                     orderRequest.LocationOrder = "00201"; //Encargado de Ventas
                     TableTransaction.MergeOrder(orderRequest);
-                    TableTransaction.GenerateOrderFlow(orderRequest);
-                    TableTransaction.GenerateSubOrderFlow(orderRequest);
+                    TableTransaction.GenerateOrderFlow(orderRequest);                    
                     foreach (var itemOrderDetail in orderRequest.ListOrderDetail)
                     {
                         itemOrderDetail.IdOrder = orderRequest.IdOrder;
@@ -97,6 +96,7 @@ namespace BaseArchitecture.Application.Service.Table
                         itemOrderDetail.Description = itemOrderDetail.Description == null ? "" : itemOrderDetail.Description;
                         TableTransaction.MergeOrderDetail(itemOrderDetail);
                     }
+                    TableTransaction.GenerateSubOrderFlow(orderRequest);
                     var resultQuery = TableQuery.ListOrder();
                     var codeOrder = resultQuery.Value.ListOrderEntity.ToList().Find(x => x.IdOrder == orderRequest.IdOrder).CodeOrder;
                     result = new Response<string>(codeOrder);
