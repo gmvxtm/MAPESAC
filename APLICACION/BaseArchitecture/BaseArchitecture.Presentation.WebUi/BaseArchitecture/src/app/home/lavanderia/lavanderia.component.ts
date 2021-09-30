@@ -7,6 +7,8 @@ import { HeadersInterface } from 'src/app/shared/models/request/common/headers-r
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
+import { MTUbicacion } from 'src/app/shared/constant';
 
 @Component({
   selector: 'app-lavanderia',
@@ -22,9 +24,12 @@ export class LavanderiaComponent implements OnInit {
     itemType: string;
     totalItems: number;
     configTable: {};
-    listRisk: any[] = [];
+    listOrder: any[] = [];
     headers: HeadersInterface[] = new Array<HeadersInterface>();
-    
+    ListSubOrderEntity: any[] = [];
+    ListTotalOrderEntity: any[] = [];
+    listTotalOrderEntityOriginal: any[] = [];
+    listOrderEntity: any[] = [];
   
     constructor(
       private spinner: NgxSpinnerService,
@@ -36,53 +41,74 @@ export class LavanderiaComponent implements OnInit {
     ngOnInit(): void {
       this.createHeadersTable();
       this.loadStart();
-      
+      this.loadVentas();
     }
-  
+
+    loadVentas = () => {
+      let orderEntity = new OrderEntity();
+      orderEntity.LocationOrder = MTUbicacion.AreaLavanderia;
+      this.serviceProyecto.ListSubOrderByLocation(orderEntity).subscribe(
+        (data: any) => {
+          console.log(data)
+          this.ListSubOrderEntity = data.Value.ListSubOrderEntity;
+          this.ListTotalOrderEntity = data.Value.ListTotalOrderEntity;
+          this.totalItems = this.ListSubOrderEntity.length;
+        },
+        (error: HttpErrorResponse) => {
+        this.spinner.hide();
+        console.log(error);
+        }
+      );
+    }
+
+    filterStatus = (item) => {
+      if(item.IdMasterTable.trim() === "0")
+        {this.listOrderEntity = this.listTotalOrderEntityOriginal;}
+      else 
+        {this.listOrderEntity = this.listTotalOrderEntityOriginal.filter(x=> x.Answer === item.IdMasterTable);}
+    }
+
     loadStart = () => {
       this.configTable = {
         paging: true,
         searching: false,
-        ordering: true,
+        ordering: false,
         lengthChange: true,
         lengthMenu: [5, 10, 15, 20, 25],
         serverSide: false,
-        filterColumn: true
+        filterColumn: false
       };
+    }  
+ 
+    buscarPedido = () => {
+
     }
-  
-
-
 
     createHeadersTable = () => {
       this.headers = [
         {
-          primaryKey: 'Codigo',
-          title: 'Código',
+          primaryKey: 'CodeOrder',
+          title: 'N° Pedido',
         },
         {
-          primaryKey: 'InversionDescripcion',
-          title: 'Tipo de Inversión',
+          primaryKey: 'CodeSubOrder',
+          title: 'Orden trabajo',
         },
         {
-          primaryKey: 'CicloDescripcion',
-          title: 'Ciclo de Inversión',
+          primaryKey: 'Quantity',
+          title: 'Cantidad',
         },
         {
-          primaryKey: 'NaturalezaDescripcion',
-          title: 'Naturaleza',
+          primaryKey: 'StatusSubOrderName',
+          title: 'Estado',
         },
         {
-          primaryKey: 'Nombre',
-          title: 'Nombre',
+          primaryKey: 'DateSubOrder',
+          title: 'Fecha Inicio',
         },
         {
-          primaryKey: 'Departamento',
-          title: 'Departamento',
-        },
-        {
-          primaryKey: 'Costo',
-          title: 'Costo',
+          primaryKey: 'DateEndSubOrder',
+          title: 'Fecha Fin',
         },
         {
           primaryKey: '',

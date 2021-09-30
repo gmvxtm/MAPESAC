@@ -25,7 +25,8 @@ export const NameServiceApi ={
   ListOrder:'ListOrder',
   GetOrderByCodeOrder: 'GetOrderByCodeOrder',
   ListOrderByLocation: 'ListOrderByLocation',
-  UpdOrderFlow:'UpdOrderFlow'
+  UpdOrderFlow:'UpdOrderFlow',
+  ListSubOrderByLocation:'ListSubOrderByLocation',
 }
 
 export const Demo = {

@@ -6,14 +6,49 @@
     </div>
 </div>
         
+<div class="container">
+    <div class="row col-md-12">
+        <div style="padding-right: 10px;" *ngFor="let item of ListTotalOrderEntity">
+            <div  class="card" style="width: 18rem;"  (click)="filterStatus(item)">
+                <div class="card-body">
+                    <p>
+                        {{ item.Name }} {{ item.Quantity }}
+                    </p>
+                </div>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <label style="font-weight: bold;">
+                N° Pedido:
+            </label>
+        </div>
+        <div class="col-md-2">
+            <div class="input-group">
+                <input type="text" ng-readonly="all" class="form-control">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <button (click)="buscarPedido()" class="form-control btn-success"><em class="fas fa-search"></em>&nbsp;&nbsp; Buscar</button>
+        </div>
+
+    </div>
+
+</div>
+
 <br>
 <div class="container">
     <div class="kt-portlet__body">
-        <!-- <app-table [data]="listRisk" 
+        <app-table 
+            [data]="ListSubOrderEntity" 
             [configTable]="configTable"
             [totalItems]="totalItems"
             [headers]="headers">
-        </app-table> -->
+        </app-table>
     </div>
 </div>
+
 
