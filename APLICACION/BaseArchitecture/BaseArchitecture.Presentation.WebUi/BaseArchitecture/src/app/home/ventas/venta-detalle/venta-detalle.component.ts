@@ -97,7 +97,7 @@ export class VentaDetalleComponent implements OnInit {
               
               this.generalService.UpdOrderFlow(orderRequest).subscribe(
                 (data: any) => {
-  
+                  this.router.navigate(['ventas']);
                 },
                 (error: HttpErrorResponse) => {
                   this.spinner.hide();
