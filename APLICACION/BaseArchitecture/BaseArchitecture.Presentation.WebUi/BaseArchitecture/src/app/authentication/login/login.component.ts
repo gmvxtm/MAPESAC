@@ -43,8 +43,9 @@ export class LoginComponent implements OnInit {
     // this.router.navigate(['almacen'])
     this.generalService.Login(userEntityRequest).subscribe(
 
-
+      
       (data: any) => {
+        debugger
         if(data != null){
            let menulogin =  new MenuLogin();
            menulogin = data.Value;
@@ -54,7 +55,7 @@ export class LoginComponent implements OnInit {
           );
 
           
-          this.router.navigate(['almacen'])
+          this.router.navigate(['ventas'])
         }
       },
       (error: HttpErrorResponse) => {

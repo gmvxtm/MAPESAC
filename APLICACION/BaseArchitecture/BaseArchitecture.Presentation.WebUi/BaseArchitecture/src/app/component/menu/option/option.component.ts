@@ -47,11 +47,6 @@ export class MenuOptionComponent implements OnInit {
         OptionUrl: "/ventas"
       },
       { 
-        title: "Área de almacén",
-        icon: "fa fa-folder-open",
-        OptionUrl: "/almacen"
-      },
-      { 
         title: "Área de corte",
         icon: "fa fa-folder-open",
         OptionUrl: "/corte"
@@ -75,6 +70,11 @@ export class MenuOptionComponent implements OnInit {
         title: "Área de Despacho",
         icon: "fa fa-folder-open",
         OptionUrl: "/despacho"
+      },
+      { 
+        title: "Área de almacén",
+        icon: "fa fa-folder-open",
+        OptionUrl: "/almacen"
       },
     ]
   }
