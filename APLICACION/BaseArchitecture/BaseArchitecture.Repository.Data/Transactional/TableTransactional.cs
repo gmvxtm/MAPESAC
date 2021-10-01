@@ -148,7 +148,7 @@ namespace BaseArchitecture.Repository.Data.Transactional
             using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@ParamICodeOrder", orderFlowRequest.IdOrder);
+                parameters.Add("@ParamICodeSubOrder", orderFlowRequest.IdOrder);
                 parameters.Add("@ParamIStatus", orderFlowRequest.Status);
                 
 
