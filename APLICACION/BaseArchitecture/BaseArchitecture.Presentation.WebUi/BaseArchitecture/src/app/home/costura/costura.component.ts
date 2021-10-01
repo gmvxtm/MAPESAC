@@ -30,7 +30,8 @@ export class CosturaComponent implements OnInit {
     ListTotalOrderEntity: any[] = [];
     listTotalOrderEntityOriginal: any[] = [];
     listOrderEntity: any[] = [];
-  
+    statusSend: string;
+
     constructor(
       private spinner: NgxSpinnerService,
       private router: Router,
@@ -70,6 +71,19 @@ export class CosturaComponent implements OnInit {
     buscarPedido = () => {
 
     }
+
+
+    verDetalle = (item) => {
+      debugger
+      let codeOrder = item.CodeOrder;
+      let codeSubOrder = item.CodeSubOrder;
+      this.statusSend = item.StatusSubOrderMT;
+      this.localStorage.setJsonValue("codeOrderSend", codeOrder)
+      this.localStorage.setJsonValue("codeSubOrderSend", codeSubOrder)
+      this.localStorage.setJsonValue("statusSubOrderMT", this.statusSend)
+      this.router.navigate(['costura/detalle']);
+    }
+
 
     createHeadersTable = () => {
       this.headers = [

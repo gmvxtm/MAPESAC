@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 import { MTUbicacion } from 'src/app/shared/constant';
+import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
 
 @Component({
   selector: 'app-corte',
@@ -30,6 +31,7 @@ export class CorteComponent implements OnInit {
     ListTotalOrderEntity: any[] = [];
     listTotalOrderEntityOriginal: any[] = [];
     listOrderEntity: any[] = [];
+    statusSend: string;
 
     constructor(
       private spinner: NgxSpinnerService,
@@ -64,8 +66,10 @@ export class CorteComponent implements OnInit {
       debugger
       let codeOrder = item.CodeOrder;
       let codeSubOrder = item.CodeSubOrder;
+      this.statusSend = item.StatusSubOrderMT;
       this.localStorage.setJsonValue("codeOrderSend", codeOrder)
       this.localStorage.setJsonValue("codeSubOrderSend", codeSubOrder)
+      this.localStorage.setJsonValue("statusSubOrderMT", this.statusSend)
       this.router.navigate(['corte/detalle']);
     }
 

@@ -33,6 +33,7 @@ export class CorteDetalleComponent implements OnInit {
   rechazado:boolean;
   total: 0;
   Status: string;
+  statusSubOrderMT: string;
 
   constructor(
     private generalService: GeneralService,
@@ -44,6 +45,7 @@ export class CorteDetalleComponent implements OnInit {
   ngOnInit() {
     this.codeOrder = this.localStorage.getJsonValue("codeOrderSend");
     this.codeSubOrderSend = this.localStorage.getJsonValue("codeSubOrderSend");
+    this.statusSubOrderMT = this.localStorage.getJsonValue("statusSubOrderMT");
     this.Status="";
     this.loadPedido();
   }
@@ -69,6 +71,7 @@ export class CorteDetalleComponent implements OnInit {
     orderEntity.CodeOrder = this.codeOrder;
     this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
       (data: any) => {
+        debugger
         console.log(data)
         this.orderBD=data.Value;
         this.customerEntity = data.Value.CustomerEntity;

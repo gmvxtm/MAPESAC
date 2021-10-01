@@ -56,6 +56,14 @@ const routes: Routes = [
           // canActivate: [AuthGuard],
       },
       {
+        path: 'costura/detalle',
+        loadChildren: () =>
+          import('src/app/home/costura/costura-detalle/costura-detalle.module').then(
+            (m) => m.CosturaDetalleModule
+          ),
+          // canActivate: [AuthGuard],
+      },
+      {
         path: 'almacen',
         loadChildren: () =>
           import('src/app/home/almacen/almacen.module').then(

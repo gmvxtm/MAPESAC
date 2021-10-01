@@ -17,14 +17,15 @@ import { LocalService } from 'src/app/shared/services/general/local.service';
 import { showSuccess } from 'src/app/shared/util';
 
 @Component({
-  selector: 'AcabadoDetalle',
-  templateUrl: './acabado-detalle.component.html',
-  styleUrls: ['./acabado-detalle.component.css'],
+  selector: 'costuraDetalle',
+  templateUrl: './costura-detalle.component.html',
+  styleUrls: ['./costura-detalle.component.css'],
 })
 
-export class AcabadoDetalleComponent implements OnInit {
+export class CosturaDetalleComponent implements OnInit {
   public labelJson: ResponseLabel = new ResponseLabel();
   codeOrder: string;
+  codeSubOrderSend: string;
   orderBD : any;
   customerEntity: any;
   listOrderDetail: any [] = [];
@@ -33,7 +34,6 @@ export class AcabadoDetalleComponent implements OnInit {
   total: 0;
   Status: string;
   statusSubOrderMT: string;
-  codeSubOrderSend: string;
 
   constructor(
     private generalService: GeneralService,
@@ -57,7 +57,7 @@ export class AcabadoDetalleComponent implements OnInit {
     this.generalService.UpdSubOrderFlow(orderRequest).subscribe(
         (data: any) => {
             if(data != null){
-              this.router.navigate[('/acabados')];
+              this.router.navigate[('/corte')];
             }
         },
         (error: HttpErrorResponse) => {
@@ -66,12 +66,12 @@ export class AcabadoDetalleComponent implements OnInit {
         }
     ); 
  }
-
   loadPedido = () => {
     let orderEntity = new OrderEntity();
     orderEntity.CodeOrder = this.codeOrder;
     this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
       (data: any) => {
+        debugger
         console.log(data)
         this.orderBD=data.Value;
         this.customerEntity = data.Value.CustomerEntity;
@@ -89,4 +89,5 @@ export class AcabadoDetalleComponent implements OnInit {
       }
   );
 }
+
 }

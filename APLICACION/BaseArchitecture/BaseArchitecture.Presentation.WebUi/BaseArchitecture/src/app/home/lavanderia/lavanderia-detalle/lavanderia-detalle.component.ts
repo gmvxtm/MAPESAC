@@ -31,6 +31,10 @@ export class LavanderiaDetalleComponent implements OnInit {
   actualLocation: any;
   rechazado:boolean;
   total: 0;
+  codeSubOrderSend: string;
+  Status: string;
+  statusSubOrderMT: string;
+  
   constructor(
     private generalService: GeneralService,
     private spinner: NgxSpinnerService,
@@ -40,60 +44,28 @@ export class LavanderiaDetalleComponent implements OnInit {
 
   ngOnInit() {
     this.codeOrder = this.localStorage.getJsonValue("codeOrderSend");
+    this.codeSubOrderSend = this.localStorage.getJsonValue("codeSubOrderSend");
+    this.statusSubOrderMT = this.localStorage.getJsonValue("statusSubOrderMT");
+    this.Status="";
     this.loadPedido();
   }
 
-  SendAnswer =(answer: any) =>{
-    let respuesta="";
-    if(answer===1)
-      respuesta = MTRespuesta.Aprobado;
-    else if(answer===2)
-      respuesta = MTRespuesta.Rechazado;      
-     let prueba  = answer;
-
-     let orderRequest = new OrderEntity();
-     orderRequest.IdOrder =this.orderBD.IdOrder ;
-     orderRequest.LocationOrder =MTUbicacion.EncargadoVentas;
-     orderRequest.Answer = respuesta;
-
-     this.generalService.UpdOrderFlow(orderRequest).subscribe(
-         (data: any) => {
-            
-            if(respuesta=== MTRespuesta.Rechazado)
-            {
-              this.router.navigate(['ventas']);
-              showSuccess("Se actualizo correctamente la orden");
+  SendAnswer =() =>{
+    let orderRequest = new OrderEntity();
+    orderRequest.CodeOrder = this.codeSubOrderSend;
+    orderRequest.Status = this.Status;
+    this.generalService.UpdSubOrderFlow(orderRequest).subscribe(
+        (data: any) => {
+            if(data != null){
+              this.router.navigate[('/lavanderia')];
             }
-            else
-            {
-              orderRequest = new OrderEntity();
-              orderRequest.IdOrder =this.orderBD.IdOrder ;
-              orderRequest.LocationOrder =MTUbicacion.AreaCorte;
-              orderRequest.Answer = MTRespuesta.Pendiente;
-              
-              this.generalService.UpdOrderFlow(orderRequest).subscribe(
-                (data: any) => {
-                  this.router.navigate(['ventas']);
-                },
-                (error: HttpErrorResponse) => {
-                  this.spinner.hide();
-                  console.log(error);
-                  }
-              );              
-            }
-
-             //setTimeout(() => {
-                 //this.localStorage.clearKey('catalogListSelectedModal');
-                //  this.router.navigate(['catalogo']);
-             //}, 2);
-         },
-         (error: HttpErrorResponse) => {
-         this.spinner.hide();
-         console.log(error);
-         }
-     ); 
-
-  }
+        },
+        (error: HttpErrorResponse) => {
+        this.spinner.hide();
+        console.log(error);
+        }
+    ); 
+ }
 
 
   loadPedido = () => {
