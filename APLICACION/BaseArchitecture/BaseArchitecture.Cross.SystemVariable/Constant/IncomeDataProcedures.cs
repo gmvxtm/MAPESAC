@@ -48,6 +48,7 @@
             public const string MrgCustomer = "Usp_Mrg_Customer";
             public const string UpdOrderFlow = "Usp_Upd_OrderFlow";
             public const string UpdSubOrderFlow = "Usp_Upd_SubOrderFlow";
+            public const string ValidateStockByQuantityProduct = "Usp_ValidateStockByQuantityProduct";
         }
     }
 }

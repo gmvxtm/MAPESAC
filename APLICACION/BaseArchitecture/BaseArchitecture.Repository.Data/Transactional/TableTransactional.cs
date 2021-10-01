@@ -7,6 +7,7 @@ using Dapper;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace BaseArchitecture.Repository.Data.Transactional
 {
@@ -158,6 +159,35 @@ namespace BaseArchitecture.Repository.Data.Transactional
                     commandType: CommandType.StoredProcedure);
 
                 response = new Response<int>(result);
+            }
+
+            return response;
+        }
+
+        public Response<ResponseValidateStock> ValidateAndUpdateStock(string listProductJson)
+        {
+            Response<ResponseValidateStock> response;
+
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@ParamIProductJson", listProductJson);
+
+                var basicResponse = new ResponseValidateStock();
+                using (var list = connection.QueryMultipleAsync(
+                                    sql: $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.ValidateStockByQuantityProduct}",
+                                    param: parameters,
+                                    commandType: CommandType.StoredProcedure).Result)
+                {
+                    basicResponse.ValidateStock = list.Read<ValidateStock>().ToList().FirstOrDefault();
+                    basicResponse.ListProductOutOfStock = list.Read<ProductOutOfStock>().ToList();
+
+                }
+                response = new Response<ResponseValidateStock>
+                {
+                    Value = basicResponse
+                };
+
             }
 
             return response;

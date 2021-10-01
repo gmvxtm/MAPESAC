@@ -10,6 +10,8 @@ using BaseArchitecture.Repository.Entity.Tables;
 using System.Transactions;
 using System;
 using BaseArchitecture.Application.IService.Mail;
+using Newtonsoft.Json;
+using BaseArchitecture.Cross.SystemVariable.Constant;
 
 namespace BaseArchitecture.Application.Service.Table
 {
@@ -90,26 +92,46 @@ namespace BaseArchitecture.Application.Service.Table
             {
                 try
                 {
-                    TableTransaction.MergeCustomer(orderRequest.CustomerEntity);
-                    orderRequest.IdCustomer = orderRequest.CustomerEntity.IdCustomer;
-                    orderRequest.LocationOrder = "00201"; //Encargado de Ventas
-                    TableTransaction.MergeOrder(orderRequest);
-                    TableTransaction.GenerateOrderFlow(orderRequest);                    
-                    foreach (var itemOrderDetail in orderRequest.ListOrderDetail)
+                    /*Inicio de validación de stock para pedido*/
+                    List<ProductEntityJson> listProductEntityJson = new List<ProductEntityJson>();
+                    foreach (var item in orderRequest.ListOrderDetail)
                     {
-                        itemOrderDetail.IdOrder = orderRequest.IdOrder;
-                        itemOrderDetail.IdOrderDetail = Guid.NewGuid();
-                        itemOrderDetail.Description = itemOrderDetail.Description == null ? "" : itemOrderDetail.Description;
-                        TableTransaction.MergeOrderDetail(itemOrderDetail);
+                        var itemProductEntityJson = new ProductEntityJson();
+                        itemProductEntityJson.IdProduct = item.IdProduct;
+                        itemProductEntityJson.Quantity = item.Quantity;
+                        listProductEntityJson.Add(itemProductEntityJson);
                     }
-                    TableTransaction.GenerateSubOrderFlow(orderRequest);
-                    var resultQuery = TableQuery.ListOrder();
-                    var codeOrder = resultQuery.Value.ListOrderEntity.ToList().Find(x => x.IdOrder == orderRequest.IdOrder).CodeOrder;
-                    result = new Response<string>(codeOrder);
+                    var validateStock = TableTransaction.ValidateAndUpdateStock(JsonConvert.SerializeObject(orderRequest.ListOrderDetail));
+                    /*Inicio de envío de correo al encargado de almacén cuando el stock está por debajo del mínimo*/
+                    if(validateStock.Value.ListProductOutOfStock.Count() > 0)
+                    {
+                        var bodyMailOutOfStock = MailService.GetHtmlOutOfStock(validateStock.Value.ListProductOutOfStock.ToList());
+                        var rpsta = MailService.SendEmail(AppSettingValue.EmailLogicticResponsible, bodyMailOutOfStock);
+                    }
+                    if (validateStock.Value.ValidateStock.Validate == true)
+                    {
+                        TableTransaction.MergeCustomer(orderRequest.CustomerEntity);
+                        orderRequest.IdCustomer = orderRequest.CustomerEntity.IdCustomer;
+                        orderRequest.LocationOrder = "00201"; //Encargado de Ventas
+                        TableTransaction.MergeOrder(orderRequest);
+                        TableTransaction.GenerateOrderFlow(orderRequest);
+                        foreach (var itemOrderDetail in orderRequest.ListOrderDetail)
+                        {
+                            itemOrderDetail.IdOrder = orderRequest.IdOrder;
+                            itemOrderDetail.IdOrderDetail = Guid.NewGuid();
+                            itemOrderDetail.Description = itemOrderDetail.Description == null ? "" : itemOrderDetail.Description;
+                            TableTransaction.MergeOrderDetail(itemOrderDetail);
+                        }
+                        TableTransaction.GenerateSubOrderFlow(orderRequest);
+                        var resultQuery = TableQuery.ListOrder();
+                        var codeOrder = resultQuery.Value.ListOrderEntity.ToList().Find(x => x.IdOrder == orderRequest.IdOrder).CodeOrder;
+                        result = new Response<string>(codeOrder);
 
-                    //correo
-                    var rpsta = MailService.SendEmail(orderRequest.CustomerEntity.Email, codeOrder);
-                    transaction.Complete();
+                        //correo
+                        var body = MailService.GetHtml(codeOrder);
+                        var rpsta = MailService.SendEmail(orderRequest.CustomerEntity.Email, body);
+                        transaction.Complete();
+                    }
                 }
                 catch (Exception e)
                 {
