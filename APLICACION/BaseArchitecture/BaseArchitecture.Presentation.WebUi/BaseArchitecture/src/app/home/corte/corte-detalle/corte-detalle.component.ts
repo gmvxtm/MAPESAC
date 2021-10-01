@@ -24,7 +24,7 @@ import { showSuccess } from 'src/app/shared/util';
 
 export class CorteDetalleComponent implements OnInit {
   public labelJson: ResponseLabel = new ResponseLabel();
-  codeOrderSend: string;
+  codeOrder: string;
   codeSubOrderSend: string;
   orderBD : any;
   customerEntity: any;
@@ -42,7 +42,7 @@ export class CorteDetalleComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.codeOrderSend = this.localStorage.getJsonValue("codeOrderSend");
+    this.codeOrder = this.localStorage.getJsonValue("codeOrderSend");
     this.codeSubOrderSend = this.localStorage.getJsonValue("codeSubOrderSend");
     this.Status="";
     this.loadPedido();
@@ -66,7 +66,7 @@ export class CorteDetalleComponent implements OnInit {
  }
   loadPedido = () => {
     let orderEntity = new OrderEntity();
-    orderEntity.CodeOrder = this.codeOrderSend;
+    orderEntity.CodeOrder = this.codeOrder;
     this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
       (data: any) => {
         console.log(data)
