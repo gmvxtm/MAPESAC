@@ -65,6 +65,7 @@ export class LoginRequest {
     CustomerEntity:CustomerEntity;
     ListOrderDetail?:OrderDetailEntity[];
     Answer?:string;
+    Status?: string;
   }
 
   export class OrderDetailEntity

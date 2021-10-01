@@ -10,6 +10,7 @@ namespace BaseArchitecture.Repository.Entity.Tables
     {
         public Guid IdOrderFlow { get; set; }
         public Guid IdOrder { get; set; }
+        public string CodeOrder { get; set; }
         public int NroOrder { get; set; }
         public string LocationOrder { get; set; }
         public string Answer { get; set; }

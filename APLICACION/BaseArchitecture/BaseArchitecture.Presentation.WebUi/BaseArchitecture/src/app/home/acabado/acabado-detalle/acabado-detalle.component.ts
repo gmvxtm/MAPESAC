@@ -31,6 +31,8 @@ export class AcabadoDetalleComponent implements OnInit {
   actualLocation: any;
   rechazado:boolean;
   total: 0;
+  Status: string;
+
   constructor(
     private generalService: GeneralService,
     private spinner: NgxSpinnerService,
@@ -41,6 +43,23 @@ export class AcabadoDetalleComponent implements OnInit {
   ngOnInit() {
     this.codeOrder = this.localStorage.getJsonValue("codeOrderSend");
     this.loadPedido();
+  }
+
+  SendAnswer =() =>{
+     debugger
+     let orderRequest = new OrderEntity();
+     orderRequest.CodeOrder = this.codeOrder;
+     orderRequest.Status = this.Status;
+    //  this.generalService.UpdSubOrderFlow(orderRequest).subscribe(
+    //      (data: any) => {
+            
+       
+    //      },
+    //      (error: HttpErrorResponse) => {
+    //      this.spinner.hide();
+    //      console.log(error);
+    //      }
+    //  ); 
   }
 
   loadPedido = () => {

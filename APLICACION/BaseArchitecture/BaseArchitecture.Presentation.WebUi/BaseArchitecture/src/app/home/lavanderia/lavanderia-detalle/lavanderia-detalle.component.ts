@@ -43,6 +43,59 @@ export class LavanderiaDetalleComponent implements OnInit {
     this.loadPedido();
   }
 
+  SendAnswer =(answer: any) =>{
+    let respuesta="";
+    if(answer===1)
+      respuesta = MTRespuesta.Aprobado;
+    else if(answer===2)
+      respuesta = MTRespuesta.Rechazado;      
+     let prueba  = answer;
+
+     let orderRequest = new OrderEntity();
+     orderRequest.IdOrder =this.orderBD.IdOrder ;
+     orderRequest.LocationOrder =MTUbicacion.EncargadoVentas;
+     orderRequest.Answer = respuesta;
+
+     this.generalService.UpdOrderFlow(orderRequest).subscribe(
+         (data: any) => {
+            
+            if(respuesta=== MTRespuesta.Rechazado)
+            {
+              this.router.navigate(['ventas']);
+              showSuccess("Se actualizo correctamente la orden");
+            }
+            else
+            {
+              orderRequest = new OrderEntity();
+              orderRequest.IdOrder =this.orderBD.IdOrder ;
+              orderRequest.LocationOrder =MTUbicacion.AreaCorte;
+              orderRequest.Answer = MTRespuesta.Pendiente;
+              
+              this.generalService.UpdOrderFlow(orderRequest).subscribe(
+                (data: any) => {
+                  this.router.navigate(['ventas']);
+                },
+                (error: HttpErrorResponse) => {
+                  this.spinner.hide();
+                  console.log(error);
+                  }
+              );              
+            }
+
+             //setTimeout(() => {
+                 //this.localStorage.clearKey('catalogListSelectedModal');
+                //  this.router.navigate(['catalogo']);
+             //}, 2);
+         },
+         (error: HttpErrorResponse) => {
+         this.spinner.hide();
+         console.log(error);
+         }
+     ); 
+
+  }
+
+
   loadPedido = () => {
     let orderEntity = new OrderEntity();
     orderEntity.CodeOrder = this.codeOrder;

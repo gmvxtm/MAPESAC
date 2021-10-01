@@ -31,6 +31,8 @@ export class CorteDetalleComponent implements OnInit {
   actualLocation: any;
   rechazado:boolean;
   total: 0;
+  Status: string;
+
   constructor(
     private generalService: GeneralService,
     private spinner: NgxSpinnerService,
@@ -40,9 +42,26 @@ export class CorteDetalleComponent implements OnInit {
 
   ngOnInit() {
     this.codeOrder = this.localStorage.getJsonValue("codeOrderSend");
+    this.Status="";
     this.loadPedido();
   }
 
+  SendAnswer =() =>{
+    let orderRequest = new OrderEntity();
+    orderRequest.CodeOrder = this.codeOrder;
+    orderRequest.Status = this.Status;
+    this.generalService.UpdSubOrderFlow(orderRequest).subscribe(
+        (data: any) => {
+            if(data != null){
+              this.router.navigate[('/corte')];
+            }
+        },
+        (error: HttpErrorResponse) => {
+        this.spinner.hide();
+        console.log(error);
+        }
+    ); 
+ }
   loadPedido = () => {
     let orderEntity = new OrderEntity();
     orderEntity.CodeOrder = this.codeOrder;
