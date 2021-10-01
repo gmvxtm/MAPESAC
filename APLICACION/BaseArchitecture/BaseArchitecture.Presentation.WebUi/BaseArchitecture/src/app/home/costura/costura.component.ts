@@ -84,7 +84,6 @@ export class CosturaComponent implements OnInit {
       this.router.navigate(['costura/detalle']);
     }
 
-
     createHeadersTable = () => {
       this.headers = [
         {
