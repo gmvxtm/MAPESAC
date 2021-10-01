@@ -50,3 +50,11 @@ export class ProcessComponent implements OnInit {
     }, 5000);
   }
 }
+
+
+
+
+setTimeout(() => {
+
+  "logica";
+}, 5000);

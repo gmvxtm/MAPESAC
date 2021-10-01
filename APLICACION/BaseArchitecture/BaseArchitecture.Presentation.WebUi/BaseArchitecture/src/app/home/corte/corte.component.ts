@@ -49,7 +49,6 @@ export class CorteComponent implements OnInit {
       orderEntity.LocationOrder = MTUbicacion.AreaCorte;
       this.serviceProyecto.ListSubOrderByLocation(orderEntity).subscribe(
         (data: any) => {
-          console.log(data)
           this.ListSubOrderEntity = data.Value.ListSubOrderEntity;
           this.ListTotalOrderEntity = data.Value.ListTotalOrderEntity;
           this.totalItems = this.ListSubOrderEntity.length;
@@ -60,6 +59,13 @@ export class CorteComponent implements OnInit {
         }
       );
     }
+
+    verDetalle = (item) => {
+      let codeOrder = item.CodeOrder;
+      this.localStorage.setJsonValue("codeOrderSend", codeOrder)
+      this.router.navigate(['corte/detalle']);
+    }
+
 
     filterStatus = (item) => {
       if(item.IdMasterTable.trim() === "0")

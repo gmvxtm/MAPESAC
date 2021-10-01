@@ -61,6 +61,14 @@ export class LavanderiaComponent implements OnInit {
       );
     }
 
+    
+    verDetalle = (item) => {
+      let codeOrder = item.CodeOrder;
+      this.localStorage.setJsonValue("codeOrderSend", codeOrder)
+      this.router.navigate(['lavanderia/detalle']);
+    }
+
+
     filterStatus = (item) => {
       if(item.IdMasterTable.trim() === "0")
         {this.listOrderEntity = this.listTotalOrderEntityOriginal;}

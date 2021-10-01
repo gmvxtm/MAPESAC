@@ -1,0 +1,82 @@
+<div class="container row" style="margin-top: 10px;">
+    <div  class="col-10">
+        <p style="text-align: left; font-size: 16px; font-weight: bold;margin-bottom: 0;">
+            <a routerLink="/corte">
+                <i class="fas fa-long-arrow-alt-left fa-2x" style="color:#006169"></i>
+            </a>
+            
+        </p>
+    </div>
+</div>
+
+<div class="container row" style="margin-top: 10px;">
+    <div  class="col-10">
+        <p style="text-align: left; font-size: 16px; font-weight: bold;margin-bottom: 0;">
+           Detalle
+        </p>
+    </div>
+</div>
+<div class="container">
+    <label>Pedido: {{codeOrder}}</label>
+</div>
+<br>
+
+<div class="container">
+    <div class="row col-md-12">
+        <div class="col-md-3">
+            Modelo
+        </div>
+        <div class="col-md-3">
+            Descripción
+        </div>
+        <div class="col-md-2" style="text-align: center;">
+            Precio Unitario 
+        </div>
+        <div class="col-md-2" style="text-align: center;">
+            Cantidad
+        </div> 
+        <div class="col-md-2" style="text-align: center;">
+            Sub Total 
+        </div>
+    </div>
+    <div *ngFor="let item of listOrderDetail">
+        <div class="row col-md-12" >
+            <div class="col-md-3">
+                <img class="card-img-top" style="background-size: contain; height: 70px; width: 70px;"
+                src={{item.PathImageProduct}}  alt="Sin imagen" />
+            </div>
+            <div class="col-md-3">
+            {{item.Description}}
+            </div>
+            <div class="col-md-2" style="text-align: center;">
+            S/. {{item.UnitPrice}}
+            </div>
+            <div class="col-md-2" style="text-align: center;">
+            {{item.Quantity}}
+            </div>
+            <div class="col-md-2" style="text-align: center;">
+            S/. {{ item.UnitPrice*item.Quantity }}
+            </div>
+           
+        </div>
+        <br>
+    </div>
+    <!-- <div class="row col-md-12">
+        <div class="col-md-9">
+            
+        </div>        
+        <div class="col-md-3" >
+            Total S/. {{total}}
+        </div>
+    </div> -->
+</div>
+
+<div class="container">
+    <label>Estado</label>&nbsp;&nbsp;
+    <select>
+        <option value="00">Pendiente</option>
+        <option value="01">En proceso</option>
+        <option value="02">Terminado</option>
+    </select>
+</div>
+<br>

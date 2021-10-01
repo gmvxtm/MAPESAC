@@ -32,6 +32,30 @@ const routes: Routes = [
           // canActivate: [AuthGuard],
       },
       {
+        path: 'corte/detalle',
+        loadChildren: () =>
+          import('src/app/home/corte/corte-detalle/corte-detalle.module').then(
+            (m) => m.CorteDetalleModule
+          ),
+          // canActivate: [AuthGuard],
+      },
+      {
+        path: 'acabado/detalle',
+        loadChildren: () =>
+          import('src/app/home/acabado/acabado-detalle/acabado-detalle.module').then(
+            (m) => m.AcabadoDetalleModule
+          ),
+          // canActivate: [AuthGuard],
+      },
+      {
+        path: 'lavanderia/detalle',
+        loadChildren: () =>
+          import('src/app/home/lavanderia/lavanderia-detalle/lavanderia-detalle.module').then(
+            (m) => m.LavanderiaDetalleModule
+          ),
+          // canActivate: [AuthGuard],
+      },
+      {
         path: 'almacen',
         loadChildren: () =>
           import('src/app/home/almacen/almacen.module').then(
