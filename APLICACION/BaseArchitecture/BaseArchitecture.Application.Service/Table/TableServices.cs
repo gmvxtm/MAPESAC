@@ -199,5 +199,11 @@ namespace BaseArchitecture.Application.Service.Table
             var result = TableQuery.ListSuppliersByIdSupply(supplyRequest);
             return new Response<IEnumerable<SupplierEntity>> { Value = result };
         }
+
+        public Response<int> InsBuySupply(BuySupplyEntity buySupplyRequest)
+        {
+            var result = TableTransaction.IndBuySupply(buySupplyRequest);
+            return result;
+        }
     }
 }

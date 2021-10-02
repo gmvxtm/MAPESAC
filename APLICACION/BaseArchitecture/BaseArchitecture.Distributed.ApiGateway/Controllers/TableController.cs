@@ -330,5 +330,19 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
               InvokeWebApi.InvokePostAnonymousEntity<Response<SupplierEntity>>(urlApi, postData);
             return Ok(result);
         }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.InsBuySupply)]
+        public IHttpActionResult InsBuySupplpy()
+        {
+            var postData = HttpContext.Current.Request.Params["buySupplyRequest"];
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.InsBuySupply}";
+            var result =
+              InvokeWebApi.InvokePostAnonymousEntity<Response<int>>(urlApi, postData);
+            return Ok(result);
+        }
     }
 }

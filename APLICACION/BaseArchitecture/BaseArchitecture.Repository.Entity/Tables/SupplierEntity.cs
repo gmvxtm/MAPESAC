@@ -8,7 +8,7 @@ namespace BaseArchitecture.Repository.Entity.Tables
 {
     public class SupplierEntity
     {
-        public string IdSupplier { get; set; }
+        public Guid IdSupplier { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
