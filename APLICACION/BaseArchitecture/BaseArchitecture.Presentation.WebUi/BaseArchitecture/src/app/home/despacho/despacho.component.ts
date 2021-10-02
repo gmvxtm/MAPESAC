@@ -7,6 +7,8 @@ import { HeadersInterface } from 'src/app/shared/models/request/common/headers-r
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
+import { MTUbicacion } from 'src/app/shared/constant';
 
 @Component({
   selector: 'app-despacho',
@@ -24,7 +26,12 @@ export class DespachoComponent implements OnInit {
     configTable: {};
     listRisk: any[] = [];
     headers: HeadersInterface[] = new Array<HeadersInterface>();
-    
+    listTotalOrderEntityOriginal: any[] = [];
+    listTotalOrderEntity: any[] = [];
+    listOrderEntity: any[] = [];
+    SinceDate: string;
+    UntilDate: string;
+
   
     constructor(
       private spinner: NgxSpinnerService,
@@ -36,6 +43,7 @@ export class DespachoComponent implements OnInit {
     ngOnInit(): void {
       this.createHeadersTable();
       this.loadStart();
+      this.loadVentas();
       
     }
   
@@ -44,56 +52,112 @@ export class DespachoComponent implements OnInit {
         paging: true,
         searching: false,
         ordering: true,
-        lengthChange: true,
+        lengthChange: false,
         lengthMenu: [5, 10, 15, 20, 25],
         serverSide: false,
-        filterColumn: true
+        filterColumn: false
       };
     }
-  
 
+    filterStatus = (item) => {
+      debugger
+      let pr = item;
+      if(item.IdMasterTable.trim() ==="0")
+        {this.listOrderEntity = this.listTotalOrderEntityOriginal;}
+      else 
+        {this.listOrderEntity = this.listTotalOrderEntityOriginal.filter(x=> x.Answer === item.IdMasterTable);}
+       
 
+    }
+
+    loadVentas = () => {
+      let orderEntity = new OrderEntity();
+      orderEntity.LocationOrder = MTUbicacion.AreaDespacho;
+      this.serviceProyecto.ListOrderByLocation(orderEntity).subscribe(
+        (data: any) => {
+          this.listTotalOrderEntity = data.Value.ListTotalOrderEntity;
+          this.listTotalOrderEntityOriginal = data.Value.ListOrderEntity;
+          this.listOrderEntity = data.Value.ListOrderEntity;
+          this.totalItems = this.listOrderEntity.length;
+        },
+        (error: HttpErrorResponse) => {
+        this.spinner.hide();
+        console.log(error);
+        }
+    );
+    }
+
+    buscarFechas = () => {
+      if(this.SinceDate === undefined && this.UntilDate=== undefined)      
+      {
+        this.listOrderEntity = this.listTotalOrderEntityOriginal
+      }
+      else
+      {
+        let startDate = new Date(this.SinceDate);      
+        let endDate = new Date(this.UntilDate);
+        startDate.setHours(0,0,0,0);
+        endDate.setHours(0,0,0,0);
+        this.listOrderEntity = this.listTotalOrderEntityOriginal.filter( x => new Date(x.DateOrder) >= startDate && new Date(x.DateOrder) <= endDate)
+      }
+
+    }
+
+    limpiar = () => {
+      this.SinceDate = "";
+      this.UntilDate = "";
+      this.listOrderEntity = this.listTotalOrderEntityOriginal;
+    }
+
+    verDetalle = (item) => {
+      let codeOrder = item.CodeOrder;
+      this.localStorage.setJsonValue("codeOrderSend", codeOrder)
+      this.router.navigate(['despacho/detalle']);
+    }
 
     createHeadersTable = () => {
       this.headers = [
         {
-          primaryKey: 'Codigo',
-          title: 'Código',
+          primaryKey: 'CodeOrder',
+          title: 'N° Pedido',
         },
         {
-          primaryKey: 'InversionDescripcion',
-          title: 'Tipo de Inversión',
+          primaryKey: 'FirstName',
+          title: 'Nombres',
         },
         {
-          primaryKey: 'CicloDescripcion',
-          title: 'Ciclo de Inversión',
+          primaryKey: 'LastName',
+          title: 'Apellidos',
         },
         {
-          primaryKey: 'NaturalezaDescripcion',
-          title: 'Naturaleza',
+          primaryKey: 'Email',
+          title: 'Correo',
         },
         {
-          primaryKey: 'Nombre',
-          title: 'Nombre',
+          primaryKey: 'PhoneNumber',
+          title: 'Telefono',
         },
         {
-          primaryKey: 'Departamento',
-          title: 'Departamento',
+          primaryKey: 'DateOrderString',
+          title: 'Fecha',
         },
         {
-          primaryKey: 'Costo',
-          title: 'Costo',
+          primaryKey: 'LocationOrderName',
+          title: 'Estado',
+        },
+        {
+          primaryKey: 'AnswerName',
+          title: 'Respuesta',
         },
         {
           primaryKey: '',
-          title: 'Acciones',
+          title: 'Ver',
           property: 'button',
           buttons: [
           {
             type: 'edit',
             icon: 'fas fa-search',
-            tooltip: 'Consultar'
-        }
+          }
           ]
         }
       ];

@@ -50,7 +50,9 @@ export const TableMaster = {
 };
 
 export const MTEstadoPedido = {
-  DNI: '00101',
+  Pendiente: '00101',
+  EnProceso: '00102',
+  Terminado: '00103'
 };
 export const MTUbicacion = {
   EncargadoVentas: '00201',

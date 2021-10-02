@@ -64,6 +64,14 @@ const routes: Routes = [
           // canActivate: [AuthGuard],
       },
       {
+        path: 'despacho/detalle',
+        loadChildren: () =>
+          import('src/app/home/despacho/despacho-detalle/despacho-detalle.module').then(
+            (m) => m.DespachoDetalleModule
+          ),
+          // canActivate: [AuthGuard],
+      },
+      {
         path: 'almacen',
         loadChildren: () =>
           import('src/app/home/almacen/almacen.module').then(
