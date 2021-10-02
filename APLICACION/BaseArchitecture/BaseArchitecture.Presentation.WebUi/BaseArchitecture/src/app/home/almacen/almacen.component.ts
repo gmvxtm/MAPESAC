@@ -107,18 +107,18 @@ export class AlmacenComponent implements OnInit {
           primaryKey: 'DateUpdate',
           title: 'Fec_Act',
         },
-        {
-          primaryKey: '',
-          title: 'Acciones',
-          property: 'button',
-          buttons: [
-          {
-            type: 'edit',
-            icon: 'fas fa-search',
-            tooltip: 'Consultar'
-        }
-          ]
-        }
+        // {
+        //   primaryKey: '',
+        //   title: 'Acciones',
+        //   property: 'button',
+        //   buttons: [
+        //   {
+        //     type: 'edit',
+        //     icon: 'fas fa-search',
+        //     tooltip: 'Consultar'
+        // }
+        //   ]
+        // }
       ];
     };
 

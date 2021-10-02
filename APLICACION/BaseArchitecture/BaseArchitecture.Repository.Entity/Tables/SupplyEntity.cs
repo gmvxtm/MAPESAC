@@ -16,6 +16,7 @@ namespace BaseArchitecture.Repository.Entity.Tables
         public string MeasureUnit { get; set; }
         public double MinimumStock { get; set; }
         public string DateUpdate { get; set; }
+        public bool IndicateAlert { get; set; }
     }
 }
 

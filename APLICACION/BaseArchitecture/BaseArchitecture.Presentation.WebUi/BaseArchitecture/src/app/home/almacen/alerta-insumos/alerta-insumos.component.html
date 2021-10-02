@@ -1,0 +1,29 @@
+<div class="container row" style="margin-top: 10px;">
+    <div  class="col-10">
+        <p style="text-align: left; font-size: 16px; font-weight: bold;margin-bottom: 0;">
+            <a routerLink="/almacen">
+                <i class="fas fa-long-arrow-alt-left fa-2x" style="color:#006169"></i>
+            </a>
+            
+        </p>
+    </div>
+</div>
+
+<div class="container row" style="margin-top: 10px;">
+    <div  class="col-10">
+        <p style="text-align: left; font-size: 16px; font-weight: bold;margin-bottom: 0;">
+           Alerta de Insumos
+        </p>
+    </div>
+</div>
+<div class="container">
+    <div class="kt-portlet__body">
+        <app-table 
+            [data]="ListSuppliesEntity" 
+            [configTable]="configTable"
+            [totalItems]="totalItems"
+            (edit) = "verDetalle($event)"
+            [headers]="headers">
+        </app-table>
+    </div>
+</div>
