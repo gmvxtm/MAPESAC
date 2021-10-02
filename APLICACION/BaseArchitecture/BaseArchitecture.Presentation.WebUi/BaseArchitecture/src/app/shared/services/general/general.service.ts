@@ -136,7 +136,7 @@ export class GeneralService {
       .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.ListSuppliersByIdSupply,
           {
             observe: 'body',
-            params: { orderFlowRequest: JSON.stringify(supplyRequest) },
+            params: { supplyRequest: JSON.stringify(supplyRequest) },
           }
         )
       
