@@ -16,8 +16,9 @@ namespace BaseArchitecture.Repository.Entity
         public string StatusSubOrderName { get; set; }
         public string DateSubOrder { get; set; }
         public string DateEndSubOrder { get; set; }
-        
-     
+        public Guid IdProduct { get; set; }
+
+
 
 
     }

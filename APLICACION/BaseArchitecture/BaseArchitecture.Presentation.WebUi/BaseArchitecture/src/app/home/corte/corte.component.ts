@@ -63,13 +63,8 @@ export class CorteComponent implements OnInit {
     }
 
     verDetalle = (item) => {
-      debugger
-      let codeOrder = item.CodeOrder;
-      let codeSubOrder = item.CodeSubOrder;
-      this.statusSend = item.StatusSubOrderMT;
-      this.localStorage.setJsonValue("codeOrderSend", codeOrder)
-      this.localStorage.setJsonValue("codeSubOrderSend", codeSubOrder)
-      this.localStorage.setJsonValue("statusSubOrderMT", this.statusSend)
+            
+      this.localStorage.setJsonValue("itemSubOrder",item);      
       this.router.navigate(['corte/detalle']);
     }
 
