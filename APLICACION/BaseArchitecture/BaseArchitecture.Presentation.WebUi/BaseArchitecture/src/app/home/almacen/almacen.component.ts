@@ -7,6 +7,9 @@ import { HeadersInterface } from 'src/app/shared/models/request/common/headers-r
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
+import { MTUbicacion } from 'src/app/shared/constant';
+import { filterByValue } from 'src/app/shared/util';
 
 @Component({
   selector: 'app-almacen',
@@ -24,8 +27,9 @@ export class AlmacenComponent implements OnInit {
     configTable: {};
     listRisk: any[] = [];
     headers: HeadersInterface[] = new Array<HeadersInterface>();
-    
-  
+    ListSuppliesEntity: any[] = [];
+    ListSuppliesEntityOriginal: any[] = [];
+    nameSupplies: string;
     constructor(
       private spinner: NgxSpinnerService,
       private router: Router,
@@ -36,7 +40,34 @@ export class AlmacenComponent implements OnInit {
     ngOnInit(): void {
       this.createHeadersTable();
       this.loadStart();
+      this.loadData();
       
+    }
+
+    loadData = () => {
+     
+      this.serviceProyecto.ListSupplies().subscribe(
+        (data: any) => {
+          this.ListSuppliesEntity = data.Value;
+          this.ListSuppliesEntityOriginal = data.Value;          
+          this.totalItems = this.ListSuppliesEntityOriginal.length;
+        },
+        (error: HttpErrorResponse) => {
+        this.spinner.hide();
+        console.log(error);
+        }
+      );
+    }
+
+    buscarSupplies = () => {
+      this.ListSuppliesEntity =filterByValue(this.ListSuppliesEntityOriginal,  this.nameSupplies );
+      this.totalItems = this.ListSuppliesEntity.length;
+    }
+
+    verDetalle = (item) => {
+      // debugger
+      // this.localStorage.setJsonValue("itemSubOrder",item);  
+      // this.router.navigate(['costura/detalle']);
     }
   
     loadStart = () => {
@@ -57,32 +88,24 @@ export class AlmacenComponent implements OnInit {
     createHeadersTable = () => {
       this.headers = [
         {
-          primaryKey: 'Codigo',
+          primaryKey: 'CodeSupply',
           title: 'Código',
         },
         {
-          primaryKey: 'InversionDescripcion',
-          title: 'Tipo de Inversión',
+          primaryKey: 'Name',
+          title: 'Descripción',
         },
         {
-          primaryKey: 'CicloDescripcion',
-          title: 'Ciclo de Inversión',
+          primaryKey: 'MeasureUnit',
+          title: 'Unidad',
         },
         {
-          primaryKey: 'NaturalezaDescripcion',
-          title: 'Naturaleza',
+          primaryKey: 'Stock',
+          title: 'Stock',
         },
         {
-          primaryKey: 'Nombre',
-          title: 'Nombre',
-        },
-        {
-          primaryKey: 'Departamento',
-          title: 'Departamento',
-        },
-        {
-          primaryKey: 'Costo',
-          title: 'Costo',
+          primaryKey: 'DateUpdate',
+          title: 'Fec_Act',
         },
         {
           primaryKey: '',

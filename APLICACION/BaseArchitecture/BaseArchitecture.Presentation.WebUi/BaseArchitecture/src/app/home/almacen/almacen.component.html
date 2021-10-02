@@ -5,15 +5,40 @@
         </p>
     </div>
 </div>
-        
+
+<!-- <div class="container">
+
+    <div class="row">
+        <div class="col-md-2">
+            <label style="font-weight: bold;">
+                Producto:
+            </label>
+        </div>
+        <div class="col-md-2">
+            <div class="input-group">
+                <input type="text" ng-readonly="all" class="form-control" [(ngModel)]="nameSuppliesSearch">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <button (click)="buscarSupplies()" class="form-control btn-success"><em class="fas fa-search"></em>&nbsp;&nbsp; Buscar</button>
+        </div>
+
+    </div>
+
+</div> -->
+
 <br>
 <div class="container">
     <div class="kt-portlet__body">
-        <!-- <app-table [data]="listRisk" 
+        <app-table 
+            [data]="ListSuppliesEntity" 
             [configTable]="configTable"
             [totalItems]="totalItems"
+            (edit) = "verDetalle($event)"
             [headers]="headers">
-        </app-table> -->
+        </app-table>
     </div>
 </div>
+
 
