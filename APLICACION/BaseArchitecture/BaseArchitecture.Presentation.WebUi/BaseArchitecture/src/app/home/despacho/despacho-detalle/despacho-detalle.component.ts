@@ -17,16 +17,15 @@ import { LocalService } from 'src/app/shared/services/general/local.service';
 import { showSuccess } from 'src/app/shared/util';
 
 @Component({
-  selector: 'costuraDetalle',
-  templateUrl: './costura-detalle.component.html',
-  styleUrls: ['./costura-detalle.component.css'],
+  selector: 'despachoDetalle',
+  templateUrl: './despacho-detalle.component.html',
+  styleUrls: ['./despacho-detalle.component.css'],
 })
 
-export class CosturaDetalleComponent implements OnInit {
+export class DespachoDetalleComponent implements OnInit {
   public labelJson: ResponseLabel = new ResponseLabel();
   codeOrder: string;
   codeSubOrderSend: string;
-  idProducto:string;
   orderBD : any;
   customerEntity: any;
   listOrderDetail: any [] = [];
@@ -44,41 +43,20 @@ export class CosturaDetalleComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.codeOrder =  this.localStorage.getJsonValue("itemSubOrder").CodeOrder;
-    this.codeSubOrderSend = this.localStorage.getJsonValue("itemSubOrder").CodeSubOrder;
-    this.statusSubOrderMT = this.localStorage.getJsonValue("itemSubOrder").StatusSubOrderMT;
-    this.idProducto =  this.localStorage.getJsonValue("itemSubOrder").IdProduct;
-    this.Status="";
+    this.codeOrder = this.localStorage.getJsonValue("codeOrderSend");
     this.loadPedido();
-  }
+    this.actualLocation = MTUbicacion.EncargadoVentas;
+}
 
-  SendAnswer =() =>{
-    let orderRequest = new OrderEntity();
-    orderRequest.CodeOrder = this.codeSubOrderSend;
-    orderRequest.Status = this.Status;
-    this.generalService.UpdSubOrderFlow(orderRequest).subscribe(
-        (data: any) => {
-            if(data != null){
-              showSuccess("Se actualizo correctamente la orden");
-              this.router.navigate(['costura']);
-            }
-        },
-        (error: HttpErrorResponse) => {
-        this.spinner.hide();
-        console.log(error);
-        }
-    ); 
- }
-  loadPedido = () => {
+loadPedido = () => {
     let orderEntity = new OrderEntity();
     orderEntity.CodeOrder = this.codeOrder;
     this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
       (data: any) => {
-        debugger
         console.log(data)
         this.orderBD=data.Value;
         this.customerEntity = data.Value.CustomerEntity;
-        this.listOrderDetail = data.Value.ListOrderDetail.filter(x=> x.IdProduct  === this.idProducto );
+        this.listOrderDetail = data.Value.ListOrderDetail;
         this.rechazado = false;
         if(MTRespuesta.Rechazado === this.orderBD.ListOrderStatus.find(x=> x.IdMasterTable === MTUbicacion.EncargadoVentas).Answer)
         {
@@ -91,6 +69,59 @@ export class CosturaDetalleComponent implements OnInit {
       console.log(error);
       }
   );
+}
+
+SendAnswer =(answer: any) =>{
+  let respuesta="";
+  if(answer===1)
+    respuesta = MTRespuesta.Aprobado;
+  else if(answer===2)
+    respuesta = MTRespuesta.Rechazado;      
+   let prueba  = answer;
+
+   let orderRequest = new OrderEntity();
+   orderRequest.IdOrder =this.orderBD.IdOrder ;
+   orderRequest.LocationOrder =MTUbicacion.EncargadoVentas;
+   orderRequest.Answer = respuesta;
+
+   this.generalService.UpdOrderFlow(orderRequest).subscribe(
+       (data: any) => {
+          
+          if(respuesta=== MTRespuesta.Rechazado)
+          {
+            this.router.navigate(['despacho']);
+            showSuccess("Se actualizo correctamente la orden");
+          }
+          else
+          {
+            orderRequest = new OrderEntity();
+            orderRequest.IdOrder =this.orderBD.IdOrder ;
+            orderRequest.LocationOrder =MTUbicacion.AreaCorte;
+            orderRequest.Answer = MTRespuesta.Pendiente;
+            
+            this.generalService.UpdOrderFlow(orderRequest).subscribe(
+              (data: any) => {
+                this.router.navigate(['despacho']);
+              },
+              (error: HttpErrorResponse) => {
+                this.spinner.hide();
+                console.log(error);
+                }
+            );              
+          }
+
+           //setTimeout(() => {
+               //this.localStorage.clearKey('catalogListSelectedModal');
+              //  this.router.navigate(['catalogo']);
+           //}, 2);
+       },
+       (error: HttpErrorResponse) => {
+       this.spinner.hide();
+       console.log(error);
+       }
+   ); 
+
+
 }
 
 }

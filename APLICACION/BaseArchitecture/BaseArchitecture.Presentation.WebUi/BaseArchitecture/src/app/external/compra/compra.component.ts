@@ -8,7 +8,8 @@ import { GeneralService } from 'src/app/shared/services/general/general.service'
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductEntity } from 'src/app/shared/models/general/table.interface';
 import { CustomerEntity, OrderDetailEntity, OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
-import { createGuidRandom, showInfo, showSuccess } from 'src/app/shared/util';
+import { createGuidRandom, showError, showInfo, showSuccess } from 'src/app/shared/util';
+import { MTEstadoPedido } from 'src/app/shared/constant';
 
 @Component({
   selector: 'app-compra',
@@ -95,22 +96,25 @@ export class CompraComponent implements OnInit {
     sendOrder = () => {
         this.disabledSend = true;
         this.spinner.show();
+        let verror = false;
         if( this.customerEntity.FirstName === undefined ||  this.customerEntity.FirstName.trim() === "" )
-        {   showInfo("Se debe registrar los Nombres"); this.spinner.hide();return; }
+        {   showInfo("Se debe registrar los Nombres"); verror=true;}
         if( this.customerEntity.LastName === undefined || this.customerEntity.LastName.trim() === "" )
-        {   showInfo("Se debe registrar los Apellidos");this.spinner.hide();return; }
+        {   showInfo("Se debe registrar los Apellidos");verror=true;}
         if(this.customerEntity.Email === undefined ||  this.customerEntity.Email.trim() === "" )
-        {   showInfo("Se debe registrar el correo"); this.spinner.hide();return; }
+        {   showInfo("Se debe registrar el correo"); verror=true;}
         if( this.customerEntity.PhoneNumber === undefined || this.customerEntity.PhoneNumber.trim() === "" )
-        {   showInfo("Se debe registrar el Telefono");this.spinner.hide();return; }
+        {   showInfo("Se debe registrar el Telefono");verror=true; }
         if(this.customerEntity.DocumentNumber === undefined || this.customerEntity.DocumentNumber.trim() === "" )
-        {   showInfo("Se debe registrar DNI"); this.spinner.hide();return; }
+        {   showInfo("Se debe registrar DNI"); verror=true; }
         if(this.Departamento=== undefined ||  this.Departamento.trim() === "" )
-        {   showInfo("Se debe seleccionar Departamento"); this.spinner.hide();return; }
+        {   showInfo("Se debe seleccionar Departamento");verror=true; }
         if( this.Provincia === undefined || this.Provincia.trim() === "" )
-        {   showInfo("Se debe seleccionar Provincia");this.spinner.hide();return; }
+        {   showInfo("Se debe seleccionar Provincia");verror=true;}
         if( this.Distrito === undefined || this.Distrito.trim() === "" )
-        {   showInfo("Se debe seleccionar Distrito"); this.spinner.hide();return; }
+        {   showInfo("Se debe seleccionar Distrito"); verror=true; }
+
+
         if(this.visibleFactura === true)
         {
             if( this.ruc === undefined || this.ruc.trim() === "" )
@@ -119,10 +123,16 @@ export class CompraComponent implements OnInit {
             {   showInfo("Se debe registrar  Razon Social");this.spinner.hide();return; }
         }
 
-        
+        if(verror === true)
+        {
+            this.disabledSend   =   false;
+            this.spinner.hide();    return; 
+        }
+
         var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
         if (!pattern.test(this.customerEntity.Email)) {        
             showInfo("Se debe ingresar un correo en formato correcto ");        
+            this.disabledSend   =   false;
             return ;
         }
         
@@ -132,7 +142,7 @@ export class CompraComponent implements OnInit {
         orderRequest.DateOrder = Date();
         orderRequest.Total = this.totalQuantity.toString();
         orderRequest.IdCustomer = createGuidRandom();    
-        orderRequest.StatusOrder = "00101";        
+        orderRequest.StatusOrder = MTEstadoPedido.Pendiente;        
         orderRequest.RecordStatus = "A";  
         orderRequest.BusinessName = this.razonSocial=== null ? "":this.razonSocial;  
         orderRequest.BusinessNumber = this.ruc=== null ? "":this.ruc;  
@@ -144,12 +154,21 @@ export class CompraComponent implements OnInit {
 
         this.generalService.MergeOrder(orderRequest).subscribe(
             (data: any) => {
+                debugger
                 var codeOrder =data.Value;
-                showSuccess("Se registro la orden: " + codeOrder);
-                setTimeout(() => {
-                    this.localStorage.clearKey('catalogListSelectedModal');
-                    this.router.navigate(['catalogo']);
-                }, 2);
+                if(codeOrder.substring(0,5)    === "Error")
+                {
+                    showError(codeOrder);
+                }
+                else
+                {
+                    showSuccess("Se registro la orden: " + codeOrder);
+                    setTimeout(() => {
+                        this.localStorage.clearKey('catalogListSelectedModal');
+                        this.router.navigate(['catalogo']);
+                    }, 2);
+                }
+                
             },
             (error: HttpErrorResponse) => {
             this.spinner.hide();

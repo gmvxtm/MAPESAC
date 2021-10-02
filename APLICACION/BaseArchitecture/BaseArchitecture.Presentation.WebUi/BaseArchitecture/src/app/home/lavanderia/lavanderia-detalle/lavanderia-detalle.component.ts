@@ -32,6 +32,7 @@ export class LavanderiaDetalleComponent implements OnInit {
   rechazado:boolean;
   total: 0;
   codeSubOrderSend: string;
+  idProducto:string;
   Status: string;
   statusSubOrderMT: string;
   
@@ -43,9 +44,10 @@ export class LavanderiaDetalleComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.codeOrder = this.localStorage.getJsonValue("codeOrderSend");
-    this.codeSubOrderSend = this.localStorage.getJsonValue("codeSubOrderSend");
-    this.statusSubOrderMT = this.localStorage.getJsonValue("statusSubOrderMT");
+    this.codeOrder =  this.localStorage.getJsonValue("itemSubOrder").CodeOrder;
+    this.codeSubOrderSend = this.localStorage.getJsonValue("itemSubOrder").CodeSubOrder;
+    this.statusSubOrderMT = this.localStorage.getJsonValue("itemSubOrder").StatusSubOrderMT;
+    this.idProducto =  this.localStorage.getJsonValue("itemSubOrder").IdProduct;
     this.Status="";
     this.loadPedido();
   }
@@ -77,7 +79,7 @@ export class LavanderiaDetalleComponent implements OnInit {
         console.log(data)
         this.orderBD=data.Value;
         this.customerEntity = data.Value.CustomerEntity;
-        this.listOrderDetail = data.Value.ListOrderDetail;
+        this.listOrderDetail = data.Value.ListOrderDetail.filter(x=> x.IdProduct  === this.idProducto );
         this.rechazado = false;
         if(MTRespuesta.Rechazado === this.orderBD.ListOrderStatus.find(x=> x.IdMasterTable === MTUbicacion.EncargadoVentas).Answer)
         {

@@ -63,10 +63,7 @@ export class LavanderiaComponent implements OnInit {
 
     
     verDetalle = (item) => {
-      let codeOrder = item.CodeOrder;
-      let codeSubOrder = item.CodeSubOrder;
-      this.localStorage.setJsonValue("codeOrderSend", codeOrder)
-      this.localStorage.setJsonValue("codeSubOrderSend", codeSubOrder)
+      this.localStorage.setJsonValue("itemSubOrder",item);   
       this.router.navigate(['lavanderia/detalle']);
     }
 
