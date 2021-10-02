@@ -187,5 +187,11 @@ namespace BaseArchitecture.Application.Service.Table
             var result = TableTransaction.UpdDecrease(decreaseRequest);
             return result;
         }
+
+        public Response<IEnumerable<SupplyEntity>> ListSupplies()
+        {
+            var result = TableQuery.ListSupplies();
+            return new Response<IEnumerable<SupplyEntity>> { Value = result };
+        }
     }
 }

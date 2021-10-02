@@ -230,5 +230,23 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
 
             return response;
         }
+        public IEnumerable<SupplyEntity> ListSupplies()
+        {
+            IEnumerable<SupplyEntity> response;
+
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+
+                var resultResponse = connection.QueryAsync<SupplyEntity>(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.ListSupplies}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure).Result;
+
+                response = resultResponse;
+            }
+
+            return response;
+        }
     }
 }

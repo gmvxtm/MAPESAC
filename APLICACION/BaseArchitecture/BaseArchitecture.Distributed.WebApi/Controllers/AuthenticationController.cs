@@ -150,5 +150,13 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
             var result = TableService.UpdDecrease(decreaseRequest);
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.ListSupplies)]
+        public IHttpActionResult ListSupplies()
+        {
+            var result = TableService.ListSupplies();
+            return Ok(result);
+        }
     }
 }

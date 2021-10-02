@@ -40,6 +40,7 @@
                 public const string ListProyectos = "ListProyectos";
                 public const string GetProyectoById = "GetProyectoById";
                 public const string ListProduct = "ListProduct";
+                public const string ListSupplies = "ListSupplies";
                 public const string ListSuppliesByProduct = "ListSuppliesByProduct";
                 public const string MergeOrder = "MergeOrder";
                 public const string ListUbi = "ListUbi";

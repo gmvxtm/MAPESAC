@@ -23,5 +23,6 @@ namespace BaseArchitecture.Application.IService.Table
         Response<SubOrderListByLocationEntity> ListSubOrderByLocation(OrderEntity orderRequest);
         Response<IEnumerable<SupplyEntity>> ListSuppliesByProduct(ProductEntity suppliesByProductRequest);
         Response<int> UpdDecrease(DecreaseEntity decreaseRequest);
+        Response<IEnumerable<SupplyEntity>> ListSupplies();
     }
 }
