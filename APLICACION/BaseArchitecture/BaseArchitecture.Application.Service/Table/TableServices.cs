@@ -103,7 +103,8 @@ namespace BaseArchitecture.Application.Service.Table
                     }
                     var validateStock = TableTransaction.ValidateAndUpdateStock(JsonConvert.SerializeObject(listProductEntityJson));
                     /*Inicio de envío de correo al encargado de almacén cuando el stock está por debajo del mínimo*/
-                    if(validateStock.Value.ListProductOutOfStock.Count() > 0)
+                    if( validateStock.Value.ListProductOutOfStock.Count() > 0 && 
+                        !string.IsNullOrEmpty(validateStock.Value.ListProductOutOfStock.FirstOrDefault().Name))
                     {
                         var bodyMailOutOfStock = MailService.GetHtmlOutOfStock(validateStock.Value.ListProductOutOfStock.ToList());
                         var respuesta = MailService.SendEmail(AppSettingValue.EmailLogicticResponsible, bodyMailOutOfStock);
@@ -131,7 +132,11 @@ namespace BaseArchitecture.Application.Service.Table
                         var body = MailService.GetHtml(codeOrder);
                         var rpsta = MailService.SendEmail(orderRequest.CustomerEntity.Email, body);
                         transaction.Complete();
-                    //}
+                    }
+                    else
+                    {
+                        result = new Response<string>("Error: No hay stock suficiente para la producción del pedido");
+                    }
                 }
                 catch (Exception e)
                 {
