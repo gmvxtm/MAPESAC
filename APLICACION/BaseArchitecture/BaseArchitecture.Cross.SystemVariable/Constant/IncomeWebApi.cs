@@ -52,6 +52,7 @@
                 public const string UpdOrderFlow = "UpdOrderFlow";
                 public const string UpdSubOrderFlow = "UpdSubOrderFlow";
                 public const string UpdDecrease = "UpdDecrease";
+                public const string ListSuppliersByIdSupply = "ListSuppliersByIdSupply";
             }
         }
 

@@ -21,5 +21,6 @@ namespace BaseArchitecture.Repository.IData.NonTransactional
         Response<SubOrderListByLocationEntity> ListSubOrderByLocation(OrderEntity orderRequest);        
         IEnumerable<SupplyEntity> ListSuppliesByProduct(ProductEntity suppliesByProductRequest);
         IEnumerable<SupplyEntity> ListSupplies();
+        IEnumerable<SupplierEntity> ListSuppliersByIdSupply(SupplyEntity supplyRequest);
     }
 }

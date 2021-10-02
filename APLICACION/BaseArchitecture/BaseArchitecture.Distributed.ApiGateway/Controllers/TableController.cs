@@ -316,5 +316,19 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
                 InvokeWebApi.InvokePostAnonymousEntity<Response<List<SupplyEntity>>>(urlApi, "");
             return Ok(result);
         }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.ListSuppliersByIdSupply)]
+        public IHttpActionResult ListSuppliersByIdSupply()
+        {
+            var postData = HttpContext.Current.Request.Params["supplyRequest"];
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.ListSuppliersByIdSupply}";
+            var result =
+              InvokeWebApi.InvokePostAnonymousEntity<Response<SupplierEntity>>(urlApi, postData);
+            return Ok(result);
+        }
     }
 }
