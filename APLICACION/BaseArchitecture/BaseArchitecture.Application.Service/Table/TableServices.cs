@@ -98,15 +98,15 @@ namespace BaseArchitecture.Application.Service.Table
                     {
                         var itemProductEntityJson = new ProductEntityJson();
                         itemProductEntityJson.IdProduct = item.IdProduct;
-                        itemProductEntityJson.Quantity = item.Quantity;
+                        itemProductEntityJson.Quantity = int.Parse(item.Quantity.ToString());
                         listProductEntityJson.Add(itemProductEntityJson);
                     }
-                    var validateStock = TableTransaction.ValidateAndUpdateStock(JsonConvert.SerializeObject(orderRequest.ListOrderDetail));
+                    var validateStock = TableTransaction.ValidateAndUpdateStock(JsonConvert.SerializeObject(listProductEntityJson));
                     /*Inicio de envío de correo al encargado de almacén cuando el stock está por debajo del mínimo*/
                     if(validateStock.Value.ListProductOutOfStock.Count() > 0)
                     {
                         var bodyMailOutOfStock = MailService.GetHtmlOutOfStock(validateStock.Value.ListProductOutOfStock.ToList());
-                        var rpsta = MailService.SendEmail(AppSettingValue.EmailLogicticResponsible, bodyMailOutOfStock);
+                        var respuesta = MailService.SendEmail(AppSettingValue.EmailLogicticResponsible, bodyMailOutOfStock);
                     }
                     if (validateStock.Value.ValidateStock.Validate == true)
                     {
