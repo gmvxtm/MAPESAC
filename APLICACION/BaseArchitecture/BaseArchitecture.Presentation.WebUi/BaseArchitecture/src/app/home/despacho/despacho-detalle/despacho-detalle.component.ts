@@ -25,6 +25,7 @@ import { showSuccess } from 'src/app/shared/util';
 export class DespachoDetalleComponent implements OnInit {
   public labelJson: ResponseLabel = new ResponseLabel();
   codeOrder: string;
+  locationOrder:string;
   codeSubOrderSend: string;
   orderBD : any;
   customerEntity: any;
@@ -43,7 +44,11 @@ export class DespachoDetalleComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    debugger
     this.codeOrder = this.localStorage.getJsonValue("codeOrderSend");
+    this.locationOrder = this.localStorage.getJsonValue("itemSend").LocationOrder;
+    
+    this.Status = "00605";
     this.loadPedido();
     this.actualLocation = MTUbicacion.EncargadoVentas;
 }
@@ -74,33 +79,23 @@ loadPedido = () => {
 
 
 
-SendAnswer =(answer: any) =>{
+SendAnswer =() =>{
   let respuesta="";
-  if(answer===1)
-    respuesta = MTRespuesta.Aprobado;
-  else if(answer===2)
-    respuesta = MTRespuesta.Rechazado;      
-   let prueba  = answer;
 
+
+   
    let orderRequest = new OrderEntity();
    orderRequest.IdOrder =this.orderBD.IdOrder ;
-   orderRequest.LocationOrder =MTUbicacion.EncargadoVentas;
-   orderRequest.Answer = respuesta;
+   orderRequest.LocationOrder =MTUbicacion.AreaDespacho;
+   orderRequest.Answer = this.Status;
 
    this.generalService.UpdOrderFlow(orderRequest).subscribe(
-       (data: any) => {
-          
-          if(respuesta=== MTRespuesta.Rechazado)
-          {
-            this.router.navigate(['despacho']);
-            showSuccess("Se actualizo correctamente la orden");
-          }
-          else
-          {
+       (data: any) => {          
+          // this.router.navigate(['despacho']);
             orderRequest = new OrderEntity();
             orderRequest.IdOrder =this.orderBD.IdOrder ;
-            orderRequest.LocationOrder =MTUbicacion.AreaCorte;
-            orderRequest.Answer = MTRespuesta.Pendiente;
+            orderRequest.LocationOrder =MTUbicacion.EntregadoCliente;
+            orderRequest.Answer = MTRespuesta.Entregado;
             
             this.generalService.UpdOrderFlow(orderRequest).subscribe(
               (data: any) => {
@@ -111,7 +106,7 @@ SendAnswer =(answer: any) =>{
                 console.log(error);
                 }
             );              
-          }
+          
 
            //setTimeout(() => {
                //this.localStorage.clearKey('catalogListSelectedModal');

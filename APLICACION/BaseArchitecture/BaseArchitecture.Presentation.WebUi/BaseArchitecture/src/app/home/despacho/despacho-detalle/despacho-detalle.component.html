@@ -119,31 +119,24 @@
 
     <br>
     
-    <ng-container ><!--*ngIf="statusSubOrderMT != '00103'"-->
+    <ng-container *ngIf="locationOrder != '00207'">
 
         <div class="container">
             <label>Estado</label>&nbsp;&nbsp;
             <select  [(ngModel)]="Status" class="form-control col-md-2">                
-                <option value="00101" selected>Pendiente</option>                
-                <option value="00102">Entregado</option>
+                <option value="00605" selected>Culminado</option>                
+                <option value="00606">Entregado</option>
             </select>
         </div>
         <br>
         <div class="container row">
             <div class="col-md-2">
-                <button class="form-control btn-success" (click)="SendAnswer(1)"><em class="fas fa-check"></em>&nbsp;&nbsp; Enviar</button>
+                <button class="form-control btn-success" (click)="SendAnswer()"><em class="fas fa-check"></em>&nbsp;&nbsp; Enviar</button>
             </div>
         </div>
 
     </ng-container>
 
-    <div class="row col-md-12" *ngIf="orderBD.LocationOrder == actualLocation && rechazado==false">
-        <div class="col-md-2">
-            <button class="form-control btn-success" (click)="SendAnswer(1)"><em class="fas fa-check"></em>&nbsp;&nbsp; Aprobar</button>
-        </div>
-        <div class="col-md-2">
-            <button class="form-control btn-danger" (click)="SendAnswer(2)"><em class="fa fa-times"></em>&nbsp;&nbsp; Rechazar</button>
-        </div>
-    </div>
+
 </div>
 

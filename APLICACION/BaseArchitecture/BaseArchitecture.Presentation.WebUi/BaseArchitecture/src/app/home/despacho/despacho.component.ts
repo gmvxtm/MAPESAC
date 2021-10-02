@@ -111,7 +111,8 @@ export class DespachoComponent implements OnInit {
 
     verDetalle = (item) => {
       let codeOrder = item.CodeOrder;
-      this.localStorage.setJsonValue("codeOrderSend", codeOrder)
+      this.localStorage.setJsonValue("codeOrderSend", codeOrder);
+      this.localStorage.setJsonValue("itemSend", item);
       this.router.navigate(['despacho/detalle']);
     }
 

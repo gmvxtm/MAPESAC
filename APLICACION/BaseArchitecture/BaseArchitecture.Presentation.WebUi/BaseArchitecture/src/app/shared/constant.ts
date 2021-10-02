@@ -76,6 +76,9 @@ export const MTRespuesta = {
   Pendiente: '00601',
   Aprobado: '00602',
   Rechazado: '00603',
+  EnProceso: '00604',
+  Culminado: '00605',
+  Entregado: '00606',
 };
 
 
