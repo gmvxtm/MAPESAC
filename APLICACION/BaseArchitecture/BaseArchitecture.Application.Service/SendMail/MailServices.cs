@@ -87,7 +87,7 @@ namespace BaseArchitecture.Application.Service.Mail
             }
         }
 
-        public string GetHtmlOutOfStock(List<ProductOutOfStock> listProductOutOfStock)
+        public string GetHtmlOutOfStock(List<ProductOutOfStockEntity> listProductOutOfStock)
         {
             try
             {

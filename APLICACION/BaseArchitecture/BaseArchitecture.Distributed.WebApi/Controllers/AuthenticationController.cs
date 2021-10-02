@@ -142,5 +142,13 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
             var result = TableService.ListSuppliesByProduct(suppliesByProductRequest);
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.UpdDecrease)]
+        public IHttpActionResult UpdDecrease(DecreaseEntity decreaseRequest)
+        {
+            var result = TableService.UpdDecrease(decreaseRequest);
+            return Ok(result);
+        }
     }
 }

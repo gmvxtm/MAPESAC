@@ -45,10 +45,11 @@
     <Compile Include="Demo\PersonEntity.cs" />
     <Compile Include="Tables\CustomerEntity.cs" />
     <Compile Include="Tables\DepartmentEntity.cs" />
+    <Compile Include="Tables\DecreaseEntity.cs" />
     <Compile Include="Tables\ValidateStock.cs" />
-    <Compile Include="Tables\ProductOutOfStock.cs" />
-    <Compile Include="Tables\ResponseValidateStock.cs" />
-    <Compile Include="Tables\ProductEntityJson.cs" />
+    <Compile Include="Tables\ProductOutOfStockEntity.cs" />
+    <Compile Include="Tables\ResponseValidateStockEntity.cs" />
+    <Compile Include="Tables\ProductJsonEntity.cs" />
     <Compile Include="Tables\DistrictEntity.cs" />
     <Compile Include="Tables\MenuLogin.cs" />
     <Compile Include="Tables\OrderDetailEntity.cs" />

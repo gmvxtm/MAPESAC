@@ -93,10 +93,10 @@ namespace BaseArchitecture.Application.Service.Table
                 try
                 {
                     /*Inicio de validación de stock para pedido*/
-                    List<ProductEntityJson> listProductEntityJson = new List<ProductEntityJson>();
+                    List<ProductJsonEntity> listProductEntityJson = new List<ProductJsonEntity>();
                     foreach (var item in orderRequest.ListOrderDetail)
                     {
-                        var itemProductEntityJson = new ProductEntityJson();
+                        var itemProductEntityJson = new ProductJsonEntity();
                         itemProductEntityJson.IdProduct = item.IdProduct;
                         itemProductEntityJson.Quantity = int.Parse(item.Quantity.ToString());
                         listProductEntityJson.Add(itemProductEntityJson);
@@ -175,12 +175,17 @@ namespace BaseArchitecture.Application.Service.Table
             var result = TableTransaction.UpdSubOrderFlow(orderFlowRequest);
             return result;
         }
-       
 
         public Response<IEnumerable<SupplyEntity>> ListSuppliesByProduct(ProductEntity suppliesByProductRequest)
         {
             var result = TableQuery.ListSuppliesByProduct(suppliesByProductRequest);
             return new Response<IEnumerable<SupplyEntity>> { Value = result };
+        }
+
+        public Response<int> UpdDecrease(DecreaseEntity decreaseRequest)
+        {
+            var result = TableTransaction.UpdDecrease(decreaseRequest);
+            return result;
         }
     }
 }

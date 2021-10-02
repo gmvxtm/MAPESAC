@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaseArchitecture.Repository.Entity.Tables
 {
-    public class ProductOutOfStock
+    public class ProductOutOfStockEntity
     {
         public string Name { get; set; }
         public double Stock { get; set; }

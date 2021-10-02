@@ -164,30 +164,51 @@ namespace BaseArchitecture.Repository.Data.Transactional
             return response;
         }
 
-        public Response<ResponseValidateStock> ValidateAndUpdateStock(string listProductJson)
+        public Response<ResponseValidateStockEntity> ValidateAndUpdateStock(string listProductJson)
         {
-            Response<ResponseValidateStock> response;
+            Response<ResponseValidateStockEntity> response;
 
             using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@ParamIProductJson", listProductJson);
 
-                var basicResponse = new ResponseValidateStock();
+                var basicResponse = new ResponseValidateStockEntity();
                 using (var list = connection.QueryMultipleAsync(
                                     sql: $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.ValidateStockByQuantityProduct}",
                                     param: parameters,
                                     commandType: CommandType.StoredProcedure).Result)
                 {
                     basicResponse.ValidateStock = list.Read<ValidateStock>().ToList().FirstOrDefault();
-                    basicResponse.ListProductOutOfStock = list.Read<ProductOutOfStock>().ToList();
+                    basicResponse.ListProductOutOfStock = list.Read<ProductOutOfStockEntity>().ToList();
 
                 }
-                response = new Response<ResponseValidateStock>
+                response = new Response<ResponseValidateStockEntity>
                 {
                     Value = basicResponse
                 };
 
+            }
+
+            return response;
+        }
+
+        public Response<int> UpdDecrease(DecreaseEntity decreaseRequest)
+        {
+            Response<int> response;
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@ParamICodeSubOrder", decreaseRequest.CodeSubOrder);
+                parameters.Add("@ParamIIdOrderDetail", decreaseRequest.IdOrderDetail);
+                parameters.Add("@ParamIQuantityDecrease", decreaseRequest.QuantityDecrease);
+
+                var result = connection.Execute(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.UpdDecrease}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure);
+
+                response = new Response<int>(result);
             }
 
             return response;

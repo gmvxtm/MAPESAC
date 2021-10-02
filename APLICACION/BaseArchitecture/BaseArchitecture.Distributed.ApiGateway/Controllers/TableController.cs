@@ -289,5 +289,19 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
               InvokeWebApi.InvokePostAnonymousEntity<Response<SupplyEntity>>(urlApi, postData);
             return Ok(result);
         }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.UpdDecrease)]
+        public IHttpActionResult UpdDecrease()
+        {
+            var postData = HttpContext.Current.Request.Params["decreaseRequest"];
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.UpdDecrease}";
+            var result =
+              InvokeWebApi.InvokePostAnonymousEntity<Response<int>>(urlApi, postData);
+            return Ok(result);
+        }
     }
 }

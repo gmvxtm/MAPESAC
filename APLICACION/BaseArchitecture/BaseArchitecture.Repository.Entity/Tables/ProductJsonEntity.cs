@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaseArchitecture.Repository.Entity.Tables
 {
-    public class ProductEntityJson
+    public class ProductJsonEntity
     {
         public Guid IdProduct { get; set; }
         public int Quantity { get; set; }

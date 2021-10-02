@@ -49,6 +49,7 @@
             public const string UpdOrderFlow = "Usp_Upd_OrderFlow";
             public const string UpdSubOrderFlow = "Usp_Upd_SubOrderFlow";
             public const string ValidateStockByQuantityProduct = "Usp_ValidateStockByQuantityProduct";
+            public const string UpdDecrease = "Usp_Upd_Decrease";
         }
     }
 }

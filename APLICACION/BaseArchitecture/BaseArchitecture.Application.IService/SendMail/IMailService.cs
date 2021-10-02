@@ -8,6 +8,6 @@ namespace BaseArchitecture.Application.IService.Mail
     {
         Response<int> SendEmail(string emailTo,string codeOrder);
         string GetHtml(string codeOrder);
-        string GetHtmlOutOfStock(List<ProductOutOfStock> listProductOutOfStock);
+        string GetHtmlOutOfStock(List<ProductOutOfStockEntity> listProductOutOfStock);
     }
 }
