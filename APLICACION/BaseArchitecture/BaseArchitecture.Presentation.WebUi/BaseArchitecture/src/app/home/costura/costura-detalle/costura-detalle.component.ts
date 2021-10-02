@@ -57,7 +57,8 @@ export class CosturaDetalleComponent implements OnInit {
     this.generalService.UpdSubOrderFlow(orderRequest).subscribe(
         (data: any) => {
             if(data != null){
-              this.router.navigate[('/corte')];
+              showSuccess("Se actualizo correctamente la orden");
+              this.router.navigate[('costura')];
             }
         },
         (error: HttpErrorResponse) => {
