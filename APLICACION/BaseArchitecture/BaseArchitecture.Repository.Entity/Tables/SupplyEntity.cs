@@ -18,3 +18,5 @@ namespace BaseArchitecture.Repository.Entity.Tables
         public string DateUpdate { get; set; }
     }
 }
+
+

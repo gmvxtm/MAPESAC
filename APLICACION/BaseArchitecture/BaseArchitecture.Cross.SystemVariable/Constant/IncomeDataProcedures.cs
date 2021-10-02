@@ -31,7 +31,7 @@
 
             public const string ListProyectos = "USP_LIST_Proyectos";
             public const string GetProyectoById = "USP_GET_ProyectoById";
-            public const string ListMasterTable = "USP_MasterTable_List";
+            public const string ListMasterTable = "USP_MasterTable_List";            
             public const string Login = "Usp_Login";
             public const string ListProduct = "Usp_List_Product";
             public const string ListSuppliesByProduct = "Usp_List_SuppliesByProduct";
