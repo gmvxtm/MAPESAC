@@ -57,7 +57,9 @@ export class CorteDetalleComponent implements OnInit {
     this.generalService.UpdSubOrderFlow(orderRequest).subscribe(
         (data: any) => {
             if(data != null){
-              this.router.navigate[('/corte')];
+              debugger
+              showSuccess("Se actualizo correctamente la orden");
+              this.router.navigate(['corte']);
             }
         },
         (error: HttpErrorResponse) => {
@@ -72,7 +74,6 @@ export class CorteDetalleComponent implements OnInit {
     this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
       (data: any) => {
         debugger
-        console.log(data)
         this.orderBD=data.Value;
         this.customerEntity = data.Value.CustomerEntity;
         this.listOrderDetail = data.Value.ListOrderDetail;

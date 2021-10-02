@@ -131,7 +131,7 @@ namespace BaseArchitecture.Application.Service.Table
                         var body = MailService.GetHtml(codeOrder);
                         var rpsta = MailService.SendEmail(orderRequest.CustomerEntity.Email, body);
                         transaction.Complete();
-                    }
+                    //}
                 }
                 catch (Exception e)
                 {

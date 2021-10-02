@@ -57,7 +57,8 @@ export class LavanderiaDetalleComponent implements OnInit {
     this.generalService.UpdSubOrderFlow(orderRequest).subscribe(
         (data: any) => {
             if(data != null){
-              this.router.navigate[('/lavanderia')];
+              showSuccess("Se actualizo correctamente la orden");
+              this.router.navigate(['lavanderia']);
             }
         },
         (error: HttpErrorResponse) => {
