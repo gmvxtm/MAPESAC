@@ -46,6 +46,7 @@
     <Compile Include="Tables\CustomerEntity.cs" />
     <Compile Include="Tables\DepartmentEntity.cs" />
     <Compile Include="Tables\DecreaseEntity.cs" />
+    <Compile Include="Tables\SupplierEntity.cs" />
     <Compile Include="Tables\ValidateStock.cs" />
     <Compile Include="Tables\ProductOutOfStockEntity.cs" />
     <Compile Include="Tables\ResponseValidateStockEntity.cs" />

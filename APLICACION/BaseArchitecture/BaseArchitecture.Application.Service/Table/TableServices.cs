@@ -193,5 +193,11 @@ namespace BaseArchitecture.Application.Service.Table
             var result = TableQuery.ListSupplies();
             return new Response<IEnumerable<SupplyEntity>> { Value = result };
         }
+
+        public Response<IEnumerable<SupplierEntity>> ListSuppliersByIdSupply(SupplyEntity supplyRequest)
+        {
+            var result = TableQuery.ListSuppliersByIdSupply(supplyRequest);
+            return new Response<IEnumerable<SupplierEntity>> { Value = result };
+        }
     }
 }
