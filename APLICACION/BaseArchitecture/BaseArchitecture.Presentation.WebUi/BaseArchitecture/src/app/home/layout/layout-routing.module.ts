@@ -72,6 +72,14 @@ const routes: Routes = [
           // canActivate: [AuthGuard],
       },
       {
+        path: 'almacen/alerta',
+        loadChildren: () =>
+          import('src/app/home/almacen/alerta-insumos/alerta-insumos.module').then(
+            (m) => m.AlertaInsumosModule
+          ),
+          //canActivate: [AuthGuard],
+      },
+      {
         path: 'almacen',
         loadChildren: () =>
           import('src/app/home/almacen/almacen.module').then(
