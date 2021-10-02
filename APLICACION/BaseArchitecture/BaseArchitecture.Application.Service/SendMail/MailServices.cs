@@ -105,7 +105,7 @@ namespace BaseArchitecture.Application.Service.Mail
                 messageBody += htmlTableStart;
                 messageBody += htmlHeaderRowStart;
                 messageBody += htmlTdStart + "Estimado Encargado de Almacén " + htmlBrEnd + "<br>";
-                messageBody += "Los siguientes insumor se encuentran por debajo del Stock Mínimo" + htmlBrEnd + "<br>";
+                messageBody += "Los siguientes insumos se encuentran por debajo del Stock Mínimo" + htmlBrEnd + "<br>";
                 messageBody += htmlTdEnd;
                 messageBody += htmlTrStart;
                 messageBody += htmlTdStart + "Insumo" + htmlTdEnd;
