@@ -58,7 +58,7 @@ export class LavanderiaDetalleComponent implements OnInit {
         (data: any) => {
             if(data != null){
               showSuccess("Se actualizo correctamente la orden");
-              this.router.navigate[('/lavanderia')];
+              this.router.navigate(['lavanderia']);
             }
         },
         (error: HttpErrorResponse) => {

@@ -58,7 +58,7 @@ export class CosturaDetalleComponent implements OnInit {
         (data: any) => {
             if(data != null){
               showSuccess("Se actualizo correctamente la orden");
-              this.router.navigate[('costura')];
+              this.router.navigate(['costura']);
             }
         },
         (error: HttpErrorResponse) => {
