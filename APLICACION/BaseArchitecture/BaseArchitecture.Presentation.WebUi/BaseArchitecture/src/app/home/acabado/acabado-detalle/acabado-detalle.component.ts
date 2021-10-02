@@ -57,7 +57,7 @@ export class AcabadoDetalleComponent implements OnInit {
     this.generalService.UpdSubOrderFlow(orderRequest).subscribe(
         (data: any) => {
             if(data != null){
-              this.router.navigate[('/acabados')];
+              this.router.navigate(['acabado']);
             }
         },
         (error: HttpErrorResponse) => {
