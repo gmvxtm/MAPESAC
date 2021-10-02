@@ -71,6 +71,9 @@ loadPedido = () => {
   );
 }
 
+
+
+
 SendAnswer =(answer: any) =>{
   let respuesta="";
   if(answer===1)
