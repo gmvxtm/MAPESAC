@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 import { MTUbicacion } from 'src/app/shared/constant';
+import { filterByValue } from 'src/app/shared/util';
 
 @Component({
   selector: 'app-lavanderia',
@@ -29,8 +30,10 @@ export class LavanderiaComponent implements OnInit {
     ListSubOrderEntity: any[] = [];
     ListTotalOrderEntity: any[] = [];
     listTotalOrderEntityOriginal: any[] = [];
+    listTotalSubOrderEntityOriginal: any[] = [];
     listOrderEntity: any[] = [];
-  
+    nroPedidoSearch: string;
+
     constructor(
       private spinner: NgxSpinnerService,
       private router: Router,
@@ -51,6 +54,7 @@ export class LavanderiaComponent implements OnInit {
         (data: any) => {
           console.log(data)
           this.ListSubOrderEntity = data.Value.ListSubOrderEntity;
+          this.listTotalSubOrderEntityOriginal = data.Value.ListSubOrderEntity;
           this.ListTotalOrderEntity = data.Value.ListTotalOrderEntity;
           this.totalItems = this.ListSubOrderEntity.length;
         },
@@ -61,6 +65,10 @@ export class LavanderiaComponent implements OnInit {
       );
     }
 
+    buscarPedido = () => {
+      this.ListSubOrderEntity =filterByValue(this.listTotalSubOrderEntityOriginal,  this.nroPedidoSearch );
+      this.totalItems = this.ListSubOrderEntity.length;
+    }
     
     verDetalle = (item) => {
       this.localStorage.setJsonValue("itemSubOrder",item);   
@@ -69,10 +77,17 @@ export class LavanderiaComponent implements OnInit {
 
 
     filterStatus = (item) => {
+      debugger
       if(item.IdMasterTable.trim() === "0")
-        {this.listOrderEntity = this.listTotalOrderEntityOriginal;}
+        {
+          this.ListSubOrderEntity = this.listTotalSubOrderEntityOriginal;
+          this.totalItems = this.ListSubOrderEntity.length;
+        }
       else 
-        {this.listOrderEntity = this.listTotalOrderEntityOriginal.filter(x=> x.Answer === item.IdMasterTable);}
+        {
+          this.ListSubOrderEntity = this.listTotalSubOrderEntityOriginal.filter(x=> x.StatusSubOrderMT === item.IdMasterTable);
+          this.totalItems = this.ListSubOrderEntity.length;
+        }
     }
 
     loadStart = () => {
@@ -87,9 +102,6 @@ export class LavanderiaComponent implements OnInit {
       };
     }  
  
-    buscarPedido = () => {
-
-    }
 
     createHeadersTable = () => {
       this.headers = [

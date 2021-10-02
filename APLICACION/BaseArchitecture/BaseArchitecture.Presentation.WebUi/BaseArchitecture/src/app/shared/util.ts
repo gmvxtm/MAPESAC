@@ -20,6 +20,11 @@ export function FormatString(str: string, ...val: string[]) {
   return str;
 }
 
+export function filterByValue(array, string) {
+  return array.filter(o =>
+      Object.keys(o).some(k => o[k].toLowerCase().includes(string.toLowerCase())));
+}
+
 export function SignOff(): void {
       localStorage.removeItem('profileBase');
       window.location.replace(environment.urlLogin);
