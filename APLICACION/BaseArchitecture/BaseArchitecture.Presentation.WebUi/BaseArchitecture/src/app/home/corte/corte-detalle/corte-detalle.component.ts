@@ -74,7 +74,6 @@ export class CorteDetalleComponent implements OnInit {
     this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
       (data: any) => {
         debugger
-        console.log(data)
         this.orderBD=data.Value;
         this.customerEntity = data.Value.CustomerEntity;
         this.listOrderDetail = data.Value.ListOrderDetail;
