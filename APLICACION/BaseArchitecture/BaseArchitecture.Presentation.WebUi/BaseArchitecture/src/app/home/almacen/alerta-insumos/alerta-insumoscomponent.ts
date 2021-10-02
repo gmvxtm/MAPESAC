@@ -12,7 +12,7 @@ import { HeadersInterface } from 'src/app/shared/models/request/common/headers-r
 import { Subject } from 'rxjs';
 import { MTRespuesta, MTUbicacion } from 'src/app/shared/constant';
 import { ResponseLabel } from 'src/app/shared/models/general/label.interface';
-import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
+import { BuySupplyEntity, OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { LocalService } from 'src/app/shared/services/general/local.service';
 import { showSuccess } from 'src/app/shared/util';
@@ -37,6 +37,10 @@ export class AlertaInsumosComponent implements OnInit {
   ListSuppliesEntity: any[] = [];
   ListSuppliesEntityOriginal: any[] = [];
   nameSupplies: string;
+  buySupplyEntity = new BuySupplyEntity();
+  supplier: string;
+  supplyName: string;
+  visibleRegistro: boolean;
 
   constructor(
     private generalService: GeneralService,
@@ -47,6 +51,7 @@ export class AlertaInsumosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.visibleRegistro = false;
     this.createHeadersTable();
     this.loadStart();
     this.loadData();
@@ -75,6 +80,8 @@ export class AlertaInsumosComponent implements OnInit {
   }
 
   verDetalle = (item) => {
+    this.visibleRegistro= true;
+    this.supplyName   = item.Name;
     // debugger
     // this.localStorage.setJsonValue("itemSubOrder",item);  
     // this.router.navigate(['costura/detalle']);

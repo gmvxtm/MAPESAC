@@ -27,3 +27,44 @@
         </app-table>
     </div>
 </div>
+
+
+
+<div class="container" *ngIf="visibleRegistro" >
+    <div class="col-md-12 row">
+        <div class="col-md-6" style="margin-top: 30px;">
+            <div class="col-md-11 row">
+                Insumo<span style="color:red">(*)</span>: <input [(ngModel)]="supplyName" class="form-control" [disabled]="true">
+            </div>
+            <br>
+            <div class="col-md-11 row ">
+                Proveedor<span style="color:red">(*)</span>:
+                <select [(ngModel)]="supplier" name="distrito" class="form-control">
+                    <option value="">-- Seleccione --</option>
+                    <!-- <option value="{{item.IdDistrict}}" *ngFor="let item of ListDistrictEntity">{{ item.District }}</option> -->
+                </select>
+            </div>
+            <br>
+            <div class="col-md-11 row">
+                Precio Unitario<span style="color:red">(*)</span>: <input [(ngModel)]="buySupplyEntity.UnitPrice" class="form-control">
+            </div>
+            <div class="col-md-11 row">
+                Cantidad<span style="color:red">(*)</span>: <input [(ngModel)]="buySupplyEntity.Quantity" class="form-control">
+            </div>
+            <div class="col-md-11 row">
+                Precio Total<span style="color:red">(*)</span>: <input [(ngModel)]="buySupplyEntity.TotalPrice" class="form-control">
+            </div>
+            <br>
+
+            <br>
+          <br>
+         
+          <div class="row">
+            <div class="col-md-3"> 
+              <button  [disabled] ="disabledSend"  (click)="sendOrder()" class="form-control btn-success">Enviar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+    

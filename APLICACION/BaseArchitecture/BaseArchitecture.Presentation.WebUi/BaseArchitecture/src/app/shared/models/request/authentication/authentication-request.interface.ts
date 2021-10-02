@@ -120,3 +120,12 @@ export class LoginRequest {
     IdProvince:string;
   }
 
+
+  export class BuySupplyEntity
+  {
+    IdSupply: string;
+    IdSupplier: string;    
+    UnitPrice: string;
+    Quantity: string;    
+    TotalPrice: string;  
+  }
