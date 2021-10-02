@@ -166,5 +166,13 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
             var result = TableService.ListSuppliersByIdSupply(supplyRequest);
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.InsBuySupply)]
+        public IHttpActionResult InsBuySupply(BuySupplyEntity buySupplyRequest)
+        {
+            var result = TableService.InsBuySupply(buySupplyRequest);
+            return Ok(result);
+        }
     }
 }

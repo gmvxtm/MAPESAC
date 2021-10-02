@@ -213,5 +213,28 @@ namespace BaseArchitecture.Repository.Data.Transactional
 
             return response;
         }
+
+        public Response<int> IndBuySupply(BuySupplyEntity buySupplyRequest)
+        {
+            Response<int> response;
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@ParamIIdSupply", buySupplyRequest.IdSupply);
+                parameters.Add("@ParamIIdSupplier", buySupplyRequest.IdSupplier);
+                parameters.Add("@ParamIUnitPrice", buySupplyRequest.UnitPrice);
+                parameters.Add("@ParamIQuantity", buySupplyRequest.Quantity);
+                parameters.Add("@ParamITotalPrice", buySupplyRequest.TotalPrice);
+
+                var result = connection.Execute(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.InsBuySupply}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure);
+
+                response = new Response<int>(result);
+            }
+
+            return response;
+        }
     }
 }

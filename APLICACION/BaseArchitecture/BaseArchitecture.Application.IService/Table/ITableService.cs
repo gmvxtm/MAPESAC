@@ -25,5 +25,6 @@ namespace BaseArchitecture.Application.IService.Table
         Response<int> UpdDecrease(DecreaseEntity decreaseRequest);
         Response<IEnumerable<SupplyEntity>> ListSupplies();
         Response<IEnumerable<SupplierEntity>> ListSuppliersByIdSupply(SupplyEntity supplyRequest);
+        Response<int> InsBuySupply(BuySupplyEntity buySupplyRequest);
     }
 }

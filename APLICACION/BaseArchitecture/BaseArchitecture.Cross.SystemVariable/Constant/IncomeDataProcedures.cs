@@ -52,6 +52,7 @@
             public const string UpdDecrease = "Usp_Upd_Decrease";
             public const string ListSupplies = "Usp_List_Supplies";
             public const string ListSuppliersByIdSupply = "Usp_List_SuppliersByIdSupply";
+            public const string InsBuySupply = "Usp_Ins_BuySupply";
         }
     }
 }
