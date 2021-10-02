@@ -41,7 +41,7 @@
                 Proveedor<span style="color:red">(*)</span>:
                 <select [(ngModel)]="supplier" name="distrito" class="form-control">
                     <option value="">-- Seleccione --</option>
-                    <!-- <option value="{{item.IdDistrict}}" *ngFor="let item of ListDistrictEntity">{{ item.District }}</option> -->
+                    <option value="{{item.IdSupplier}}" *ngFor="let item of ListSuppliersByIdSupply">{{ item.Name }}</option> 
                 </select>
             </div>
             <br>

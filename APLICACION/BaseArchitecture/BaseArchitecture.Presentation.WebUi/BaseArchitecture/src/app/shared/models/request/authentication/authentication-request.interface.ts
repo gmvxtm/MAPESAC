@@ -121,6 +121,15 @@ export class LoginRequest {
   }
 
 
+  export class SupplyEntity
+  {
+    IdSupply: string;
+    IdSupplier: string;    
+    UnitPrice: string;
+    Quantity: string;    
+    TotalPrice: string;  
+  }
+
   export class BuySupplyEntity
   {
     IdSupply: string;

@@ -28,7 +28,8 @@ export const NameServiceApi ={
   UpdOrderFlow:'UpdOrderFlow',
   ListSubOrderByLocation:'ListSubOrderByLocation',
   UpdSubOrderFlow: 'UpdSubOrderFlow',
-  ListSupplies:'ListSupplies'
+  ListSupplies:'ListSupplies',
+  ListSuppliersByIdSupply:'ListSuppliersByIdSupply'
 }
 
 export const Demo = {

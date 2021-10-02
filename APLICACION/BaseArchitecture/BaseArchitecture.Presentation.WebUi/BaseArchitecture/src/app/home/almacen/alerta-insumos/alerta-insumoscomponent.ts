@@ -12,7 +12,7 @@ import { HeadersInterface } from 'src/app/shared/models/request/common/headers-r
 import { Subject } from 'rxjs';
 import { MTRespuesta, MTUbicacion } from 'src/app/shared/constant';
 import { ResponseLabel } from 'src/app/shared/models/general/label.interface';
-import { BuySupplyEntity, OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
+import { BuySupplyEntity, OrderEntity, SupplyEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { LocalService } from 'src/app/shared/services/general/local.service';
 import { showSuccess } from 'src/app/shared/util';
@@ -36,6 +36,7 @@ export class AlertaInsumosComponent implements OnInit {
   headers: HeadersInterface[] = new Array<HeadersInterface>();
   ListSuppliesEntity: any[] = [];
   ListSuppliesEntityOriginal: any[] = [];
+  ListSuppliersByIdSupply: any[]=[];
   nameSupplies: string;
   buySupplyEntity = new BuySupplyEntity();
   supplier: string;
@@ -72,6 +73,8 @@ export class AlertaInsumosComponent implements OnInit {
       console.log(error);
       }
     );
+
+    
   }
 
   buscarSupplies = () => {
@@ -79,9 +82,30 @@ export class AlertaInsumosComponent implements OnInit {
     this.totalItems = this.ListSuppliesEntity.length;
   }
 
+  loadListSuppliersByIdSupply = (item) => {
+
+    let supplyEntity = new SupplyEntity();
+    supplyEntity.IdSupply = item.IdSupply;
+
+    this.serviceProyecto.ListSuppliersByIdSupply(supplyEntity).subscribe(
+      (data: any) => {
+        debugger
+        this.ListSuppliersByIdSupply = data.Value;
+        
+       
+      },
+      (error: HttpErrorResponse) => {
+      this.spinner.hide();
+      console.log(error);
+      }
+    );
+
+  }
+
   verDetalle = (item) => {
     this.visibleRegistro= true;
     this.supplyName   = item.Name;
+    this.loadListSuppliersByIdSupply(item);
     // debugger
     // this.localStorage.setJsonValue("itemSubOrder",item);  
     // this.router.navigate(['costura/detalle']);
