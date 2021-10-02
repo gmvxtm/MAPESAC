@@ -123,4 +123,11 @@ export class GeneralService {
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
   }
 
+  
+  ListSupplies(): Observable<any>{
+    return this.http
+      .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.ListSupplies)
+      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
+  }
+  
 }
