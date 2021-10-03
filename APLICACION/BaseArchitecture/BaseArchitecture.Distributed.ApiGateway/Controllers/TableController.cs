@@ -230,7 +230,7 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
             var urlApi =
                 $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.UpdOrderFlow}";
             var result =
-              InvokeWebApi.InvokePostAnonymousEntity<Response<int>>(urlApi, postData);
+              InvokeWebApi.InvokePostAnonymousEntity<Response<string>>(urlApi, postData);
             return Ok(result);
         }
 
