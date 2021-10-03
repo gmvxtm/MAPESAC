@@ -14,7 +14,7 @@ import { ResponseLabel } from 'src/app/shared/models/general/label.interface';
 import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { LocalService } from 'src/app/shared/services/general/local.service';
-import { showSuccess } from 'src/app/shared/util';
+import { showError, showSuccess } from 'src/app/shared/util';
 
 @Component({
   selector: 'ventaDetalle',
@@ -83,28 +83,41 @@ export class VentaDetalleComponent implements OnInit {
      this.generalService.UpdOrderFlow(orderRequest).subscribe(
          (data: any) => {
             
-            if(respuesta=== MTRespuesta.Rechazado)
+
+            var codeOrder =data.Value;
+            if(codeOrder.substring(0,5)    === "Error")
             {
-              this.router.navigate(['ventas']);
-              showSuccess("Se actualizo correctamente la orden");
+                showError(codeOrder);
             }
             else
             {
-              orderRequest = new OrderEntity();
-              orderRequest.IdOrder =this.orderBD.IdOrder ;
-              orderRequest.LocationOrder =MTUbicacion.AreaCorte;
-              orderRequest.Answer = MTRespuesta.Pendiente;
-              
-              this.generalService.UpdOrderFlow(orderRequest).subscribe(
-                (data: any) => {
-                  this.router.navigate(['ventas']);
-                },
-                (error: HttpErrorResponse) => {
-                  this.spinner.hide();
-                  console.log(error);
-                  }
-              );              
+              if(respuesta=== MTRespuesta.Rechazado)
+              {
+                this.router.navigate(['ventas']);
+                showSuccess("Se actualizo correctamente la orden");
+              }
+              else
+              {
+                orderRequest = new OrderEntity();
+                orderRequest.IdOrder =this.orderBD.IdOrder ;
+                orderRequest.LocationOrder =MTUbicacion.AreaCorte;
+                orderRequest.Answer = MTRespuesta.Pendiente;
+                
+                this.generalService.UpdOrderFlow(orderRequest).subscribe(
+                  (data: any) => {
+                    this.router.navigate(['ventas']);
+                  },
+                  (error: HttpErrorResponse) => {
+                    this.spinner.hide();
+                    console.log(error);
+                    }
+                );              
+              }
+
             }
+
+            
+
 
              //setTimeout(() => {
                  //this.localStorage.clearKey('catalogListSelectedModal');
