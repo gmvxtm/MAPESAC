@@ -212,6 +212,29 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
             return response;
         }
 
+        public Response<OrderEntity> GetOrderByIdOrder(Guid idOrder)
+        {
+            Response<OrderEntity> response;
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@ParamIIdOrder", idOrder);
+                var basicResponse = new OrderEntity();
+                using (var list = connection.QueryMultipleAsync(
+                                    sql: $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.GetOrderByIdOrder}",
+                                    param: parameters,
+                                    commandType: CommandType.StoredProcedure).Result)
+                {
+                    basicResponse.ListOrderDetail = list.Read<OrderDetailEntity>().ToList();
+                }
+                response = new Response<OrderEntity>
+                {
+                    Value = basicResponse
+                };
+            }
+            return response;
+        }
+
         public IEnumerable<SupplyEntity> ListSuppliesByProduct(ProductEntity suppliesByProductRequest)
         {
             IEnumerable<SupplyEntity> response;

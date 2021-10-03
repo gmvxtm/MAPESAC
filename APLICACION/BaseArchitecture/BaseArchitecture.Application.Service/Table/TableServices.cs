@@ -92,51 +92,27 @@ namespace BaseArchitecture.Application.Service.Table
             {
                 try
                 {
-                    /*Inicio de validación de stock para pedido*/
-                    List<ProductJsonEntity> listProductEntityJson = new List<ProductJsonEntity>();
-                    foreach (var item in orderRequest.ListOrderDetail)
+                    TableTransaction.MergeCustomer(orderRequest.CustomerEntity);
+                    orderRequest.IdCustomer = orderRequest.CustomerEntity.IdCustomer;
+                    orderRequest.LocationOrder = "00201"; //Encargado de Ventas
+                    TableTransaction.MergeOrder(orderRequest);
+                    TableTransaction.GenerateOrderFlow(orderRequest);
+                    foreach (var itemOrderDetail in orderRequest.ListOrderDetail)
                     {
-                        var itemProductEntityJson = new ProductJsonEntity();
-                        itemProductEntityJson.IdProduct = item.IdProduct;
-                        itemProductEntityJson.Quantity = int.Parse(item.Quantity.ToString());
-                        listProductEntityJson.Add(itemProductEntityJson);
+                        itemOrderDetail.IdOrder = orderRequest.IdOrder;
+                        itemOrderDetail.IdOrderDetail = Guid.NewGuid();
+                        itemOrderDetail.Description = itemOrderDetail.Description == null ? "" : itemOrderDetail.Description;
+                        TableTransaction.MergeOrderDetail(itemOrderDetail);
                     }
-                    var validateStock = TableTransaction.ValidateAndUpdateStock(JsonConvert.SerializeObject(listProductEntityJson));
-                    /*Inicio de envío de correo al encargado de almacén cuando el stock está por debajo del mínimo*/
-                    if( validateStock.Value.ListProductOutOfStock.Count() > 0 && 
-                        !string.IsNullOrEmpty(validateStock.Value.ListProductOutOfStock.FirstOrDefault().Name))
-                    {
-                        var bodyMailOutOfStock = MailService.GetHtmlOutOfStock(validateStock.Value.ListProductOutOfStock.ToList());
-                        var respuesta = MailService.SendEmail(AppSettingValue.EmailLogicticResponsible, bodyMailOutOfStock);
-                    }
-                    if (validateStock.Value.ValidateStock.Validate == true)
-                    {
-                        TableTransaction.MergeCustomer(orderRequest.CustomerEntity);
-                        orderRequest.IdCustomer = orderRequest.CustomerEntity.IdCustomer;
-                        orderRequest.LocationOrder = "00201"; //Encargado de Ventas
-                        TableTransaction.MergeOrder(orderRequest);
-                        TableTransaction.GenerateOrderFlow(orderRequest);
-                        foreach (var itemOrderDetail in orderRequest.ListOrderDetail)
-                        {
-                            itemOrderDetail.IdOrder = orderRequest.IdOrder;
-                            itemOrderDetail.IdOrderDetail = Guid.NewGuid();
-                            itemOrderDetail.Description = itemOrderDetail.Description == null ? "" : itemOrderDetail.Description;
-                            TableTransaction.MergeOrderDetail(itemOrderDetail);
-                        }
-                        TableTransaction.GenerateSubOrderFlow(orderRequest);
-                        var resultQuery = TableQuery.ListOrder();
-                        var codeOrder = resultQuery.Value.ListOrderEntity.ToList().Find(x => x.IdOrder == orderRequest.IdOrder).CodeOrder;
-                        result = new Response<string>(codeOrder);
+                    TableTransaction.GenerateSubOrderFlow(orderRequest);
+                    var resultQuery = TableQuery.ListOrder();
+                    var codeOrder = resultQuery.Value.ListOrderEntity.ToList().Find(x => x.IdOrder == orderRequest.IdOrder).CodeOrder;
+                    result = new Response<string>(codeOrder);
 
-                        //correo
-                        var body = MailService.GetHtml(codeOrder);
-                        var rpsta = MailService.SendEmail(orderRequest.CustomerEntity.Email, body);
-                        transaction.Complete();
-                    }
-                    else
-                    {
-                        result = new Response<string>("Error: No hay stock suficiente para la producción del pedido");
-                    }
+                    //correo
+                    var body = MailService.GetHtml(codeOrder);
+                    var rpsta = MailService.SendEmail(orderRequest.CustomerEntity.Email, body);
+                    transaction.Complete();
                 }
                 catch (Exception e)
                 {
@@ -164,9 +140,43 @@ namespace BaseArchitecture.Application.Service.Table
             return result;
         }
 
-        public Response<int> UpdOrderFlow(OrderFlowEntity orderFlowRequest)
+        public Response<string> UpdOrderFlow(OrderFlowEntity orderFlowRequest)
         {
-            var result = TableTransaction.UpdOrderFlow(orderFlowRequest);
+            Response<string> result = new Response<string>(string.Empty);
+            if (orderFlowRequest.Answer == "00602" && orderFlowRequest.LocationOrder == "00201")
+            {
+                //Obtiene la orden y su detalle
+                var orderDetail = TableQuery.GetOrderByIdOrder(orderFlowRequest.IdOrder);
+                /*Inicio de validación de stock para pedido*/
+                List<ProductJsonEntity> listProductEntityJson = new List<ProductJsonEntity>();
+                foreach (var item in orderDetail.Value.ListOrderDetail)
+                {
+                    var itemProductEntityJson = new ProductJsonEntity();
+                    itemProductEntityJson.IdProduct = item.IdProduct;
+                    itemProductEntityJson.Quantity = int.Parse(item.Quantity.ToString());
+                    listProductEntityJson.Add(itemProductEntityJson);
+                }
+                var validateStock = TableTransaction.ValidateAndUpdateStock(JsonConvert.SerializeObject(listProductEntityJson));
+                /*Inicio de envío de correo al encargado de almacén cuando el stock está por debajo del mínimo*/
+                if (validateStock.Value.ListProductOutOfStock.Count() > 0 &&
+                    !string.IsNullOrEmpty(validateStock.Value.ListProductOutOfStock.FirstOrDefault().Name))
+                {
+                    var bodyMailOutOfStock = MailService.GetHtmlOutOfStock(validateStock.Value.ListProductOutOfStock.ToList());
+                    var respuesta = MailService.SendEmail(AppSettingValue.EmailLogicticResponsible, bodyMailOutOfStock);
+                }
+                if (validateStock.Value.ValidateStock.Validate == true)
+                {
+                    result = new Response<string>(TableTransaction.UpdOrderFlow(orderFlowRequest).ToString());
+                }
+                else
+                {
+                    result = new Response<string>("Error: No hay stock suficiente para la producción del pedido");
+                }
+            }
+            else
+            {
+                result = new Response<string>(TableTransaction.UpdOrderFlow(orderFlowRequest).ToString());
+            }
             return result;
         }
 
