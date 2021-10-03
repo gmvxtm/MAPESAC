@@ -327,7 +327,7 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
             var urlApi =
                 $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.ListSuppliersByIdSupply}";
             var result =
-              InvokeWebApi.InvokePostAnonymousEntity<Response<SupplierEntity>>(urlApi, postData);
+              InvokeWebApi.InvokePostAnonymousEntity<Response<List<SupplierEntity>>>(urlApi, postData);
             return Ok(result);
         }
 

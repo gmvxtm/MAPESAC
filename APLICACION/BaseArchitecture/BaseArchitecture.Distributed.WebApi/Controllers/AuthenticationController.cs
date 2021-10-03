@@ -1,12 +1,8 @@
 ﻿using System.Web.Http;
-using BaseArchitecture.Application.IService.Demo;
 using BaseArchitecture.Application.IService.Mail;
 using BaseArchitecture.Application.IService.Security;
 using BaseArchitecture.Application.IService.Table;
-using BaseArchitecture.Application.TransferObject.Request.Access;
-using BaseArchitecture.Application.TransferObject.Request.Demo;
 using BaseArchitecture.Cross.LoggerTrace.Filters;
-using BaseArchitecture.Cross.Security.Aws;
 using BaseArchitecture.Cross.SystemVariable.Constant;
 using BaseArchitecture.Repository.Entity;
 using BaseArchitecture.Repository.Entity.Tables;
