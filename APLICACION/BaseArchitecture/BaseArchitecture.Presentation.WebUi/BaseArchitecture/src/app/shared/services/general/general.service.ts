@@ -6,7 +6,7 @@ import { Mapesac, NameServiceApi, Path, Security } from '../../constant';
 import { Observable } from 'rxjs';
 import { AutorizacionService } from './autorizacion.service';
 import { AccessResponse } from '../../models/response/authentication/authentication-response.interface';
-import { OrderEntity, SupplyEntity, UbiEntity, UserEntityRequest } from '../../models/request/authentication/authentication-request.interface';
+import { BuySupplyEntity, OrderEntity, SupplyEntity, UbiEntity, UserEntityRequest } from '../../models/request/authentication/authentication-request.interface';
 import { ProductEntity } from '../../models/general/table.interface';
 
 @Injectable({ providedIn: 'root' })
@@ -142,5 +142,18 @@ export class GeneralService {
       
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
   }
+
+  InsBuySupply(buySupplyRequest: BuySupplyEntity): Observable<any>{
+    return this.http
+      .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.InsBuySupply,
+          {
+            observe: 'body',
+            params: { buySupplyRequest: JSON.stringify(buySupplyRequest) },
+          }
+        )
+      
+      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
+  }
+  
 
 }

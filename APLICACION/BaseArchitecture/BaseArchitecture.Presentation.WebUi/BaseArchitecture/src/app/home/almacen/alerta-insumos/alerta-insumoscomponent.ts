@@ -15,7 +15,7 @@ import { ResponseLabel } from 'src/app/shared/models/general/label.interface';
 import { BuySupplyEntity, OrderEntity, SupplyEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { LocalService } from 'src/app/shared/services/general/local.service';
-import { showSuccess } from 'src/app/shared/util';
+import { showError, showSuccess } from 'src/app/shared/util';
 import { filterByValue } from 'src/app/shared/util';
 
 @Component({
@@ -42,7 +42,7 @@ export class AlertaInsumosComponent implements OnInit {
   supplier: string;
   supplyName: string;
   visibleRegistro: boolean;
-
+  idSupplySelected :string;
   constructor(
     private generalService: GeneralService,
     private spinner: NgxSpinnerService,
@@ -53,6 +53,10 @@ export class AlertaInsumosComponent implements OnInit {
 
   ngOnInit(): void {
     this.visibleRegistro = false;
+    this.supplier ="";
+    this.buySupplyEntity.UnitPrice = "1";
+    this.buySupplyEntity.Quantity = "1";
+    this.buySupplyEntity.TotalPrice = "1";
     this.createHeadersTable();
     this.loadStart();
     this.loadData();
@@ -86,13 +90,11 @@ export class AlertaInsumosComponent implements OnInit {
 
     let supplyEntity = new SupplyEntity();
     supplyEntity.IdSupply = item.IdSupply;
-
+    this.idSupplySelected = item.IdSupply;
     this.serviceProyecto.ListSuppliersByIdSupply(supplyEntity).subscribe(
       (data: any) => {
         debugger
         this.ListSuppliersByIdSupply = data.Value;
-        
-       
       },
       (error: HttpErrorResponse) => {
       this.spinner.hide();
@@ -106,9 +108,6 @@ export class AlertaInsumosComponent implements OnInit {
     this.visibleRegistro= true;
     this.supplyName   = item.Name;
     this.loadListSuppliersByIdSupply(item);
-    // debugger
-    // this.localStorage.setJsonValue("itemSubOrder",item);  
-    // this.router.navigate(['costura/detalle']);
   }
 
   loadStart = () => {
@@ -122,9 +121,6 @@ export class AlertaInsumosComponent implements OnInit {
       filterColumn: true
     };
   }
-
-
-
 
   createHeadersTable = () => {
     this.headers = [
@@ -159,6 +155,41 @@ export class AlertaInsumosComponent implements OnInit {
     ];
   };
 
+  quantitypricechange = () => {
+    this.buySupplyEntity.TotalPrice =  (Number(this.buySupplyEntity.Quantity)*Number(this.buySupplyEntity.UnitPrice)).toString();
+  }
 
+  sendS =() =>{
+    debugger
+    let buySupplyRequest = new BuySupplyEntity();
+    buySupplyRequest.IdSupply   = this.idSupplySelected;
+    buySupplyRequest.IdSupplier = this.supplier;
+    buySupplyRequest.UnitPrice  = this.buySupplyEntity.UnitPrice;
+    buySupplyRequest.Quantity   = this.buySupplyEntity.Quantity;
+    buySupplyRequest.TotalPrice = this.buySupplyEntity.TotalPrice;
+
+    this.generalService.InsBuySupply(buySupplyRequest).subscribe(
+      (data: any) => {
+          debugger
+          
+          if(data.Message   != "Ok")
+          {
+              showError(data.Message);
+          }
+          else
+          {
+              showSuccess("Se actualizo correctamente el stock");
+              setTimeout(() => {
+                  // this.localStorage.clearKey('catalogListSelectedModal');
+                  this.router.navigate(['almacen']);
+              }, 2);
+          }                
+      },
+      (error: HttpErrorResponse) => {
+      this.spinner.hide();
+      console.log(error);
+      }
+  );
+  }
 
 }

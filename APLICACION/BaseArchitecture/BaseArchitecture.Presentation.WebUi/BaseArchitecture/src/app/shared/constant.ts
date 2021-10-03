@@ -29,7 +29,8 @@ export const NameServiceApi ={
   ListSubOrderByLocation:'ListSubOrderByLocation',
   UpdSubOrderFlow: 'UpdSubOrderFlow',
   ListSupplies:'ListSupplies',
-  ListSuppliersByIdSupply:'ListSuppliersByIdSupply'
+  ListSuppliersByIdSupply:'ListSuppliersByIdSupply',
+  InsBuySupply:'InsBuySupply'
 }
 
 export const Demo = {

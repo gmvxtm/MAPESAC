@@ -327,7 +327,7 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
             var urlApi =
                 $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.ListSuppliersByIdSupply}";
             var result =
-              InvokeWebApi.InvokePostAnonymousEntity<Response<SupplierEntity>>(urlApi, postData);
+              InvokeWebApi.InvokePostAnonymousEntity<Response<List<SupplierEntity>>>(urlApi, postData);
             return Ok(result);
         }
 
@@ -335,7 +335,7 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
         [RequestLoggerFilterAttribute]
         [UnControlledExceptionFilterAttribute]
         [Route(IncomeWebApi.MethodApi.Mapesac.InsBuySupply)]
-        public IHttpActionResult InsBuySupplpy()
+        public IHttpActionResult InsBuySupply()
         {
             var postData = HttpContext.Current.Request.Params["buySupplyRequest"];
             var urlApi =
@@ -346,3 +346,4 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
         }
     }
 }
+
