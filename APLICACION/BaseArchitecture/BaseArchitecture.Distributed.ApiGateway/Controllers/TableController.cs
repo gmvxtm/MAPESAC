@@ -335,7 +335,7 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
         [RequestLoggerFilterAttribute]
         [UnControlledExceptionFilterAttribute]
         [Route(IncomeWebApi.MethodApi.Mapesac.InsBuySupply)]
-        public IHttpActionResult InsBuySupplpy()
+        public IHttpActionResult InsBuySupply()
         {
             var postData = HttpContext.Current.Request.Params["buySupplyRequest"];
             var urlApi =
