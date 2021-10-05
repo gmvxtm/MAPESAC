@@ -11,7 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Subject } from 'rxjs';
 import { MTRespuesta, MTUbicacion } from 'src/app/shared/constant';
 import { ResponseLabel } from 'src/app/shared/models/general/label.interface';
-import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
+import { DecreaseEntity, OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { LocalService } from 'src/app/shared/services/general/local.service';
 import { showSuccess } from 'src/app/shared/util';
@@ -33,6 +33,7 @@ export class CorteDetalleComponent implements OnInit {
   actualLocation: any;
   rechazado:boolean;
   total: 0;
+  merma:1;
   Status: string;
   statusSubOrderMT: string;
 
@@ -44,23 +45,44 @@ export class CorteDetalleComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    debugger
     this.codeOrder =  this.localStorage.getJsonValue("itemSubOrder").CodeOrder;
     this.codeSubOrderSend = this.localStorage.getJsonValue("itemSubOrder").CodeSubOrder;
     this.statusSubOrderMT = this.localStorage.getJsonValue("itemSubOrder").StatusSubOrderMT;
     this.idProducto =  this.localStorage.getJsonValue("itemSubOrder").IdProduct;
     this.Status="";
+    this.merma=1;
     this.loadPedido();
   }
 
   SendAnswer =() =>{
-    let orderRequest = new OrderEntity();
-    orderRequest.CodeOrder = this.codeSubOrderSend;
-    orderRequest.Status = this.Status;
-    this.generalService.UpdSubOrderFlow(orderRequest).subscribe(
+
+    
+    let decreaseEntity = new DecreaseEntity();
+    decreaseEntity.IdOrderDetail = this.localStorage.getJsonValue("itemSubOrder").IdOrderDetail;
+    decreaseEntity.CodeSubOrder =  this.codeSubOrderSend;
+    decreaseEntity.QuantityDecrease = this.merma.toString();
+    this.generalService.UpdDecrease(decreaseEntity).subscribe(
         (data: any) => {
             if(data != null){
               debugger
-              showSuccess("Se actualizo correctamente la orden");
+              let orderRequest = new OrderEntity();
+              orderRequest.CodeOrder = this.codeSubOrderSend;
+              orderRequest.Status = this.Status;
+              this.generalService.UpdSubOrderFlow(orderRequest).subscribe(
+                  (data: any) => {
+                      if(data != null){
+                        debugger
+                        showSuccess("Se actualizo correctamente la orden");
+                        this.router.navigate(['corte']);
+                      }
+                  },
+                  (error: HttpErrorResponse) => {
+                  this.spinner.hide();
+                  console.log(error);
+                  }
+              ); 
+              
               this.router.navigate(['corte']);
             }
         },
@@ -68,7 +90,9 @@ export class CorteDetalleComponent implements OnInit {
         this.spinner.hide();
         console.log(error);
         }
-    ); 
+    );
+
+
  }
   loadPedido = () => {
     let orderEntity = new OrderEntity();

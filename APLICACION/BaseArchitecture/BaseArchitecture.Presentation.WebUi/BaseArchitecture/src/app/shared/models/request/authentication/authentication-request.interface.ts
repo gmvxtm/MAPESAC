@@ -138,3 +138,10 @@ export class LoginRequest {
     Quantity: string;    
     TotalPrice: string;  
   }
+
+  export class DecreaseEntity
+  {
+    IdOrderDetail: string;
+    CodeSubOrder: string;    
+    QuantityDecrease: string;
+  }
