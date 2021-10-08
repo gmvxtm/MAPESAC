@@ -9,10 +9,10 @@
 <div class="container">
     <div class="row col-md-12">
         <div style="padding-right: 10px;" *ngFor="let item of listTotalOrderEntity">
-            <div  class="card" style="width: 18rem;"  (click)="filterStatus(item)">
-                <div class="card-body">
-                    
-                        <p>
+            <div  class="card" style="width: 18rem;"  (click)="filterStatus(item)"  >
+                <div class="card-body" [ngClass]="{'itemcardnoselected':item.Selected != '1','itemcardselected':item.Selected == '1'}" >
+                    <!-- [ngClass]="(item.status === 1)?'itemcardselected':itemcardnoselected'" -->
+                        <p >
                             {{ item.Name }} {{ item.Quantity }}
                         </p>
                     

@@ -263,3 +263,14 @@ body, html{
   background: #EEF0F8 !important;
   padding-bottom: 50px !important;
 }
+
+
+.itemcardselected{
+  background-color: #28a3a1;
+  color:white;
+}
+
+.itemcardnoselected{
+  background-color: white;   
+  color:black;
+}

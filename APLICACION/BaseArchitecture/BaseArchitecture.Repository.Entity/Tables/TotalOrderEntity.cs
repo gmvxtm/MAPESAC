@@ -11,6 +11,7 @@ namespace BaseArchitecture.Repository.Entity.Tables
         public string IdMasterTable { get; set; }
         public string Name { get; set; }
         public string Quantity { get; set; }
-
+        public string Selected { get; set; }
+        
     }
 }

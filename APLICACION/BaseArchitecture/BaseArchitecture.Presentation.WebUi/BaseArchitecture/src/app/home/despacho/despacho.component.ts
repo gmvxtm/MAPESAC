@@ -60,14 +60,15 @@ export class DespachoComponent implements OnInit {
     }
 
     filterStatus = (item) => {
-      debugger
-      let pr = item;
+      this.listTotalOrderEntity.forEach(element => {
+        element.Selected="0";
+      });
       if(item.IdMasterTable.trim() ==="0")
         {this.listOrderEntity = this.listTotalOrderEntityOriginal;}
       else 
         {this.listOrderEntity = this.listTotalOrderEntityOriginal.filter(x=> x.Answer === item.IdMasterTable);}
        
-
+        item.Selected= "1";
     }
 
     loadVentas = () => {

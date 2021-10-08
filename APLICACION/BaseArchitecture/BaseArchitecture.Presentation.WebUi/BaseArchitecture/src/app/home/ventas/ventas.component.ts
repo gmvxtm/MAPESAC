@@ -31,8 +31,7 @@ export class VentasComponent implements OnInit {
     listTotalOrderEntity: any[] = [];
     listOrderEntity: any[] = [];
     SinceDate: string;
-    UntilDate: string;
-
+    UntilDate: string;    
     constructor(
       private spinner: NgxSpinnerService,
       private router: Router,
@@ -60,13 +59,14 @@ export class VentasComponent implements OnInit {
     }
 
     filterStatus = (item) => {
-      debugger
-      let pr = item;
+      this.listTotalOrderEntity.forEach(element => {
+        element.Selected="0";
+      });
       if(item.IdMasterTable.trim() ==="0")
         {this.listOrderEntity = this.listTotalOrderEntityOriginal;}
       else 
         {this.listOrderEntity = this.listTotalOrderEntityOriginal.filter(x=> x.Answer === item.IdMasterTable);}
-       
+        item.Selected= "1";
 
     }
 

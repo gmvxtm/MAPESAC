@@ -77,7 +77,9 @@ export class LavanderiaComponent implements OnInit {
 
 
     filterStatus = (item) => {
-      debugger
+      this.ListTotalOrderEntity.forEach(element => {
+        element.Selected="0";
+      });
       if(item.IdMasterTable.trim() === "0")
         {
           this.ListSubOrderEntity = this.listTotalSubOrderEntityOriginal;
@@ -88,6 +90,7 @@ export class LavanderiaComponent implements OnInit {
           this.ListSubOrderEntity = this.listTotalSubOrderEntityOriginal.filter(x=> x.StatusSubOrderMT === item.IdMasterTable);
           this.totalItems = this.ListSubOrderEntity.length;
         }
+        item.Selected= "1";
     }
 
     loadStart = () => {
