@@ -48,7 +48,7 @@ export class DespachoDetalleComponent implements OnInit {
     this.codeOrder = this.localStorage.getJsonValue("codeOrderSend");
     this.locationOrder = this.localStorage.getJsonValue("itemSend").LocationOrder;
     
-    this.Status = "00605";
+    this.Status = "00601";
     this.loadPedido();
     this.actualLocation = MTUbicacion.EncargadoVentas;
 }
