@@ -25,6 +25,8 @@ export function filterByValue(array, string) {
       Object.keys(o).some(k => o[k].toLowerCase().includes(string.toLowerCase())));
 }
 
+
+
 export function SignOff(): void {
       localStorage.removeItem('profileBase');
       window.location.replace(environment.urlLogin);

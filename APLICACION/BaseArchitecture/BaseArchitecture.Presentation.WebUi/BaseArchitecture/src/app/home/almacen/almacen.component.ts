@@ -63,14 +63,23 @@ export class AlmacenComponent implements OnInit {
     }
 
     buscarSupplies = () => {
+          
 
-      debugger
-      this.ListSuppliesEntity =  this.ListSuppliesEntityOriginal.filter(
-                              x => x.CodeSupply == (this.code==""?x.CodeSupply:this.code) && 
-                                  x.Name == (this.description==""?x.Name:this.description))
+      var filter = {
+        CodeSupply: this.code,
+        Name: this.description
+      };
+      this.ListSuppliesEntity= this.ListSuppliesEntityOriginal.filter(function(item) {
+        for (var key in filter) {
+          if (item[key] === undefined || !item[key].includes(filter[key]))
+            return false;
+        }
+        return true;
+      });
       this.totalItems = this.ListSuppliesEntity.length;
       this.code = "";
       this.description = "";
+      
     }
 
     verDetalle = (item) => {

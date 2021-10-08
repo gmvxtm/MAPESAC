@@ -107,6 +107,8 @@ export class CorteComponent implements OnInit {
         
       this.ListSubOrderEntity =filterByValue(this.listTotalSubOrderEntityOriginal,  this.nroPedidoSearch );
       this.totalItems = this.ListSubOrderEntity.length;
+
+      
     }
 
    
