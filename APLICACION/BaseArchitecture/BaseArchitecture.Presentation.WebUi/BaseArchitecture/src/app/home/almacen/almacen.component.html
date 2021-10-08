@@ -1,25 +1,36 @@
 <div class="container row" style="margin-top: 10px;">
-    <div  class="col-10">
+    <div  class="col-9">
         <p style="text-align: left; font-size: 16px; font-weight: bold;margin-bottom: 0;">
             Almacen
         </p>
     </div>
+    <div class="col-md-3">
+        <button class="form-control btn-danger ml-10" routerLink="alerta" ><em class="fa fa-bell"></em>&nbsp;&nbsp; Alerta de Insumos</button>
+    </div>
 </div>
 
-<div class="col-md-2">
-    <button class="form-control btn-danger ml-10" routerLink="alerta" ><em class="fa fa-times"></em>&nbsp;&nbsp; Alerta de Insumos</button>
-</div>
-<!-- <div class="container">
 
+<div class="container">
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-1">
             <label style="font-weight: bold;">
-                Producto:
+                Codigo:
             </label>
         </div>
         <div class="col-md-2">
             <div class="input-group">
-                <input type="text" ng-readonly="all" class="form-control" [(ngModel)]="nameSuppliesSearch">
+                <input type="text" ng-readonly="all" class="form-control" [(ngModel)]="code">
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <label style="font-weight: bold;">
+                Descripción:
+            </label>
+        </div>
+        <div class="col-md-2">
+            <div class="input-group">
+                <input type="text" ng-readonly="all" class="form-control" [(ngModel)]="description">
             </div>
         </div>
 
@@ -29,7 +40,7 @@
 
     </div>
 
-</div> -->
+</div>
 
 <br>
 <div class="container">

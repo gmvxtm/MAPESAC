@@ -30,7 +30,8 @@ export class AlmacenComponent implements OnInit {
     ListSuppliesEntity: any[] = [];
     ListSuppliesEntityOriginal: any[] = [];
     nameSupplies: string;
-  
+    code: string;
+    description: string;
 
     constructor(
       private spinner: NgxSpinnerService,
@@ -62,8 +63,11 @@ export class AlmacenComponent implements OnInit {
     }
 
     buscarSupplies = () => {
-      this.ListSuppliesEntity =filterByValue(this.ListSuppliesEntityOriginal,  this.nameSupplies );
+
+      this.ListSuppliesEntity =  this.ListSuppliesEntityOriginal.filter(x => x.CodeSupply == this.code || x.Name == this.description)
       this.totalItems = this.ListSuppliesEntity.length;
+      this.code = "";
+      this.description = "";
     }
 
     verDetalle = (item) => {
@@ -80,7 +84,7 @@ export class AlmacenComponent implements OnInit {
         lengthChange: true,
         lengthMenu: [5, 10, 15, 20, 25],
         serverSide: false,
-        filterColumn: true
+        filterColumn: false
       };
     }
   
