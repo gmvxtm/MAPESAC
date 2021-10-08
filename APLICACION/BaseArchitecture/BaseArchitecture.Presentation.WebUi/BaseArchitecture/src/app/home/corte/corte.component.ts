@@ -102,6 +102,9 @@ export class CorteComponent implements OnInit {
     }
 
     buscarPedido = () => {
+      // this.listTotalSubOrderEntityOriginal.filter(o =>
+      //   Object.keys(o).some(k.CodeOrder => o[k.CodeOrder].toLowerCase().includes(this.nroPedidoSearch.toLowerCase())));
+        
       this.ListSubOrderEntity =filterByValue(this.listTotalSubOrderEntityOriginal,  this.nroPedidoSearch );
       this.totalItems = this.ListSubOrderEntity.length;
     }

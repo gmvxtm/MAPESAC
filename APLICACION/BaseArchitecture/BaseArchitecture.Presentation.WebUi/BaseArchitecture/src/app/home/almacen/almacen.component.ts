@@ -30,8 +30,8 @@ export class AlmacenComponent implements OnInit {
     ListSuppliesEntity: any[] = [];
     ListSuppliesEntityOriginal: any[] = [];
     nameSupplies: string;
-    code: string;
-    description: string;
+    code: string="";
+    description: string="";
 
     constructor(
       private spinner: NgxSpinnerService,
@@ -64,7 +64,10 @@ export class AlmacenComponent implements OnInit {
 
     buscarSupplies = () => {
 
-      this.ListSuppliesEntity =  this.ListSuppliesEntityOriginal.filter(x => x.CodeSupply == this.code || x.Name == this.description)
+      debugger
+      this.ListSuppliesEntity =  this.ListSuppliesEntityOriginal.filter(
+                              x => x.CodeSupply == (this.code==""?x.CodeSupply:this.code) && 
+                                  x.Name == (this.description==""?x.Name:this.description))
       this.totalItems = this.ListSuppliesEntity.length;
       this.code = "";
       this.description = "";
