@@ -10,7 +10,7 @@
     <div class="row col-md-12">
         <div style="padding-right: 10px;" *ngFor="let item of listTotalOrderEntity">
             <div  class="card" style="width: 18rem;"  (click)="filterStatus(item)">
-                <div class="card-body">
+                <div class="card-body" [ngClass]="{'itemcardnoselected':item.Selected != '1','itemcardselected':item.Selected == '1'}">
                     
                         <p>
                             {{ item.Name }} {{ item.Quantity }}
