@@ -33,8 +33,9 @@ export class CorteComponent implements OnInit {
     listTotalSubOrderEntityOriginal: any[] = [];
     listOrderEntity: any[] = [];
     statusSend: string;
-    nroPedidoSearch: string;
-
+    nroPedidoSearch: string="";
+    nroOrderWorkSearch:string="";
+    
     constructor(
       private spinner: NgxSpinnerService,
       private router: Router,
@@ -102,13 +103,21 @@ export class CorteComponent implements OnInit {
     }
 
     buscarPedido = () => {
-      // this.listTotalSubOrderEntityOriginal.filter(o =>
-      //   Object.keys(o).some(k.CodeOrder => o[k.CodeOrder].toLowerCase().includes(this.nroPedidoSearch.toLowerCase())));
-        
-      this.ListSubOrderEntity =filterByValue(this.listTotalSubOrderEntityOriginal,  this.nroPedidoSearch );
+    
+      var filter = {
+        CodeOrder: this.nroPedidoSearch,
+        CodeSubOrder: this.nroOrderWorkSearch
+      };
+      this.ListSubOrderEntity= this.listTotalSubOrderEntityOriginal.filter(function(item) {
+        for (var key in filter) {
+          if (item[key] === undefined || !item[key].includes(filter[key]))
+            return false;
+        }
+        return true;
+      });
       this.totalItems = this.ListSubOrderEntity.length;
-
-      
+      this.nroPedidoSearch = "";
+      this.nroOrderWorkSearch = "";      
     }
 
    

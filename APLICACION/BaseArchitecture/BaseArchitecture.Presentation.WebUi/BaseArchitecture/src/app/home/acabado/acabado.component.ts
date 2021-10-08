@@ -31,7 +31,8 @@ export class AcabadoComponent implements OnInit {
     ListTotalOrderEntity: any[] = [];
     listTotalSubOrderEntityOriginal: any[] = [];
     listOrderEntity: any[] = [];
-    nroPedidoSearch: string;
+    nroPedidoSearch: string="";
+    nroOrderWorkSearch:string="";
 
     constructor(
       private spinner: NgxSpinnerService,
@@ -88,8 +89,20 @@ export class AcabadoComponent implements OnInit {
     }
 
     buscarPedido = () => {
-      this.ListSubOrderEntity =filterByValue(this.listTotalSubOrderEntityOriginal,  this.nroPedidoSearch );
+      var filter = {
+        CodeOrder: this.nroPedidoSearch,
+        CodeSubOrder: this.nroOrderWorkSearch
+      };
+      this.ListSubOrderEntity= this.listTotalSubOrderEntityOriginal.filter(function(item) {
+        for (var key in filter) {
+          if (item[key] === undefined || !item[key].includes(filter[key]))
+            return false;
+        }
+        return true;
+      });
       this.totalItems = this.ListSubOrderEntity.length;
+      this.nroPedidoSearch = "";
+      this.nroOrderWorkSearch = "";
     }
 
 
