@@ -42,6 +42,7 @@ export class AcabadoComponent implements OnInit {
     ) { }
   
     ngOnInit(): void {
+      this.spinner.show();
       this.createHeadersTable();
       this.loadStart();
       this.loadVentas();
@@ -56,6 +57,7 @@ export class AcabadoComponent implements OnInit {
           this.listTotalSubOrderEntityOriginal = data.Value.ListSubOrderEntity;
           this.ListTotalOrderEntity = data.Value.ListTotalOrderEntity;
           this.totalItems = this.ListSubOrderEntity.length;
+          this.spinner.hide();
         },
         (error: HttpErrorResponse) => {
         this.spinner.hide();

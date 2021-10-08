@@ -44,7 +44,16 @@ export class MenuOptionComponent implements OnInit {
       { 
         title: "Área de ventas",
         icon: "fa fa-folder-open",
-        OptionUrl: "/ventas"
+        MenuChildren: [ {
+          title: "Gestión de ventas",
+          icon: "fa fa-folder-open",
+          OptionUrl: "ventas",
+        },
+        {
+          title: "Reportes",
+          icon: "fa fa-folder-open",
+          OptionUrl: "reportesVentas",
+        }]
       },
       { 
         title: "Área de corte",
@@ -74,7 +83,22 @@ export class MenuOptionComponent implements OnInit {
       { 
         title: "Área de almacén",
         icon: "fa fa-folder-open",
-        OptionUrl: "/almacen"
+        MenuChildren: [ {
+          title: "Inventario",
+          icon: "fa fa-folder-open",
+          OptionUrl: "almacen",
+        },
+        {
+          title: "Alerta de Insumos",
+          icon: "fa fa-folder-open",
+          OptionUrl: "almacen",
+        },
+        {
+          title: "Reportes",
+          icon: "fa fa-folder-open",
+          OptionUrl: "reportesAlmacen",
+        }
+      ]
       },
     ]
   }

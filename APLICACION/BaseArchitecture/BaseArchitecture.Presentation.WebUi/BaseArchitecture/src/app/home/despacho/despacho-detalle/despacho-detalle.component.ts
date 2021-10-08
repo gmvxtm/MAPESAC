@@ -44,7 +44,6 @@ export class DespachoDetalleComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    debugger
     this.codeOrder = this.localStorage.getJsonValue("codeOrderSend");
     this.locationOrder = this.localStorage.getJsonValue("itemSend").LocationOrder;
     

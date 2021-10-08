@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
 
       
       (data: any) => {
-        debugger
         if(data != null){
            let menulogin =  new MenuLogin();
            menulogin = data.Value;

@@ -154,7 +154,6 @@ export class CompraComponent implements OnInit {
 
         this.generalService.MergeOrder(orderRequest).subscribe(
             (data: any) => {
-                debugger
                 var codeOrder =data.Value;
                 if(codeOrder.substring(0,5)    === "Error")
                 {

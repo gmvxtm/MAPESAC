@@ -41,6 +41,7 @@ export class DespachoComponent implements OnInit {
     ) { }
   
     ngOnInit(): void {
+      this.spinner.show();
       this.createHeadersTable();
       this.loadStart();
       this.loadVentas();
@@ -80,6 +81,7 @@ export class DespachoComponent implements OnInit {
           this.listTotalOrderEntityOriginal = data.Value.ListOrderEntity;
           this.listOrderEntity = data.Value.ListOrderEntity;
           this.totalItems = this.listOrderEntity.length;
+          this.spinner.hide();
         },
         (error: HttpErrorResponse) => {
         this.spinner.hide();

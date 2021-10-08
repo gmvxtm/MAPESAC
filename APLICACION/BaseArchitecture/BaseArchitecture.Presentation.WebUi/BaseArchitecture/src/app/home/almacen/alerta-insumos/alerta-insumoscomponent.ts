@@ -67,7 +67,6 @@ export class AlertaInsumosComponent implements OnInit {
    
     this.serviceProyecto.ListSupplies().subscribe(
       (data: any) => {
-        debugger
         this.ListSuppliesEntity = data.Value.filter(x=>x.IndicateAlert === true);
         this.ListSuppliesEntityOriginal = data.Value.filter(x=>x.IndicateAlert === true);          
         this.totalItems = this.ListSuppliesEntityOriginal.length;
@@ -93,7 +92,6 @@ export class AlertaInsumosComponent implements OnInit {
     this.idSupplySelected = item.IdSupply;
     this.serviceProyecto.ListSuppliersByIdSupply(supplyEntity).subscribe(
       (data: any) => {
-        debugger
         this.ListSuppliersByIdSupply = data.Value;
       },
       (error: HttpErrorResponse) => {
@@ -160,7 +158,6 @@ export class AlertaInsumosComponent implements OnInit {
   }
 
   sendS =() =>{
-    debugger
     let buySupplyRequest = new BuySupplyEntity();
     buySupplyRequest.IdSupply   = this.idSupplySelected;
     buySupplyRequest.IdSupplier = this.supplier;
@@ -170,8 +167,6 @@ export class AlertaInsumosComponent implements OnInit {
 
     this.generalService.InsBuySupply(buySupplyRequest).subscribe(
       (data: any) => {
-          debugger
-          
           if(data.Message   != "Ok")
           {
               showError(data.Message);

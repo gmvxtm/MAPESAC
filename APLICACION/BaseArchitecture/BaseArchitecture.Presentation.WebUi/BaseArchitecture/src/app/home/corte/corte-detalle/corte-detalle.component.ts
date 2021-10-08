@@ -45,7 +45,6 @@ export class CorteDetalleComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    debugger
     this.codeOrder =  this.localStorage.getJsonValue("itemSubOrder").CodeOrder;
     this.codeSubOrderSend = this.localStorage.getJsonValue("itemSubOrder").CodeSubOrder;
     this.statusSubOrderMT = this.localStorage.getJsonValue("itemSubOrder").StatusSubOrderMT;
@@ -65,14 +64,12 @@ export class CorteDetalleComponent implements OnInit {
     this.generalService.UpdDecrease(decreaseEntity).subscribe(
         (data: any) => {
             if(data != null){
-              debugger
               let orderRequest = new OrderEntity();
               orderRequest.CodeOrder = this.codeSubOrderSend;
               orderRequest.Status = this.Status;
               this.generalService.UpdSubOrderFlow(orderRequest).subscribe(
                   (data: any) => {
                       if(data != null){
-                        debugger
                         showSuccess("Se actualizo correctamente la orden");
                         this.router.navigate(['corte']);
                       }
@@ -99,7 +96,6 @@ export class CorteDetalleComponent implements OnInit {
     orderEntity.CodeOrder = this.codeOrder;
     this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
       (data: any) => {
-        debugger
         this.orderBD=data.Value;
         this.customerEntity = data.Value.CustomerEntity;
         this.listOrderDetail = data.Value.ListOrderDetail.filter(x=> x.IdProduct  === this.idProducto );

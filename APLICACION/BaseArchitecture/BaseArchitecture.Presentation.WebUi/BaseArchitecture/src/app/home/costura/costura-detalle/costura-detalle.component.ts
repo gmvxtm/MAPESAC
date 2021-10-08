@@ -74,8 +74,6 @@ export class CosturaDetalleComponent implements OnInit {
     orderEntity.CodeOrder = this.codeOrder;
     this.generalService.GetOrderByCodeOrder(orderEntity).subscribe(
       (data: any) => {
-        debugger
-        console.log(data)
         this.orderBD=data.Value;
         this.customerEntity = data.Value.CustomerEntity;
         this.listOrderDetail = data.Value.ListOrderDetail.filter(x=> x.IdProduct  === this.idProducto );

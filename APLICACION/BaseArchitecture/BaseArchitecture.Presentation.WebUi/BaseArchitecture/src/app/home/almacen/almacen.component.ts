@@ -41,6 +41,7 @@ export class AlmacenComponent implements OnInit {
     ) { }
   
     ngOnInit(): void {
+      this.spinner.show();
       this.createHeadersTable();
       this.loadStart();
       this.loadData();
@@ -54,6 +55,7 @@ export class AlmacenComponent implements OnInit {
           this.ListSuppliesEntity = data.Value;
           this.ListSuppliesEntityOriginal = data.Value;          
           this.totalItems = this.ListSuppliesEntityOriginal.length;
+          this.spinner.hide();
         },
         (error: HttpErrorResponse) => {
         this.spinner.hide();
@@ -63,8 +65,6 @@ export class AlmacenComponent implements OnInit {
     }
 
     buscarSupplies = () => {
-          
-
       var filter = {
         CodeSupply: this.code,
         Name: this.description
