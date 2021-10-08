@@ -78,6 +78,24 @@ export class AlmacenComponent implements OnInit {
       // this.localStorage.setJsonValue("itemSubOrder",item);  
       // this.router.navigate(['costura/detalle']);
     }
+
+    // filterRisks = () =>{
+
+    //   let filter = this.code.toUpperCase();
+    //   let table = (<HTMLTableElement>document.getElementById("myTable"));  
+    //   let trs = table.tBodies[0].getElementsByTagName("tr");
+    
+    //   for (var i = 0; i < trs.length; i++) {
+    //     var tds = trs[i].getElementsByTagName("td");
+    //     trs[i].style.display = "none";
+    //     for (var i2 = 0; i2 < tds.length; i2++) {
+    //       if (tds[i2].innerHTML.toUpperCase().indexOf(filter) > -1) {
+    //         trs[i].style.display = "";
+    //         continue;
+    //       }
+    //     }
+    //   }
+    // }
   
     loadStart = () => {
       this.configTable = {

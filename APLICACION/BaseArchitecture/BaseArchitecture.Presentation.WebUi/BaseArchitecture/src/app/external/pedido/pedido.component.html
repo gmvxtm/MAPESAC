@@ -62,7 +62,7 @@
                 <input [(ngModel)]="item.Quantity"   min="1" max="10000"  type="number" class="form-control" style="width: 80px;" (change)="quantitychange()">
             </div>
             <div class="col-md-2">
-              S/. {{item.Total}}
+              S/. {{item.Total | number:'3.2-5'}}
             </div>
              <div class="col-md-1">
               <em (click)="deteleItem(item.IdProduct)" style="cursor: pointer;" class="fas fa-trash"></em>
@@ -76,7 +76,7 @@
             <span >Total: </span>
           </div>
           <div *ngIf="totalQuantity >0" class="col-md-2">
-            <span >S/.  {{totalQuantity}} </span>
+            <span >S/.  {{totalQuantity | number:'3.2-5'}} </span>
           </div>
         </div>
         <br>
