@@ -215,5 +215,13 @@ namespace BaseArchitecture.Application.Service.Table
             var result = TableTransaction.IndBuySupply(buySupplyRequest);
             return result;
         }
+
+        public Response<IEnumerable<RptListProductQuantityEntity>> RptListProductQuantity()
+        {
+            var result = TableQuery.RptListProductQuantity();
+            return new Response<IEnumerable<RptListProductQuantityEntity>> { Value = result };
+        }
+
+
     }
 }

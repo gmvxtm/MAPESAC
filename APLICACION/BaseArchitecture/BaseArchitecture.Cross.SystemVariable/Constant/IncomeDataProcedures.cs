@@ -42,6 +42,9 @@
             public const string ListOrderByLocation = "Usp_List_OrderByLocation";
             public const string ListSubOrderByLocation = "Usp_List_SubOrderByLocation";
 
+            public const string RptListProductQuantity = "Usp_Rpt_ListProductQuantity";
+            
+
             public const string MrgOrder = "Usp_Mrg_Order";
             public const string GenerateOrderFlow = "Usp_Generate_OrderFlow";
             public const string GenerateSubOrderFlow = "Usp_Generate_SubOrderFlow";

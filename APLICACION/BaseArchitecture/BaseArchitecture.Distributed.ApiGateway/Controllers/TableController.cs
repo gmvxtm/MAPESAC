@@ -344,6 +344,19 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
               InvokeWebApi.InvokePostAnonymousEntity<Response<int>>(urlApi, postData);
             return Ok(result);
         }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.RptListProductQuantity)]
+        public IHttpActionResult RptListProductQuantity()
+        {
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.RptListProductQuantity}";
+            var result =
+                InvokeWebApi.InvokePostAnonymousEntity<Response<List<RptListProductQuantityEntity>>>(urlApi, "");
+            return Ok(result);
+        }
     }
 }
 

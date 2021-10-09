@@ -54,6 +54,7 @@
                 public const string UpdDecrease = "UpdDecrease";
                 public const string ListSuppliersByIdSupply = "ListSuppliersByIdSupply";
                 public const string InsBuySupply = "InsBuySupply";
+                public const string RptListProductQuantity = "RptListProductQuantity";                
             }
         }
 

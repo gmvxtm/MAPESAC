@@ -170,5 +170,13 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
             var result = TableService.InsBuySupply(buySupplyRequest);
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.RptListProductQuantity)]
+        public IHttpActionResult RptListProductQuantity()
+        {
+            var result = TableService.RptListProductQuantity();
+            return Ok(result);
+        }
     }
 }

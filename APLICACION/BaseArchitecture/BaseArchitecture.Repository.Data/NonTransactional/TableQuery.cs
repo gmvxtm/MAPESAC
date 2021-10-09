@@ -79,7 +79,8 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
             }
 
             return response;
-        }
+        }      
+
         public Response<UbiEntity> ListUbi()
         {
             Response<UbiEntity> response;
@@ -290,5 +291,25 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
 
             return response;
         }
+
+        public IEnumerable<RptListProductQuantityEntity> RptListProductQuantity()
+        {
+            IEnumerable<RptListProductQuantityEntity> response;
+
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+
+                var resultResponse = connection.QueryAsync<RptListProductQuantityEntity>(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.RptListProductQuantity}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure).Result;
+
+                response = resultResponse;
+            }
+
+            return response;
+        }
+
     }
 }
