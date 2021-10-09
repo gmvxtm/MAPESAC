@@ -91,7 +91,7 @@ export class MenuOptionComponent implements OnInit {
         {
           title: "Alerta de Insumos",
           icon: "fa fa-folder-open",
-          OptionUrl: "almacen",
+          OptionUrl: "almacen/alerta",
         },
         {
           title: "Reportes",
