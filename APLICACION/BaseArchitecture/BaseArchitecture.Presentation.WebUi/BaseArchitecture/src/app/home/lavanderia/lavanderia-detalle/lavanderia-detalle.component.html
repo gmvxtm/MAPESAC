@@ -76,7 +76,25 @@
     <div class="container">
         <label>Estado</label>&nbsp;&nbsp;
         <select  [(ngModel)]="Status" class="form-control col-md-2">
-            <option value="">--Seleccione--</option>
+            <option value="00101">Pendiente</option>
+            <option value="00102">En proceso</option>
+            <option value="00103">Terminado</option>
+        </select>
+    </div>
+    <br>
+    <div class="container row">
+        <div class="col-md-2">
+            <button class="form-control btn-success" (click)="SendAnswer()"><em class="fas fa-check"></em>&nbsp;&nbsp; Enviar</button>
+        </div>
+    </div>
+
+</ng-container>
+
+<ng-container *ngIf="statusSubOrderMT === '00103'">
+
+    <div class="container">
+        <label>Estado</label>&nbsp;&nbsp;
+        <select  [(ngModel)]="Status" class="form-control col-md-2" disabled>
             <option value="00101">Pendiente</option>
             <option value="00102">En proceso</option>
             <option value="00103">Terminado</option>

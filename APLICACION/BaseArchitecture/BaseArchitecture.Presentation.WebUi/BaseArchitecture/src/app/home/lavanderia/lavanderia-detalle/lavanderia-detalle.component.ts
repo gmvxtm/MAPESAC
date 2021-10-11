@@ -81,6 +81,7 @@ export class LavanderiaDetalleComponent implements OnInit {
         this.customerEntity = data.Value.CustomerEntity;
         this.listOrderDetail = data.Value.ListOrderDetail.filter(x=> x.IdProduct  === this.idProducto );
         this.rechazado = false;
+        this.Status = this.statusSubOrderMT;
         if(MTRespuesta.Rechazado === this.orderBD.ListOrderStatus.find(x=> x.IdMasterTable === MTUbicacion.EncargadoVentas).Answer)
         {
           this.rechazado = true;

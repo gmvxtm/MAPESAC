@@ -33,6 +33,7 @@ export class CosturaDetalleComponent implements OnInit {
   actualLocation: any;
   rechazado:boolean;
   total: 0;
+  merma: number;
   Status: string;
   statusSubOrderMT: string;
 
@@ -49,6 +50,7 @@ export class CosturaDetalleComponent implements OnInit {
     this.statusSubOrderMT = this.localStorage.getJsonValue("itemSubOrder").StatusSubOrderMT;
     this.idProducto =  this.localStorage.getJsonValue("itemSubOrder").IdProduct;
     this.Status="";
+    this.merma= this.localStorage.getJsonValue("itemSubOrder").Merma;
     this.loadPedido();
   }
 
@@ -78,6 +80,7 @@ export class CosturaDetalleComponent implements OnInit {
         this.customerEntity = data.Value.CustomerEntity;
         this.listOrderDetail = data.Value.ListOrderDetail.filter(x=> x.IdProduct  === this.idProducto );
         this.rechazado = false;
+        this.Status = this.statusSubOrderMT;
         if(MTRespuesta.Rechazado === this.orderBD.ListOrderStatus.find(x=> x.IdMasterTable === MTUbicacion.EncargadoVentas).Answer)
         {
           this.rechazado = true;
