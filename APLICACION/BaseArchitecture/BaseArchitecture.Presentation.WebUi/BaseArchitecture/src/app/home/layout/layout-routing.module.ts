@@ -24,6 +24,14 @@ const routes: Routes = [
           canActivate: [AuthGuard],
       },
       {
+        path: 'reportesVentas',
+        loadChildren: () =>
+          import('src/app/home/ventas/reportes/reportes.module').then(
+            (m) => m.ReportesModule
+          ),
+          // canActivate: [AuthGuard],
+      },
+      {
         path: 'ventas/detalle',
         loadChildren: () =>
           import('src/app/home/ventas/venta-detalle/venta-detalle.module').then(

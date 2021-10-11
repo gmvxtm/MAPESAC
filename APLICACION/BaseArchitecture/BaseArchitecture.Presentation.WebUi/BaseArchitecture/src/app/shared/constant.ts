@@ -31,7 +31,8 @@ export const NameServiceApi ={
   ListSupplies:'ListSupplies',
   ListSuppliersByIdSupply:'ListSuppliersByIdSupply',
   InsBuySupply:'InsBuySupply',
-  UpdDecrease:'UpdDecrease'
+  UpdDecrease:'UpdDecrease',
+  RptListProductQuantity: 'RptListProductQuantity',
 }
 
 export const Demo = {
