@@ -116,7 +116,7 @@ export class AlertaInsumosComponent implements OnInit {
       lengthChange: true,
       lengthMenu: [5, 10, 15, 20, 25],
       serverSide: false,
-      filterColumn: true
+      filterColumn: false
     };
   }
 

@@ -96,6 +96,14 @@ const routes: Routes = [
           canActivate: [AuthGuard],
       },
       {
+        path: 'reportesAlmacen',
+        loadChildren: () =>
+          import('src/app/home/almacen/reportes/reportes.module').then(
+            (m) => m.ReportesAlmacenModule
+          ),
+          // canActivate: [AuthGuard],
+      },
+      {
         path: 'corte',
         loadChildren: () =>
           import('src/app/home/corte/corte.module').then(
