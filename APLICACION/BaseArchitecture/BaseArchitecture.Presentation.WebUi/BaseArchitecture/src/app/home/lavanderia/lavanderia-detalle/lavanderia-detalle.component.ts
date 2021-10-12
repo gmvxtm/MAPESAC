@@ -11,7 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Subject } from 'rxjs';
 import { MTRespuesta, MTUbicacion } from 'src/app/shared/constant';
 import { ResponseLabel } from 'src/app/shared/models/general/label.interface';
-import { OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
+import { DecreaseEntity, OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { LocalService } from 'src/app/shared/services/general/local.service';
 import { showSuccess } from 'src/app/shared/util';
@@ -34,6 +34,7 @@ export class LavanderiaDetalleComponent implements OnInit {
   codeSubOrderSend: string;
   idProducto:string;
   Status: string;
+  merma: number;
   statusSubOrderMT: string;
   
   constructor(
@@ -49,25 +50,40 @@ export class LavanderiaDetalleComponent implements OnInit {
     this.statusSubOrderMT = this.localStorage.getJsonValue("itemSubOrder").StatusSubOrderMT;
     this.idProducto =  this.localStorage.getJsonValue("itemSubOrder").IdProduct;
     this.Status="";
+    this.merma= this.localStorage.getJsonValue("itemSubOrder").Merma;
     this.loadPedido();
   }
 
   SendAnswer =() =>{
-    let orderRequest = new OrderEntity();
-    orderRequest.CodeOrder = this.codeSubOrderSend;
-    orderRequest.Status = this.Status;
-    this.generalService.UpdSubOrderFlow(orderRequest).subscribe(
-        (data: any) => {
-            if(data != null){
-              showSuccess("Se actualizo correctamente la orden");
-              this.router.navigate(['lavanderia']);
+    let decreaseEntity = new DecreaseEntity();
+    decreaseEntity.IdOrderDetail = this.localStorage.getJsonValue("itemSubOrder").IdOrderDetail;
+    decreaseEntity.CodeSubOrder =  this.codeSubOrderSend;
+    decreaseEntity.QuantityDecrease = this.merma.toString();
+    this.generalService.UpdDecrease(decreaseEntity).subscribe(
+      (data: any) => {
+          if(data != null){
+            let orderRequest = new OrderEntity();
+            orderRequest.CodeOrder = this.codeSubOrderSend;
+            orderRequest.Status = this.Status;
+            this.generalService.UpdSubOrderFlow(orderRequest).subscribe(
+                (data: any) => {
+                    if(data != null){
+                      showSuccess("Se actualizo correctamente la orden");
+                      this.router.navigate(['lavanderia']);
+                    }
+                },
+                (error: HttpErrorResponse) => {
+                this.spinner.hide();
+                console.log(error);
             }
-        },
-        (error: HttpErrorResponse) => {
-        this.spinner.hide();
-        console.log(error);
-        }
-    ); 
+            );            
+          }
+      },
+      (error: HttpErrorResponse) => {
+      this.spinner.hide();
+      console.log(error);
+      }
+      );
  }
 
 

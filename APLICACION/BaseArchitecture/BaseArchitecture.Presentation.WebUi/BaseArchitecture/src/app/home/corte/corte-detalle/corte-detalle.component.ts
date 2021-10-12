@@ -80,7 +80,7 @@ export class CorteDetalleComponent implements OnInit {
                   }
               ); 
               
-              this.router.navigate(['corte']);
+              
             }
         },
         (error: HttpErrorResponse) => {

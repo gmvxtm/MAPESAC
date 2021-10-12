@@ -81,6 +81,9 @@
             <option value="00103">Terminado</option>
         </select>
     </div>
+    <div class="container">
+        Merma<span style="color:red">(*)</span>: <input type="number" [(ngModel)]="merma" class="form-control col-md-2" min="1" >
+    </div>    
     <br>
     <div class="container row">
         <div class="col-md-2">
@@ -101,10 +104,8 @@
         </select>
     </div>
     <br>
-    <div class="container row">
-        <div class="col-md-2">
-            <button class="form-control btn-success" (click)="SendAnswer()"><em class="fas fa-check"></em>&nbsp;&nbsp; Enviar</button>
-        </div>
+    <div class="container">
+        Merma<span style="color:red">(*)</span>: <input type="number" [(ngModel)]="merma" class="form-control col-md-2" min="1" disabled>
     </div>
 
 </ng-container>
