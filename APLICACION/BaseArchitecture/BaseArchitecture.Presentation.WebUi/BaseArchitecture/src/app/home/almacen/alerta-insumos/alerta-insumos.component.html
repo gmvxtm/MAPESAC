@@ -46,7 +46,7 @@
             </div>
             <br>
             <div class="col-md-11 row">
-                Precio Unitario<span style="color:red">(*)</span>: <input type="number" [(ngModel)]="buySupplyEntity.UnitPrice" class="form-control" min="1" (change)="quantitypricechange()">
+                Precio Unitario<span style="color:red">(*)</span>: <input type="number" [(ngModel)]="buySupplyEntity.UnitPrice" class="form-control" min="1" (change)="quantitypricechange()" [disabled]="true">
             </div>
             <div class="col-md-11 row">
                 Cantidad<span style="color:red">(*)</span>: <input type="number" [(ngModel)]="buySupplyEntity.Quantity" class="form-control" min="1" (change)="quantitypricechange()">

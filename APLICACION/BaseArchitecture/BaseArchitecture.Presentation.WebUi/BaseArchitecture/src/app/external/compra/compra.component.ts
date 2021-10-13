@@ -91,7 +91,10 @@ export class CompraComponent implements OnInit {
         }
     }
 
-
+    cancelOrder = () =>{
+        this.localStorage.clearKey('catalogListSelectedModal');
+        this.router.navigate(['catalogo']);    
+    }
 
     sendOrder = () => {
         this.disabledSend = true;

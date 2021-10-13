@@ -82,6 +82,9 @@
             <div class="col-md-3"> 
               <button  [disabled] ="disabledSend"  (click)="sendOrder()" class="form-control btn-success">Enviar</button>
             </div>
+            <div class="col-md-3">
+              <button class="form-control btn-danger ml-10"  (click)="cancelOrder()" ><em class="fa fa-bell"></em>&nbsp;Cancelar</button>
+            </div>
           </div>
         </div>
         <div class="col-md-6" style="margin-top: 30px;">

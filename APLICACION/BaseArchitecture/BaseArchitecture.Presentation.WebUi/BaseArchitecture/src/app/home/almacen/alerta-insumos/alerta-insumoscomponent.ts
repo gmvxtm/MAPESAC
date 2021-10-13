@@ -103,8 +103,11 @@ export class AlertaInsumosComponent implements OnInit {
   }
 
   verDetalle = (item) => {
+    debugger
     this.visibleRegistro= true;
     this.supplyName   = item.Name;
+    this.buySupplyEntity.UnitPrice = item.PriceUnit;
+    this.buySupplyEntity.TotalPrice =  (Number(this.buySupplyEntity.Quantity)*Number(this.buySupplyEntity.UnitPrice)).toString();
     this.loadListSuppliersByIdSupply(item);
   }
 

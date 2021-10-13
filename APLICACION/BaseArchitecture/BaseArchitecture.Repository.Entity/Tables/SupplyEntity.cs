@@ -17,6 +17,8 @@ namespace BaseArchitecture.Repository.Entity.Tables
         public double MinimumStock { get; set; }
         public string DateUpdate { get; set; }
         public bool IndicateAlert { get; set; }
+        public double PriceUnit { get; set; }
+        
     }
 }
 
