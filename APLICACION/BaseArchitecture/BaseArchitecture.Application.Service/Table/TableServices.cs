@@ -222,6 +222,22 @@ namespace BaseArchitecture.Application.Service.Table
             return new Response<IEnumerable<RptListProductQuantityEntity>> { Value = result };
         }
 
+        public Response<IEnumerable<RptListOrderQuantityEntity>> RptListOrderQuantity()
+        {
+            var result = TableQuery.RptListOrderQuantity();
+            return new Response<IEnumerable<RptListOrderQuantityEntity>> { Value = result };
+        }
 
+        public Response<IEnumerable<RptListOrderQuantityStatusEntity>> RptListOrderQuantityStatus()
+        {
+            var result = TableQuery.RptListOrderQuantityStatus();
+            return new Response<IEnumerable<RptListOrderQuantityStatusEntity>> { Value = result };
+        }
+
+        public Response<IEnumerable<RptListOrderQuantityStatusDeliveryEntity>> RptListOrderQuantityStatusDelivery()
+        {
+            var result = TableQuery.RptListOrderQuantityStatusDelivery();
+            return new Response<IEnumerable<RptListOrderQuantityStatusDeliveryEntity>> { Value = result };
+        }
     }
 }

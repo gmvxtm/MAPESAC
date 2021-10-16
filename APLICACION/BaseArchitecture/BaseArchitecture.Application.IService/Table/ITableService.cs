@@ -27,5 +27,8 @@ namespace BaseArchitecture.Application.IService.Table
         Response<IEnumerable<SupplierEntity>> ListSuppliersByIdSupply(SupplyEntity supplyRequest);
         Response<int> InsBuySupply(BuySupplyEntity buySupplyRequest);
         Response<IEnumerable<RptListProductQuantityEntity>> RptListProductQuantity();
+        Response<IEnumerable<RptListOrderQuantityEntity>> RptListOrderQuantity();
+        Response<IEnumerable<RptListOrderQuantityStatusEntity>> RptListOrderQuantityStatus();
+        Response<IEnumerable<RptListOrderQuantityStatusDeliveryEntity>> RptListOrderQuantityStatusDelivery();
     }
 }

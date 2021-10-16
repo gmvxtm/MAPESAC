@@ -56,13 +56,14 @@ export class CorteDetalleComponent implements OnInit {
 
   SendAnswer =() =>{
 
-    
+    debugger
     let decreaseEntity = new DecreaseEntity();
     decreaseEntity.IdOrderDetail = this.localStorage.getJsonValue("itemSubOrder").IdOrderDetail;
     decreaseEntity.CodeSubOrder =  this.codeSubOrderSend;
     decreaseEntity.QuantityDecrease = this.merma.toString();
     this.generalService.UpdDecrease(decreaseEntity).subscribe(
         (data: any) => {
+          debugger
             if(data != null){
               let orderRequest = new OrderEntity();
               orderRequest.CodeOrder = this.codeSubOrderSend;

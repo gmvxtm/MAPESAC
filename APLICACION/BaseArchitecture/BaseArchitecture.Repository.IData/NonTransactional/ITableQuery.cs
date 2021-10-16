@@ -25,5 +25,8 @@ namespace BaseArchitecture.Repository.IData.NonTransactional
         IEnumerable<SupplierEntity> ListSuppliersByIdSupply(SupplyEntity supplyRequest);
 
         IEnumerable<RptListProductQuantityEntity> RptListProductQuantity();
+        IEnumerable<RptListOrderQuantityEntity> RptListOrderQuantity();
+        IEnumerable<RptListOrderQuantityStatusEntity> RptListOrderQuantityStatus();
+        IEnumerable<RptListOrderQuantityStatusDeliveryEntity> RptListOrderQuantityStatusDelivery();
     }
 }

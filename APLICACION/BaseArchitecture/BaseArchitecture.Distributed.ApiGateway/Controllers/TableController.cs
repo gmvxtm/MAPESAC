@@ -357,6 +357,45 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
                 InvokeWebApi.InvokePostAnonymousEntity<Response<List<RptListProductQuantityEntity>>>(urlApi, "");
             return Ok(result);
         }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.RptListOrderQuantity)]
+        public IHttpActionResult RptListOrderQuantity()
+        {
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.RptListOrderQuantity}";
+            var result =
+                InvokeWebApi.InvokePostAnonymousEntity<Response<List<RptListOrderQuantityEntity>>>(urlApi, "");
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.RptListOrderQuantityStatus)]
+        public IHttpActionResult RptListOrderQuantityStatus()
+        {
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.RptListOrderQuantityStatus}";
+            var result =
+                InvokeWebApi.InvokePostAnonymousEntity<Response<List<RptListOrderQuantityStatusEntity>>>(urlApi, "");
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.RptListOrderQuantityStatusDelivery)]
+        public IHttpActionResult RptListOrderQuantityStatusDelivery()
+        {
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.RptListOrderQuantityStatusDelivery}";
+            var result =
+                InvokeWebApi.InvokePostAnonymousEntity<Response<List<RptListOrderQuantityStatusDeliveryEntity>>>(urlApi, "");
+            return Ok(result);
+        }
     }
 }
 
