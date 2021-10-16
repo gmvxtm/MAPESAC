@@ -42,12 +42,16 @@ export class ReportesComponent implements OnInit {
           data.Value.forEach(element => {
             var obj = [
               element.Name,
-              element.Quantity
+              element.Quantity,
             ]
             this.reporteData.push(obj);
           });
           var chart = anychart.bar();
           var series = chart.bar(this.reporteData);
+          series.normal().fill("#00cc99", 0.3);
+          chart.title("CANTIDAD DE PANTALONES VENDIDOS POR MODELO");
+          chart.xAxis().title("Modelos");
+          chart.yAxis().title("Cantidad");
           chart.container("container");
           chart.draw();
           this.spinner.hide();
