@@ -311,5 +311,43 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
             return response;
         }
 
+        public IEnumerable<RptListOrderQuantityEntity> RptListOrderQuantity()
+        {
+            IEnumerable<RptListOrderQuantityEntity> response;
+
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+
+                var resultResponse = connection.QueryAsync<RptListOrderQuantityEntity>(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.RptListOrderQuantity}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure).Result;
+
+                response = resultResponse;
+            }
+
+            return response;
+        }
+
+        public IEnumerable<RptListOrderQuantityStatusEntity> RptListOrderQuantityStatus()
+        {
+            IEnumerable<RptListOrderQuantityStatusEntity> response;
+
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+
+                var resultResponse = connection.QueryAsync<RptListOrderQuantityStatusEntity>(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.RptListOrderQuantityStatus}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure).Result;
+
+                response = resultResponse;
+            }
+
+            return response;
+        }
+
     }
 }

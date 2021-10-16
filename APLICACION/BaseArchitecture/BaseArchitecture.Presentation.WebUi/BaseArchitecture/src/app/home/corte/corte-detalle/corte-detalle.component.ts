@@ -56,7 +56,7 @@ export class CorteDetalleComponent implements OnInit {
 
   SendAnswer =() =>{
 
-    
+    debugger
     let decreaseEntity = new DecreaseEntity();
     decreaseEntity.IdOrderDetail = this.localStorage.getJsonValue("itemSubOrder").IdOrderDetail;
     decreaseEntity.CodeSubOrder =  this.codeSubOrderSend;
