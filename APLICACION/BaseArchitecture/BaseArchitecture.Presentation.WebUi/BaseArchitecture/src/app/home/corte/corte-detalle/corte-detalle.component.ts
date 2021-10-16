@@ -63,6 +63,7 @@ export class CorteDetalleComponent implements OnInit {
     decreaseEntity.QuantityDecrease = this.merma.toString();
     this.generalService.UpdDecrease(decreaseEntity).subscribe(
         (data: any) => {
+          debugger
             if(data != null){
               let orderRequest = new OrderEntity();
               orderRequest.CodeOrder = this.codeSubOrderSend;
