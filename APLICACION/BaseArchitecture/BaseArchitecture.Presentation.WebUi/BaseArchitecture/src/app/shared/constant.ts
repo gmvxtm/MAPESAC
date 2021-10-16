@@ -33,6 +33,7 @@ export const NameServiceApi ={
   InsBuySupply:'InsBuySupply',
   UpdDecrease:'UpdDecrease',
   RptListProductQuantity: 'RptListProductQuantity',
+  RptListOrderQuantityStatusDelivery: 'RptListOrderQuantityStatusDelivery',
 }
 
 export const Demo = {

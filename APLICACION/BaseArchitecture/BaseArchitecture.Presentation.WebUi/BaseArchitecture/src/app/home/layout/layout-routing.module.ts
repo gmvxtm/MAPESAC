@@ -143,7 +143,14 @@ const routes: Routes = [
           ),
           canActivate: [AuthGuard],
       },
-
+      {
+        path: 'reportesDespacho',
+        loadChildren: () =>
+          import('src/app/home/despacho/reportes/reportes.module').then(
+            (m) => m.ReportesDespachoModule
+          ),
+          // canActivate: [AuthGuard],
+      },
     ],
   },
 ];
