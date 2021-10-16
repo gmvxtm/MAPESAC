@@ -383,6 +383,19 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
                 InvokeWebApi.InvokePostAnonymousEntity<Response<List<RptListOrderQuantityStatusEntity>>>(urlApi, "");
             return Ok(result);
         }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.RptListOrderQuantityStatusDelivery)]
+        public IHttpActionResult RptListOrderQuantityStatusDelivery()
+        {
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.RptListOrderQuantityStatusDelivery}";
+            var result =
+                InvokeWebApi.InvokePostAnonymousEntity<Response<List<RptListOrderQuantityStatusDeliveryEntity>>>(urlApi, "");
+            return Ok(result);
+        }
     }
 }
 

@@ -56,7 +56,9 @@
                 public const string InsBuySupply = "InsBuySupply";
                 public const string RptListProductQuantity = "RptListProductQuantity";
                 public const string RptListOrderQuantity = "RptListOrderQuantity";
-                public const string RptListOrderQuantityStatus = "RptListOrderQuantityStatus";                
+                public const string RptListOrderQuantityStatus = "RptListOrderQuantityStatus";
+                public const string RptListOrderQuantityStatusDelivery = "RptListOrderQuantityStatusDelivery";
+                
             }
         }
 

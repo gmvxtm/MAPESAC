@@ -194,5 +194,13 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
             var result = TableService.RptListOrderQuantityStatus();
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.RptListOrderQuantityStatusDelivery)]
+        public IHttpActionResult RptListOrderQuantityStatusDelivery()
+        {
+            var result = TableService.RptListOrderQuantityStatusDelivery();
+            return Ok(result);
+        }
     }
 }

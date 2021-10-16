@@ -27,5 +27,6 @@ namespace BaseArchitecture.Repository.IData.NonTransactional
         IEnumerable<RptListProductQuantityEntity> RptListProductQuantity();
         IEnumerable<RptListOrderQuantityEntity> RptListOrderQuantity();
         IEnumerable<RptListOrderQuantityStatusEntity> RptListOrderQuantityStatus();
+        IEnumerable<RptListOrderQuantityStatusDeliveryEntity> RptListOrderQuantityStatusDelivery();
     }
 }
