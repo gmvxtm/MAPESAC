@@ -78,7 +78,16 @@ export class MenuOptionComponent implements OnInit {
       { 
         title: "Área de Despacho",
         icon: "fa fa-folder-open",
-        OptionUrl: "/despacho"
+        MenuChildren: [ {
+          title: "Despacho",
+          icon: "fa fa-folder-open",
+          OptionUrl: "despacho",
+        },
+        {
+          title: "Reportes",
+          icon: "fa fa-folder-open",
+          OptionUrl: "reportesDespacho",
+        }]
       },
       { 
         title: "Área de almacén",

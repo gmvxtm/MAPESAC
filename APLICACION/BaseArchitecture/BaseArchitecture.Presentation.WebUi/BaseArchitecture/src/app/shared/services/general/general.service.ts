@@ -93,10 +93,13 @@ export class GeneralService {
   RptListProductQuantity(): Observable<any>{
     return this.http
       .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.RptListProductQuantity,
-        // {
-        //   observe: 'body',
-        //   params: { orderRequest: JSON.stringify(orderEntity) },
-        // }
+      )
+      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
+  }
+
+  RptListOrderQuantityStatusDelivery(): Observable<any>{
+    return this.http
+      .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.RptListOrderQuantityStatusDelivery,
       )
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
   }

@@ -18,7 +18,7 @@ declare var anychart: any;
   templateUrl: './reportes.component.html',
   styleUrls: ['./reportes.component.css']
 })
-export class ReportesComponent implements OnInit {
+export class ReportesDespachoComponent implements OnInit {
 
     public labelJson: ResponseLabel = new ResponseLabel();
     reporteData: any [] = [];
@@ -37,11 +37,12 @@ export class ReportesComponent implements OnInit {
    
 }
     loadReport = () => {
-      this.serviceProyecto.RptListProductQuantity().subscribe(
+      this.serviceProyecto.RptListOrderQuantityStatusDelivery().subscribe(
         (data: any) => {
+          console.log(data.Value)
           data.Value.forEach(element => {
             var obj = [
-              element.Name,
+              element.Status,
               element.Quantity,
             ]
             this.reporteData.push(obj);
@@ -49,8 +50,8 @@ export class ReportesComponent implements OnInit {
           var chart = anychart.bar();
           var series = chart.bar(this.reporteData);
           series.normal().fill("#00cc99", 0.3);
-          chart.title("CANTIDAD DE PANTALONES VENDIDOS POR MODELO");
-          chart.xAxis().title("Modelos");
+          chart.title("CANTIDAD DE PEDIDOS PENDIENTES & ENTREGADOS");
+          chart.xAxis().title("Estado");
           chart.yAxis().title("Cantidad");
           chart.container("container");
           chart.draw();
