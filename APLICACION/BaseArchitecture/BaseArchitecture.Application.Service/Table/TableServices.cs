@@ -81,7 +81,13 @@ namespace BaseArchitecture.Application.Service.Table
 
         public Response<SubOrderListByLocationEntity> ListSubOrderByLocation(OrderEntity orderRequest)
         {
+
             var result = TableQuery.ListSubOrderByLocation(orderRequest);
+            foreach (var item in result.Value.ListSubOrderEntity.ToList())
+            {
+                item.ListSubOrderFlowDetailEntity = result.Value.ListSubOrderFlowDetailEntity.Where(x => x.IdProduct == item.IdProduct);
+
+            }
             return result;
         }
 

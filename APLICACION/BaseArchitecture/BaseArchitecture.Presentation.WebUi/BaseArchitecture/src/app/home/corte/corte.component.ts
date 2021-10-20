@@ -55,6 +55,7 @@ export class CorteComponent implements OnInit {
       orderEntity.LocationOrder = MTUbicacion.AreaCorte;
       this.serviceProyecto.ListSubOrderByLocation(orderEntity).subscribe(
         (data: any) => {
+          debugger
           this.ListSubOrderEntity = data.Value.ListSubOrderEntity;
           this.listTotalSubOrderEntityOriginal = data.Value.ListSubOrderEntity;
           this.ListTotalOrderEntity = data.Value.ListTotalOrderEntity;
@@ -69,6 +70,7 @@ export class CorteComponent implements OnInit {
     }
 
     verDetalle = (item) => {
+      debugger
       this.localStorage.setJsonValue("itemSubOrder",item);      
       this.router.navigate(['corte/detalle']);
     }

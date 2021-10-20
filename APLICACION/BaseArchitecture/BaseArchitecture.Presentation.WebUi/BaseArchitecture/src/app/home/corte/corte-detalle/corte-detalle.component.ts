@@ -45,6 +45,7 @@ export class CorteDetalleComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    debugger
     this.codeOrder =  this.localStorage.getJsonValue("itemSubOrder").CodeOrder;
     this.codeSubOrderSend = this.localStorage.getJsonValue("itemSubOrder").CodeSubOrder;
     this.statusSubOrderMT = this.localStorage.getJsonValue("itemSubOrder").StatusSubOrderMT;

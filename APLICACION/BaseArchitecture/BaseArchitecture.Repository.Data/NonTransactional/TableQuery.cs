@@ -175,6 +175,7 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
                                     commandType: CommandType.StoredProcedure).Result)
                 {
                     basicResponse.ListSubOrderEntity = list.Read<SubOrderEntity>().ToList();
+                    basicResponse.ListSubOrderFlowDetailEntity = list.Read<SubOrderFlowDetailEntity>().ToList();
                     basicResponse.ListTotalOrderEntity = list.Read<TotalOrderEntity>().ToList();
                 }
                 response = new Response<SubOrderListByLocationEntity>

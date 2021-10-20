@@ -20,7 +20,7 @@ namespace BaseArchitecture.Repository.Entity
         public Guid IdOrderDetail { get; set; }
         public string Merma { get; set; }
 
-
+        public IEnumerable<SubOrderFlowDetailEntity> ListSubOrderFlowDetailEntity { get; set; }
 
     }
 }
