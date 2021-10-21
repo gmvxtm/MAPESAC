@@ -180,6 +180,16 @@ export class GeneralService {
       
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
   }
-  
+
+  UpdSubOrderFlowDetail(orderRequest: any): Observable<any>{
+    return this.http
+      .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.UpdSubOrderFlowDetail,
+        {
+          observe: 'body',
+          params: { subOrderFlowDetailRequest: JSON.stringify(orderRequest) },
+        }
+      )
+      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
+  }
 
 }

@@ -71,19 +71,34 @@
     </div> -->
 </div>
 
-<ng-container *ngIf="statusSubOrderMT != '00103'">
+<ng-container *ngIf="statusSubOrderMT != '00103'" >
 
     <div class="container">
-        <label>Estado</label>&nbsp;&nbsp;
-        <select  [(ngModel)]="Status" class="form-control col-md-2">
-            <option value="00101">Pendiente</option>
-            <option value="00102">En proceso</option>
-            <option value="00103">Terminado</option>
-        </select>
+        <div class="col-md-12 row">
+            <div class="col-md-3">
+                <label>Estado</label>&nbsp;&nbsp;
+                <select  [(ngModel)]="Status" class="form-control col-md-2" (change)="refreshStatusMerma()">
+                    <option value="00101">Pendiente</option>
+                    <option value="00102">En proceso</option>
+                    <option value="00103">Terminado</option>
+                </select>
+                Merma<span style="color:red">(*)</span>: <input type="number" [disabled]="statusMerma" [(ngModel)]="merma" class="form-control col-md-2" min="1" >
+            </div>
+            <div class="col-md-6">
+                <span style="font-weight:bold">Insumos</span>
+                <div *ngFor="let item of listSubOrderFlowDetailEntity">  
+                    <div class="col-md-12 row">
+                        <div class="col-md-4">
+                            {{item.NameSupply}}:
+                        </div>  
+                        <div class="col-md-3">
+                            <input type="number"  [disabled]="statusMerma"  [(ngModel)]="item.QuantityReturn" class="form-control col-md-2" min="1" >
+                        </div>  
+                    </div>                                            
+           </div>  
+            </div>
+        </div>     
     </div>
-    <div class="container">
-        Merma<span style="color:red">(*)</span>: <input type="number" [(ngModel)]="merma" class="form-control col-md-2" min="1" >
-    </div>    
     <br>
     <div class="container row">
         <div class="col-md-2">
@@ -96,16 +111,34 @@
 <ng-container *ngIf="statusSubOrderMT === '00103'">
 
     <div class="container">
-        <label>Estado</label>&nbsp;&nbsp;
-        <select  [(ngModel)]="Status" class="form-control col-md-2" disabled>
-            <option value="00101">Pendiente</option>
-            <option value="00102">En proceso</option>
-            <option value="00103">Terminado</option>
-        </select>
-    </div>
-    <br>
-    <div class="container">
-        Merma<span style="color:red">(*)</span>: <input type="number" [(ngModel)]="merma" class="form-control col-md-2" min="1" disabled>
-    </div>
 
+        <div class="col-md-12 row">
+            <div class="col-md-3">
+                <label>Estado</label>&nbsp;&nbsp;
+                <select  [(ngModel)]="Status" class="form-control col-md-12" disabled>
+                    <option value="00101">Pendiente</option>
+                    <option value="00102">En proceso</option>
+                    <option value="00103">Terminado</option>
+                </select>
+                Merma
+                <span style="color:red">(*)</span>: <input type="number" [(ngModel)]="merma" class="form-control col-md-12" min="1" disabled>
+                <br>
+            </div>
+            <div class="col-md-6">
+                <span style="font-weight:bold">Insumos</span>
+                <div *ngFor="let item of listSubOrderFlowDetailEntity">  
+                    <div class="col-md-12 row">
+                        <div class="col-md-4">
+                            {{item.NameSupply}}:
+                        </div>  
+                        <div class="col-md-3">
+                            <input type="number" [(ngModel)]="item.QuantityReturn" class="form-control col-md-12" min="1"  disabled>
+                        </div>  
+                    </div>                                   
+                
+                </div> 
+            </div>
+        </div>
+    </div>
+    <br>    
 </ng-container>

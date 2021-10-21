@@ -28,6 +28,7 @@ export const NameServiceApi ={
   UpdOrderFlow:'UpdOrderFlow',
   ListSubOrderByLocation:'ListSubOrderByLocation',
   UpdSubOrderFlow: 'UpdSubOrderFlow',
+  UpdSubOrderFlowDetail:'UpdSubOrderFlowDetail',
   ListSupplies:'ListSupplies',
   ListSuppliersByIdSupply:'ListSuppliersByIdSupply',
   InsBuySupply:'InsBuySupply',

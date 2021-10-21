@@ -85,7 +85,7 @@ namespace BaseArchitecture.Application.Service.Table
             var result = TableQuery.ListSubOrderByLocation(orderRequest);
             foreach (var item in result.Value.ListSubOrderEntity.ToList())
             {
-                item.ListSubOrderFlowDetailEntity = result.Value.ListSubOrderFlowDetailEntity.Where(x => x.IdProduct == item.IdProduct);
+                item.ListSubOrderFlowDetailEntity = result.Value.ListSubOrderFlowDetailEntity.Where(x => x.IdSubOrderFlow == item.IdSubOrderFlow);
 
             }
             return result;
@@ -244,6 +244,12 @@ namespace BaseArchitecture.Application.Service.Table
         {
             var result = TableQuery.RptListOrderQuantityStatusDelivery();
             return new Response<IEnumerable<RptListOrderQuantityStatusDeliveryEntity>> { Value = result };
+        }
+
+        public Response<int> UpdSubOrderFlowDetail(SubOrderFlowDetailEntity subOrderFlowDetailRequest)
+        {
+            var result = TableTransaction.UpdSubOrderFlowDetail(subOrderFlowDetailRequest);
+            return result;
         }
     }
 }

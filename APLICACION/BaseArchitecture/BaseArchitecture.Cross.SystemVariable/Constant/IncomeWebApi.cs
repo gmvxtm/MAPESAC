@@ -58,7 +58,9 @@
                 public const string RptListOrderQuantity = "RptListOrderQuantity";
                 public const string RptListOrderQuantityStatus = "RptListOrderQuantityStatus";
                 public const string RptListOrderQuantityStatusDelivery = "RptListOrderQuantityStatusDelivery";
+                public const string UpdSubOrderFlowDetail = "UpdSubOrderFlowDetail";
                 
+
             }
         }
 

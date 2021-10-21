@@ -236,5 +236,26 @@ namespace BaseArchitecture.Repository.Data.Transactional
 
             return response;
         }
+
+        public Response<int> UpdSubOrderFlowDetail(SubOrderFlowDetailEntity subOrderFlowDetailRequest)
+        {
+            Response<int> response;
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@ParamIIdSubOrderFlowDetail", subOrderFlowDetailRequest.IdSubOrderFlowDetail);
+                parameters.Add("@ParamIQuantityReturn", subOrderFlowDetailRequest.QuantityReturn);
+
+
+                var result = connection.Execute(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.UpdSubOrderFlowDetail}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure);
+
+                response = new Response<int>(result);
+            }
+
+            return response;
+        }
     }
 }
