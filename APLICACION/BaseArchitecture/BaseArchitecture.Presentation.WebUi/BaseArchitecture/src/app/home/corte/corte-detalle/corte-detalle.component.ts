@@ -37,7 +37,7 @@ export class CorteDetalleComponent implements OnInit {
   Status: string;
   statusSubOrderMT: string;
   listSubOrderFlowDetailEntity: any [] = [];
-
+  statusMerma = true;
   constructor(
     private generalService: GeneralService,
     private spinner: NgxSpinnerService,
@@ -118,6 +118,17 @@ export class CorteDetalleComponent implements OnInit {
 
 
  }
+
+  refreshStatusMerma = () => {
+    if(this.Status === "00103")
+    {
+      this.statusMerma = false;
+    }
+    else
+      this.statusMerma = true;
+    
+  }
+
   loadPedido = () => {
     let orderEntity = new OrderEntity();
     orderEntity.CodeOrder = this.codeOrder;
