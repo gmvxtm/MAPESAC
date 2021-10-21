@@ -32,6 +32,22 @@ const routes: Routes = [
           // canActivate: [AuthGuard],
       },
       {
+        path: 'reportes2',
+        loadChildren: () =>
+          import('src/app/home/ventas/reporte2/reportes2.module').then(
+            (m) => m.Reportes2Module
+          ),
+          // canActivate: [AuthGuard],
+      },
+      {
+        path: 'reportes3',
+        loadChildren: () =>
+          import('src/app/home/ventas/reporte3/reportes3.module').then(
+            (m) => m.Reportes3Module
+          ),
+          // canActivate: [AuthGuard],
+      },
+      {
         path: 'ventas/detalle',
         loadChildren: () =>
           import('src/app/home/ventas/venta-detalle/venta-detalle.module').then(

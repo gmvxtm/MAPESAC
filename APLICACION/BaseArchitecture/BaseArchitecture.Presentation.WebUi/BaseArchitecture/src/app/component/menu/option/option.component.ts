@@ -50,10 +50,21 @@ export class MenuOptionComponent implements OnInit {
           OptionUrl: "ventas",
         },
         {
-          title: "Reportes",
+          title: "Reporte Modelos",
           icon: "fa fa-folder-open",
           OptionUrl: "reportesVentas",
-        }]
+        },
+        {
+          title: "Reporte Pedido",
+          icon: "fa fa-folder-open",
+          OptionUrl: "reportes2",
+        },
+        {
+          title: "Reporte Aprobado & Rechazado",
+          icon: "fa fa-folder-open",
+          OptionUrl: "reportes3",
+        }
+      ]
       },
       { 
         title: "Área de corte",
