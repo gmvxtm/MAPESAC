@@ -36,7 +36,8 @@ export class LavanderiaDetalleComponent implements OnInit {
   Status: string;
   merma: number;
   statusSubOrderMT: string;
-  
+  listSubOrderFlowDetailEntity: any [] = [];
+
   constructor(
     private generalService: GeneralService,
     private spinner: NgxSpinnerService,
@@ -51,6 +52,7 @@ export class LavanderiaDetalleComponent implements OnInit {
     this.idProducto =  this.localStorage.getJsonValue("itemSubOrder").IdProduct;
     this.Status="";
     this.merma= this.localStorage.getJsonValue("itemSubOrder").Merma;
+    this.listSubOrderFlowDetailEntity = this.localStorage.getJsonValue("itemSubOrder").ListSubOrderFlowDetailEntity;
     this.loadPedido();
   }
 

@@ -36,6 +36,7 @@ export class AcabadoDetalleComponent implements OnInit {
   statusSubOrderMT: string;
   codeSubOrderSend: string;
   idProducto:string;
+  listSubOrderFlowDetailEntity: any [] = [];
 
   constructor(
     private generalService: GeneralService,
@@ -51,6 +52,7 @@ export class AcabadoDetalleComponent implements OnInit {
     this.idProducto =  this.localStorage.getJsonValue("itemSubOrder").IdProduct;
     this.Status="";
     this.merma= this.localStorage.getJsonValue("itemSubOrder").Merma;
+    this.listSubOrderFlowDetailEntity = this.localStorage.getJsonValue("itemSubOrder").ListSubOrderFlowDetailEntity;
     this.loadPedido();
   }
 

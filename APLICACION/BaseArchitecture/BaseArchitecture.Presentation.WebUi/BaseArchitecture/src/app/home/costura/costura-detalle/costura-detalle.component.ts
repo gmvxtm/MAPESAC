@@ -36,7 +36,8 @@ export class CosturaDetalleComponent implements OnInit {
   merma: number;
   Status: string;
   statusSubOrderMT: string;
-
+  listSubOrderFlowDetailEntity: any [] = [];
+  
   constructor(
     private generalService: GeneralService,
     private spinner: NgxSpinnerService,
@@ -51,6 +52,7 @@ export class CosturaDetalleComponent implements OnInit {
     this.idProducto =  this.localStorage.getJsonValue("itemSubOrder").IdProduct;
     this.Status="";
     this.merma= this.localStorage.getJsonValue("itemSubOrder").Merma;
+    this.listSubOrderFlowDetailEntity = this.localStorage.getJsonValue("itemSubOrder").ListSubOrderFlowDetailEntity;
     this.loadPedido();
   }
 
