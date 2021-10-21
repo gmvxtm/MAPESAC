@@ -145,3 +145,10 @@ export class LoginRequest {
     CodeSubOrder: string;    
     QuantityDecrease: string;
   }
+
+  export class SubOrderFlowDetailEntity
+  {
+    IdSubOrderFlowDetail: string;
+    QuantityReturn: string;    
+    
+  }

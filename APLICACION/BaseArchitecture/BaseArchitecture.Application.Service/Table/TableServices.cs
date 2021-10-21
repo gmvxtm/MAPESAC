@@ -245,5 +245,11 @@ namespace BaseArchitecture.Application.Service.Table
             var result = TableQuery.RptListOrderQuantityStatusDelivery();
             return new Response<IEnumerable<RptListOrderQuantityStatusDeliveryEntity>> { Value = result };
         }
+
+        public Response<int> UpdSubOrderFlowDetail(SubOrderFlowDetailEntity subOrderFlowDetailRequest)
+        {
+            var result = TableTransaction.UpdSubOrderFlowDetail(subOrderFlowDetailRequest);
+            return result;
+        }
     }
 }

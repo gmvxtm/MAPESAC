@@ -56,7 +56,7 @@ export class LavanderiaDetalleComponent implements OnInit {
     this.loadPedido();
   }
 
-  SendAnswer =() =>{
+  SendAnswer =() =>{    
     let decreaseEntity = new DecreaseEntity();
     decreaseEntity.IdOrderDetail = this.localStorage.getJsonValue("itemSubOrder").IdOrderDetail;
     decreaseEntity.CodeSubOrder =  this.codeSubOrderSend;

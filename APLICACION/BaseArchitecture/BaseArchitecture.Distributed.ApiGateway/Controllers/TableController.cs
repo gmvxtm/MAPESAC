@@ -396,6 +396,20 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
                 InvokeWebApi.InvokePostAnonymousEntity<Response<List<RptListOrderQuantityStatusDeliveryEntity>>>(urlApi, "");
             return Ok(result);
         }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.UpdSubOrderFlowDetail)]
+        public IHttpActionResult UpdSubOrderFlowDetail()
+        {
+            var postData = HttpContext.Current.Request.Params["subOrderFlowDetailRequest"];
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.UpdSubOrderFlowDetail}";
+            var result =
+              InvokeWebApi.InvokePostAnonymousEntity<Response<int>>(urlApi, postData);
+            return Ok(result);
+        }
     }
 }
 

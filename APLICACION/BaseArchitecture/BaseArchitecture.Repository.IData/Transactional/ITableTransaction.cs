@@ -16,5 +16,6 @@ namespace BaseArchitecture.Repository.IData.Transactional
         Response<ResponseValidateStockEntity> ValidateAndUpdateStock(string listProductJson);
         Response<int> UpdDecrease(DecreaseEntity decreaseRequest);
         Response<int> IndBuySupply(BuySupplyEntity buySupplyRequest);
+        Response<int> UpdSubOrderFlowDetail(SubOrderFlowDetailEntity subOrderFlowDetailRequest);
     }
 }
