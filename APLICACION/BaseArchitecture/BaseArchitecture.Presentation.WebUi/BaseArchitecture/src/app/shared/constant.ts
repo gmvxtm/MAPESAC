@@ -35,6 +35,8 @@ export const NameServiceApi ={
   UpdDecrease:'UpdDecrease',
   RptListProductQuantity: 'RptListProductQuantity',
   RptListOrderQuantityStatusDelivery: 'RptListOrderQuantityStatusDelivery',
+  RptListOrderQuantity: 'RptListOrderQuantity',
+  RptListOrderQuantityStatus: 'RptListOrderQuantityStatus',
 }
 
 export const Demo = {

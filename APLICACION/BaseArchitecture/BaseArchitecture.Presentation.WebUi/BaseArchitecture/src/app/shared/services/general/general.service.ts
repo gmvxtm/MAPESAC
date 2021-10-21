@@ -97,6 +97,20 @@ export class GeneralService {
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
   }
 
+  RptListOrderQuantity(): Observable<any>{
+    return this.http
+      .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.RptListOrderQuantity,
+      )
+      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
+  }
+
+  RptListOrderQuantityStatus(): Observable<any>{
+    return this.http
+      .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.RptListOrderQuantityStatus,
+      )
+      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
+  }
+
   RptListOrderQuantityStatusDelivery(): Observable<any>{
     return this.http
       .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.RptListOrderQuantityStatusDelivery,
