@@ -81,11 +81,11 @@
             <option value="00103">Terminado</option>
         </select>
     </div>
-    <div class="container">
-        Merma<span style="color:red">(*)</span>: <input type="number" [(ngModel)]="merma" class="form-control col-md-2" min="1" >
-    </div>  
-    <br>
     <div class="container" *ngIf="Status == '00103'"> 
+        <div>
+            Merma<span style="color:red">(*)</span>: <input type="number" [(ngModel)]="merma" class="form-control col-md-2" min="1" >
+        </div>
+        <br>
         <span style="font-weight:bold">Insumos</span>
         <br>
         <div *ngFor="let item of listSubOrderFlowDetailEntity">                                     
@@ -93,7 +93,7 @@
                 
             <br>
         </div>         
-    </div>  
+    </div>
     <br>
     <div class="container row">
         <div class="col-md-2">
@@ -116,6 +116,14 @@
     <br>
     <div class="container">
         Merma<span style="color:red">(*)</span>: <input type="number" [(ngModel)]="merma" class="form-control col-md-2" min="1" disabled>
+        <br>
+        <span style="font-weight:bold">Insumos</span>
+        <br>
+        <div *ngFor="let item of listSubOrderFlowDetailEntity">                                     
+                 {{item.NameSupply}}: <input type="number"  [(ngModel)]="item.QuantityReturn" class="form-control col-md-2" min="1"  disabled>
+                
+            <br>
+        </div>   
     </div>
 
 </ng-container>

@@ -11,7 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Subject } from 'rxjs';
 import { MTRespuesta, MTUbicacion } from 'src/app/shared/constant';
 import { ResponseLabel } from 'src/app/shared/models/general/label.interface';
-import { DecreaseEntity, OrderEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
+import { DecreaseEntity, OrderEntity, SubOrderFlowDetailEntity } from 'src/app/shared/models/request/authentication/authentication-request.interface';
 import { GeneralService } from 'src/app/shared/services/general/general.service';
 import { LocalService } from 'src/app/shared/services/general/local.service';
 import { showSuccess } from 'src/app/shared/util';
@@ -57,6 +57,27 @@ export class AcabadoDetalleComponent implements OnInit {
   }
 
   SendAnswer =() =>{
+    debugger
+    //merma de insumos
+    this.listSubOrderFlowDetailEntity.forEach(element => {
+      let subOrderFlowDetailEntity = new SubOrderFlowDetailEntity();
+      subOrderFlowDetailEntity.IdSubOrderFlowDetail = element.IdSubOrderFlowDetail;    
+      subOrderFlowDetailEntity.QuantityReturn = element.QuantityReturn.toString();
+      this.generalService.UpdSubOrderFlowDetail(subOrderFlowDetailEntity).subscribe(
+        (data: any) => {
+          debugger
+            if(data != null){
+
+            }
+          },
+          (error: HttpErrorResponse) => {
+          this.spinner.hide();
+          console.log(error);
+          }
+      );      
+    });
+   
+    //
     let decreaseEntity = new DecreaseEntity();
     decreaseEntity.IdOrderDetail = this.localStorage.getJsonValue("itemSubOrder").IdOrderDetail;
     decreaseEntity.CodeSubOrder =  this.codeSubOrderSend;
