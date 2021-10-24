@@ -21,9 +21,9 @@
                                         <span class="menu-text">{{item.title}}</span>
                                     </span>
                                 </li>
-                                <li *ngFor="let children of item.MenuChildren" class="menu-item"
+                                <li *ngFor="let children of item.MenuChildren" class="menu-item" [ngClass]="{'menu-item-open':urlOptionUrl == children.OptionUrl}"
                                     aria-haspopup="true">
-                                    <a (click)="routerLink(children.OptionUrl)" class="menu-link" [ngClass]="{'menu-item-open':urlOptionUrl == item.OptionUrl}">
+                                    <a (click)="routerLink(children.OptionUrl)" class="menu-link" >
                                         <em class="menu-bullet menu-bullet-dot">
                                             <span></span>
                                         </em>
