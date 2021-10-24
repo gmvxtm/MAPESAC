@@ -179,17 +179,20 @@ export class MenuOptionComponent implements OnInit {
       return false;
     }
 
-    this.subMenu.forEach((x: ElementRef) => {
-      x.nativeElement.classList.remove('menu-item-open');
-    });
+    // this.subMenu.forEach((x: ElementRef) => {
+    //   x.nativeElement.classList.remove('menu-item-open');
+    // });
 
     this.subMenu.forEach((x: ElementRef) => {
       if (this.document.activeElement === x.nativeElement.firstChild) {
-
+        this.NameFatherOption =x.nativeElement.innerText;
         x.nativeElement.classList.add('menu-item-open');
 
-      } else x.nativeElement.classList.remove('menu-item-open');
+      }
+      
+      //else x.nativeElement.classList.remove('menu-item-open');
     });
+
 
 
   };
@@ -199,6 +202,8 @@ export class MenuOptionComponent implements OnInit {
   routerLink = (url: string) => {
     // this.localStorage.clearKey('BaseArchitectureSelect');
     debugger
+    this.urlOptionUrl = "";
+    if(url=== undefined) return;
     this.router.navigate(['/' + url]);
 
     this.listMenuOptions.forEach(element => {
@@ -207,11 +212,13 @@ export class MenuOptionComponent implements OnInit {
         element.MenuChildren.forEach(elementChildren => {
           if( elementChildren.OptionUrl== url)
           {
+            this.urlOptionUrl = url;
             this.NameFatherOption = elementChildren.father;
             return;
           }
         });
       }
     });
+    
   };
 }
