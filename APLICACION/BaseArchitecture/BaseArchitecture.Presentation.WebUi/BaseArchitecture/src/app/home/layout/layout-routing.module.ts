@@ -104,6 +104,22 @@ const routes: Routes = [
           //canActivate: [AuthGuard],
       },
       {
+        path: 'reportes1',
+        loadChildren: () =>
+          import('src/app/home/almacen/reportes/reportes1/reportes1.module').then(
+            (m) => m.Reportes1Module
+          ),
+          // canActivate: [AuthGuard],
+      },
+      {
+        path: 'reportes5',
+        loadChildren: () =>
+          import('src/app/home/almacen/reportes/reportes5/reportes5.module').then(
+            (m) => m.Reportes5Module
+          ),
+          // canActivate: [AuthGuard],
+      },
+      {
         path: 'almacen',
         loadChildren: () =>
           import('src/app/home/almacen/almacen.module').then(

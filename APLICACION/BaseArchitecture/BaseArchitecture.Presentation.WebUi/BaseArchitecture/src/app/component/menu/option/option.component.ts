@@ -118,6 +118,18 @@ export class MenuOptionComponent implements OnInit {
           icon: "fa fa-folder-open",
           OptionUrl: "reportesAlmacen",
         }
+        ,
+        {
+          title: "Reporte Most",
+          icon: "fa fa-folder-open",
+          OptionUrl: "reportes1",
+        }
+        ,
+        {
+          title: "Reporte Decrease",
+          icon: "fa fa-folder-open",
+          OptionUrl: "reportes5",
+        }
       ]
       },
     ]

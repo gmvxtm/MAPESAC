@@ -46,7 +46,7 @@
             public const string RptListOrderQuantity = "Usp_Rpt_ListOrderQuantity";
             public const string RptListOrderQuantityStatus = "Usp_Rpt_ListOrderQuantityStatus";
             public const string RptListOrderQuantityStatusDelivery = "Usp_Rpt_ListOrderQuantityStatusDelivery";
-            public const string RptListSuppliesMostUsedByMonth = "Usp_Rpt_ListSuppliesMostUsedByMonth"
+            public const string RptListSuppliesMostUsedByMonth = "Usp_Rpt_ListSuppliesMostUsedByMonth";
             public const string RptListSuppliesDecreaseByMonth = "Usp_Rpt_ListSuppliesDecreasedByMonth";
 
             public const string MrgOrder = "Usp_Mrg_Order";

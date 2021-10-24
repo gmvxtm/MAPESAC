@@ -104,6 +104,20 @@ export class GeneralService {
       .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
   }
 
+  RptListSuppliesMostUsedByMonth(): Observable<any>{
+    return this.http
+      .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.RptListSuppliesMostUsedByMonth,
+      )
+      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
+  }
+
+  RptListSuppliesDecreaseByMonth(): Observable<any>{
+    return this.http
+      .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.RptListSuppliesDecreaseByMonth,
+      )
+      .pipe(retry(0), catchError(this.autorizacionService.errorHandl));
+  }
+  
   RptListOrderQuantityStatus(): Observable<any>{
     return this.http
       .get<any>(this.urlWebApi + Path.Mapesac + NameServiceApi.RptListOrderQuantityStatus,
