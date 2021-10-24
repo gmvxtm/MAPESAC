@@ -5,8 +5,10 @@
             
                 <ng-container *ngFor="let item of listMenuOptions">
                     <li #subMenu (click)="subMenuClick()" class="menu-item menu-item-submenu"
+                    [ngClass]="{'menu-item-open':NameFatherOption == item.title}"
                         aria-haspopup="true" data-menu-toggle="hover">
-                        <a (click)="routerLink(item.OptionUrl)"  href="javascript:;" class="menu-link menu-toggle 1">
+                        <a (click)="routerLink(item.OptionUrl)"  href="javascript:;" class="menu-link menu-toggle 1"                        
+                        >
                             <em class="menu-icon {{item.icon}}"></em>
                             <span class="menu-text">{{item.title}}</span>
                             <em class="menu-arrow"></em>
@@ -21,7 +23,7 @@
                                 </li>
                                 <li *ngFor="let children of item.MenuChildren" class="menu-item"
                                     aria-haspopup="true">
-                                    <a (click)="routerLink(children.OptionUrl)" class="menu-link">
+                                    <a (click)="routerLink(children.OptionUrl)" class="menu-link" [ngClass]="{'menu-item-open':urlOptionUrl == item.OptionUrl}">
                                         <em class="menu-bullet menu-bullet-dot">
                                             <span></span>
                                         </em>

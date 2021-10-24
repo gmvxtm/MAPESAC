@@ -27,7 +27,8 @@ export class MenuOptionComponent implements OnInit {
   nameUser: string;
   public labelJson: ResponseLabel = new ResponseLabel();
   listMenuOptions: any [] = [];
-
+  urlOptionUrl : string;
+  NameFatherOption : string;
   @ViewChild('buttonAside', { static: true }) buttonAside: ElementRef;
   @ViewChild('scrollMenu', { static: true }) scrollMenu: ElementRef;
   @ViewChildren('subMenu') subMenu: QueryList<any>;
@@ -39,7 +40,10 @@ export class MenuOptionComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log(document.location.href);
+    this.urlOptionUrl = document.location.href.split("/")[4];
     this.labelJson.general = general;
+    
     this.listMenuOptions = [ 
       { 
         title: "Área de ventas",
@@ -48,28 +52,32 @@ export class MenuOptionComponent implements OnInit {
           title: "Gestión de ventas",
           icon: "fa fa-folder-open",
           OptionUrl: "ventas",
+          father:"Área de ventas"
         },
         {
           title: "Reporte Modelos",
           icon: "fa fa-folder-open",
           OptionUrl: "reportesVentas",
+          father:"Área de ventas"
         },
         {
           title: "Reporte Pedido",
           icon: "fa fa-folder-open",
           OptionUrl: "reportes2",
+          father:"Área de ventas"
         },
         {
           title: "Reporte Aprobado & Rechazado",
           icon: "fa fa-folder-open",
           OptionUrl: "reportes3",
+          father:"Área de ventas"
         }
       ]
       },
       { 
         title: "Área de corte",
         icon: "fa fa-folder-open",
-        OptionUrl: "/corte"
+        OptionUrl: "/corte"        
       },
       { 
         title: "Área de Costura",
@@ -93,11 +101,13 @@ export class MenuOptionComponent implements OnInit {
           title: "Despacho",
           icon: "fa fa-folder-open",
           OptionUrl: "despacho",
+          father:"Área de Despacho"
         },
         {
           title: "Reportes",
           icon: "fa fa-folder-open",
           OptionUrl: "reportesDespacho",
+          father:"Área de Despacho"
         }]
       },
       { 
@@ -107,35 +117,55 @@ export class MenuOptionComponent implements OnInit {
           title: "Inventario",
           icon: "fa fa-folder-open",
           OptionUrl: "almacen",
+          father:"Área de almacén"
         },
         {
           title: "Alerta de Insumos",
           icon: "fa fa-folder-open",
           OptionUrl: "almacen/alerta",
+          father:"Área de almacén"
         },
         {
           title: "Reportes",
           icon: "fa fa-folder-open",
           OptionUrl: "reportesAlmacen",
+          father:"Área de almacén"
         }
         ,
         {
           title: "Reporte Most",
           icon: "fa fa-folder-open",
           OptionUrl: "reportes1",
+          father:"Área de almacén"
         }
         ,
         {
           title: "Reporte Decrease",
           icon: "fa fa-folder-open",
           OptionUrl: "reportes5",
+          father:"Área de almacén"
         }
       ]
       },
     ]
+
+    this.listMenuOptions.forEach(element => {
+      if(element.MenuChildren  != undefined)
+      {
+        element.MenuChildren.forEach(elementChildren => {
+          if( elementChildren.OptionUrl== this.urlOptionUrl)
+          {
+            this.NameFatherOption = elementChildren.father;
+            return;
+          }
+        });
+      }
+    });
+    console.log(this.NameFatherOption);
   }
 
   subMenuClick = () => {
+    debugger
     this.isClickSubMenu = !this.isClickSubMenu;
 
     if (
@@ -155,15 +185,33 @@ export class MenuOptionComponent implements OnInit {
 
     this.subMenu.forEach((x: ElementRef) => {
       if (this.document.activeElement === x.nativeElement.firstChild) {
+
         x.nativeElement.classList.add('menu-item-open');
+
       } else x.nativeElement.classList.remove('menu-item-open');
     });
+
+
   };
 
   
 
   routerLink = (url: string) => {
     // this.localStorage.clearKey('BaseArchitectureSelect');
+    debugger
     this.router.navigate(['/' + url]);
+
+    this.listMenuOptions.forEach(element => {
+      if(element.MenuChildren  != undefined)
+      {
+        element.MenuChildren.forEach(elementChildren => {
+          if( elementChildren.OptionUrl== url)
+          {
+            this.NameFatherOption = elementChildren.father;
+            return;
+          }
+        });
+      }
+    });
   };
 }
