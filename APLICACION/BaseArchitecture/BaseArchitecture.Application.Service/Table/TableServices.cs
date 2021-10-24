@@ -122,7 +122,7 @@ namespace BaseArchitecture.Application.Service.Table
                 }
                 catch (Exception e)
                 {
-                    result = new Response<string>("Error");
+                    result = new Response<string>("Error" + e.Message);
                 }
             }
             return result;
@@ -244,6 +244,18 @@ namespace BaseArchitecture.Application.Service.Table
         {
             var result = TableQuery.RptListOrderQuantityStatusDelivery();
             return new Response<IEnumerable<RptListOrderQuantityStatusDeliveryEntity>> { Value = result };
+        }
+
+        public Response<IEnumerable<RptListSuppliesMostUsedByMonthEntity>> RptListSuppliesMostUsedByMonth()
+        {
+            var result = TableQuery.RptListSuppliesMostUsedByMonth();
+            return new Response<IEnumerable<RptListSuppliesMostUsedByMonthEntity>> { Value = result };
+        }
+
+        public Response<IEnumerable<RptListSuppliesDecreaseByMonthEntity>> RptListSuppliesDecreaseByMonth()
+        {
+            var result = TableQuery.RptListSuppliesDecreaseByMonth();
+            return new Response<IEnumerable<RptListSuppliesDecreaseByMonthEntity>> { Value = result };
         }
 
         public Response<int> UpdSubOrderFlowDetail(SubOrderFlowDetailEntity subOrderFlowDetailRequest)

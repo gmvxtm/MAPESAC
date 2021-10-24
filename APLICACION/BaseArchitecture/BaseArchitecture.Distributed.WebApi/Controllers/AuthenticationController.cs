@@ -204,6 +204,22 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
         }
 
         [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.RptListSuppliesMostUsedByMonth)]
+        public IHttpActionResult RptListSuppliesMostUsedByMonth()
+        {
+            var result = TableService.RptListSuppliesMostUsedByMonth();
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.RptListSuppliesDecreaseByMonth)]
+        public IHttpActionResult RptListSuppliesDecreaseByMonth()
+        {
+            var result = TableService.RptListSuppliesDecreaseByMonth();
+            return Ok(result);
+        }
+
+        [HttpPost]
         [Route(IncomeWebApi.MethodApi.Mapesac.UpdSubOrderFlowDetail)]
         public IHttpActionResult UpdSubOrderFlowDetail(SubOrderFlowDetailEntity subOrderFlowDetailRequest)
         {

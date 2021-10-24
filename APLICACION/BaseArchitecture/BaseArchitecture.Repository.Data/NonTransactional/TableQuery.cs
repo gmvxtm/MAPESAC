@@ -368,7 +368,44 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
 
             return response;
         }
-        
+
+        public IEnumerable<RptListSuppliesMostUsedByMonthEntity> RptListSuppliesMostUsedByMonth()
+        {
+            IEnumerable<RptListSuppliesMostUsedByMonthEntity> response;
+
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+
+                var resultResponse = connection.QueryAsync<RptListSuppliesMostUsedByMonthEntity>(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.RptListSuppliesMostUsedByMonth}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure).Result;
+
+                response = resultResponse;
+            }
+
+            return response;
+        }
+
+        public IEnumerable<RptListSuppliesDecreaseByMonthEntity> RptListSuppliesDecreaseByMonth()
+        {
+            IEnumerable<RptListSuppliesDecreaseByMonthEntity> response;
+
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+
+                var resultResponse = connection.QueryAsync<RptListSuppliesDecreaseByMonthEntity>(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.RptListSuppliesDecreaseByMonth}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure).Result;
+
+                response = resultResponse;
+            }
+
+            return response;
+        }
 
     }
 }

@@ -30,6 +30,8 @@ namespace BaseArchitecture.Application.IService.Table
         Response<IEnumerable<RptListOrderQuantityEntity>> RptListOrderQuantity();
         Response<IEnumerable<RptListOrderQuantityStatusEntity>> RptListOrderQuantityStatus();
         Response<IEnumerable<RptListOrderQuantityStatusDeliveryEntity>> RptListOrderQuantityStatusDelivery();
+        Response<IEnumerable<RptListSuppliesMostUsedByMonthEntity>> RptListSuppliesMostUsedByMonth();
+        Response<IEnumerable<RptListSuppliesDecreaseByMonthEntity>> RptListSuppliesDecreaseByMonth();
         Response<int> UpdSubOrderFlowDetail(SubOrderFlowDetailEntity subOrderFlowDetailRequest);
     }
 }

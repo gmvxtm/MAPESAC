@@ -400,6 +400,32 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
         [HttpGet]
         [RequestLoggerFilterAttribute]
         [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.RptListSuppliesMostUsedByMonth)]
+        public IHttpActionResult RptListSuppliesMostUsedByMonth()
+        {
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.RptListSuppliesMostUsedByMonth}";
+            var result =
+                InvokeWebApi.InvokePostAnonymousEntity<Response<List<RptListSuppliesMostUsedByMonthEntity>>>(urlApi, "");
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.RptListSuppliesDecreaseByMonth)]
+        public IHttpActionResult RptListSuppliesDecreaseByMonth()
+        {
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.RptListSuppliesDecreaseByMonth}";
+            var result =
+                InvokeWebApi.InvokePostAnonymousEntity<Response<List<RptListSuppliesDecreaseByMonthEntity>>>(urlApi, "");
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
         [Route(IncomeWebApi.MethodApi.Mapesac.UpdSubOrderFlowDetail)]
         public IHttpActionResult UpdSubOrderFlowDetail()
         {

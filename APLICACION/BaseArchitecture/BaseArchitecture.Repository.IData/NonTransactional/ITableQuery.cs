@@ -23,10 +23,11 @@ namespace BaseArchitecture.Repository.IData.NonTransactional
         IEnumerable<SupplyEntity> ListSuppliesByProduct(ProductEntity suppliesByProductRequest);
         IEnumerable<SupplyEntity> ListSupplies();
         IEnumerable<SupplierEntity> ListSuppliersByIdSupply(SupplyEntity supplyRequest);
-
         IEnumerable<RptListProductQuantityEntity> RptListProductQuantity();
         IEnumerable<RptListOrderQuantityEntity> RptListOrderQuantity();
         IEnumerable<RptListOrderQuantityStatusEntity> RptListOrderQuantityStatus();
         IEnumerable<RptListOrderQuantityStatusDeliveryEntity> RptListOrderQuantityStatusDelivery();
+        IEnumerable<RptListSuppliesMostUsedByMonthEntity> RptListSuppliesMostUsedByMonth();
+        IEnumerable<RptListSuppliesDecreaseByMonthEntity> RptListSuppliesDecreaseByMonth();
     }
 }
