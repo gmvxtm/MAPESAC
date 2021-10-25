@@ -48,6 +48,7 @@
             public const string RptListOrderQuantityStatusDelivery = "Usp_Rpt_ListOrderQuantityStatusDelivery";
             public const string RptListSuppliesMostUsedByMonth = "Usp_Rpt_ListSuppliesMostUsedByMonth";
             public const string RptListSuppliesDecreaseByMonth = "Usp_Rpt_ListSuppliesDecreasedByMonth";
+            public const string RptGanttOrdersLastMonth = "Usp_Rpt_GanttOrdersLastMonth";
 
             public const string MrgOrder = "Usp_Mrg_Order";
             public const string GenerateOrderFlow = "Usp_Generate_OrderFlow";

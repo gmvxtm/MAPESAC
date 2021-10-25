@@ -46,6 +46,7 @@
     <Compile Include="Tables\CustomerEntity.cs" />
     <Compile Include="Tables\DepartmentEntity.cs" />
     <Compile Include="Tables\DecreaseEntity.cs" />
+    <Compile Include="Tables\RptGanttOrdersLastMonthEntity.cs" />
     <Compile Include="Tables\RptListSuppliesDecreaseByMonthEntity.cs" />
     <Compile Include="Tables\RptListSuppliesMostUsedByMonthEntity.cs" />
     <Compile Include="Tables\RptListOrderQuantityStatusDeliveryEntity.cs" />

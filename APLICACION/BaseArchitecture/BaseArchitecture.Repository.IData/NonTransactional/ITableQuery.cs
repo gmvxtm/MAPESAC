@@ -29,5 +29,6 @@ namespace BaseArchitecture.Repository.IData.NonTransactional
         IEnumerable<RptListOrderQuantityStatusDeliveryEntity> RptListOrderQuantityStatusDelivery();
         IEnumerable<RptListSuppliesMostUsedByMonthEntity> RptListSuppliesMostUsedByMonth();
         IEnumerable<RptListSuppliesDecreaseByMonthEntity> RptListSuppliesDecreaseByMonth();
+        IEnumerable<RptGanttOrdersLastMonthEntity> RptGanttOrdersLastMonth();
     }
 }

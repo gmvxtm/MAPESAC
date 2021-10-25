@@ -407,5 +407,24 @@ namespace BaseArchitecture.Repository.Data.NonTransactional
             return response;
         }
 
+        public IEnumerable<RptGanttOrdersLastMonthEntity> RptGanttOrdersLastMonth()
+        {
+            IEnumerable<RptGanttOrdersLastMonthEntity> response;
+
+            using (var connection = new SqlConnection(AppSettingValue.ConnectionDataBase))
+            {
+                var parameters = new DynamicParameters();
+
+                var resultResponse = connection.QueryAsync<RptGanttOrdersLastMonthEntity>(
+                    $"{IncomeDataProcedures.Schema.Dbo}.{IncomeDataProcedures.Procedure.RptGanttOrdersLastMonth}",
+                    parameters,
+                    commandType: CommandType.StoredProcedure).Result;
+
+                response = resultResponse;
+            }
+
+            return response;
+        }
+
     }
 }

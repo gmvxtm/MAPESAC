@@ -60,6 +60,7 @@
                 public const string RptListOrderQuantityStatusDelivery = "RptListOrderQuantityStatusDelivery";
                 public const string RptListSuppliesMostUsedByMonth = "RptListSuppliesMostUsedByMonth";
                 public const string RptListSuppliesDecreaseByMonth = "RptListSuppliesDecreaseByMonth";
+                public const string RptGanttOrdersLastMonth = "RptGanttOrdersLastMonth";
                 public const string UpdSubOrderFlowDetail = "UpdSubOrderFlowDetail";
                 
 

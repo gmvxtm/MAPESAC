@@ -426,6 +426,19 @@ namespace BaseArchitecture.Distributed.ApiGateway.Controllers
         [HttpGet]
         [RequestLoggerFilterAttribute]
         [UnControlledExceptionFilterAttribute]
+        [Route(IncomeWebApi.MethodApi.Mapesac.RptGanttOrdersLastMonth)]
+        public IHttpActionResult RptGanttOrdersLastMonth()
+        {
+            var urlApi =
+                $"{AppSettingValue.UrlWebApi}/{IncomeWebApi.PrefixApi.Authentication}/{IncomeWebApi.MethodApi.Mapesac.RptGanttOrdersLastMonth}";
+            var result =
+                InvokeWebApi.InvokePostAnonymousEntity<Response<List<RptGanttOrdersLastMonthEntity>>>(urlApi, "");
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [RequestLoggerFilterAttribute]
+        [UnControlledExceptionFilterAttribute]
         [Route(IncomeWebApi.MethodApi.Mapesac.UpdSubOrderFlowDetail)]
         public IHttpActionResult UpdSubOrderFlowDetail()
         {

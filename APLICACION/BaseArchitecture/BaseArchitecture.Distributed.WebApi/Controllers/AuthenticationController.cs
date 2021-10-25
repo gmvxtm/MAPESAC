@@ -220,6 +220,14 @@ namespace BaseArchitecture.Distributed.WebApi.Controllers
         }
 
         [HttpPost]
+        [Route(IncomeWebApi.MethodApi.Mapesac.RptGanttOrdersLastMonth)]
+        public IHttpActionResult RptGanttOrdersLastMonth()
+        {
+            var result = TableService.RptGanttOrdersLastMonth();
+            return Ok(result);
+        }
+
+        [HttpPost]
         [Route(IncomeWebApi.MethodApi.Mapesac.UpdSubOrderFlowDetail)]
         public IHttpActionResult UpdSubOrderFlowDetail(SubOrderFlowDetailEntity subOrderFlowDetailRequest)
         {

@@ -258,6 +258,12 @@ namespace BaseArchitecture.Application.Service.Table
             return new Response<IEnumerable<RptListSuppliesDecreaseByMonthEntity>> { Value = result };
         }
 
+        public Response<IEnumerable<RptGanttOrdersLastMonthEntity>> RptGanttOrdersLastMonth()
+        {
+            var result = TableQuery.RptGanttOrdersLastMonth();
+            return new Response<IEnumerable<RptGanttOrdersLastMonthEntity>> { Value = result };
+        }
+
         public Response<int> UpdSubOrderFlowDetail(SubOrderFlowDetailEntity subOrderFlowDetailRequest)
         {
             var result = TableTransaction.UpdSubOrderFlowDetail(subOrderFlowDetailRequest);
