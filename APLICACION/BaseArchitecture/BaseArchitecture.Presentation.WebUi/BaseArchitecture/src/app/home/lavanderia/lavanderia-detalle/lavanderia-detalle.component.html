@@ -55,7 +55,7 @@
             {{item.Quantity}}
             </div>
             <div class="col-md-2" style="text-align: center;">
-            S/. {{ item.UnitPrice*item.Quantity }}
+            S/. {{ item.UnitPrice*item.Quantity | number:'3.2-5'}}
             </div>
            
         </div>
